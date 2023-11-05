@@ -6,12 +6,12 @@ import { PostsList } from "@/components/Posts/PostsList";
 
 export default function Home() {
   return (
-      <main className="grid  lg:grid-cols-12 lg:gap-[2rem] items-start mt-12 mb-12">
-        <section className="flex flex-col items-center justify-start lg:col-span-8">
+      <main className="grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12 ">
+        <section className="flex flex-col items-center justify-start lg:col-span-7">
         <Banners/>
         <PostsList/>
         </section>
-        <section className=" lg:col-span-4 flex flex-col items-center justify-center gap-5">
+        <section className=" lg:col-span-5 flex flex-col items-start justify-center gap-5">
           <div className="w-[22.5rem] h-12 rounded-[10px] py-3 px-[6.375rem] bg-slate-900 flex items-center justify-center">
             <h3 className=" text-slate-50 ">Posts Populares</h3>
           </div>

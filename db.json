@@ -1,0 +1,114 @@
+{
+  "posts":[
+    {
+      "id" : 1,
+      "title" : "Os fundamentos do JavaScript",
+      "content" : "",
+      "description" : "Aqui você ira aprender os fundamentos do JavaScript",
+      "author" : "Juliano Santos",
+      "date" : "04/11/2023",
+      "coverImage" : "/author.png",
+      "tag" : "JavaScript"
+    },
+    {
+      "id" : 2,
+      "title" : "Os fundamentos do React js",
+      "content" : "",
+      "description" : "Aqui você ira aprender os fundamentos do React Js",
+      "author" : "Juliano Santos",
+      "date" : "04/11/2023",
+      "coverImage" : "/author.png",
+      "tag" : "React Js"
+    },
+    {
+      "id" : 3,
+      "title" : "Classes utilitárias com Tailwind Css",
+      "content" : "",
+      "description" : "O Tailwind Css tem caido nos braços dos programadores frontEnd",
+      "author" : "Juliano Santos",
+      "date" : "04/11/2023",
+      "coverImage" : "/author.png",
+      "tag" : "TailWind"
+    },
+    {
+      "id" : 4,
+      "title" : "Conheça o next js",
+      "content" : "",
+      "description" : "O Next Js tem a cada dia comquistado o seu espaço no mercado da progração",
+      "author" : "Juliano Santos",
+      "date" : "04/11/2023",
+      "coverImage" : "/author.png",
+      "tag" : "Next Js"
+    },
+    {
+      "id" : 5,
+      "title" : "Como viver como freelancer na programação",
+      "content" : "",
+      "description" : "Você sabe como se tornar um programador freelancer de sucesso?",
+      "author" : "Juliano Santos",
+      "date" : "04/11/2023",
+      "coverImage" : "/author.png",
+      "tag" : "Carreira"
+    },
+    {
+      "id" : 6,
+      "title" : "Você conhece os metos de array ?",
+      "content" : "",
+      "description" : "Conhecer os metos de array é importante para qualquer dev frontEnd",
+      "author" : "Juliano Santos",
+      "date" : "04/11/2023",
+      "coverImage" : "/author.png",
+      "tag" : "JavaScript"
+    },
+    {
+      "id" : 7,
+      "title" : "Conheça os pré-processadores CSS",
+      "content" : "",
+      "description" : "Os pré-processadores CSS estão ai para facilitar a nossa vida",
+      "author" : "Juliano Santos",
+      "date" : "04/11/2023",
+      "coverImage" : "/author.png",
+      "tag" : "CSS"
+    },
+    {
+      "id" : 8,
+      "title" : "Qual o notebook ideal para programar na web?",
+      "content" : "",
+      "description" : "Para uma melhor produtividade será necessário um notebook ideal para programar",
+      "author" : "Juliano Santos",
+      "date" : "04/11/2023",
+      "coverImage" : "/author.png",
+      "tag" : "Dicas"
+    },
+    {
+      "id" : 8,
+      "title" : "Conheça os melhores FrameWorks JavaScript",
+      "content" : "",
+      "description" : "Aqui você ira aprender os frameworks do JavaScript",
+      "author" : "Juliano Santos",
+      "date" : "04/11/2023",
+      "coverImage" : "/author.png",
+      "tag" : "JavaScript"
+    },
+    {
+      "id" : 9,
+      "title" : "Vantagens do trabalho homeoffice",
+      "content" : "",
+      "description" : "As vantagens que o home office proporciona são incontáveis",
+      "author" : "Juliano Santos",
+      "date" : "04/11/2023",
+      "coverImage" : "/author.png",
+      "tag" : "Carreira"
+    },
+    {
+      "id" : 10,
+      "title" : "As melhores IDEs para programar",
+      "content" : "",
+      "description" : "Aqui você vai conhecer os melhors IDEs para se trabalhar ",
+      "author" : "Juliano Santos",
+      "date" : "04/11/2023",
+      "coverImage" : "/author.png",
+      "tag" : "Dicas"
+    }
+  ]
+}
