@@ -9,12 +9,14 @@ interface Post {
   title: string,
   content: string,
   description: string,
-  coverImage: string
+  authorImage: string,
+  coverImage : string
   tag: string,
   author: string,
   date: string,
+  className?: string,
+  variant?: string
 }
-
 
 interface BlogContextType {
   posts: Post[]

@@ -24,7 +24,7 @@ export default function RootLayout({
       <body className={`bg-slate-50 ${font.className}`}>
         <BlogProvider>
           <Header/>
-          <div className=''>
+          <div className='px-20'>
           {children}
           </div>
         </BlogProvider>
