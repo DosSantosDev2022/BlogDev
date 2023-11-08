@@ -24,9 +24,9 @@ export default function Header() {
         isMenuOpen ? "flex" : "hidden"
       } lg:flex lg:flex-row flex-col items-center justify-center gap-5 mt-10 lg:mt-0 `}>
         <ul className="flex items-start justify-center gap-5">
-          <li className=" text-slate-50 font-light text-base"><Link href={''}>Home</Link></li>
-          <li className=" text-slate-50 font-light text-base"><Link href={''}>Categorias</Link></li>
-          <li className=" text-slate-50 font-light text-base"><Link href={''}>Contato</Link></li>
+          <li className=" text-slate-50 font-light text-base"><Link href={'/'}>Home</Link></li>
+          <li className=" text-slate-50 font-light text-base"><Link href={'/Categorys'}>Categorias</Link></li>
+          <li className=" text-slate-50 font-light text-base"><Link href={'/Contact'}>Contato</Link></li>
         </ul>
         <InputSearch/>
       </nav>

@@ -15,7 +15,8 @@ interface Post {
   author: string,
   date: string,
   className?: string,
-  variant?: string
+  variant?: string,
+  link: string
 }
 
 interface BlogContextType {
