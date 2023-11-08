@@ -52,7 +52,7 @@
       "author" : "Juliano Santos",
       "date" : "04/11/2023",
       "authorImage" : "/author.png",
-      "coverImage" : "/banner.png",
+      "coverImage" : "/bgImage/bg05.png",
       "tag" : "Carreira"
     },
     {
@@ -63,7 +63,7 @@
       "author" : "Juliano Santos",
       "date" : "04/11/2023",
       "authorImage" : "/author.png",
-      "coverImage" : "/banner.png",
+      "coverImage" : "/bgImage/bg06.png",
       "tag" : "JavaScript"
     },
     {
@@ -74,7 +74,7 @@
       "author" : "Juliano Santos",
       "date" : "04/11/2023",
       "authorImage" : "/author.png",
-      "coverImage" : "/banner.png",
+      "coverImage" : "/bgImage/bg07.png",
       "tag" : "CSS"
     },
     {
@@ -85,7 +85,7 @@
       "author" : "Juliano Santos",
       "date" : "04/11/2023",
       "authorImage" : "/author.png",
-      "coverImage" : "/banner.png",
+      "coverImage" : "/bgImage/bg03.png",
       "tag" : "Dicas"
     },
     {
@@ -96,7 +96,7 @@
       "author" : "Juliano Santos",
       "date" : "04/11/2023",
       "authorImage" : "/author.png",
-      "coverImage" : "/banner.png",
+      "coverImage" : "/bgImage/bg04.png",
       "tag" : "JavaScript"
     },
     {
@@ -107,7 +107,7 @@
       "author" : "Juliano Santos",
       "date" : "04/11/2023",
       "authorImage" : "/author.png",
-      "coverImage" : "/banner.png",
+      "coverImage" : "/bgImage/bg06.png",
       "tag" : "Carreira"
     }
   ]
