@@ -4,7 +4,7 @@ import { BlogApi } from '@/lib/axios';
 
 import { createContext, ReactNode, useEffect, useState } from 'react';
 
-interface Post {
+export interface Post {
   id: number,
   title: string,
   content: string,
@@ -17,6 +17,7 @@ interface Post {
   className?: string,
   variant?: string,
   link: string
+
 }
 
 interface BlogContextType {
@@ -53,3 +54,4 @@ const BlogProvider = ({ children }: { children: ReactNode }) => {
 }
 
 export { BlogContext, BlogProvider };
+ 

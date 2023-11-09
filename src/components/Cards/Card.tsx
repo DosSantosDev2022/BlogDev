@@ -1,25 +1,13 @@
 
 import Link from "next/link";
 import { Author } from "./author";
+import { useContext } from "react";
+import { BlogContext, Post } from "@/context/blogContext";
 
 
-interface Post {
-  id: number,
-  title: string,
-  content: string,
-  description: string,
-  authorImage: string,
-  coverImage : string
-  tag: string,
-  author: string,
-  date: string,
-  className: string,
-  variant: string,
-  link: string
-}
 
 export  function CardPosts({post} : {post : Post}){
- 
+  const { posts } = useContext(BlogContext);
   return (
     <Link href={post.link} >
       <div className=" w-[21rem] h-[24.75rem]  rounded-md  shadow-md">
@@ -29,7 +17,7 @@ export  function CardPosts({post} : {post : Post}){
             <h2 className="text-base font-bold text-slate-50">{post.title}</h2>
             <p className="text-sm text-slate-100 font-normal">{post.description} </p>
           </div>
-          <Author variant="authorCard"  post={post}/>
+          <Author variant="authorCard" post={post} />
         </div>
       </div>
     </Link>

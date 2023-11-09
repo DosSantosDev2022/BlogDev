@@ -1,5 +1,6 @@
 'use client'
-import Banners from "@/components/Banners/Banner";
+import  { Carousel } from "@/components/Banners/Banner";
+
 import { CardPosts } from "@/components/Cards/Card";
 import SmallCard from "@/components/Cards/SmallCard";
 import { BlogContext } from "@/context/blogContext";
@@ -12,8 +13,8 @@ export default function Home() {
   return (
       <main className="grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12 ">
         <section className="flex flex-col items-center justify-start lg:col-span-8 ">
-          <Banners/>
-          <div className="grid grid-cols-1 lg:grid-cols-2 items-center justify-center gap-4">
+          <Carousel />
+          <div className="grid grid-cols-1 lg:grid-cols-2 mt-10 items-center justify-center gap-4">
             {posts.map((post)=> (
               <CardPosts key={post.id} post={post} />
             ))}

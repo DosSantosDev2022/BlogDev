@@ -35,7 +35,7 @@ export function Footer() {
           <button className="border-0 bg-slate-50 text-slate-900 p-2 rounded-md">Subscribe</button>
         </form>
         </div>
-        <div className="lg:col-span-3  w-full flex lg:flex-row flex-col justify-around gap-10">
+        <div className="lg:col-span-3  w-full flex md:flex-row flex-col justify-around gap-10">
            <ul className="flex flex-col gap-2">
              <h3 className="text-slate-50 text-2xl font-semibold">Links</h3>
              {Links.map((link) => (
