@@ -10,6 +10,7 @@ import { useContext } from "react";
 
 export default function Home() {
   const {posts} = useContext(BlogContext)
+  
   return (
       <main className="grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12 ">
         <section className="flex flex-col items-center justify-start lg:col-span-8 ">
