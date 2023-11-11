@@ -1,14 +1,13 @@
-
 'use client'
-
 import SmallCard from "@/components/Cards/SmallCard";
 import { Author } from "@/components/Cards/author";
 import { BlogContext } from "@/context/blogContext";
 import { useContext } from "react";
 
 export default function PagePost() {
- const { posts } = useContext(BlogContext)
- const post = posts[1]
+  const {posts} = useContext(BlogContext)
+  const post = posts[0]
+
   return (
     <main className="grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12 ">
      <section className="flex flex-col items-center justify-start lg:col-span-8 ">
@@ -48,3 +47,5 @@ export default function PagePost() {
     </main>
   );
 }
+
+

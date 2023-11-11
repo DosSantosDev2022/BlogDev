@@ -2,6 +2,7 @@
   "posts":[
     {
       "id" : 1,
+      "slug" : "os-fundamentos-do-java-script",
       "title" : "Os fundamentos do JavaScript",
       "content" : "conteudo do post",
       "description" : "Aqui você ira aprender os fundamentos do JavaScript",
@@ -15,6 +16,7 @@
     {
       "id" : 2,
       "title" : "Os fundamentos do React js",
+      "slug": "os-fundamentos-do-react-js",
       "content" : "conteudo do post",
       "description" : "Aqui você ira aprender os fundamentos do React Js",
       "author" : "Juliano Santos",
@@ -27,6 +29,7 @@
     {
       "id" : 3,
       "title" : "Classes utilitárias com Tailwind Css",
+      "slug" : "classes-utilitarias-com-tailwind-css",
       "content" : "conteudo do post",
       "description" : "O Tailwind Css tem caido nos braços dos programadores frontEnd",
       "author" : "Juliano Santos",
@@ -38,6 +41,7 @@
     },
     {
       "id" : 4,
+      "slug" : "conheca-o-next-js",
       "title" : "Conheça o next js",
       "content" : "conteudo do post",
       "description" : "O Next Js tem a cada dia comquistado o seu espaço no mercado da progração",
@@ -50,6 +54,7 @@
     },
     {
       "id" :5,
+      "slug" : "como-viver-como-freelancer-na-programacao",
       "title" : "Como viver como freelancer na programação",
       "content" : "conteudo do post",
       "description" : "Você sabe como se tornar um programador freelancer de sucesso?",
@@ -62,7 +67,8 @@
     },
     {
       "id" : 6,
-      "title" : "Você conhece os metos de array ?",
+      "slug" : "você-conhece-os-metodos-de-array",
+      "title" : "Você conhece os metodos de array ?",
       "content" : "conteudo do post",
       "description" : "Conhecer os metos de array é importante para qualquer dev frontEnd",
       "author" : "Juliano Santos",
@@ -74,6 +80,7 @@
     },
     {
       "id" : 7,
+      "slug" : "conheca-os-pré-processadores-css" ,
       "title" : "Conheça os pré-processadores CSS",
       "content" : "conteudo do post",
       "description" : "Os pré-processadores CSS estão ai para facilitar a nossa vida na hora do desenvolvimento",
@@ -86,6 +93,7 @@
     },
     {
       "id" : 8,
+      "slug" : "qual-o-notebook-ideal-para-programar-na-web" ,
       "title" : "Qual o notebook ideal para programar na web?",
       "content" : "conteudo do post",
       "description" : "Para uma melhor produtividade será necessário um notebook ideal para programar",
@@ -98,6 +106,7 @@
     },
     {
       "id" : 9,
+      "slug" : "conheca-os-melhores-frameworks-javascript",
       "title" : "Conheça os melhores FrameWorks JavaScript",
       "content" : "conteudo do post",
       "description" : "Aqui você ira aprender os frameworks do JavaScript",
@@ -110,6 +119,7 @@
     },
     {
       "id" : 10,
+      "slug" : "vantagens-do-trabalho-home-office",
       "title" : "Vantagens do trabalho homeoffice",
       "content" : "conteudo do post",
       "description" : "As vantagens que o home office proporciona são incontáveis",

@@ -17,6 +17,7 @@ export interface Post {
   className?: string,
   variant?: string,
   link: string
+  slug: string
 }
 
 interface BlogContextType {
