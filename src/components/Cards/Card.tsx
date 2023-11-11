@@ -17,7 +17,16 @@ export  function CardPosts({post} : {post : Post}){
             <h2 className="text-base font-bold text-slate-50">{post.title}</h2>
             <p className="text-sm text-slate-100 font-normal">{post.description} </p>
           </div>
-          <Author variant="authorCard" post={post}/>
+          <Author 
+            showImage 
+            showDate 
+            titleColor="text-slate-50" 
+            titleSize="text-sm" 
+            dateSize="text-sm" 
+            dateColor="text-slate-50"  
+            post={post}
+            imageSize={28}
+          />
         </div>
       </div>
     </Link>

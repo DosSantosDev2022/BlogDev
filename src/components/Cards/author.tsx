@@ -1,45 +1,44 @@
+import { BlogContext ,Post } from "@/context/blogContext";
+import {useContext} from 'react'
 import Image from "next/image"
-import { twMerge } from "tailwind-merge"
 
-
-interface Post {
-  id: number,
-  title: string,
-  content: string,
-  description: string,
-  authorImage: string,
-  coverImage : string
-  tag: string,
-  author: string,
-  date: string,
-  className: string,
-  variant: string
-
-}
-
-interface VariantTypes {
-  authorCard: string,
-  authorSmallCard: string,
+interface AuthorProps {
+  post: Post;
+  showDate?: boolean
+  showImage?: boolean
+  customStyles?: React.CSSProperties;
+  titleSize? : string
+  titleColor?: string
+  dateSize?: string
+  dateColor?:string
+  imageSize?: number
 }
 
 
-export function Author({post, className ,variant} : {post : Post ; className?: string; variant: keyof VariantTypes}) {
+export function Author({
+    post, 
+    showDate, 
+    showImage,
+    titleSize,titleColor,
+    dateSize,
+    dateColor,
+    imageSize
+  }:AuthorProps
+    ) 
+{
    
-  const variantClasses : VariantTypes = {
-      authorCard: "text-slate-50",
-      authorSmallCard: "text-slate-900"
-  }
+  const {posts} = useContext(BlogContext)
 
-  const _className = twMerge(
-    variantClasses[variant],className
-    
-  )
   return (
     <div className="flex items-center justify-start gap-2">
-      <Image className="rounded-full" src={post.authorImage} width={28} height={28} alt=""/>
+      {showImage && (
+        <Image className="rounded-full" src={post.authorImage} width={imageSize} height={imageSize} alt=""/>
+      )}
       <div className="flex flex-col items-start justify-start">
-        <h5 className={`text-xs font-bold ${_className}`}>{post.author}</h5>
-        <span className={`text-xs ${_className}`}>{post.date}</span>
+        <h5 className={`${titleSize} font-bold ${titleColor} `}>{post.author}</h5>
+        {showDate && (
+          <span className={`${dateSize} ${dateColor} `}>{post.date}</span>
+        )}
       </div>
   </div>
   )

@@ -18,7 +18,16 @@ export default function PagePost() {
         <article className="mt-12 flex flex-col items-center justify-start w-full gap-10 p-2">
           <div className="flex flex-col items-start justify-center w-full gap-5">
             <h1 className="text-slate-900 text-5xl font-bold mb-3">{post.title} </h1>
-            <Author variant="authorSmallCard" post={post}/>
+            <Author 
+              titleSize="text-lg"
+              titleColor="text-slate-900"
+              dateColor="text-slate-700"
+              dateSize="text-lg"
+              post={post}
+              showDate
+              showImage
+              imageSize={38}
+            />
           </div>
           <div className="w-full p-2"> {/* Conteudo do post */}
             {post.content}
