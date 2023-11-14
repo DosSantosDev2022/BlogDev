@@ -4,6 +4,7 @@ import './globals.css'
 import Header from '@/components/Header'
 import { BlogProvider } from '@/context/blogContext'
 import { Footer } from '@/components/Footer'
+import { SearchProvider } from '@/context/searchContext'
 
 const font = Poppins({
   subsets: ['latin'],
@@ -23,13 +24,15 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body className={`bg-slate-50 ${font.className}`}>
-        <BlogProvider>
-          <Header/>
-          <div className='px-20'>
-          {children}
-          </div>
-          <Footer/>
-        </BlogProvider>
+      <SearchProvider>
+          <BlogProvider>
+            <Header/>
+            <div className='px-20'>
+            {children}
+            </div>
+            <Footer/>
+          </BlogProvider>
+        </SearchProvider>
       </body>
     </html>
   )

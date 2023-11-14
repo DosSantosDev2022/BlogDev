@@ -22,7 +22,13 @@ export  function Carousel(): JSX.Element {
             <h2 className="text-slate-50 font-bold text-2xl lg:text-3xl">
               {post.title}
             </h2>
-            <Author post={post}  variant="authorCard"/>
+            <Author post={post} 
+             showDate showImage
+             titleSize="text-sm" 
+             titleColor="text-slate-50"
+             dateColor="text-slate-50"
+             dateSize="text-sm"
+             imageSize={32}/>
           </div>
         </Link>
       ))}
