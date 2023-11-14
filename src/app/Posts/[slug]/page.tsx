@@ -5,8 +5,15 @@ import { BlogContext } from "@/context/blogContext";
 import { useContext } from "react";
 
 export default function PagePost() {
+  
   const {posts} = useContext(BlogContext)
+
   const post = posts[0]
+
+  const relatedPosts = posts.filter((p) => (
+    p.id !== post.id && p.tag === post.tag
+  ));
+  
 
   return (
     <main className="grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12 ">
@@ -39,7 +46,7 @@ export default function PagePost() {
              <h3 className="text-slate-50 font">Posts Relacionados</h3>
            </div>
            <div className="flex flex-col items-center justify-center space-y-5">
-            {posts.map((post) =>(
+            {relatedPosts.map((post) =>(
                <SmallCard key={post.id} post={post} />
             ))}
           </div>
@@ -47,5 +54,4 @@ export default function PagePost() {
     </main>
   );
 }
-
 
