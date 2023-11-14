@@ -47,7 +47,7 @@ export default function Header() {
             <ul className={ `absolute transition-all ${isDropDownOpen ? "block" : "hidden"} bg-slate-50 p-2 space-y-2 shadow-md mt-2 rounded-md text-slate-900`}>
               {categorys.map((category) => (
                 <li key={category.label}>
-                  <Link className="hover:font-bold transition-all" href={category.href}>
+                  <Link className="hover:font-bold transition-all" href={`/category/${category.label}`}>
                    {category.label}
                   </Link>
                 </li>

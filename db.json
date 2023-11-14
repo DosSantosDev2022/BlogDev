@@ -11,6 +11,7 @@
       "authorImage" : "/author.png",
       "coverImage" : "/bgImage/javascript.png",
       "tag" : "JavaScript",
+      "category" : "JavaScript",
       "link" : "/Posts/1"
     },
     {
@@ -24,6 +25,7 @@
       "authorImage" : "/author.png",
       "coverImage" : "/bgImage/bg02.png",
       "tag" : "React Js",
+      "category" : "React Js",
       "link" : "/Posts/2"
     },
     {
@@ -37,6 +39,7 @@
       "authorImage" : "/author.png",
       "coverImage" : "/bgImage/bg03.png",
       "tag" : "TailWind",
+      "category" : "TailWind",
       "link" : "/Posts/3"
     },
     {
@@ -50,6 +53,7 @@
       "authorImage" : "/author.png",
       "coverImage" : "/bgImage/bg04.png",
       "tag" : "Next Js",
+      "category" : "Next Js",
       "link" : "/Posts/4"
     },
     {
@@ -63,6 +67,7 @@
       "authorImage" : "/author.png",
       "coverImage" : "/bgImage/bg05.png",
       "tag" : "Carreira",
+      "category" : "Carreira",
       "link" : "/Posts/5"
     },
     {
@@ -76,6 +81,7 @@
       "authorImage" : "/author.png",
       "coverImage" : "/bgImage/bg06.png",
       "tag" : "JavaScript",
+      "category" : "JavaScript",
       "link" : "/Posts/6"
     },
     {
@@ -89,6 +95,7 @@
       "authorImage" : "/author.png",
       "coverImage" : "/bgImage/bg07.png",
       "tag" : "CSS",
+      "category" : "CSS",
       "link" : "/Posts/7"
     },
     {
@@ -102,6 +109,7 @@
       "authorImage" : "/author.png",
       "coverImage" : "/bgImage/bg03.png",
       "tag" : "Dicas",
+      "category" : "Dicas",
       "link" : "/Posts/8"
     },
     {
@@ -115,6 +123,7 @@
       "authorImage" : "/author.png",
       "coverImage" : "/bgImage/bg04.png",
       "tag" : "JavaScript",
+      "category" : "JavaScript",
       "link" : "/Posts/9"
     },
     {
@@ -128,6 +137,7 @@
       "authorImage" : "/author.png",
       "coverImage" : "/bgImage/bg06.png",
       "tag" : "Carreira",
+      "category" : "Carreira",
       "link" : "/Posts/10"
     }
   ]
