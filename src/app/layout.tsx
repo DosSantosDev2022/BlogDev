@@ -23,7 +23,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-br">
-      <body className={`bg-slate-50 ${font.className}`}>
+      <body className={`bg-slate-50 scrollbar scrollbar-thumb-slate-900 scrollbar-rounded scrollbar-track-gray-100 ${font.className}`}>
       <SearchProvider>
           <BlogProvider>
             <Header/>

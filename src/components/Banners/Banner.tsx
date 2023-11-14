@@ -13,7 +13,7 @@ export  function Carousel(): JSX.Element {
       {firstPost.map((post) => (
         <Link key={post.id} href={post.link} >
             <div
-            className="flex flex-col items-start justify-end px-3 py-4 gap-5 lg:w-[690px] w-full lg:h-[396px] bg-no-repeat bg-cover rounded-md "
+            className="flex flex-col items-start justify-end px-3 py-4 gap-5 lg:w-[690px] md:w-[689px] w-full lg:h-[396px] bg-no-repeat bg-cover rounded-md "
             style={{ backgroundImage: `url(${post.coverImage})` }}
           >
             <span className="bg-slate-50 text-slate-900 font-bold text-[0.625rem] p-[0.375rem] rounded-lg">
