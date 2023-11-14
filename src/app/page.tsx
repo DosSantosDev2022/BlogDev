@@ -7,23 +7,24 @@ import { BlogContext } from "@/context/blogContext";
 import { useSearch } from "@/context/searchContext";
 import { useContext } from "react";
 
-
-
 export default function Home() {
-  const { searchTerm } = useSearch();
-
   const {posts} = useContext(BlogContext)
+  const { searchTerm } = useSearch();
+  const  lowerCaseSearchTerm  = searchTerm.toLowerCase()
+
+  
 
   const filterPosts = posts.filter((post) => 
-
-    post.title.toLowerCase().includes(searchTerm.toLowerCase())
+    post.title.toLowerCase().includes(lowerCaseSearchTerm)
   )
   
   return (
       <main className="grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12 ">
         <section className="flex flex-col items-center justify-start lg:col-span-8 ">
           {!searchTerm && <Carousel />}
-          
+           {searchTerm && filterPosts.length === 0  && (
+            <p className="text-slate-900 font-semibold text-lg">Nenhum Post foi encontrado !!</p>
+           )}
             <div className="grid grid-cols-1 lg:grid-cols-2 mt-10 items-center justify-center gap-4">
               {filterPosts.map((post)=> (
                 <CardPosts key={post.id} post={post} />
@@ -37,7 +38,7 @@ export default function Home() {
           </div>
 
           <div className="flex flex-col items-center justify-center space-y-5">
-            {posts.map((post) =>(
+            {filterPosts.map((post) =>(
                <SmallCard key={post.id} post={post} />
             ))}
           </div>
@@ -46,7 +47,7 @@ export default function Home() {
             <h3 className=" text-slate-50 ">Posts Populares</h3>
           </div>
           <div className="flex flex-col items-center justify-center space-y-5">
-            {posts.map((post) => (
+            {filterPosts.map((post) => (
               <SmallCard post={post} key={post.id} />
             ))}
           </div>
