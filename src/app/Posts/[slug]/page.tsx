@@ -4,6 +4,7 @@ import { Author } from "@/components/Cards/author";
 import { BlogContext } from "@/context/blogContext";
 import { useContext } from "react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function PagePost({ params }: { params: { slug: string } }) {
   
@@ -21,13 +22,30 @@ export default function PagePost({ params }: { params: { slug: string } }) {
   posts.filter(
     (p) => p.id !== post.id && p.tag === post.tag
     );
+    
+
+   const postPath = (
+    <span>
+      {post.tag && (
+        <Link className="hover:text-slate-400 transition-all" href={`/Categorys/${post.category}`}>
+            {`${post.category}`}
+        </Link>
+      )}
+
+      <Link className="hover:text-slate-400 transition-all" href={`/Posts/${post.slug}`}>
+      {post.tag ? ` > ${post.title}` : post.title}
+      </Link>
+    </span>
+   ) 
 
 
   return (
     <main className="grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12 ">
      <section className="flex flex-col items-center justify-start lg:col-span-8 ">
-        <div className="w-full h-12 rounded-[10px] py-3 px-[6.375rem] bg-slate-900 flex items-center justify-center">
-          
+        <div className="w-full h-12 rounded-[10px] py-3 px-4 bg-slate-900 text-start">
+          <p className="text-slate-50">
+            {postPath} {/* Renderiza o caminho do post */}
+          </p>
         </div>
         <article className="mt-12 flex flex-col items-center justify-start w-full gap-10 p-2">
           <div className="flex flex-col items-start justify-center w-full gap-5">
@@ -43,8 +61,8 @@ export default function PagePost({ params }: { params: { slug: string } }) {
               imageSize={38}
             />
           </div>
-          <div>
-            <Image width={500} height={500}  alt={post.title} src={post.coverImage} />
+          <div className="w-full border">
+            <Image width={500} height={200}  alt={post.title} src={post.coverImage} />
           </div>
           <div className="w-full p-2"> {/* Conteudo do post */}
             {post.content}
