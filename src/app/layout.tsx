@@ -27,7 +27,7 @@ export default function RootLayout({
       <SearchProvider>
           <BlogProvider>
             <Header/>
-            <div className='px-20'>
+            <div className='container mx-auto'>
             {children}
             </div>
             <Footer/>

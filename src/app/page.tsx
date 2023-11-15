@@ -5,6 +5,7 @@ import { CardPosts } from "@/components/Cards/Card";
 import SmallCard from "@/components/Cards/SmallCard";
 import { BlogContext } from "@/context/blogContext";
 import { useSearch } from "@/context/searchContext";
+import Link from "next/link";
 import { useContext } from "react";
 
 export default function Home() {
@@ -12,11 +13,17 @@ export default function Home() {
   const { searchTerm } = useSearch();
   const  lowerCaseSearchTerm  = searchTerm.toLowerCase()
 
-  
-
   const filterPosts = posts.filter((post) => 
     post.title.toLowerCase().includes(lowerCaseSearchTerm)
   )
+
+  const categorys = [
+    {label : "JavaScript" , href: "/Categorys/JavaScript"},
+    {label : "React Js" , href: "/Categorys/React-Js"},
+    {label : "Next Js" , href: "/Categorys/Next-Js"},
+    {label : "Front End" , href: "/Categorys/Front-End"},
+    {label : "Carreira" , href: "/Categorys/Carreira"}
+  ]
   
   return (
       <main className="grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12 ">
@@ -44,11 +51,17 @@ export default function Home() {
           </div>
             
           <div className="lg:w-[22.5rem] h-12 md:w-full rounded-[10px] py-3 px-[6.375rem] bg-slate-900 flex items-center justify-center">
-            <h3 className=" text-slate-50 ">Posts Populares</h3>
+            <h3 className=" text-slate-50 ">Posts Categorias</h3>
           </div>
           <div className="flex flex-col items-center justify-center space-y-5">
-            {filterPosts.map((post) => (
-              <SmallCard post={post} key={post.id} />
+            {categorys.map((category) => (
+              <ul key={category.label}>
+                <li className=" cursor-pointer border w-[22.5rem] rounded-md shadow-sm p-2 text-center hover:bg-slate-100 transition-all">
+                  <Link href={category.href}>
+                    {category.label}
+                  </Link>
+                </li>
+              </ul>
             ))}
           </div>
         </section>
