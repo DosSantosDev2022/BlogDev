@@ -3,17 +3,22 @@ import SmallCard from "@/components/Cards/SmallCard";
 import { Author } from "@/components/Cards/author";
 import { BlogContext } from "@/context/blogContext";
 import { useContext } from "react";
+import Image from "next/image";
 
-export default function PagePost() {
+export default function PagePost({ params }: { params: { slug: string } }) {
   
   const {posts} = useContext(BlogContext)
-
-  const post = posts[0]
-
-  const relatedPosts = posts.filter((p) => (
-    p.id !== post.id && p.tag === post.tag
-  ));
+  const post = posts.find((p) => p.slug === params.slug);
   
+  if (!post) {
+    // Tratar o caso em que o post não é encontrado
+    return <div className="w-full h-full p-4">
+          <h1 className="text-3xl font-semibold ">Post não encontrado ! </h1>
+    </div> 
+  }
+
+  const relatedPosts = posts.filter((p) => p.id !== post.id && p.tag === post.tag);
+
 
   return (
     <main className="grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12 ">
@@ -34,6 +39,9 @@ export default function PagePost() {
               showImage
               imageSize={38}
             />
+          </div>
+          <div>
+            <Image width={500} height={500}  alt={post.title} src={post.coverImage} />
           </div>
           <div className="w-full p-2"> {/* Conteudo do post */}
             {post.content}

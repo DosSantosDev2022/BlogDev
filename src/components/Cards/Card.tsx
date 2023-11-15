@@ -9,7 +9,12 @@ import { BlogContext, Post } from "@/context/blogContext";
 export  function CardPosts({post} : {post : Post}){
   const { posts } = useContext(BlogContext);
   return (
-    <Link href={post.link} >
+    <Link href={
+        {
+          pathname : `/Posts/${post.slug}`
+        }
+      } 
+    >
       <div className=" w-[21rem] h-[24.75rem]  rounded-md  shadow-md">
         <div className="flex flex-col justify-end h-full p-4 gap-3 rounded-md bg-center bg-auto  bg-no-repeat" style={{ backgroundImage: `url(${post.coverImage})` }}>
           <div className="flex flex-col items-start gap-1">

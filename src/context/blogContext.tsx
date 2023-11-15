@@ -5,7 +5,7 @@ import { BlogApi } from '@/lib/axios';
 import { createContext, ReactNode, useEffect, useState } from 'react';
 
 export interface Post {
-  id: number,
+  id: string,
   title: string,
   content: string,
   description: string,
