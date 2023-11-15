@@ -7,11 +7,11 @@ import { useState } from "react";
 
 export default function Header() {
   const categorys = [
-    {label : "JavaScript" , href: "/Category/JavaScript"},
-    {label : "React Js" , href: "/Category/React Js"},
-    {label : "Next Js" , href: "/Category/Next Js"},
-    {label : "Front End" , href: "/Category/Front End"},
-    {label : "Carreira" , href: "/Category/Carreira"}
+    {label : "JavaScript" , href: "/Categorys/JavaScript"},
+    {label : "React Js" , href: "/Categorys/React-Js"},
+    {label : "Next Js" , href: "/Categorys/Next-Js"},
+    {label : "Front End" , href: "/Categorys/Front-End"},
+    {label : "Carreira" , href: "/Categorys/Carreira"}
   ]
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isDropDownOpen, setIsDropDownOpen] = useState(false)
@@ -47,7 +47,7 @@ export default function Header() {
             <ul className={ `absolute transition-all ${isDropDownOpen ? "block" : "hidden"} bg-slate-50 p-2 space-y-2 shadow-md mt-2 rounded-md text-slate-900`}>
               {categorys.map((category) => (
                 <li key={category.label}>
-                  <Link className="hover:font-bold transition-all" href={`/category/${category.label}`}>
+                  <Link className="hover:font-bold transition-all" href={`${category.href}`}>
                    {category.label}
                   </Link>
                 </li>

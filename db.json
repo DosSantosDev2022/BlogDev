@@ -25,7 +25,7 @@
       "authorImage" : "/author.png",
       "coverImage" : "/bgImage/bg02.png",
       "tag" : "React Js",
-      "category" : "React Js",
+      "category" : "React-Js",
       "link" : "/Posts/2"
     },
     {
@@ -40,7 +40,7 @@
       "coverImage" : "/bgImage/bg03.png",
       "tag" : "TailWind",
       "category" : "TailWind",
-      "link" : "/Posts/3"
+      "link" : "/Posts/3" 
     },
     {
       "id" : "4",
@@ -53,7 +53,7 @@
       "authorImage" : "/author.png",
       "coverImage" : "/bgImage/bg04.png",
       "tag" : "Next Js",
-      "category" : "Next Js",
+      "category" : "Next-Js",
       "link" : "/Posts/4"
     },
     {
@@ -72,7 +72,7 @@
     },
     {
       "id" : "6",
-      "slug" : "você-conhece-os-metodos-de-array",
+      "slug" : "voce-conhece-os-metodos-de-array",
       "title" : "Você conhece os metodos de array ?",
       "content" : "conteudo do post",
       "description" : "Conhecer os metos de array é importante para qualquer dev frontEnd",
@@ -86,7 +86,7 @@
     },
     {
       "id" : "7",
-      "slug" : "conheca-os-pré-processadores-css" ,
+      "slug" : "conheca-os-pre-processadores-css" ,
       "title" : "Conheça os pré-processadores CSS",
       "content" : "conteudo do post",
       "description" : "Os pré-processadores CSS estão ai para facilitar a nossa vida na hora do desenvolvimento",

@@ -12,6 +12,7 @@ export interface Post {
   authorImage: string,
   coverImage : string
   tag: string,
+  category : string
   author: string,
   date: string,
   className?: string,

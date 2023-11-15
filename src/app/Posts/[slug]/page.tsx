@@ -10,14 +10,17 @@ export default function PagePost({ params }: { params: { slug: string } }) {
   const {posts} = useContext(BlogContext)
   const post = posts.find((p) => p.slug === params.slug);
   
-  if (!post) {
+  if (!post) { 
     // Tratar o caso em que o post não é encontrado
     return <div className="w-full h-full p-4">
           <h1 className="text-3xl font-semibold ">Post não encontrado ! </h1>
     </div> 
   }
 
-  const relatedPosts = posts.filter((p) => p.id !== post.id && p.tag === post.tag);
+  const relatedPosts = 
+  posts.filter(
+    (p) => p.id !== post.id && p.tag === post.tag
+    );
 
 
   return (
