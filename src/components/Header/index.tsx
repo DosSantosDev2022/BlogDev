@@ -1,17 +1,17 @@
 'use client'
 
-import Link from "next/link";
-import { InputSearch } from "./input";
+import Link from 'next/link'
+import { InputSearch } from './input'
 import { FaAngleDown, FaBars } from 'react-icons/fa'
-import { useState } from "react";
+import { useState } from 'react'
 
 export default function Header() {
   const categorys = [
-    {label : "JavaScript" , href: "/Categorys/JavaScript"},
-    {label : "React Js" , href: "/Categorys/React-Js"},
-    {label : "Next Js" , href: "/Categorys/Next-Js"},
-    {label : "Front End" , href: "/Categorys/Front-End"},
-    {label : "Carreira" , href: "/Categorys/Carreira"}
+    { label: 'JavaScript', href: '/Categorys/JavaScript' },
+    { label: 'React Js', href: '/Categorys/React-Js' },
+    { label: 'Next Js', href: '/Categorys/Next-Js' },
+    { label: 'Front End', href: '/Categorys/Front-End' },
+    { label: 'Carreira', href: '/Categorys/Carreira' },
   ]
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isDropDownOpen, setIsDropDownOpen] = useState(false)
@@ -20,45 +20,60 @@ export default function Header() {
   }
 
   const toggleCategories = () => {
-    setIsDropDownOpen(!isDropDownOpen);
-  };
+    setIsDropDownOpen(!isDropDownOpen)
+  }
 
   return (
     <header className=" bg-slate-900 py-3 px-3 lg:px-40 lg:flex items-center justify-between">
       <div className="flex items-center justify-between">
         <h1 className="text-slate-50 font-bold text-4xl">Blog Dev</h1>
-          <button onClick={toggleMenu} className="lg:hidden bg-slate-50 rounded-sm text-3xl">
-          <FaBars  />
-          </button>
+        <button
+          onClick={toggleMenu}
+          className="lg:hidden bg-slate-50 rounded-sm text-3xl"
+        >
+          <FaBars />
+        </button>
       </div>
-        
-      <nav className={`transition-all ${
-        isMenuOpen ? "flex" : "hidden"
-      } lg:flex lg:flex-row flex-col items-center justify-center gap-5 mt-10 lg:mt-0 `}>
-         <ul className="flex items-start justify-center gap-5">
+
+      <nav
+        className={`transition-all ${
+          isMenuOpen ? 'flex' : 'hidden'
+        } lg:flex lg:flex-row flex-col items-center justify-center gap-5 mt-10 lg:mt-0 `}
+      >
+        <ul className="flex items-start justify-center gap-5">
           <li className="text-slate-50 font-light text-base">
-            <Link href={"/"}>Home</Link>
+            <Link href={'/'}>Home</Link>
           </li>
-          <li className="text-slate-50 font-light text-base relative group " onClick={toggleCategories}>
+          <li
+            className="text-slate-50 font-light text-base relative group "
+            onClick={toggleCategories}
+          >
             <span className="cursor-pointer flex items-center">
               Categorias <FaAngleDown className="ml-1" />
             </span>
             {/* Lista Suspensa para Categorias */}
-            <ul className={ `absolute transition-all ${isDropDownOpen ? "block" : "hidden"} bg-slate-50 p-2 space-y-2 shadow-md mt-2 rounded-md text-slate-900`}>
+            <ul
+              className={`absolute transition-all ${
+                isDropDownOpen ? 'block' : 'hidden'
+              } bg-slate-50 p-2 space-y-2 shadow-md mt-2 rounded-md text-slate-900`}
+            >
               {categorys.map((category) => (
                 <li key={category.label}>
-                  <Link className="hover:font-bold transition-all" href={`${category.href}`}>
-                   {category.label}
+                  <Link
+                    className="hover:font-bold transition-all"
+                    href={`${category.href}`}
+                  >
+                    {category.label}
                   </Link>
                 </li>
               ))}
             </ul>
           </li>
           <li className="text-slate-50 font-light text-base">
-            <Link href={"/Contact"}>Contato</Link>
+            <Link href={'/Contact'}>Contato</Link>
           </li>
         </ul>
-        <InputSearch/>
+        <InputSearch />
       </nav>
     </header>
   )
