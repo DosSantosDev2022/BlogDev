@@ -1,40 +1,62 @@
+import Image from 'next/image'
 import Link from 'next/link'
-import { Author } from './author'
-import { useContext } from 'react'
-import { BlogContext, Post } from '@/context/blogContext'
 
-export function CardPosts({ post }: { post: Post }) {
-  const { posts } = useContext(BlogContext)
+interface CardPostsProps {
+  title: string
+  tag: string
+  slug: string
+  createdAd: string
+  coverImage: {
+    url: string
+  }
+  author: {
+    name: string
+    photo: {
+      url: string
+    }
+  }
+}
+
+export function CardPosts({
+  author,
+  coverImage,
+  createdAd,
+  slug,
+  tag,
+  title,
+}: CardPostsProps) {
   return (
     <Link
       href={{
-        pathname: `/Posts/${post.slug}`,
+        pathname: `/Posts/${slug}`,
       }}
     >
       <div className=" w-[21rem] h-[24.75rem]  rounded-md  shadow-md">
         <div
           className="flex flex-col justify-end h-full p-4 gap-3 rounded-md bg-center bg-auto  bg-no-repeat"
-          style={{ backgroundImage: `url(${post.coverImage})` }}
+          style={{ backgroundImage: `url(${coverImage.url})` }}
         >
           <div className="flex flex-col items-start gap-1">
             <span className="bg-slate-900 text-slate-50 text-[0.625rem] p-[0.375rem] rounded-lg">
-              {post.tag}
+              {tag}
             </span>
-            <h2 className="text-base font-bold text-slate-50">{post.title}</h2>
-            <p className="text-sm text-slate-100 font-normal">
-              {post.description}{' '}
-            </p>
+            <h2 className="text-base font-bold text-slate-50">{title}</h2>
+            <p className="text-sm text-slate-100 font-normal">{''}</p>
           </div>
-          <Author
-            showImage
-            showDate
-            titleColor="text-slate-50"
-            titleSize="text-sm"
-            dateSize="text-sm"
-            dateColor="text-slate-50"
-            post={post}
-            imageSize={28}
-          />
+          <div className="flex items-center justify-center gap-2">
+            <Image
+              width={100}
+              height={100}
+              quality={100}
+              src={author.photo.url}
+              alt={author.name}
+              className="rounded-full w-12 h-12"
+            />
+            <div className="flex flex-col gap-1">
+              <p className="text-slate-50">{author.name}</p>
+              <p className="text-slate-50">{createdAd} </p>
+            </div>
+          </div>
         </div>
       </div>
     </Link>

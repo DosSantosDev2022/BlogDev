@@ -1,8 +1,44 @@
-'use client'
-
+import { CardPosts } from '@/components/Cards/Card'
+import SmallCard from '@/components/Cards/SmallCard'
 import Link from 'next/link'
+import { fetchHygraphQuery } from './utils/fetchHygraph'
+import { GetAllPostsTypes } from '@/types/Iposts'
 
-export default function Home() {
+const GetPageData = async (): Promise<GetAllPostsTypes> => {
+  const query = `
+   query GetAllPosts {
+    posts {
+      id
+      slug
+      subtitle
+      title
+      createdAt
+      coverImage {
+        url
+      }
+      author {
+        name
+        photo {
+          url
+        }
+      }
+      content {
+        html
+      }
+      tag {
+        tagName
+      }
+    }
+  }
+   
+   `
+
+  return fetchHygraphQuery(query)
+}
+
+export default async function Home() {
+  const { posts } = await GetPageData()
+
   const categorys = [
     { label: 'JavaScript', href: '/Categorys/JavaScript' },
     { label: 'React Js', href: '/Categorys/React-Js' },
@@ -12,10 +48,20 @@ export default function Home() {
   ]
 
   return (
-    <main className="grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12 ">
+    <main className="grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12">
       <section className="flex flex-col items-center justify-start lg:col-span-8 ">
         <div className="grid md:grid-cols-2 lg:grid-cols-2 mt-10 items-center justify-center gap-4">
-          {/* espaço para renderizar cards posts */}
+          {posts.map((post) => (
+            <CardPosts
+              key={post.id}
+              author={post.author}
+              coverImage={post.coverImage}
+              title={post.title}
+              tag={post.tag.tagName}
+              slug={post.slug}
+              createdAd={post.createdAt}
+            />
+          ))}
         </div>
       </section>
       <section className=" lg:col-span-4 flex flex-col items-center justify-center gap-5 mt-5 lg:mt-0 ">
@@ -24,7 +70,16 @@ export default function Home() {
         </div>
 
         <div className="flex flex-col items-center justify-center space-y-5">
-          {/* espaço para renderizar smallcards posts */}
+          {posts.map((post) => (
+            <SmallCard
+              slug={post.slug}
+              key={post.id}
+              author={post.author}
+              coverImage={post.coverImage}
+              title={post.title}
+              createdAd={post.createdAt}
+            />
+          ))}
         </div>
 
         <div className="lg:w-[22.5rem] h-12 md:w-full rounded-[10px] py-3 px-[6.375rem] bg-slate-900 flex items-center justify-center">
