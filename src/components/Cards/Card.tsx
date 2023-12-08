@@ -1,3 +1,5 @@
+import { format } from 'date-fns'
+import { ptBR } from 'date-fns/locale'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -43,7 +45,7 @@ export function CardPosts({
             <h2 className="text-base font-bold text-slate-50">{title}</h2>
             <p className="text-sm text-slate-100 font-normal">{''}</p>
           </div>
-          <div className="flex items-center justify-center gap-2">
+          <div className="flex items-start justify-center gap-2">
             <Image
               width={100}
               height={100}
@@ -54,7 +56,11 @@ export function CardPosts({
             />
             <div className="flex flex-col gap-1">
               <p className="text-slate-50">{author.name}</p>
-              <p className="text-slate-50">{createdAd} </p>
+              <p className="text-slate-50">
+                {format(new Date(createdAd), "dd 'de' MMM 'de' yyyy", {
+                  locale: ptBR,
+                })}
+              </p>
             </div>
           </div>
         </div>

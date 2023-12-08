@@ -22,9 +22,6 @@ const GetPageData = async (): Promise<GetAllPostsTypes> => {
           url
         }
       }
-      content {
-        html
-      }
       tag {
         tagName
       }

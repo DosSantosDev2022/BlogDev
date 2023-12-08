@@ -1,3 +1,5 @@
+import { format } from 'date-fns'
+import { ptBR } from 'date-fns/locale'
 import Image from 'next/image'
 import Link from 'next/link'
 
@@ -41,11 +43,15 @@ export default function SmallCard({
               quality={100}
               src={author.photo.url}
               alt={author.name}
-              className="rounded-full w-9 h-9"
+              className="rounded-full w-7 h-7"
             />
             <div className="flex flex-col gap-1">
-              <p className="text-slate-950">{author.name}</p>
-              <p className="text-xs">{createdAd}</p>
+              <p className="text-slate-950 text-sm">{author.name}</p>
+              <p className="text-slate-900 text-sm">
+                {format(new Date(createdAd), "dd 'de' MMM 'de' yyyy", {
+                  locale: ptBR,
+                })}
+              </p>
             </div>
           </div>
         </div>

@@ -1,8 +1,50 @@
-'use client'
-
+import { fetchHygraphQuery } from '@/app/utils/fetchHygraph'
+import { GetAllPostsTypes } from '@/types/Iposts'
+import { RichText } from '@/app/Posts/components/rich-text'
 import Image from 'next/image'
+import { format } from 'date-fns'
+import ptBR from 'date-fns/locale/pt-BR'
 
-export default function PagePost({ params }: { params: { slug: string } }) {
+const GetPageData = async (): Promise<GetAllPostsTypes> => {
+  const query = `
+   query GetAllPosts {
+    posts {
+      id
+      slug
+      subtitle
+      title
+      createdAt
+      coverImage {
+        url
+      }
+      author {
+        name
+        photo {
+          url
+        }
+      }
+      content {
+        raw
+      }
+      tag {
+        tagName
+      }
+    }
+  }
+   
+   `
+
+  return fetchHygraphQuery(query)
+}
+
+export default async function PagePost({
+  params,
+}: {
+  params: { slug: string }
+}) {
+  const { posts } = await GetPageData()
+  const post = posts.find((p) => p.slug === params.slug)
+
   return (
     <main className="grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12 ">
       <section className="flex flex-col items-center justify-start lg:col-span-8 ">
@@ -11,15 +53,50 @@ export default function PagePost({ params }: { params: { slug: string } }) {
         </div>
         <article className="mt-12 flex flex-col items-center justify-start w-full gap-10 p-2">
           <div className="flex flex-col items-start justify-center w-full gap-5">
-            <h1 className="text-slate-900 text-5xl font-bold mb-3"></h1>
+            <h1 className="text-slate-900 text-5xl font-bold mb-3">
+              {post?.title}
+            </h1>
+            <div className="flex items-center justify-center gap-2">
+              <Image
+                width={100}
+                height={100}
+                quality={100}
+                src={post?.author.photo.url}
+                alt={post?.author.name}
+                className="rounded-full w-12 h-12"
+              />
+              <div className="flex flex-col gap-1">
+                <p className="text-slate-950 font-semibold">
+                  {post?.author.name}
+                </p>
+                <p className="text-slate-950">
+                  {post?.createdAt
+                    ? format(
+                        new Date(post.createdAt),
+                        "dd 'de' MMM 'de' yyyy",
+                        { locale: ptBR },
+                      )
+                    : 'Data não disponível'}
+                </p>
+              </div>
+            </div>
           </div>
           <div className="w-full border">
-            <Image width={500} height={200} alt={''} src={''} />
+            {post?.coverImage.url ? (
+              <Image
+                width={1500}
+                height={1200}
+                alt={''}
+                src={post?.coverImage.url}
+                quality={100}
+                className="bg-contain w-full"
+              />
+            ) : (
+              <p>Imagem não disponível</p>
+            )}
           </div>
-          <div className="w-full p-2">
-            {' '}
-            {/* Conteudo do post */}
-            {''}
+          <div className="w-full p-2 text-slate-600 space-y-5">
+            <RichText content={post?.content.raw} />
           </div>
         </article>
       </section>

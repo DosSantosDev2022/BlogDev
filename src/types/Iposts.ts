@@ -1,3 +1,5 @@
+import type { RichTextContent } from '@graphcms/rich-text-types'
+
 interface Author {
   name: string
   photo: {
@@ -6,7 +8,7 @@ interface Author {
 }
 
 interface Content {
-  html: string
+  raw: RichTextContent
 }
 
 interface CoverImage {
