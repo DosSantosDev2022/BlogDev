@@ -9,7 +9,7 @@ export function RichText({ ...props }: RichTextProps) {
       {...props}
       renderers={{
         bold: ({ children }) => (
-          <h3 className="text-slate-950 font-bold text-2xl">{children} </h3>
+          <b className="text-slate-950 font-bold text-2xl">{children} </b>
         ),
         p: ({ children }) => (
           <p className="font-light text-slate-700">{children}</p>
