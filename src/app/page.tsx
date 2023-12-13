@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { fetchHygraphQuery } from './utils/fetchHygraph'
 import { GetAllPostsTypes } from '@/types/Iposts'
 import { Metadata } from 'next'
+import { Banner } from '@/components/Banners/Banner'
 
 export const metadata: Metadata = {
   title: 'Home | Blog Dev',
@@ -54,7 +55,34 @@ export default async function Home() {
     <>
       <main className="grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12">
         <section className="flex flex-col items-center justify-start lg:col-span-8 ">
-          <div className="grid md:grid-cols-2 lg:grid-cols-2 mt-10 items-center justify-center gap-4">
+          <div className="w-full h-full">
+            <Banner />
+          </div>
+          <div className="flex items-center justify-center w-[700px] ">
+            <div className="w-full h-12 rounded-[10px] py-3 px-4 bg-slate-900 text-start">
+              <p className="text-slate-50">Posts recentes</p>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-2 mt-10 mb-10 items-center justify-center gap-4">
+            {posts.map((post) => (
+              <CardPosts
+                key={post.id}
+                author={post.author}
+                coverImage={post.coverImage}
+                title={post.title}
+                tag={post.tag.tagName}
+                slug={post.slug}
+                createdAd={post.createdAt}
+              />
+            ))}
+          </div>
+          <div className="flex items-center justify-center w-[700px] ">
+            <div className="w-full h-12 rounded-[10px] py-3 px-4 bg-slate-900 text-start">
+              <p className="text-slate-50">Posts mais vistos</p>
+            </div>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-2 mt-10 mb-10 items-center justify-center gap-4">
             {posts.map((post) => (
               <CardPosts
                 key={post.id}

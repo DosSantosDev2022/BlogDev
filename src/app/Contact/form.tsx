@@ -74,7 +74,7 @@ export function FormContact() {
             {errors.coments?.message}
           </span>
         )}
-        <button className=" w-full bg-slate-950 text-slate-50 p-2 rounded-md text-lg font-bold hover:scale-105 transition-all">
+        <button className=" w-full bg-slate-950 text-slate-50 p-2 rounded-md text-lg font-bold hover:scale-105 transition-all hover:bg-slate-900">
           Enviar
         </button>
       </form>
