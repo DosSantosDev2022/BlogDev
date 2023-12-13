@@ -3,6 +3,12 @@ import SmallCard from '@/components/Cards/SmallCard'
 import Link from 'next/link'
 import { fetchHygraphQuery } from './utils/fetchHygraph'
 import { GetAllPostsTypes } from '@/types/Iposts'
+import { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Home | Blog Dev',
+  description: 'Um blog para desenvolvedores',
+}
 
 const GetPageData = async (): Promise<GetAllPostsTypes> => {
   const query = `
@@ -45,53 +51,55 @@ export default async function Home() {
   ]
 
   return (
-    <main className="grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12">
-      <section className="flex flex-col items-center justify-start lg:col-span-8 ">
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 mt-10 items-center justify-center gap-4">
-          {posts.map((post) => (
-            <CardPosts
-              key={post.id}
-              author={post.author}
-              coverImage={post.coverImage}
-              title={post.title}
-              tag={post.tag.tagName}
-              slug={post.slug}
-              createdAd={post.createdAt}
-            />
-          ))}
-        </div>
-      </section>
-      <section className=" lg:col-span-4 flex flex-col items-center justify-center gap-5 mt-5 lg:mt-0 ">
-        <div className="lg:w-[22.5rem] h-12 rounded-[10px] md:w-full py-3 px-[6.375rem] bg-slate-900 flex items-center justify-center">
-          <h3 className=" text-slate-50 ">Posts Populares</h3>
-        </div>
+    <>
+      <main className="grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12">
+        <section className="flex flex-col items-center justify-start lg:col-span-8 ">
+          <div className="grid md:grid-cols-2 lg:grid-cols-2 mt-10 items-center justify-center gap-4">
+            {posts.map((post) => (
+              <CardPosts
+                key={post.id}
+                author={post.author}
+                coverImage={post.coverImage}
+                title={post.title}
+                tag={post.tag.tagName}
+                slug={post.slug}
+                createdAd={post.createdAt}
+              />
+            ))}
+          </div>
+        </section>
+        <section className=" lg:col-span-4 flex flex-col items-center justify-center gap-5 mt-5 lg:mt-0 ">
+          <div className="lg:w-[22.5rem] h-12 rounded-[10px] md:w-full py-3 px-[6.375rem] bg-slate-900 flex items-center justify-center">
+            <h3 className=" text-slate-50 ">Posts Populares</h3>
+          </div>
 
-        <div className="flex flex-col items-center justify-center space-y-5">
-          {posts.map((post) => (
-            <SmallCard
-              slug={post.slug}
-              key={post.id}
-              author={post.author}
-              coverImage={post.coverImage}
-              title={post.title}
-              createdAd={post.createdAt}
-            />
-          ))}
-        </div>
+          <div className="flex flex-col items-center justify-center space-y-5">
+            {posts.map((post) => (
+              <SmallCard
+                slug={post.slug}
+                key={post.id}
+                author={post.author}
+                coverImage={post.coverImage}
+                title={post.title}
+                createdAd={post.createdAt}
+              />
+            ))}
+          </div>
 
-        <div className="lg:w-[22.5rem] h-12 md:w-full rounded-[10px] py-3 px-[6.375rem] bg-slate-900 flex items-center justify-center">
-          <h3 className=" text-slate-50 ">Posts Categorias</h3>
-        </div>
-        <div className="flex flex-col items-center justify-center space-y-5">
-          {categorys.map((category) => (
-            <ul key={category.label}>
-              <li className=" cursor-pointer border w-[22.5rem] rounded-md shadow-sm p-2 text-center hover:bg-slate-100 transition-all">
-                <Link href={category.href}>{category.label}</Link>
-              </li>
-            </ul>
-          ))}
-        </div>
-      </section>
-    </main>
+          <div className="lg:w-[22.5rem] h-12 md:w-full rounded-[10px] py-3 px-[6.375rem] bg-slate-900 flex items-center justify-center">
+            <h3 className=" text-slate-50 ">Posts Categorias</h3>
+          </div>
+          <div className="flex flex-col items-center justify-center space-y-5">
+            {categorys.map((category) => (
+              <ul key={category.label}>
+                <li className=" cursor-pointer border w-[22.5rem] rounded-md shadow-sm p-2 text-center hover:bg-slate-100 transition-all">
+                  <Link href={category.href}>{category.label}</Link>
+                </li>
+              </ul>
+            ))}
+          </div>
+        </section>
+      </main>
+    </>
   )
 }
