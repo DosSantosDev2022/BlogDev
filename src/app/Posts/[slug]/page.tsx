@@ -35,7 +35,6 @@ const GetPageData = async (): Promise<GetAllPostsTypes> => {
   }
    
    `
-
   return fetchHygraphQuery(query)
 }
 
@@ -46,6 +45,10 @@ export default async function PagePost({
 }) {
   const { posts } = await GetPageData()
   const post = posts.find((p) => p.slug === params.slug)
+  if (!post) {
+    return <p>Post não encontrado !</p>
+  }
+  const relatedPost = posts.filter((p) => p.tag.tagName === post?.tag.tagName)
 
   return (
     <main className="grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12 ">
@@ -108,7 +111,7 @@ export default async function PagePost({
           <h3 className="text-slate-50 font">Posts Relacionados</h3>
         </div>
         <div className="flex flex-col items-center justify-center space-y-5">
-          {posts.map((post) => (
+          {relatedPost.map((post) => (
             <SmallCard
               slug={post.slug}
               key={post.id}

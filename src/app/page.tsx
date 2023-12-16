@@ -58,10 +58,9 @@ export default async function Home() {
           <div className="w-full h-full">
             <Banner />
           </div>
-          <div className="flex items-center justify-center w-[700px] ">
-            <div className="w-full h-12 rounded-[10px] py-3 px-4 bg-slate-900 text-start">
-              <p className="text-slate-50">Posts recentes</p>
-            </div>
+
+          <div className="lg:w-[43.75rem] h-12 rounded-[10px] md:w-full py-3 px-[6.375rem] bg-slate-900 flex items-center justify-center">
+            <h3 className=" text-slate-50 ">Posts Recentes</h3>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-2 mt-10 mb-10 items-center justify-center gap-4">
@@ -77,11 +76,11 @@ export default async function Home() {
               />
             ))}
           </div>
-          <div className="flex items-center justify-center w-[700px] ">
-            <div className="w-full h-12 rounded-[10px] py-3 px-4 bg-slate-900 text-start">
-              <p className="text-slate-50">Posts mais vistos</p>
-            </div>
+
+          <div className="lg:w-[43.75rem] h-12 rounded-[10px] md:w-full py-3 px-[6.375rem] bg-slate-900 flex items-center justify-center">
+            <h3 className=" text-slate-50 ">Posts mais vistos</h3>
           </div>
+
           <div className="grid md:grid-cols-2 lg:grid-cols-2 mt-10 mb-10 items-center justify-center gap-4">
             {posts.map((post) => (
               <CardPosts
