@@ -2,8 +2,11 @@
 
 import Link from 'next/link'
 import { InputSearch } from './input'
-import { FaAngleDown, FaBars } from 'react-icons/fa'
+import { FaBars } from 'react-icons/fa'
 import { useState } from 'react'
+import { Logo } from './logo'
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
+import * as NavigationMenu from '@radix-ui/react-navigation-menu'
 
 export default function Header() {
   const categorys = [
@@ -14,19 +17,14 @@ export default function Header() {
     { label: 'Carreira', href: '/Categorys/Carreira' },
   ]
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [isDropDownOpen, setIsDropDownOpen] = useState(false)
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
-  }
-
-  const toggleCategories = () => {
-    setIsDropDownOpen(!isDropDownOpen)
   }
 
   return (
     <header className=" bg-slate-900 py-3 px-3 lg:px-40 lg:flex items-center justify-between">
       <div className="flex items-center justify-between">
-        <h1 className="text-slate-50 font-bold text-4xl">Blog Dev</h1>
+        <Logo />
         <button
           onClick={toggleMenu}
           className="lg:hidden bg-slate-50 rounded-sm text-3xl"
@@ -35,46 +33,38 @@ export default function Header() {
         </button>
       </div>
 
-      <nav
+      <NavigationMenu.Root
         className={`transition-all ${
           isMenuOpen ? 'flex' : 'hidden'
         } lg:flex lg:flex-row flex-col items-center justify-center gap-5 mt-10 lg:mt-0 `}
       >
-        <ul className="flex items-start justify-center gap-5">
-          <li className="text-slate-50 font-light text-base">
+        <NavigationMenu.List className="flex items-start justify-center gap-5 list-none outline-none">
+          <NavigationMenu.Item className="text-slate-50 font-light text-base">
             <Link href={'/'}>Home</Link>
-          </li>
-          <li
-            className="text-slate-50 font-light text-base relative group "
-            onClick={toggleCategories}
-          >
-            <span className="cursor-pointer flex items-center">
-              Categorias <FaAngleDown className="ml-1" />
-            </span>
-            {/* Lista Suspensa para Categorias */}
-            <ul
-              className={`absolute transition-all ${
-                isDropDownOpen ? 'block' : 'hidden'
-              } bg-slate-50 p-2 space-y-2 shadow-md mt-2 rounded-md text-slate-900`}
-            >
-              {categorys.map((category) => (
-                <li key={category.label}>
-                  <Link
-                    className="hover:font-bold transition-all"
-                    href={`${category.href}`}
+          </NavigationMenu.Item>
+          <DropdownMenu.Root>
+            <DropdownMenu.Trigger className="text-slate-50 font-light text-base outline-none">
+              Categoria
+            </DropdownMenu.Trigger>
+            <DropdownMenu.Portal>
+              <DropdownMenu.Content className=" mt-2 z-10 shadow w-44 rounded-lg py-2 px-1 bg-white flex flex-col gap-2 items-start justify-center data-[side=top]:animate-slideDownAndFade ">
+                {categorys.map((item) => (
+                  <DropdownMenu.Item
+                    className="w-full px-4 py-2 text-slate-950 hover:bg-slate-100 transition-all outline-none select-none"
+                    key={item.label}
                   >
-                    {category.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </li>
-          <li className="text-slate-50 font-light text-base">
+                    <Link href={item.href}>{item.label}</Link>
+                  </DropdownMenu.Item>
+                ))}
+              </DropdownMenu.Content>
+            </DropdownMenu.Portal>
+          </DropdownMenu.Root>
+          <NavigationMenu.Item className="text-slate-50 font-light text-base">
             <Link href={'/Contact'}>Contato</Link>
-          </li>
-        </ul>
+          </NavigationMenu.Item>
+        </NavigationMenu.List>
         <InputSearch />
-      </nav>
+      </NavigationMenu.Root>
     </header>
   )
 }
