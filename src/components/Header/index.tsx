@@ -49,7 +49,7 @@ export default function Header() {
             <DropdownMenu.Portal>
               <DropdownMenu.Content
                 align="end"
-                className=" mt-2 z-10 shadow w-44 rounded-lg py-2 px-1 bg-white flex flex-col gap-2 items-start justify-center animate-fade animate-duration-300"
+                className=" mt-2 z-10 shadow w-44 rounded-lg py-2 px-1 bg-white flex flex-col gap-2 items-start justify-center  will-change-[opacity,transform] data-[side=top]:animate-slideDownAndFade data-[side=right]:animate-slideLeftAndFade data-[side=bottom]:animate-slideUpAndFade data-[side=left]:animate-slideRightAndFade"
               >
                 {categorys.map((item) => (
                   <DropdownMenu.Item
