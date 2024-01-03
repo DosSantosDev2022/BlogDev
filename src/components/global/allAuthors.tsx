@@ -1,4 +1,4 @@
-import { fetchHygraphQuery } from '@/app/utils/fetchHygraph'
+import { fetchHygraphQuery } from '@/app/api/fetchHygraph'
 import { AllAuthors } from '@/types/Iauthors'
 import Image from 'next/image'
 
