@@ -1,6 +1,7 @@
 'use client'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm, SubmitHandler } from 'react-hook-form'
+import { toast } from 'react-toastify'
 
 import { z } from 'zod'
 
@@ -26,14 +27,45 @@ export function FormContact() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<FormInput>({
     resolver: zodResolver(zodSchemaForm),
   })
 
-  const onSubmit: SubmitHandler<FormInput> = (data) => {
-    alert('Formulário enviado')
-    console.log(data)
+  const onSubmit: SubmitHandler<FormInput> = async (data) => {
+    const response = await fetch('api/send', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+
+    if (response.ok) {
+      toast.success('E-mail enviado com sucesso !', {
+        position: 'top-right',
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light',
+      })
+    } else {
+      toast.error('Erro ao enviar e-mail , tente novamente', {
+        position: 'top-right',
+        autoClose: 1000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'dark',
+      })
+    }
+    reset()
   }
   return (
     <>
@@ -74,7 +106,7 @@ export function FormContact() {
             {errors.coments?.message}
           </span>
         )}
-        <button className=" w-full bg-slate-950 text-slate-50 p-2 rounded-md text-lg font-bold hover:scale-105 transition-all hover:bg-slate-900">
+        <button className=" w-full bg-slate-950 text-slate-50 p-2 rounded-md text-lg font-bold hover:scale-105 transition-all duration-500 hover:bg-slate-900">
           Enviar
         </button>
       </form>
