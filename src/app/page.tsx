@@ -1,7 +1,7 @@
 import { CardPosts } from '@/components/Cards/Card'
 import SmallCard from '@/components/Cards/SmallCard'
 import Link from 'next/link'
-import { fetchHygraphQuery } from './utils/fetchHygraph'
+import { fetchHygraphQuery } from './api/fetchHygraph'
 import { GetAllPostsTypes } from '@/types/Iposts'
 import { Metadata } from 'next'
 import { Banner } from '@/components/Banners/Banner'
