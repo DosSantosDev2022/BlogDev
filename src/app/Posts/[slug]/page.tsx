@@ -1,4 +1,4 @@
-import { fetchHygraphQuery } from '@/app/utils/fetchHygraph'
+import { fetchHygraphQuery } from '@/app/api/fetchHygraph'
 import { GetAllPostsTypes } from '@/types/Iposts'
 import { RichText } from '@/app/Posts/components/rich-text'
 import Image from 'next/image'
