@@ -19,7 +19,7 @@ export function ContactCard(props: ContactCardProps) {
         href={props.link}
         className="text-sm 
             font-normal text-slate-50 bg-slate-950 
-            p-2 rounded-md hover:scale-105 transition-all hover:bg-slate-900"
+            p-2 rounded-md hover:scale-105 transition-all duration-500 hover:bg-slate-900"
       >
         {props.name}
       </Link>
