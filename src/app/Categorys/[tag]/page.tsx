@@ -1,4 +1,4 @@
-import { fetchHygraphQuery } from '@/app/utils/fetchHygraph'
+import { fetchHygraphQuery } from '@/app/api/fetchHygraph'
 import { CardPosts } from '@/components/Cards/Card'
 import { GetAllPostsTypes } from '@/types/Iposts'
 import { Metadata } from 'next'
