@@ -2,9 +2,9 @@ import Image from 'next/image'
 
 import { IoLogoWhatsapp } from 'react-icons/io'
 import { FaInstagramSquare, FaLinkedin } from 'react-icons/fa'
-import { ContactCard } from './cards'
+import { ContactCard } from '@/components/Contact/cards'
 import { Metadata } from 'next'
-import { FormContact } from './form'
+import { FormContact } from '@/components/Contact/form'
 
 export const metadata: Metadata = {
   title: 'Contato | Blog Dev',

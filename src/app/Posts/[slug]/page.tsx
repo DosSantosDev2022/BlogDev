@@ -1,6 +1,6 @@
 import { fetchHygraphQuery } from '@/app/api/fetchHygraph'
 import { GetAllPostsTypes } from '@/types/Iposts'
-import { RichText } from '@/app/Posts/components/rich-text'
+import { RichText } from '@/components/Posts/rich-text'
 import Image from 'next/image'
 import { format } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
