@@ -19,7 +19,11 @@ interface Tag {
   tagName: string
 }
 
-interface Post {
+interface featuredPost {
+  destaque: boolean
+}
+
+export interface Post {
   id: string
   slug: string
   subtitle: string
@@ -29,6 +33,7 @@ interface Post {
   author: Author
   content: Content
   tag: Tag
+  destaque: featuredPost[]
 }
 
 export interface GetAllPostsTypes {
