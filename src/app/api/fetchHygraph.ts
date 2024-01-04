@@ -8,6 +8,7 @@ export const fetchHygraphQuery = async (query: string) => {
         Accept: 'application/json',
       },
       body: JSON.stringify({ query }),
+      cache: 'no-store',
     },
   )
 
