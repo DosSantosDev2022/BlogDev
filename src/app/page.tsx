@@ -68,6 +68,9 @@ export default async function Home() {
           {/* Componente de navegação de categoria */}
           <AllAuthors />
           {/* Componente renderiza lista de todos autores do blog */}
+          <div className="lg:w-[22.5rem] h-screen md:w-full rounded-[10px] bg-slate-200 ">
+            publicidade
+          </div>
         </section>
       </main>
     </>
