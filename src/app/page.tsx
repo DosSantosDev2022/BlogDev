@@ -50,7 +50,7 @@ export default async function Home() {
     <>
       <main className="grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12">
         <section className="flex flex-col items-center justify-start lg:col-span-8 gap-5 ">
-          <div className="w-full h-full flex items-center justify-center">
+          <div className=" flex items-center justify-center">
             {featuredPosts.length > 0 && (
               <BannerCarrousel featuredPosts={featuredPosts} />
             )}
@@ -58,9 +58,7 @@ export default async function Home() {
           <RecentPosts posts={posts} />
           {/* Componente de posts recentes */}
 
-          <div className="w-full lg:w-[43.75rem] bg-slate-300 h-36">
-            publicidade
-          </div>
+          <div className="lg:w-[43.75rem] bg-slate-300 h-36">publicidade</div>
           <MostViewedPost posts={posts} />
           {/* Componente de posts mais vistos */}
         </section>

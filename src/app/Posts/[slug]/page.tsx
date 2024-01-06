@@ -48,7 +48,9 @@ export default async function PagePost({
   if (!post) {
     return <p>Post não encontrado !</p>
   }
-  const relatedPost = posts.filter((p) => p.tag.tagName === post?.tag.tagName)
+  const relatedPost = posts.filter(
+    (p) => p.tag.tagName === post?.tag.tagName && p.slug !== post.slug,
+  )
 
   return (
     <main className="grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12 ">

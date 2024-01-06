@@ -26,7 +26,7 @@ export function MostViewedPost({ posts }: MostViewedPostProps) {
           />
         ))}
       </div>
-      <div className="w-full lg:w-[43.75rem] flex items-center justify-end">
+      <div className="lg:w-[43.75rem] flex items-center justify-end">
         <Link
           className="bg-slate-950 text-slate-50 px-4 py-2 rounded-md hover:bg-slate-800 duration-500 transition-all"
           href={''}

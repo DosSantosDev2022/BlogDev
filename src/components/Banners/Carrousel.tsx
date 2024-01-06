@@ -38,7 +38,7 @@ export function BannerCarrousel({ featuredPosts }: BannerCarrouselProps) {
                 pathname: `/Posts/${post.slug}`,
               }}
             >
-              <div className=" lg:w-[43.75rem] w-full h-[320px]  rounded-md  shadow-md ">
+              <div className=" lg:w-[43.75rem]  h-[320px]  rounded-md  shadow-md ">
                 <div
                   className="flex flex-col justify-end h-full p-4 gap-3 rounded-md bg-center  bg-cover  bg-no-repeat "
                   style={{ backgroundImage: `url(${post.coverImage.url})` }}
