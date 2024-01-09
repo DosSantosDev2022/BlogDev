@@ -17,6 +17,9 @@ interface CoverImage {
 
 interface Tag {
   tagName: string
+  coverTag: {
+    url: string
+  }
 }
 
 interface featuredPost {
@@ -28,6 +31,7 @@ export interface Post {
   slug: string
   subtitle: string
   title: string
+  description: string
   createdAt: string
   coverImage: CoverImage
   author: Author
