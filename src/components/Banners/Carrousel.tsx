@@ -41,7 +41,9 @@ export function BannerCarrousel({ featuredPosts }: BannerCarrouselProps) {
               <div className=" lg:w-[43.75rem]  h-[320px]  rounded-md  shadow-md ">
                 <div
                   className="flex flex-col justify-end h-full p-4 gap-3 rounded-md bg-center  bg-cover  bg-no-repeat "
-                  style={{ backgroundImage: `url(${post.coverImage.url})` }}
+                  style={{
+                    backgroundImage: `linear-gradient(180deg, rgba(24, 59, 86, 0.00) 0%, rgba(22, 49, 70, 0.45) 45.38%, #152532 100%), url(${post.coverImage.url})`,
+                  }}
                 >
                   <div className="flex flex-col items-start gap-1">
                     <TagsPost tagName={post.tag.tagName} />

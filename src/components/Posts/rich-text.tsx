@@ -14,6 +14,14 @@ export function RichText({ ...props }: RichTextProps) {
         p: ({ children }) => (
           <p className="font-light text-slate-700">{children}</p>
         ),
+        code_block: ({ children }) => (
+          <pre className="bg-gray-100 p-4 rounded-md overflow-x-auto">
+            <code className="text-slate-900">{children}</code>
+          </pre>
+        ),
+        ul: ({ children }) => (
+          <ul className="list-disc list-inside">{children}</ul>
+        ),
       }}
     />
   )
