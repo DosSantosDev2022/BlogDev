@@ -8,12 +8,10 @@ export function InputSearch() {
 
   function handleSearch(e: { preventDefault: () => void }) {
     e.preventDefault()
-    console.log({ search })
 
     setSearch('')
     const value = search.trim().replace(/\s/g, '').toLocaleLowerCase()
     router.push(`SearchPosts/${value}`)
-    console.log(value)
   }
   return (
     <form className="flex gap-2 w-full" onSubmit={handleSearch}>

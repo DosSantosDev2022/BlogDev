@@ -1,10 +1,24 @@
+'use client'
+
 import { PaginationPosts } from '@/components/globals/paginationPosts'
 
 import { CardAllPosts } from '@/components/Cards/CardAllPosts'
 import { GET_POSTS_BY_SEARCH } from '@/GraphQl/querys'
+import { useQuery } from '@apollo/client'
 
-export default async function SearchPostsResult() {
-  const { posts } = await GET_POSTS_BY_SEARCH()
+interface SearchPostResultProps {
+  params: {
+    searchSlug: string
+  }
+}
+
+export default function SearchPostsResult({ params }: SearchPostResultProps) {
+  const { data } = useQuery(GET_POSTS_BY_SEARCH, {
+    variables: {
+      slug: params.searchSlug,
+    },
+  })
+
   return (
     <main className="grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12">
       <div className="flex flex-col items-center justify-center lg:col-span-8 gap-5 ">
@@ -16,7 +30,7 @@ export default async function SearchPostsResult() {
 
         <div className="border  w-full p-2 ">
           <div className="flex flex-wrap justify-start gap-6 p-2">
-            {posts.map((post) => (
+            {data?.posts?.map((post) => (
               <CardAllPosts
                 description={post.description}
                 key={post.id}

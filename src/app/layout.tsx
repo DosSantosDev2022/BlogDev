@@ -4,6 +4,7 @@ import Header from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/ReactToastify.css'
+import { ApolloProvider } from '@/providers/apolloProvider'
 
 const font = Poppins({
   subsets: ['latin'],
@@ -21,7 +22,9 @@ export default function RootLayout({
         className={`bg-slate-50 scrollbar scrollbar-thumb-slate-900 scrollbar-rounded scrollbar-track-gray-100 ${font.className}`}
       >
         <Header />
-        <div className="container mx-auto">{children}</div>
+        <div className="container mx-auto">
+          <ApolloProvider>{children}</ApolloProvider>
+        </div>
         <Footer />
         <ToastContainer />
       </body>
