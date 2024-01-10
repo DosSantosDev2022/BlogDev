@@ -1,43 +1,10 @@
-import { GetAllPostsTypes } from '@/types/Iposts'
-import { fetchHygraphQuery } from '../api/fetchHygraph'
-
 import { PaginationPosts } from '@/components/globals/paginationPosts'
-import { NavFilter } from './navFilter'
+
 import { CardAllPosts } from '@/components/Cards/CardAllPosts'
+import { GET_POSTS_BY_SEARCH } from '@/GraphQl/querys'
 
-const GetPageData = async (): Promise<GetAllPostsTypes> => {
-  const query = `
-  query GetAllPosts{
-    posts{
-      id
-      slug
-      subtitle
-      title
-      createdAt
-      coverImage {
-        url
-      }
-      author {
-        name
-        photo {
-          url
-        }
-      }
-      tag {
-        tagName
-      }
-      destaque
-      description
-    }
-  }
-   
-   `
-  return fetchHygraphQuery(query)
-}
-
-export default async function AllPosts() {
-  const { posts } = await GetPageData()
-
+export default async function SearchPostsResult() {
+  const { posts } = await GET_POSTS_BY_SEARCH()
   return (
     <main className="grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12">
       <div className="flex flex-col items-center justify-center lg:col-span-8 gap-5 ">
@@ -46,7 +13,7 @@ export default async function AllPosts() {
             Describe what your blog is about
           </h2>
         </div>
-        <NavFilter />
+
         <div className="border  w-full p-2 ">
           <div className="flex flex-wrap justify-start gap-6 p-2">
             {posts.map((post) => (

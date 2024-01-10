@@ -40,6 +40,6 @@ export interface Post {
   destaque: featuredPost[]
 }
 
-export interface GetAllPostsTypes {
+export interface PostsTypes {
   posts: Post[]
 }

@@ -1,41 +1,10 @@
-import { fetchHygraphQuery } from '@/app/api/fetchHygraph'
+import { GET_POSTS_BY_CATEGORY } from '@/GraphQl/querys'
 import { CardPosts } from '@/components/Cards/Card'
 import SmallCard from '@/components/Cards/SmallCard'
-import { GetAllPostsTypes } from '@/types/Iposts'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
   title: 'Categoria | Blog Dev',
-}
-
-const GET_POSTS_BY_CATEGORY = async (): Promise<GetAllPostsTypes> => {
-  const query = `
-  query GetAllPosts {
-    posts {
-      id
-      slug
-      subtitle
-      title
-      createdAt
-      coverImage {
-        url
-      }
-      author {
-        name
-        photo {
-          url
-        }
-      }
-      tag {
-        tagName
-        coverTag {
-          url
-        }
-      }
-    }
-  }
-  `
-  return fetchHygraphQuery(query)
 }
 
 export default async function Category({

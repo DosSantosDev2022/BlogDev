@@ -1,6 +1,6 @@
 'use client'
 
-import { InputSearch } from './input'
+import { InputSearch } from '@/components/Header/Search'
 import { FaBars } from 'react-icons/fa'
 import { useState } from 'react'
 import { Logo } from './logo'

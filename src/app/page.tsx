@@ -1,5 +1,3 @@
-import { fetchHygraphQuery } from './api/fetchHygraph'
-import { GetAllPostsTypes } from '@/types/Iposts'
 import { Metadata } from 'next'
 import { AllAuthors } from '@/components/Authors/allAuthors'
 import { NavCategorys } from '@/components/Home/navCategorys'
@@ -7,43 +5,15 @@ import { RecentPosts } from '@/components/Home/recentPosts'
 import { MostViewedPost } from '@/components/Home/MostViewedPost'
 import { PopularPosts } from '@/components/Home/PopularPosts'
 import { BannerCarrousel } from '@/components/Banners/Carrousel'
+import { GET_ALL_POST } from '@/GraphQl/querys'
 
 export const metadata: Metadata = {
   title: 'Home | Blog Dev',
   description: 'Um blog para desenvolvedores',
 }
 
-const GetPageData = async (): Promise<GetAllPostsTypes> => {
-  const query = `
-  query GetAllPosts {
-    posts {
-      id
-      slug
-      subtitle
-      title
-      createdAt
-      coverImage {
-        url
-      }
-      author {
-        name
-        photo {
-          url
-        }
-      }
-      tag {
-        tagName
-      }
-      destaque
-    }
-  }
-   
-   `
-  return fetchHygraphQuery(query)
-}
-
 export default async function Home() {
-  const { posts } = await GetPageData()
+  const { posts } = await GET_ALL_POST()
   const featuredPosts = posts.filter((post) => post.destaque)
 
   return (
