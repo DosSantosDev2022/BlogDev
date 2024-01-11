@@ -1,8 +1,8 @@
-import { GetAllPostsTypes } from '@/types/Iposts'
+import { PostsTypes } from '@/types/Iposts'
 import SmallCard from '../Cards/SmallCard'
 
 interface PopularPosts {
-  posts: GetAllPostsTypes['posts']
+  posts: PostsTypes['posts']
 }
 
 export function PopularPosts({ posts }: PopularPosts) {

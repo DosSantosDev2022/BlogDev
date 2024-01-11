@@ -1,9 +1,9 @@
-import { GetAllPostsTypes } from '@/types/Iposts'
+import { PostsTypes } from '@/types/Iposts'
 import { CardPosts } from '../Cards/Card'
 import Link from 'next/link'
 
 interface RecentPostsProps {
-  posts: GetAllPostsTypes['posts']
+  posts: PostsTypes['posts']
 }
 
 export function RecentPosts({ posts }: RecentPostsProps) {
