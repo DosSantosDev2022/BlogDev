@@ -1,49 +1,17 @@
-import { fetchHygraphQuery } from '@/app/api/fetchHygraph'
-import { GetAllPostsTypes } from '@/types/Iposts'
 import { RichText } from '@/components/Posts/rich-text'
 import Image from 'next/image'
 import { format } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
 import SmallCard from '@/components/Cards/SmallCard'
 import { ToShare } from '@/components/Posts/toShare'
-
-const GetPageData = async (): Promise<GetAllPostsTypes> => {
-  const query = `
-   query GetAllPosts {
-    posts {
-      id
-      slug
-      subtitle
-      title
-      createdAt
-      coverImage {
-        url
-      }
-      author {
-        name
-        photo {
-          url
-        }
-      }
-      content {
-        raw
-      }
-      tag {
-        tagName
-      }
-    }
-  }
-   
-   `
-  return fetchHygraphQuery(query)
-}
+import { GET_DETAILS_POST } from '@/GraphQl/querys'
 
 export default async function PagePost({
   params,
 }: {
   params: { slug: string }
 }) {
-  const { posts } = await GetPageData()
+  const { posts } = await GET_DETAILS_POST()
   const post = posts.find((p) => p.slug === params.slug)
   if (!post) {
     return <p>Post não encontrado !</p>
