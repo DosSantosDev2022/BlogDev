@@ -19,7 +19,7 @@ export default function SearchPostsResult({ params }: SearchPostResultProps) {
       slug: params.searchSlug,
     },
   })
-  console.log(data)
+
   return (
     <main className="grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12">
       <div className="flex flex-col items-center justify-center lg:col-span-8 gap-5 ">

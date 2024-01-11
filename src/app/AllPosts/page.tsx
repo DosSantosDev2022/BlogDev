@@ -1,42 +1,14 @@
-import { GetAllPostsTypes } from '@/types/Iposts'
-import { fetchHygraphQuery } from '../api/fetchHygraph'
+'use client'
+import { PostsTypes } from '@/types/Iposts'
 
 import { PaginationPosts } from '@/components/globals/paginationPosts'
 import { NavFilter } from './navFilter'
 import { CardAllPosts } from '@/components/Cards/CardAllPosts'
+import { useQuery } from '@apollo/client'
+import { GET_ALL_POST_PAGINATION } from '@/GraphQl/querys'
 
-const GetPageData = async (): Promise<GetAllPostsTypes> => {
-  const query = `
-  query GetAllPosts{
-    posts{
-      id
-      slug
-      subtitle
-      title
-      createdAt
-      coverImage {
-        url
-      }
-      author {
-        name
-        photo {
-          url
-        }
-      }
-      tag {
-        tagName
-      }
-      destaque
-      description
-    }
-  }
-   
-   `
-  return fetchHygraphQuery(query)
-}
-
-export default async function AllPosts() {
-  const { posts } = await GetPageData()
+export default function AllPosts() {
+  const { data } = useQuery<PostsTypes>(GET_ALL_POST_PAGINATION, {})
 
   return (
     <main className="grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12">
@@ -49,7 +21,7 @@ export default async function AllPosts() {
         <NavFilter />
         <div className="border  w-full p-2 ">
           <div className="flex flex-wrap justify-start gap-6 p-2">
-            {posts.map((post) => (
+            {data?.posts.map((post) => (
               <CardAllPosts
                 description={post.description}
                 key={post.id}

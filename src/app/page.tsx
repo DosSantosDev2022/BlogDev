@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 export default async function Home() {
   const { posts } = await GET_ALL_POST()
   const featuredPosts = posts.filter((post) => post.destaque)
-  console.log(posts)
+
   return (
     <>
       <main className="grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12">
