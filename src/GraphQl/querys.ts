@@ -5,7 +5,7 @@ import { gql } from '@apollo/client'
 
 export const GET_ALL_POST = async (): Promise<PostsTypes> => {
   const query = `
-  query GetAllPosts {
+  query GET_ALL_POST {
     posts {
       id
       slug
@@ -33,7 +33,7 @@ export const GET_ALL_POST = async (): Promise<PostsTypes> => {
 
 export const GET_POSTS_BY_CATEGORY = async (): Promise<PostsTypes> => {
   const query = `
-  query GetAllPosts {
+  query GET_POSTS_BY_CATEGORY {
     posts {
       id
       slug
@@ -60,33 +60,6 @@ export const GET_POSTS_BY_CATEGORY = async (): Promise<PostsTypes> => {
   `
   return fetchHygraphQuery(query)
 }
-
-/* export const GET_POSTS_BY_CATEGORY = gql`
-  query GetAllPosts {
-    posts {
-      id
-      slug
-      subtitle
-      title
-      createdAt
-      coverImage {
-        url
-      }
-      author {
-        name
-        photo {
-          url
-        }
-      }
-      tag {
-        tagName
-        coverTag {
-          url
-        }
-      }
-    }
-  }
-` */
 
 export const GET_POSTS_BY_SEARCH = gql`
   query SearchPosts($slug: String!) {
