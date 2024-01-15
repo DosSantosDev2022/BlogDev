@@ -1,5 +1,6 @@
 'use client'
 import { useRouter } from 'next/navigation'
+
 import { useState } from 'react'
 
 export function InputSearch() {
@@ -8,10 +9,11 @@ export function InputSearch() {
 
   function handleSearch(e: { preventDefault: () => void }) {
     e.preventDefault()
-
     setSearch('')
     const value = search.trim().replace(/\s/g, '').toLocaleLowerCase()
-    router.push(`SearchPosts/${value}`)
+
+    const pathname = '/SearchPosts/'
+    router.push(`${pathname}${value}`)
   }
   return (
     <form className="flex gap-2 w-full" onSubmit={handleSearch}>

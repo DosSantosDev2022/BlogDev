@@ -1,7 +1,5 @@
 'use client'
 
-import { Button } from '@/components/ui/button'
-import { url } from 'inspector'
 import Link from 'next/link'
 
 export function NavFilter() {
