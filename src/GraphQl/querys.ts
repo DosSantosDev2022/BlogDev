@@ -132,6 +132,7 @@ export const GET_ALL_POST_PAGINATION = gql`
       tag {
         tagName
       }
+      description
     }
   }
 `

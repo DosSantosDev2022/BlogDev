@@ -5,6 +5,7 @@ import ptBR from 'date-fns/locale/pt-BR'
 import SmallCard from '@/components/Cards/SmallCard'
 import { ToShare } from '@/components/Posts/toShare'
 import { GET_DETAILS_POST } from '@/GraphQl/querys'
+import Link from 'next/link'
 
 export default async function PagePost({
   params,
@@ -20,11 +21,24 @@ export default async function PagePost({
     (p) => p.tag.tagName === post?.tag.tagName && p.slug !== post.slug,
   )
 
+  const Links = [
+    { nome: 'Home', Url: '/' },
+    { nome: `${post.tag.tagName}`, Url: `/Categorys/${post.tag.tagName}` },
+  ]
+
   return (
     <main className="grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12 ">
       <section className="flex flex-col items-center justify-start lg:col-span-8 px-2 ">
         <div className="w-full h-12 rounded-[10px] py-3 px-4 bg-slate-900 text-start">
-          <p className="text-slate-50">{/* Renderiza o caminho do post */}</p>
+          {Links.map((link) => (
+            <Link
+              className="text-slate-50 font-light"
+              href={link.Url}
+              key={link.nome}
+            >
+              {` > ${link.nome}`}
+            </Link>
+          ))}
         </div>
         <article className="mt-12 flex flex-col items-center justify-start w-full gap-10 p-2">
           <div className="flex flex-col items-start justify-center w-full gap-5">
@@ -73,7 +87,7 @@ export default async function PagePost({
           <div className="w-full p-2 text-slate-600 space-y-5">
             <RichText content={post?.content.raw} />
           </div>
-          <ToShare url="" />
+          <ToShare url={post.slug} />
         </article>
       </section>
       <section className="lg:col-span-4 flex flex-col items-center justify-center px-2 gap-5 mt-5 lg:mt-0 ">
