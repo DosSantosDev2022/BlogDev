@@ -30,22 +30,31 @@ export default function SearchPostsResult({ params }: SearchPostResultProps) {
         </div>
 
         <div className="border  w-full p-2 ">
-          <div className="flex flex-wrap justify-start gap-6 p-2">
-            {data?.posts.map((post) => (
-              <CardAllPosts
-                description={post.description}
-                key={post.id}
-                author={post.author}
-                coverImage={post.coverImage}
-                title={post.title}
-                tag={post.tag.tagName}
-                slug={post.slug}
-                createdAd={post.createdAt}
-              />
-            ))}
-          </div>
-
-          <PaginationPosts />
+          {data?.posts.length === 0 ? (
+            <div className="w-full h-screen text-center">
+              <h1 className="font-bold text-3xl mt-3">
+                Nenhum post encontrado !
+              </h1>
+            </div>
+          ) : (
+            <>
+              <div className="flex flex-wrap justify-start gap-6 p-2">
+                {data?.posts.map((post) => (
+                  <CardAllPosts
+                    description={post.description}
+                    key={post.id}
+                    author={post.author}
+                    coverImage={post.coverImage}
+                    title={post.title}
+                    tag={post.tag.tagName}
+                    slug={post.slug}
+                    createdAd={post.createdAt}
+                  />
+                ))}
+              </div>
+              <PaginationPosts />
+            </>
+          )}
         </div>
       </div>
       <div className=" lg:col-span-4 flex flex-col items-center justify-center gap-5 mt-5 lg:mt-0 "></div>

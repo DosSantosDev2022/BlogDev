@@ -28,7 +28,7 @@ export function Author({
         className="rounded-full w-12 h-12 "
       />
       <div className="flex flex-col gap-1">
-        <p className={nameStyles}>{Name}</p>
+        <h3 className={nameStyles}>{Name}</h3>
         <p className={dataStyles}>
           {format(new Date(CreateAd), "dd 'de' MMM 'de' yyyy", {
             locale: ptBR,

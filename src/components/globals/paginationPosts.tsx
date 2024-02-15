@@ -10,7 +10,7 @@ import {
 
 export function PaginationPosts() {
   return (
-    <>
+    <div className=" mt-10">
       <Pagination>
         <PaginationContent>
           <PaginationItem>
@@ -36,6 +36,6 @@ export function PaginationPosts() {
           </PaginationItem>
         </PaginationContent>
       </Pagination>
-    </>
+    </div>
   )
 }

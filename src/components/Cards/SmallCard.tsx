@@ -37,7 +37,8 @@ export default function SmallCard({
           src={coverImage.url}
           width={132}
           height={70}
-          alt=""
+          quality={100}
+          alt={title}
           className="rounded-md"
         />
         <div className="flex flex-col items-start gap-1 ">

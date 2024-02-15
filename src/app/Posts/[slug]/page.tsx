@@ -27,7 +27,7 @@ export default async function PagePost({
   ]
 
   return (
-    <main className="grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12 ">
+    <main className="grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12">
       <section className="flex flex-col items-center justify-start lg:col-span-8 px-2 ">
         <div className="w-full h-12 rounded-[10px] py-3 px-4 bg-slate-900 text-start">
           {Links.map((link) => (
