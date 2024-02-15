@@ -1,17 +1,26 @@
 import { GET_POSTS_BY_CATEGORY } from '@/GraphQl/querys'
+
 import { CardPosts } from '@/components/Cards/Card'
 import SmallCard from '@/components/Cards/SmallCard'
 import { Metadata } from 'next'
 
-export const metadata: Metadata = {
-  title: 'Categoria | Blog Dev',
+type Props = {
+  params: {
+    tag: string
+  }
 }
 
-export default async function Category({
-  params,
-}: {
-  params: { tag: string }
-}) {
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { posts } = await GET_POSTS_BY_CATEGORY()
+  const post = posts.find((post) => post.tag.tagName === params.tag)
+
+  return {
+    title: `Categoria | ${post?.tag.tagName}`,
+    description: post?.description,
+  }
+}
+
+export default async function Category({ params }: Props) {
   const { posts } = await GET_POSTS_BY_CATEGORY()
 
   // Filtrar os posts pela tag fornecida nos parâmetros
@@ -37,7 +46,7 @@ export default async function Category({
             </h4>
           </div>
         ) : (
-          <ul className="flex items-center justify-center flex-wrap gap-4">
+          <div className="flex items-center justify-center flex-wrap gap-4">
             {filteredPosts.map((post) => (
               <CardPosts
                 key={post.id}
@@ -49,7 +58,7 @@ export default async function Category({
                 createdAd={post.createdAt}
               />
             ))}
-          </ul>
+          </div>
         )}
       </div>
       <div className=" lg:col-span-4 flex flex-col items-center justify-center gap-5 mt-5 lg:mt-0 ">

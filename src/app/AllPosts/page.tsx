@@ -1,15 +1,13 @@
-'use client'
-import { PostsTypes } from '@/types/Iposts'
-
-import { PaginationPosts } from '@/components/globals/paginationPosts'
+import { AllPosts } from './AllPosts'
 import { NavFilter } from './navFilter'
-import { CardAllPosts } from '@/components/Cards/CardAllPosts'
-import { useQuery } from '@apollo/client'
-import { GET_ALL_POST_PAGINATION } from '@/GraphQl/querys'
+import { Metadata } from 'next'
 
-export default function AllPosts() {
-  const { data } = useQuery<PostsTypes>(GET_ALL_POST_PAGINATION, {})
+export const metadata: Metadata = {
+  title: 'Blog Dev | Todos os posts',
+  description: 'Um blog para desenvolvedores',
+}
 
+export default function AllPostsPage() {
   return (
     <main className="grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12">
       <div className="flex flex-col items-center justify-center lg:col-span-8 gap-5 ">
@@ -19,24 +17,7 @@ export default function AllPosts() {
           </h2>
         </div>
         <NavFilter />
-        <div className="border  w-full p-2 ">
-          <div className="flex flex-wrap justify-start gap-6 p-2">
-            {data?.posts.map((post) => (
-              <CardAllPosts
-                description={post.description}
-                key={post.id}
-                author={post.author}
-                coverImage={post.coverImage}
-                title={post.title}
-                tag={post.tag.tagName}
-                slug={post.slug}
-                createdAd={post.createdAt}
-              />
-            ))}
-          </div>
-
-          <PaginationPosts />
-        </div>
+        <AllPosts />
       </div>
       <div className=" lg:col-span-4 flex flex-col items-center justify-center gap-5 mt-5 lg:mt-0 "></div>
     </main>

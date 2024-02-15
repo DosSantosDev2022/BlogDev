@@ -6,14 +6,31 @@ import SmallCard from '@/components/Cards/SmallCard'
 import { ToShare } from '@/components/Posts/toShare'
 import { GET_DETAILS_POST } from '@/GraphQl/querys'
 import Link from 'next/link'
+import { Metadata } from 'next'
 
-export default async function PagePost({
-  params,
-}: {
-  params: { slug: string }
-}) {
+type Props = {
+  params: {
+    slug: string
+  }
+}
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { posts } = await GET_DETAILS_POST()
-  const post = posts.find((p) => p.slug === params.slug)
+  const post = posts.find((post) => post.slug === params.slug)
+
+  return {
+    title: post?.title,
+    description: post?.description,
+    category: post?.tag.tagName,
+    openGraph: {
+      images: `${post?.coverImage.url}`,
+    },
+  }
+}
+
+export default async function PagePost({ params }: Props) {
+  const { posts } = await GET_DETAILS_POST()
+  const post = posts.find((post) => post.slug === params.slug)
   if (!post) {
     return <p>Post não encontrado !</p>
   }
