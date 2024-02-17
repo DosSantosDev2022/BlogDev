@@ -4,7 +4,6 @@ import Header from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/ReactToastify.css'
-import { ApolloProvider } from '@/providers/apolloProvider'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -28,9 +27,7 @@ export default function RootLayout({
         className={`bg-slate-50 scrollbar scrollbar-thumb-slate-900  scrollbar-track-gray-100 ${font.className}`}
       >
         <Header />
-        <div className="container mx-auto">
-          <ApolloProvider>{children}</ApolloProvider>
-        </div>
+        <div className="container mx-auto">{children}</div>
         <Footer />
         <ToastContainer />
       </body>

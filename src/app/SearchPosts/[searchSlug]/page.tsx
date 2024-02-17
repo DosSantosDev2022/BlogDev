@@ -1,11 +1,8 @@
-'use client'
-
 import { PaginationPosts } from '@/components/globals/paginationPosts'
 
 import { CardAllPosts } from '@/components/Cards/CardAllPosts'
 import { GET_POSTS_BY_SEARCH } from '@/GraphQl/querys'
-import { useQuery } from '@apollo/client'
-import { PostsTypes } from '@/types/Iposts'
+import { Metadata } from 'next'
 
 interface SearchPostResultProps {
   params: {
@@ -13,12 +10,27 @@ interface SearchPostResultProps {
   }
 }
 
-export default function SearchPostsResult({ params }: SearchPostResultProps) {
-  const { data } = useQuery<PostsTypes>(GET_POSTS_BY_SEARCH, {
-    variables: {
-      slug: params.searchSlug,
-    },
-  })
+interface Props {
+  params: {
+    slug: string
+  }
+}
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { posts } = await GET_POSTS_BY_SEARCH()
+  const post = posts.find((post) => post.slug === params.slug)
+  return {
+    title: post?.slug,
+  }
+}
+
+export default async function SearchPostsResult({
+  params,
+}: SearchPostResultProps) {
+  const { posts } = await GET_POSTS_BY_SEARCH()
+  const searchTerm = params.searchSlug.toLowerCase()
+  const post = posts.filter((post) =>
+    post.slug.toLowerCase().includes(searchTerm),
+  )
 
   return (
     <main className="grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12">
@@ -30,7 +42,7 @@ export default function SearchPostsResult({ params }: SearchPostResultProps) {
         </div>
 
         <div className="border  w-full p-2 ">
-          {data?.posts.length === 0 ? (
+          {post?.length === 0 ? (
             <div className="w-full h-screen text-center">
               <h1 className="font-bold text-3xl mt-3">
                 Nenhum post encontrado !
@@ -39,7 +51,7 @@ export default function SearchPostsResult({ params }: SearchPostResultProps) {
           ) : (
             <>
               <div className="flex flex-wrap justify-start gap-6 p-2">
-                {data?.posts.map((post) => (
+                {post.map((post) => (
                   <CardAllPosts
                     description={post.description}
                     key={post.id}

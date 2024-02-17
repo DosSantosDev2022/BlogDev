@@ -3,7 +3,6 @@ import { useRouter } from 'next/navigation'
 
 import { useState } from 'react'
 import { Button } from '../ui/button'
-import { LucideSearch } from 'lucide-react'
 import { Input } from '../ui/input'
 
 export function InputSearch() {

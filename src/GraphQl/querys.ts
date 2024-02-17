@@ -1,8 +1,6 @@
 import { fetchHygraphQuery } from '@/app/api/fetchHygraph'
 import { PostsTypes } from '@/types/Iposts'
 
-import { gql } from '@apollo/client'
-
 export const GET_ALL_POST = async (): Promise<PostsTypes> => {
   const query = `
   query GET_ALL_POST {
@@ -91,11 +89,10 @@ export const GET_DETAILS_POST = async (): Promise<PostsTypes> => {
   return fetchHygraphQuery(query)
 }
 
-/* Querys utilizando Apollo Client */
-
-export const GET_POSTS_BY_SEARCH = gql`
-  query SearchPosts($slug: String!) {
-    posts(where: { _search: $slug }) {
+export const GET_POSTS_BY_SEARCH = async (): Promise<PostsTypes> => {
+  const query = `
+  query SearchPosts {
+    posts {
       id
       slug
       title
@@ -109,30 +106,5 @@ export const GET_POSTS_BY_SEARCH = gql`
     }
   }
 `
-export const GET_ALL_POST_PAGINATION = gql`
-  query GET_ALL_POST {
-    posts(first: 100) {
-      id
-      slug
-      subtitle
-      title
-      createdAt
-      coverImage {
-        url
-      }
-      author {
-        name
-        photo {
-          url
-        }
-      }
-      content {
-        raw
-      }
-      tag {
-        tagName
-      }
-      description
-    }
-  }
-`
+  return fetchHygraphQuery(query)
+}
