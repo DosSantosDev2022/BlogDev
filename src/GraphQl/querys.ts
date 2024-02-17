@@ -89,10 +89,12 @@ export const GET_DETAILS_POST = async (): Promise<PostsTypes> => {
   return fetchHygraphQuery(query)
 }
 
-export const GET_POSTS_BY_SEARCH = async (): Promise<PostsTypes> => {
+export const GET_POSTS_BY_SEARCH = async (
+  searchTerm?: string,
+): Promise<PostsTypes> => {
   const query = `
-  query SearchPosts {
-    posts {
+  query SearchPosts($slug: String!) {
+    posts(where:{_search: $slug}) {
       id
       slug
       title
@@ -106,5 +108,6 @@ export const GET_POSTS_BY_SEARCH = async (): Promise<PostsTypes> => {
     }
   }
 `
-  return fetchHygraphQuery(query)
+  const variables = { slug: searchTerm }
+  return fetchHygraphQuery(query, variables)
 }

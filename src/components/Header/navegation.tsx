@@ -40,6 +40,10 @@ const categorys: { title: string; href: string }[] = [
     title: 'React Js',
     href: '/Categorys/React-Js',
   },
+  {
+    title: 'HTML 5',
+    href: '/Categorys/HTML',
+  },
 ]
 
 export function Navigation() {
