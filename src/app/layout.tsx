@@ -27,7 +27,7 @@ export default function RootLayout({
         className={`bg-slate-50 scrollbar scrollbar-thumb-slate-900  scrollbar-track-gray-100 ${font.className}`}
       >
         <Header />
-        <div className="container mx-auto">{children}</div>
+        <div className="">{children}</div>
         <Footer />
         <ToastContainer />
       </body>

@@ -13,7 +13,7 @@ export default function Header() {
   }
 
   return (
-    <header className=" bg-slate-900 py-3  container mx-auto lg:flex items-center justify-between">
+    <header className=" bg-slate-900 py-3 px-8  lg:flex items-center justify-between">
       <div className="flex items-center justify-between">
         <Logo />
         <button

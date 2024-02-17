@@ -1,16 +1,14 @@
-'use client'
-import { GET_ALL_POST_PAGINATION } from '@/GraphQl/querys'
+import { GET_ALL_POST } from '@/GraphQl/querys'
 import { CardAllPosts } from '@/components/Cards/CardAllPosts'
 import { PaginationPosts } from '@/components/globals/paginationPosts'
-import { PostsTypes } from '@/types/Iposts'
-import { useQuery } from '@apollo/client'
 
-export function AllPosts() {
-  const { data } = useQuery<PostsTypes>(GET_ALL_POST_PAGINATION, {})
+export async function AllPosts() {
+  const { posts } = await GET_ALL_POST()
+  const post = posts
   return (
     <div className="border  w-full p-2 ">
       <div className="flex flex-wrap justify-start gap-6 p-2">
-        {data?.posts.map((post) => (
+        {post?.map((post) => (
           <CardAllPosts
             description={post.description}
             key={post.id}

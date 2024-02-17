@@ -25,7 +25,7 @@ export default async function SearchPostsResult({
   const { posts } = await GET_POSTS_BY_SEARCH(params.searchSlug)
 
   return (
-    <main className="grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12">
+    <main className="grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12 container mx-auto">
       <div className="flex flex-col items-center justify-center lg:col-span-8 gap-5 ">
         <div className="flex flex-col items-center justify-center gap-2 py-2 px-3 mt-7 ">
           <h2 className="text-4xl font-semibold ">

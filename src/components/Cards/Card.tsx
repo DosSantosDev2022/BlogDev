@@ -48,7 +48,7 @@ export function CardPosts({
             ImageProfile={author.photo.url}
             Name={author.name}
             nameStyles="text-slate-50 text-sm"
-            dataStyles="text-slate-50 text-sm font-"
+            dataStyles="text-slate-50 text-sm font-thin"
           />
         </div>
       </div>

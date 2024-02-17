@@ -14,9 +14,13 @@ export function NavFilter() {
 
   return (
     <div className="w-full flex items-center justify-start">
-      <nav className="flex flex-wrap items-center justify-center gap-2 p-2 border w-full ">
+      <nav className="flex flex-wrap items-center justify-start gap-4  p-1  w-full ">
         {filterLinks.map((link) => (
-          <Link href={link.url} key={link.title}>
+          <Link
+            className="bg-slate-900 text-slate-50 p-[6px] rounded-md text-sm font-light"
+            href={link.url}
+            key={link.title}
+          >
             {link.title}
           </Link>
         ))}
