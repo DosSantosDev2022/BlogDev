@@ -4,18 +4,53 @@ import { format } from 'date-fns'
 import ptBR from 'date-fns/locale/pt-BR'
 import SmallCard from '@/components/Cards/SmallCard'
 import { ToShare } from '@/components/Posts/toShare'
-import { GET_DETAILS_POST } from '@/GraphQl/querys'
 import Link from 'next/link'
 import { Metadata } from 'next'
+import { fetchHygraphQuery } from '@/app/api/fetchHygraph'
+import { PostsTypes } from '@/types/Iposts'
 
-type Props = {
+const GET_DETAILS_POST = async (slug: string): Promise<PostsTypes> => {
+  const query = `
+   query GetAllPosts($slug : String) {
+    posts(where : {slug : $slug}) {
+      id
+      slug
+      subtitle
+      title
+      createdAt
+      coverImage {
+        url
+      }
+      author {
+        name
+        photo {
+          url
+        }
+      }
+      content {
+        raw
+      }
+      tag {
+        tagName
+      }
+    }
+  }
+   `
+  const variables = {
+    slug,
+  }
+  return fetchHygraphQuery(query, variables)
+}
+type PagePostProps = {
   params: {
     slug: string
   }
 }
 
-export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { posts } = await GET_DETAILS_POST()
+export async function generateMetadata({
+  params,
+}: PagePostProps): Promise<Metadata> {
+  const { posts } = await GET_DETAILS_POST(params.slug)
   const post = posts.find((post) => post.slug === params.slug)
 
   return {
@@ -28,9 +63,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 }
 
-export default async function PagePost({ params }: Props) {
-  const { posts } = await GET_DETAILS_POST()
-  const post = posts.find((post) => post.slug === params.slug)
+export default async function PagePost({ params }: PagePostProps) {
+  const { posts } = await GET_DETAILS_POST(params.slug)
+
+  const post = posts[0]
+
   if (!post) {
     return <p>Post não encontrado !</p>
   }
