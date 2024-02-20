@@ -1,8 +1,33 @@
 import { PaginationPosts } from '@/components/globals/paginationPosts'
 
 import { CardAllPosts } from '@/components/Cards/CardAllPosts'
-import { GET_POSTS_BY_SEARCH } from '@/GraphQl/querys'
+
 import { Metadata } from 'next'
+import { PostsTypes } from '@/types/Iposts'
+import { fetchHygraphQuery } from '@/app/api/fetchHygraph'
+
+const GET_POSTS_BY_SEARCH = async (
+  searchTerm?: string,
+): Promise<PostsTypes> => {
+  const query = `
+  query SearchPosts($slug: String!) {
+    posts(where:{_search: $slug}) {
+      id
+      slug
+      title
+      coverImage {
+        url
+      }
+      tag {
+        tagName
+      }
+      description
+    }
+  }
+`
+  const variables = { slug: searchTerm }
+  return fetchHygraphQuery(query, variables)
+}
 
 interface SearchPostResultProps {
   params: {

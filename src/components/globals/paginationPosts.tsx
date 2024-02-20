@@ -3,18 +3,11 @@
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 interface PaginationProps {
-  pageIndex: string
-  totalCount: string
-  perPage: string
-  onPageChange?: void
+  currentPage?: number
+  totalPages?: number
 }
 
-export function PaginationPosts({
-  pageIndex,
-  totalCount,
-  perPage,
-  onPageChange,
-}: PaginationProps) {
+export function PaginationPosts({ currentPage, totalPages }: PaginationProps) {
   return (
     <div className=" px-2 mt-10 flex gap-2">
       <button className="w-12 h-10 flex items-center justify-center border rounded-sm hover:bg-slate-950 hover:text-slate-50 duration-500 transition-all">

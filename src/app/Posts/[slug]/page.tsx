@@ -9,10 +9,10 @@ import { Metadata } from 'next'
 import { fetchHygraphQuery } from '@/app/api/fetchHygraph'
 import { PostsTypes } from '@/types/Iposts'
 
-const GET_DETAILS_POST = async (slug: string): Promise<PostsTypes> => {
+const GET_DETAILS_POST = async (): Promise<PostsTypes> => {
   const query = `
-   query GetAllPosts($slug : String) {
-    posts(where : {slug : $slug}) {
+   query GetAllPosts {
+    posts(first : 9999){
       id
       slug
       subtitle
@@ -36,11 +36,9 @@ const GET_DETAILS_POST = async (slug: string): Promise<PostsTypes> => {
     }
   }
    `
-  const variables = {
-    slug,
-  }
-  return fetchHygraphQuery(query, variables)
+  return fetchHygraphQuery(query)
 }
+
 type PagePostProps = {
   params: {
     slug: string
@@ -50,7 +48,7 @@ type PagePostProps = {
 export async function generateMetadata({
   params,
 }: PagePostProps): Promise<Metadata> {
-  const { posts } = await GET_DETAILS_POST(params.slug)
+  const { posts } = await GET_DETAILS_POST()
   const post = posts.find((post) => post.slug === params.slug)
 
   return {
@@ -64,13 +62,13 @@ export async function generateMetadata({
 }
 
 export default async function PagePost({ params }: PagePostProps) {
-  const { posts } = await GET_DETAILS_POST(params.slug)
-
-  const post = posts[0]
-
+  const { posts } = await GET_DETAILS_POST()
+  const post = posts.find((post) => post.slug === params.slug)
   if (!post) {
     return <p>Post não encontrado !</p>
   }
+  console.log(posts)
+
   const relatedPost = posts.filter(
     (p) => p.tag.tagName === post?.tag.tagName && p.slug !== post.slug,
   )

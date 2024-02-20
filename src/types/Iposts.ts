@@ -17,12 +17,12 @@ interface CoverImage {
 
 interface Tag {
   tagName: string
-  coverTag: {
+  coverTag?: {
     url: string
   }
 }
 
-interface featuredPost {
+interface FeaturedPost {
   destaque: boolean
 }
 
@@ -37,7 +37,7 @@ export interface Post {
   author: Author
   content: Content
   tag: Tag
-  destaque: featuredPost[]
+  destaque: FeaturedPost[]
 }
 
 export interface PostsTypes {
