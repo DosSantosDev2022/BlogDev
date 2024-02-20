@@ -1,12 +1,42 @@
 import { NavFilter } from './navFilter'
 import { Metadata } from 'next'
-import { GET_ALL_POST } from '@/GraphQl/querys'
+
 import { CardAllPosts } from '@/components/Cards/CardAllPosts'
 import { PaginationPosts } from '@/components/globals/paginationPosts'
+import { PostsTypes } from '@/types/Iposts'
+import { fetchHygraphQuery } from '../api/fetchHygraph'
 
 export const metadata: Metadata = {
   title: 'Blog Dev | Todos os posts',
   description: 'Um blog para desenvolvedores',
+}
+
+const GET_ALL_POST = async (): Promise<PostsTypes> => {
+  const query = `
+  query GET_ALL_POST {
+    posts(first : 50) {
+      id
+      slug
+      subtitle
+      title
+      createdAt
+      coverImage {
+        url
+      }
+      author {
+        name
+        photo {
+          url
+        }
+      }
+      tag {
+        tagName
+      }
+      destaque
+    }
+  }
+`
+  return fetchHygraphQuery(query)
 }
 
 const backgroundImage = {
@@ -18,7 +48,7 @@ const backgroundImage = {
 
 export default async function AllPostsPage() {
   const { posts } = await GET_ALL_POST()
-  const post = posts
+
   return (
     <main className="flex flex-col">
       <div className="w-full h-screen relative " style={backgroundImage}></div>
@@ -32,7 +62,7 @@ export default async function AllPostsPage() {
           <NavFilter />
           <div className="border  w-full p-2 ">
             <div className="flex flex-wrap justify-start gap-6 p-2">
-              {post?.map((post) => (
+              {posts?.map((post) => (
                 <CardAllPosts
                   description={post.description}
                   key={post.id}
@@ -46,7 +76,7 @@ export default async function AllPostsPage() {
               ))}
             </div>
 
-            <PaginationPosts perPage="" pageIndex="" totalCount="" />
+            <PaginationPosts />
           </div>
         </div>
         <div className=" lg:col-span-4 flex flex-col items-center justify-center gap-5 mt-5 lg:mt-0 "></div>
