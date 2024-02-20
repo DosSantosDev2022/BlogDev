@@ -1,6 +1,8 @@
-import { AllPosts } from './AllPosts'
 import { NavFilter } from './navFilter'
 import { Metadata } from 'next'
+import { GET_ALL_POST } from '@/GraphQl/querys'
+import { CardAllPosts } from '@/components/Cards/CardAllPosts'
+import { PaginationPosts } from '@/components/globals/paginationPosts'
 
 export const metadata: Metadata = {
   title: 'Blog Dev | Todos os posts',
@@ -14,7 +16,9 @@ const backgroundImage = {
   backgroundPosition: 'center',
 }
 
-export default function AllPostsPage() {
+export default async function AllPostsPage() {
+  const { posts } = await GET_ALL_POST()
+  const post = posts
   return (
     <main className="flex flex-col">
       <div className="w-full h-screen relative " style={backgroundImage}></div>
@@ -26,7 +30,24 @@ export default function AllPostsPage() {
             </h2>
           </div>
           <NavFilter />
-          <AllPosts />
+          <div className="border  w-full p-2 ">
+            <div className="flex flex-wrap justify-start gap-6 p-2">
+              {post?.map((post) => (
+                <CardAllPosts
+                  description={post.description}
+                  key={post.id}
+                  author={post.author}
+                  coverImage={post.coverImage}
+                  title={post.title}
+                  tag={post.tag.tagName}
+                  slug={post.slug}
+                  createdAd={post.createdAt}
+                />
+              ))}
+            </div>
+
+            <PaginationPosts perPage="" pageIndex="" totalCount="" />
+          </div>
         </div>
         <div className=" lg:col-span-4 flex flex-col items-center justify-center gap-5 mt-5 lg:mt-0 "></div>
       </div>

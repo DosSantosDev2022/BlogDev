@@ -1,38 +1,38 @@
-import {
-  Pagination,
-  PaginationContent,
-  PaginationEllipsis,
-  PaginationItem,
-  PaginationLink,
-  PaginationNext,
-  PaginationPrevious,
-} from '@/components/ui/pagination'
+'use client'
 
-export function PaginationPosts() {
+import { ChevronLeft, ChevronRight } from 'lucide-react'
+
+interface PaginationProps {
+  pageIndex: string
+  totalCount: string
+  perPage: string
+  onPageChange?: void
+}
+
+export function PaginationPosts({
+  pageIndex,
+  totalCount,
+  perPage,
+  onPageChange,
+}: PaginationProps) {
   return (
-    <div className="mt-10">
-      <Pagination>
-        <PaginationContent>
-          <PaginationItem>
-            <PaginationPrevious href="#" />
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink href="#">1</PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink href="#">2</PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationLink href="#">3</PaginationLink>
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationEllipsis />
-          </PaginationItem>
-          <PaginationItem>
-            <PaginationNext href="#" />
-          </PaginationItem>
-        </PaginationContent>
-      </Pagination>
+    <div className=" px-2 mt-10 flex gap-2">
+      <button className="w-12 h-10 flex items-center justify-center border rounded-sm hover:bg-slate-950 hover:text-slate-50 duration-500 transition-all">
+        <ChevronLeft className="h-4 w-4" />
+      </button>
+      <button className="w-12 h-10 border rounded-sm  hover:bg-slate-950 hover:text-slate-50 duration-500 transition-all">
+        1
+      </button>
+      <button className="w-12 h-10 border rounded-sm  hover:bg-slate-950 hover:text-slate-50 duration-500 transition-all">
+        2
+      </button>
+      <button className="w-12 h-10 border rounded-sm  hover:bg-slate-950 hover:text-slate-50 duration-500 transition-all">
+        3
+      </button>
+      <button className="w-12 h-10 ">...</button>
+      <button className="w-12 h-10 flex items-center justify-center gap-1  border rounded-sm  hover:bg-slate-950 hover:text-slate-50 duration-500 transition-all">
+        <ChevronRight className="h-4 w-4" />
+      </button>
     </div>
   )
 }
