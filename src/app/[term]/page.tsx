@@ -1,65 +1,35 @@
 import { PaginationPosts } from '@/components/globals/paginationPosts'
-
 import { CardAllPosts } from '@/components/Cards/CardAllPosts'
-
-import { Metadata } from 'next'
-import { PostsTypes } from '@/types/Iposts'
-import { fetchHygraphQuery } from '@/app/api/fetchHygraph'
-
-const GET_POSTS_BY_SEARCH = async (
-  searchTerm?: string,
-): Promise<PostsTypes> => {
-  const query = `
-  query SearchPosts($slug: String!) {
-    posts(where:{_search: $slug}) {
-      id
-      slug
-      title
-      coverImage {
-        url
-      }
-      tag {
-        tagName
-      }
-      description
-    }
-  }
-`
-  const variables = { slug: searchTerm }
-  return fetchHygraphQuery(query, variables)
-}
-
-interface SearchPostResultProps {
-  params: {
-    searchSlug: string
-  }
-}
-
-export async function generateMetadata({
-  params,
-}: SearchPostResultProps): Promise<Metadata> {
-  await GET_POSTS_BY_SEARCH(params.searchSlug)
-  return {
-    title: `Resultado da busca para  ${params.searchSlug}`,
-  }
-}
+import { GET_POSTS_BY_SEARCH } from '@/app/api/queries/GetSearchPosts'
 
 export default async function SearchPostsResult({
-  params,
-}: SearchPostResultProps) {
-  const { posts } = await GET_POSTS_BY_SEARCH(params.searchSlug)
+  searchParams,
+}: {
+  searchParams?: {
+    query?: string
+    page?: string
+  }
+}) {
+  const query = searchParams?.query || ''
+
+  const currentPage = Number(searchParams?.page) || 1
+
+  const { posts } = await GET_POSTS_BY_SEARCH(query)
+
+  const startIndex = (currentPage - 1) * 10
+  const post = posts.slice(startIndex, startIndex + 10)
 
   return (
     <main className="grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12 container mx-auto">
       <div className="flex flex-col items-center justify-center lg:col-span-8 gap-5 ">
         <div className="flex flex-col items-center justify-center gap-2 py-2 px-3 mt-7 ">
           <h2 className="text-4xl font-semibold ">
-            {`Resultado da busca para  ${params.searchSlug}`}
+            {`Resultado da busca para  ${searchParams?.query}`}
           </h2>
         </div>
 
         <div className="border  w-full p-2 ">
-          {posts?.length === 0 ? (
+          {post.length === 0 ? (
             <div className="w-full h-screen text-center">
               <h1 className="font-bold text-3xl mt-3">
                 Nenhum post encontrado !
@@ -68,7 +38,7 @@ export default async function SearchPostsResult({
           ) : (
             <>
               <div className="flex flex-wrap justify-start gap-6 p-2">
-                {posts.map((post) => (
+                {post.map((post) => (
                   <CardAllPosts
                     description={post.description}
                     key={post.id}

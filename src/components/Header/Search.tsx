@@ -1,36 +1,42 @@
 'use client'
-import { useRouter } from 'next/navigation'
+import { usePathname, useSearchParams, useRouter } from 'next/navigation'
 
-import { useState } from 'react'
 import { Button } from '../ui/button'
 import { Input } from '../ui/input'
 
 export function InputSearch() {
-  const router = useRouter()
-  const [search, setSearch] = useState('')
+  const searchParams = useSearchParams()
 
-  function handleSearch(e: { preventDefault: () => void }) {
-    e.preventDefault()
-    setSearch('')
-    const value = search.trim().replace(/\s/g, '').toLocaleLowerCase()
+  const { replace } = useRouter()
 
-    const pathname = '/SearchPosts/'
-    router.push(`${pathname}${value}`)
+  function handleSearch(term: string) {
+    console.log(term)
+    const params = new URLSearchParams(searchParams)
+
+    if (term) {
+      params.set('query', term)
+    }
+
+    replace(`SearchPosts/?${params.toString()}`)
   }
+
   return (
-    <form className="flex gap-2 w-full" onSubmit={handleSearch}>
-      <Input
-        type="search"
-        id="first_name"
-        placeholder="Buscar..."
-        required
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
+    <form
+      onSubmit={(e) => {
+        e.preventDefault()
+        const target = e.target as typeof e.target & {
+          search: { value: string }
+        }
+        const term = target.search.value
+        handleSearch(term)
+      }}
+      className="flex gap-2 w-full"
+    >
+      <Input type="search" id="search" placeholder="Buscar..." required />
       <Button
         className="flex items-center gap-1 font-normal duration-500"
         variant={'outline'}
-        type="submit"
+        type="button"
       >
         Buscar
       </Button>

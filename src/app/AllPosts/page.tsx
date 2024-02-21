@@ -3,40 +3,12 @@ import { Metadata } from 'next'
 
 import { CardAllPosts } from '@/components/Cards/CardAllPosts'
 import { PaginationPosts } from '@/components/globals/paginationPosts'
-import { PostsTypes } from '@/types/Iposts'
-import { fetchHygraphQuery } from '../api/fetchHygraph'
+
+import { GET_ALL_POST } from '../api/queries/GetAllPosts'
 
 export const metadata: Metadata = {
   title: 'Blog Dev | Todos os posts',
   description: 'Um blog para desenvolvedores',
-}
-
-const GET_ALL_POST = async (): Promise<PostsTypes> => {
-  const query = `
-  query GET_ALL_POST {
-    posts(first : 50) {
-      id
-      slug
-      subtitle
-      title
-      createdAt
-      coverImage {
-        url
-      }
-      author {
-        name
-        photo {
-          url
-        }
-      }
-      tag {
-        tagName
-      }
-      destaque
-    }
-  }
-`
-  return fetchHygraphQuery(query)
 }
 
 const backgroundImage = {

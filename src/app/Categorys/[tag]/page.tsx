@@ -1,40 +1,8 @@
-import { fetchHygraphQuery } from '@/app/api/fetchHygraph'
-
+import { GET_POSTS_BY_CATEGORY } from '@/app/api/queries/GetCategoryPost'
 import { CardPosts } from '@/components/Cards/Card'
 import SmallCard from '@/components/Cards/SmallCard'
 import { PaginationPosts } from '@/components/globals/paginationPosts'
-import { PostsTypes } from '@/types/Iposts'
 import { Metadata } from 'next'
-
-const GET_POSTS_BY_CATEGORY = async (): Promise<PostsTypes> => {
-  const query = `
-  query GET_POSTS_BY_CATEGORY {
-    posts {
-      id
-      slug
-      subtitle
-      title
-      createdAt
-      coverImage {
-        url
-      }
-      author {
-        name
-        photo {
-          url
-        }
-      }
-      tag {
-        tagName
-        coverTag {
-          url
-        }
-      }
-    }
-  }
-  `
-  return fetchHygraphQuery(query)
-}
 
 type CategoryProps = {
   params: {

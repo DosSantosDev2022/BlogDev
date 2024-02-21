@@ -6,38 +6,7 @@ import SmallCard from '@/components/Cards/SmallCard'
 import { ToShare } from '@/components/Posts/toShare'
 import Link from 'next/link'
 import { Metadata } from 'next'
-import { fetchHygraphQuery } from '@/app/api/fetchHygraph'
-import { PostsTypes } from '@/types/Iposts'
-
-const GET_DETAILS_POST = async (): Promise<PostsTypes> => {
-  const query = `
-   query GetAllPosts {
-    posts(first : 9999){
-      id
-      slug
-      subtitle
-      title
-      createdAt
-      coverImage {
-        url
-      }
-      author {
-        name
-        photo {
-          url
-        }
-      }
-      content {
-        raw
-      }
-      tag {
-        tagName
-      }
-    }
-  }
-   `
-  return fetchHygraphQuery(query)
-}
+import { GET_DETAILS_POST } from '@/app/api/queries/GetDetailsPosts'
 
 type PagePostProps = {
   params: {

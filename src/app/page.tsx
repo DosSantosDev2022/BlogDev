@@ -5,36 +5,7 @@ import { RecentPosts } from '@/components/Home/recentPosts'
 import { MostViewedPost } from '@/components/Home/MostViewedPost'
 import { PopularPosts } from '@/components/Home/PopularPosts'
 import { BannerCarrousel } from '@/components/Banners/Carrousel'
-import { fetchHygraphQuery } from './api/fetchHygraph'
-import { PostsTypes } from '@/types/Iposts'
-
-const GET_ALL_POST = async (): Promise<PostsTypes> => {
-  const query = `
-  query GET_ALL_POST {
-    posts(first : 50) {
-      id
-      slug
-      subtitle
-      title
-      createdAt
-      coverImage {
-        url
-      }
-      author {
-        name
-        photo {
-          url
-        }
-      }
-      tag {
-        tagName
-      }
-      destaque
-    }
-  }
-`
-  return fetchHygraphQuery(query)
-}
+import { GET_ALL_POST } from './api/queries/GetAllPosts'
 
 export const metadata: Metadata = {
   title: 'Home | Blog Dev',
