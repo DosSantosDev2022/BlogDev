@@ -1,7 +1,6 @@
 'use client'
 import { useSearchParams, useRouter } from 'next/navigation'
 
-import { Button } from '../ui/button'
 import { Input } from '../ui/input'
 
 export function InputSearch() {
@@ -32,13 +31,6 @@ export function InputSearch() {
       className="flex gap-2 w-full"
     >
       <Input type="search" id="search" placeholder="Buscar..." required />
-      <Button
-        className="flex items-center gap-1 font-normal duration-500"
-        variant={'outline'}
-        type="button"
-      >
-        Buscar
-      </Button>
     </form>
   )
 }
