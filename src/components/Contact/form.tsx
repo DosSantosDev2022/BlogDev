@@ -74,7 +74,7 @@ export function FormContact() {
         className=" lg:w-[550px] w-full flex flex-col gap-5 mt-10"
       >
         <input
-          className="p-2 border-none outline-none bg-slate-100 rounded-sm text-slate-500"
+          className="p-2 border outline-none bg-slate-100 rounded-sm text-slate-500"
           type="text"
           placeholder="Digite seu nome"
           {...register('name')}
@@ -85,7 +85,7 @@ export function FormContact() {
           </span>
         )}
         <input
-          className="p-2 border-none outline-none bg-slate-100 rounded-sm text-slate-500"
+          className="p-2 border outline-none bg-slate-100 rounded-sm text-slate-500"
           type="email"
           placeholder="Digite seu e-mail"
           {...register('email')}
@@ -96,7 +96,7 @@ export function FormContact() {
           </span>
         )}
         <textarea
-          className="p-2 border-none outline-none bg-slate-100 rounded-sm text-slate-500"
+          className="p-2 border outline-none bg-slate-100 rounded-sm text-slate-500"
           cols={30}
           {...register('coments')}
           placeholder="Deixe sua mensagem!"

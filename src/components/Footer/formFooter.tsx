@@ -62,7 +62,7 @@ export function FormFooter() {
     <form onSubmit={handleSubmit(onSubimit)} className="flex gap-2 w-full">
       <div className="flex flex-col gap-1 w-full">
         <input
-          className="w-full rounded-md p-2 border-0 bg-slate-50"
+          className="w-full rounded-md p-2 border-0 bg-secondary"
           type="email"
           placeholder="Enter your email"
           {...register('email')}
@@ -72,7 +72,7 @@ export function FormFooter() {
         )}
       </div>
 
-      <button className="border-0 bg-slate-50 text-slate-900 p-2 rounded-md h-10 hover:scale-105 transition-all duration-700">
+      <button className="border-0 bg-secondary text-primary p-2 rounded-md h-10 hover:scale-105 transition-all duration-700">
         Inscrever
       </button>
     </form>

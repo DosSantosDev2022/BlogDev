@@ -14,8 +14,8 @@ export function RecentPosts({ posts }: RecentPostsProps) {
   const recentPosts = sortedPosts.slice(0, 4)
   return (
     <div className="w-full flex flex-col items-center justify-center">
-      <div className="lg:w-[43.75rem] h-12 rounded-[10px] md:w-full py-3 px-[6.375rem] bg-slate-900 flex items-center justify-center">
-        <h3 className=" text-slate-50 ">Posts Recentes</h3>
+      <div className="lg:w-[43.75rem] h-12 rounded-[10px] md:w-full py-3 px-[6.375rem] bg-primary flex items-center justify-center">
+        <h3 className=" text-secondary ">Posts Recentes</h3>
       </div>
       <div className="grid md:grid-cols-2 lg:grid-cols-2 mt-10 mb-10 items-center justify-center gap-4">
         {recentPosts ? (

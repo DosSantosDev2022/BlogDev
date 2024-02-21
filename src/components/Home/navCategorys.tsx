@@ -10,8 +10,8 @@ export function NavCategorys() {
   ]
   return (
     <div className="w-full h-auto flex flex-col items-center justify-center gap-2">
-      <div className="lg:w-[22.5rem] h-12 md:w-full rounded-[10px] py-3 px-[6.375rem] bg-slate-900 flex items-center justify-center">
-        <h3 className=" text-slate-50 ">Posts Categorias</h3>
+      <div className="lg:w-[22.5rem] h-12 md:w-full rounded-[10px] py-3 px-[6.375rem] bg-primary flex items-center justify-center">
+        <h3 className=" text-secondary ">Posts Categorias</h3>
       </div>
       <div className="flex flex-wrap mt-5  gap-2  items-center justify-center lg:w-[22.5rem]">
         {categorys.map((category) => (

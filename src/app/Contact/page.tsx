@@ -40,7 +40,7 @@ export default function ContactPage() {
     <main>
       <section className="py-16 lg:px-16 px-5 w-full flex flex-col lg:flex-row justify-center items-start gap-10">
         <div className="w-full flex flex-col items-start justify-start">
-          <h2 className="text-slate-900 font-semibold text-4xl">
+          <h2 className="text-primary font-semibold text-4xl">
             Entre em contato
           </h2>
           <p className="text-slate-700 font-medium text-lg">

@@ -40,7 +40,7 @@ export default async function Category({ params }: CategoryProps) {
             backgroundImage: `url(${selectedCategory?.tag.coverTag?.url})`,
           }}
         ></div>
-        <div className="w-full h-12 rounded-[10px] py-3   bg-slate-900 flex items-center justify-center">
+        <div className="w-full h-12 rounded-[10px] py-3   bg-primary flex items-center justify-center">
           <h3 className="text-slate-50 font">
             {`Posts da categoria ${params.tag}`}
           </h3>
@@ -72,8 +72,8 @@ export default async function Category({ params }: CategoryProps) {
       </div>
 
       <div className=" lg:col-span-4 flex flex-col items-center justify-center gap-5 mt-5 lg:mt-0 ">
-        <div className="w-[22.5rem] h-12 rounded-[10px] py-3   bg-slate-900 flex items-center justify-center">
-          <h3 className="text-slate-50 font">Posts Relacionados</h3>
+        <div className="w-[22.5rem] h-12 rounded-[10px] py-3   bg-primary flex items-center justify-center">
+          <h3 className="text-secondary font">Posts Relacionados</h3>
         </div>
         {otherPosts.map((post) => (
           <SmallCard

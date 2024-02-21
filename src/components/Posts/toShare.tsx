@@ -1,33 +1,31 @@
 'use client'
 
+import Link from 'next/link'
 import { FaFacebookF, FaTelegram, FaTwitter, FaWhatsapp } from 'react-icons/fa'
 import { FaSquareInstagram } from 'react-icons/fa6'
 
-interface ToShareProps {
-  url: string
-}
-
-export function ToShare({ url }: ToShareProps) {
+export function ToShare() {
   const shareLinks = [
     {
       name: '',
       icon: <FaFacebookF />,
-      url: `https://www.facebook.com/sharer/sharer.php?u=http://localhost:3000/Posts/${url}`,
+      url: ``,
     },
     { name: '', icon: <FaSquareInstagram /> },
     {
       name: '',
       icon: <FaTwitter />,
-      url: `https://twitter.com/intent/tweet/?text=http://localhost:3000/Posts/${url}`,
+      url: ``,
     },
     {
       name: '',
       icon: <FaTelegram />,
-      url: `https://t.me/share/url?url=&text=${url}`,
+      url: ``,
     },
     {
       name: '',
       icon: <FaWhatsapp />,
+      url: ``,
     },
   ]
   return (
@@ -40,14 +38,14 @@ export function ToShare({ url }: ToShareProps) {
           <ul>
             <li className="flex items-center justify-center gap-4">
               {shareLinks.map((link) => (
-                <a
+                <Link
                   className="bg-zinc-50 border rounded-full p-2 flex items-center justify-center hover:scale-105 duration-300 text-xl"
                   key={link.name}
-                  href={link.url}
                   target="_blank"
+                  href={''}
                 >
                   {link.icon}
-                </a>
+                </Link>
               ))}
             </li>
           </ul>
