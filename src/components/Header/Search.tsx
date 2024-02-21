@@ -1,5 +1,5 @@
 'use client'
-import { usePathname, useSearchParams, useRouter } from 'next/navigation'
+import { useSearchParams, useRouter } from 'next/navigation'
 
 import { Button } from '../ui/button'
 import { Input } from '../ui/input'
@@ -10,7 +10,6 @@ export function InputSearch() {
   const { replace } = useRouter()
 
   function handleSearch(term: string) {
-    console.log(term)
     const params = new URLSearchParams(searchParams)
 
     if (term) {

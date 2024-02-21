@@ -1,6 +1,7 @@
 import { PaginationPosts } from '@/components/globals/paginationPosts'
 import { CardAllPosts } from '@/components/Cards/CardAllPosts'
 import { GET_POSTS_BY_SEARCH } from '@/app/api/queries/GetSearchPosts'
+import { CardAllPostSkeleton } from '@/components/Loading/CardAllPostSkeleton'
 
 export default async function SearchPostsResult({
   searchParams,
@@ -28,33 +29,31 @@ export default async function SearchPostsResult({
           </h2>
         </div>
 
-        <div className="border  w-full p-2 ">
+        <div className="flex flex-wrap justify-start gap-6 p-2">
           {post.length === 0 ? (
-            <div className="w-full h-screen text-center">
-              <h1 className="font-bold text-3xl mt-3">
-                Nenhum post encontrado !
-              </h1>
-            </div>
-          ) : (
             <>
               <div className="flex flex-wrap justify-start gap-6 p-2">
-                {post.map((post) => (
-                  <CardAllPosts
-                    description={post.description}
-                    key={post.id}
-                    author={post.author}
-                    coverImage={post.coverImage}
-                    title={post.title}
-                    tag={post.tag.tagName}
-                    slug={post.slug}
-                    createdAd={post.createdAt}
-                  />
-                ))}
+                <CardAllPostSkeleton />
               </div>
-              <PaginationPosts />
+            </>
+          ) : (
+            <>
+              {post.map((post) => (
+                <CardAllPosts
+                  description={post.description}
+                  key={post.id}
+                  author={post.author}
+                  coverImage={post.coverImage}
+                  title={post.title}
+                  tag={post.tag.tagName}
+                  slug={post.slug}
+                  createdAd={post.createdAt}
+                />
+              ))}
             </>
           )}
         </div>
+        <PaginationPosts />
       </div>
       <div className=" lg:col-span-4 flex flex-col items-center justify-center gap-5 mt-5 lg:mt-0 "></div>
     </main>

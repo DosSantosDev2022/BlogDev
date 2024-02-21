@@ -1,6 +1,7 @@
 import { PostsTypes } from '@/types/Iposts'
 import { CardPosts } from '../Cards/Card'
 import Link from 'next/link'
+import { CardSkeleton } from '../Loading/CardSkeleton'
 
 interface RecentPostsProps {
   posts: PostsTypes['posts']
@@ -17,17 +18,23 @@ export function RecentPosts({ posts }: RecentPostsProps) {
         <h3 className=" text-slate-50 ">Posts Recentes</h3>
       </div>
       <div className="grid md:grid-cols-2 lg:grid-cols-2 mt-10 mb-10 items-center justify-center gap-4">
-        {recentPosts.map((post) => (
-          <CardPosts
-            key={post.id}
-            author={post.author}
-            coverImage={post.coverImage}
-            title={post.title}
-            tag={post.tag.tagName}
-            slug={post.slug}
-            createdAd={post.createdAt}
-          />
-        ))}
+        {recentPosts ? (
+          recentPosts.map((post) => (
+            <CardPosts
+              key={post.id}
+              author={post.author}
+              coverImage={post.coverImage}
+              title={post.title}
+              tag={post.tag.tagName}
+              slug={post.slug}
+              createdAd={post.createdAt}
+            />
+          ))
+        ) : (
+          <>
+            <CardSkeleton />
+          </>
+        )}
       </div>
       <div className="lg:w-[43.75rem] flex items-center justify-end">
         <Link

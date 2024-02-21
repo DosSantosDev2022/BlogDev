@@ -6,6 +6,7 @@ import { MostViewedPost } from '@/components/Home/MostViewedPost'
 import { PopularPosts } from '@/components/Home/PopularPosts'
 import { BannerCarrousel } from '@/components/Banners/Carrousel'
 import { GET_ALL_POST } from './api/queries/GetAllPosts'
+import { BannerSkeleton } from '@/components/Loading/BannerSkeleton'
 
 export const metadata: Metadata = {
   title: 'Home | Blog Dev',
@@ -13,7 +14,6 @@ export const metadata: Metadata = {
 }
 
 export default async function Home() {
-  /* await new Promise((resolve) => setTimeout(resolve, 5000)) */
   const { posts } = await GET_ALL_POST()
   const featuredPosts = posts.filter((post) => post.destaque)
 
@@ -22,8 +22,12 @@ export default async function Home() {
       <main className="grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12">
         <section className="flex flex-col items-center justify-start lg:col-span-8 gap-5 ">
           <div className=" flex items-center justify-center">
-            {featuredPosts.length > 0 && (
+            {featuredPosts.length > 0 ? (
               <BannerCarrousel featuredPosts={featuredPosts} />
+            ) : (
+              <>
+                <BannerSkeleton />
+              </>
             )}
           </div>
           <RecentPosts posts={posts} />
