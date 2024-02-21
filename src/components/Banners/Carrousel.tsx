@@ -20,16 +20,10 @@ interface BannerCarrouselProps {
 
 export function BannerCarrousel({ featuredPosts }: BannerCarrouselProps) {
   const plugin = React.useRef(
-    Autoplay({ delay: 2000, stopOnInteraction: true }),
+    Autoplay({ delay: 5000, stopOnInteraction: false }),
   )
   return (
-    <Carousel
-      opts={{
-        align: 'start',
-        plugin,
-      }}
-      className="lg:w-[43.75rem] "
-    >
+    <Carousel plugins={[plugin.current]} className="lg:w-[43.75rem] w-[336px] ">
       <CarouselContent>
         {featuredPosts.map((post, index) => (
           <CarouselItem key={index}>
@@ -38,7 +32,7 @@ export function BannerCarrousel({ featuredPosts }: BannerCarrouselProps) {
                 pathname: `/Posts/${post.slug}`,
               }}
             >
-              <div className=" lg:w-[43.75rem]  h-[320px]  rounded-md  shadow-md ">
+              <div className=" lg:w-[43.75rem] w-[336px]  lg:h-[320px] h-[250px]  rounded-md  shadow-md ">
                 <div
                   className="flex flex-col justify-end h-full p-4 gap-3 rounded-md bg-center  bg-cover  bg-no-repeat "
                   style={{
@@ -64,8 +58,8 @@ export function BannerCarrousel({ featuredPosts }: BannerCarrouselProps) {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious />
-      <CarouselNext />
+      <CarouselPrevious className="sm: hidden lg:flex" />
+      <CarouselNext className="sm: hidden lg:flex" />
     </Carousel>
   )
 }
