@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import { TagsPost } from './tags'
 import Link from 'next/link'
+import { Button } from '../ui/button'
 
 interface CardPostsProps {
   title: string
@@ -41,14 +42,15 @@ export function CardAllPosts({
           {title}
         </h4>
         <p className="text-sm font-light w-full">{description} </p>
-        <Link
-          className="hover:bg-slate-900 border hover:text-slate-50 p-2 mt-2 rounded-sm duration-500"
-          href={{
-            pathname: `/Posts/${slug}`,
-          }}
-        >
-          Ver Mais
-        </Link>
+        <Button variant={'default'} asChild>
+          <Link
+            href={{
+              pathname: `/Posts/${slug}`,
+            }}
+          >
+            Ver Mais
+          </Link>
+        </Button>
       </div>
     </div>
   )

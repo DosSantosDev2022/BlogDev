@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import { Author } from '../Posts/author'
 import { TagsPost } from './tags'
+import { Author } from '@/components/Posts/author'
 
 interface CardPostsProps {
   title: string
@@ -43,13 +43,13 @@ export function CardPosts({
             <TagsPost tagName={tag} />
             <h2 className="text-base font-bold text-slate-50">{title}</h2>
           </div>
-          <Author
-            CreateAd={createdAd}
-            ImageProfile={author.photo.url}
-            Name={author.name}
-            nameStyles="text-slate-50 text-sm"
-            dataStyles="text-slate-50 text-sm font-thin"
-          />
+          <Author.Root>
+            <Author.Avatar ImageProfile={author.photo.url} name={author.name} />
+            <div className="flex- flex-col gap-1">
+              <Author.Name nome={author.name} />
+              <Author.CreateAd CreateAd={createdAd} />
+            </div>
+          </Author.Root>
         </div>
       </div>
     </Link>

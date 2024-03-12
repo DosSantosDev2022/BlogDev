@@ -2,6 +2,7 @@ import { PostsTypes } from '@/types/Iposts'
 import { CardPosts } from '../Cards/Card'
 import Link from 'next/link'
 import { CardSkeleton } from '../Loading/CardSkeleton'
+import { Button } from '../ui/button'
 
 interface RecentPostsProps {
   posts: PostsTypes['posts']
@@ -37,12 +38,9 @@ export function RecentPosts({ posts }: RecentPostsProps) {
         )}
       </div>
       <div className="lg:w-[43.75rem] flex items-center justify-end">
-        <Link
-          className="bg-slate-950 text-slate-50 px-4 py-2 rounded-md hover:bg-slate-800 duration-500 transition-all"
-          href={'/AllPosts'}
-        >
-          Ver todos...
-        </Link>
+        <Button asChild>
+          <Link href={'/AllPosts'}>Ver todos...</Link>
+        </Button>
       </div>
     </div>
   )

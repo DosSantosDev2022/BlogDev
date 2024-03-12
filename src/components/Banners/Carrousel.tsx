@@ -45,13 +45,14 @@ export function BannerCarrousel({ featuredPosts }: BannerCarrouselProps) {
                       {post.title}
                     </h2>
                   </div>
-                  <Author
-                    CreateAd={post.createdAt}
-                    ImageProfile={post.author.photo.url}
-                    Name={post.author.name}
-                    nameStyles="text-slate-50 text-sm"
-                    dataStyles="text-slate-50 text-sm font-"
-                  />
+                  <Author.Root>
+                    <Author.Avatar
+                      ImageProfile={post.author.photo.url}
+                      name={post.author.name}
+                    />
+                    <Author.Name nome={post.author.name} />
+                    <Author.CreateAd CreateAd={post.createdAt} />
+                  </Author.Root>
                 </div>
               </div>
             </Link>
