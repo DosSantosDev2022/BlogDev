@@ -10,8 +10,8 @@ import {
 } from '@/components/ui/carousel'
 import Autoplay from 'embla-carousel-autoplay'
 import Link from 'next/link'
-import { TagsPost } from '../Cards/tags'
-import { Author } from '../Posts/author'
+import { TagsPost } from '../globals/Cards/tags'
+import { Author } from '../globals/author'
 import { Post } from '@/types/Iposts'
 
 interface BannerCarrouselProps {

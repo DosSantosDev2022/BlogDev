@@ -1,12 +1,11 @@
 import { RichText } from '@/components/Posts/rich-text'
 import Image from 'next/image'
-import { format } from 'date-fns'
-import ptBR from 'date-fns/locale/pt-BR'
-import SmallCard from '@/components/Cards/SmallCard'
+import SmallCard from '@/components/globals/Cards/SmallCard'
 import { ToShare } from '@/components/Posts/toShare'
 import Link from 'next/link'
 import { Metadata } from 'next'
 import { GET_DETAILS_POST } from '@/app/api/queries/GetDetailsPosts'
+import { Author } from '@/components/globals/author'
 
 type PagePostProps = {
   params: {
@@ -65,30 +64,23 @@ export default async function PagePost({ params }: PagePostProps) {
             <h1 className="text-primary md:text-5xl text-3xl font-bold mb-3">
               {post?.title}
             </h1>
-            <div className="flex items-center justify-center gap-2">
-              <Image
-                width={100}
-                height={100}
-                quality={100}
-                src={post?.author.photo.url || ''}
-                alt={post?.author.name || ''}
-                className="rounded-full w-12 h-12"
+
+            <Author.Root>
+              <Author.Avatar
+                ImageProfile={post?.author.photo.url || ''}
+                name={post.author.name}
               />
               <div className="flex flex-col gap-1">
-                <p className="text-primary font-semibold">
-                  {post?.author.name}
-                </p>
-                <p className="text-primary">
-                  {post?.createdAt
-                    ? format(
-                        new Date(post.createdAt),
-                        "dd 'de' MMM 'de' yyyy",
-                        { locale: ptBR },
-                      )
-                    : 'Data não disponível'}
-                </p>
+                <Author.Name
+                  nome={post.author.name}
+                  className="text-slate-900 text-lg"
+                />
+                <Author.CreateAd
+                  CreateAd={post.createdAt}
+                  className="text-slate-900 text-md"
+                />
               </div>
-            </div>
+            </Author.Root>
           </div>
           <div className="w-full border">
             {post?.coverImage.url ? (

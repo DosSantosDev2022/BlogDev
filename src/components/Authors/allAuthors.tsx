@@ -1,6 +1,6 @@
 import { fetchHygraphQuery } from '@/app/api/fetchHygraph'
 import { AllAuthors } from '@/types/Iauthors'
-import Image from 'next/image'
+import { Author } from '../globals/author'
 
 const GetAuthors = async (): Promise<AllAuthors> => {
   const query = `
@@ -29,22 +29,19 @@ export async function AllAuthors() {
       </div>
       <div className="flex flex-col items-center justify-center space-y-5 p-2">
         {authors.map((author) => (
-          <div
-            className="flex items-start justify-start gap-2 w-[22.5rem] border px-2 py-4 rounded-md"
+          <Author.Root
             key={author.id}
+            className="flex items-start justify-start gap-2 w-[22.5rem] border px-2 py-4 rounded-md"
           >
-            <Image
-              alt=""
-              src={author.photo.url}
-              width={42}
-              height={42}
-              className="rounded-full"
-            />
+            <Author.Avatar ImageProfile={author.photo.url} name={author.name} />
             <div className="flex flex-col gap-1">
-              <h6 className="font-bold text-xl">{author.name}</h6>
-              <p className="text-sm font-light">{author.bio.text} </p>
+              <Author.Name
+                nome={author.name}
+                className="text-zinc-900 text-lg font-medium"
+              />
+              <Author.Bio text={author.bio.text} />
             </div>
-          </div>
+          </Author.Root>
         ))}
       </div>
     </div>

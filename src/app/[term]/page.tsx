@@ -1,5 +1,5 @@
 import { PaginationPosts } from '@/components/globals/paginationPosts'
-import { CardAllPosts } from '@/components/Cards/CardAllPosts'
+import { CardAllPosts } from '@/components/globals/Cards/CardAllPosts'
 import { GET_POSTS_BY_SEARCH } from '@/app/api/queries/GetSearchPosts'
 import { CardAllPostSkeleton } from '@/components/Loading/CardAllPostSkeleton'
 

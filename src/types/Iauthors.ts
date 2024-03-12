@@ -1,5 +1,3 @@
-import { ReactNode } from 'react'
-
 interface author {
   id: string
   name: string
@@ -7,7 +5,7 @@ interface author {
     url: string
   }
   bio: {
-    text: ReactNode
+    text: string
   }
 }
 

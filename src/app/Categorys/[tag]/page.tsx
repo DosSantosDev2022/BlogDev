@@ -1,6 +1,6 @@
 import { GET_POSTS_BY_CATEGORY } from '@/app/api/queries/GetCategoryPost'
-import { CardPosts } from '@/components/Cards/Card'
-import SmallCard from '@/components/Cards/SmallCard'
+import { CardPosts } from '@/components/globals/Cards/Card'
+import SmallCard from '@/components/globals/Cards/SmallCard'
 import { PaginationPosts } from '@/components/globals/paginationPosts'
 import { Metadata } from 'next'
 

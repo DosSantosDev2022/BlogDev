@@ -1,5 +1,5 @@
 import { PostsTypes } from '@/types/Iposts'
-import { CardPosts } from '../Cards/Card'
+import { CardPosts } from '../globals/Cards/Card'
 import Link from 'next/link'
 import { CardSkeleton } from '../Loading/CardSkeleton'
 import { Button } from '../ui/button'

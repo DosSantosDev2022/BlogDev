@@ -1,7 +1,7 @@
 import { NavFilter } from './navFilter'
 import { Metadata } from 'next'
 
-import { CardAllPosts } from '@/components/Cards/CardAllPosts'
+import { CardAllPosts } from '@/components/globals/Cards/CardAllPosts'
 import { PaginationPosts } from '@/components/globals/paginationPosts'
 
 import { GET_ALL_POST } from '../api/queries/GetAllPosts'

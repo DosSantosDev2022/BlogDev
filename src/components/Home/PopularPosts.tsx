@@ -1,5 +1,5 @@
 import { PostsTypes } from '@/types/Iposts'
-import SmallCard from '../Cards/SmallCard'
+import SmallCard from '../globals/Cards/SmallCard'
 
 interface PopularPosts {
   posts: PostsTypes['posts']
