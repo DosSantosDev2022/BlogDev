@@ -32,7 +32,7 @@ export function CardPosts({
         pathname: `/Posts/${slug}`,
       }}
     >
-      <div className=" w-[21rem] h-[24.75rem]  rounded-md  shadow-md overflow-hidden">
+      <div className=" w-[20rem] h-[24.75rem]  rounded-md  shadow-md overflow-hidden">
         <div
           className="flex flex-col justify-end h-full p-4 gap-3 rounded-md bg-center  bg-cover  bg-no-repeat hover:scale-105 transition-all duration-500 "
           style={{

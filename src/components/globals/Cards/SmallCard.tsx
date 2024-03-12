@@ -30,7 +30,7 @@ export default function SmallCard({
         pathname: `/Posts/${slug}`,
       }}
     >
-      <div className=" lg:w-[360px] w-[360px] h-[96px] md:w-[768px] flex items-center justify-start gap-3 rounded-lg overflow-hidden shadow-md bg-white p-2 ">
+      <div className=" w-[360px] h-[96px] flex items-center justify-start gap-3 rounded-lg overflow-hidden shadow-md bg-white p-2 ">
         <Image
           src={coverImage.url}
           width={132}

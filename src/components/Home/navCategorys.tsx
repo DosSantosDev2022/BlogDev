@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { SectionTitle } from '../globals/SectionTitle'
 
 export function NavCategorys() {
   const categorys = [
@@ -9,10 +10,8 @@ export function NavCategorys() {
     { label: 'Carreira', href: '/Categorys/Carreira' },
   ]
   return (
-    <div className="w-full h-auto flex flex-col items-center justify-center gap-2">
-      <div className="lg:w-[22.5rem] h-12 md:w-full rounded-[10px] py-3 px-[6.375rem] bg-primary flex items-center justify-center">
-        <h3 className=" text-secondary ">Posts Categorias</h3>
-      </div>
+    <div className="w-full h-auto flex flex-col items-center justify-center gap-2 p-2">
+      <SectionTitle title="Categorias" />
       <div className="flex flex-wrap mt-5  gap-2  items-center justify-center lg:w-[22.5rem]">
         {categorys.map((category) => (
           <ul key={category.label}>

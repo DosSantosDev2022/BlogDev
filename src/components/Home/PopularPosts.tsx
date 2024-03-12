@@ -1,5 +1,6 @@
 import { PostsTypes } from '@/types/Iposts'
 import SmallCard from '../globals/Cards/SmallCard'
+import { SectionTitle } from '../globals/SectionTitle'
 
 interface PopularPosts {
   posts: PostsTypes['posts']
@@ -7,11 +8,9 @@ interface PopularPosts {
 
 export function PopularPosts({ posts }: PopularPosts) {
   return (
-    <div className="w-full h-auto flex flex-col items-center justify-center gap-2">
-      <div className="lg:w-[22.5rem] h-12 rounded-[10px] md:w-full py-3 px-[6.375rem] bg-primary flex items-center justify-center">
-        <h3 className=" text-secondary">Posts Populares</h3>
-      </div>
-      <div className="flex flex-col items-center justify-center space-y-5">
+    <div className="w-full h-auto flex flex-col lg:items-start items-center justify-center gap-2">
+      <SectionTitle title="Posts populares" />
+      <div className="flex flex-col justify-center space-y-5 mt-6">
         {posts.map((post) => (
           <SmallCard
             slug={post.slug}

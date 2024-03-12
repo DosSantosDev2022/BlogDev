@@ -18,18 +18,18 @@ export default async function Home() {
   const featuredPosts = posts.filter((post) => post.destaque)
 
   return (
-    <>
-      <main className="grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12">
-        <section className="flex flex-col items-center justify-start lg:col-span-8 gap-5 ">
-          <div className=" flex items-center justify-center">
-            {featuredPosts.length > 0 ? (
-              <BannerCarrousel featuredPosts={featuredPosts} />
-            ) : (
-              <>
-                <BannerSkeleton />
-              </>
-            )}
-          </div>
+    <main>
+      <div className="w-full flex items-center justify-center">
+        {featuredPosts.length > 0 ? (
+          <BannerCarrousel featuredPosts={featuredPosts} />
+        ) : (
+          <>
+            <BannerSkeleton />
+          </>
+        )}
+      </div>
+      <div className="grid  lg:grid-cols-12 gap-1 items-start justify-center p-6 mt-12 mb-12">
+        <section className="flex flex-col items-center justify-start lg:col-span-8 gap-5 p-4 ">
           <RecentPosts posts={posts} />
           {/* Componente de posts recentes */}
 
@@ -37,17 +37,17 @@ export default async function Home() {
           <MostViewedPost posts={posts} />
           {/* Componente de posts mais vistos */}
         </section>
-        <section className=" lg:col-span-4 flex flex-col items-center justify-center gap-5 mt-5 lg:mt-0 ">
+        <section className="lg:col-span-4 flex flex-col items-center justify-center gap-5 p-4 mt-5 lg:mt-0 ">
           <PopularPosts posts={posts} /> {/* Componente de posts populares */}
           <NavCategorys />
           {/* Componente de navegação de categoria */}
           <AllAuthors />
           {/* Componente renderiza lista de todos autores do blog */}
-          <div className="lg:w-[22.5rem] h-screen md:w-full rounded-[10px] bg-slate-200 ">
+          <div className="lg:w-[22.5rem] h-screen  rounded-[10px] bg-slate-200 ">
             publicidade
           </div>
         </section>
-      </main>
-    </>
+      </div>
+    </main>
   )
 }

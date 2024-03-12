@@ -3,6 +3,7 @@ import { CardPosts } from '../globals/Cards/Card'
 import Link from 'next/link'
 import { CardSkeleton } from '../Loading/CardSkeleton'
 import { Button } from '../ui/button'
+import { SectionTitle } from '../globals/SectionTitle'
 
 interface RecentPostsProps {
   posts: PostsTypes['posts']
@@ -14,10 +15,8 @@ export function RecentPosts({ posts }: RecentPostsProps) {
   )
   const recentPosts = sortedPosts.slice(0, 4)
   return (
-    <div className="w-full flex flex-col items-center justify-center">
-      <div className="lg:w-[43.75rem] h-12 rounded-[10px] md:w-full py-3 px-[6.375rem] bg-primary flex items-center justify-center">
-        <h3 className=" text-secondary ">Posts Recentes</h3>
-      </div>
+    <div className="w-full flex flex-col lg:items-start items-center justify-center">
+      <SectionTitle title="Posts recentes" />
       <div className="grid md:grid-cols-2 lg:grid-cols-2 mt-10 mb-10 items-center justify-center gap-4">
         {recentPosts ? (
           recentPosts.map((post) => (
