@@ -43,3 +43,19 @@ export interface Post {
 export interface PostsTypes {
   posts: Post[]
 }
+
+export interface relatedPost {
+  id: string
+  title: string
+  author: Author
+  coverImage: {
+    url: string
+  }
+  tag: Tag
+  createdAt: string
+  slug: string
+}
+
+export interface RelatedPostTypes {
+  relatedPost: relatedPost[]
+}

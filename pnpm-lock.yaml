@@ -8,6 +8,9 @@ dependencies:
   '@graphcms/rich-text-react-renderer':
     specifier: ^0.6.1
     version: 0.6.1(react-dom@18.2.0)(react@18.2.0)
+  '@graphcms/rich-text-types':
+    specifier: ^0.5.1
+    version: 0.5.1
   '@hookform/resolvers':
     specifier: ^3.3.2
     version: 3.3.4(react-hook-form@7.51.0)

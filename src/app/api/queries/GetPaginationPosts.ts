@@ -3,11 +3,11 @@ import { fetchHygraphQuery } from '../fetchHygraph'
 
 export const GET_PAGINATION_POSTS = async (
   page: number,
-  first: number,
+  pageSize: number,
 ): Promise<PostsTypes> => {
   const query = `
-  query GET_PAGINATION_POSTS($page: Int!, $first : Int!){
-    posts(page: $page, first: $first){
+  query GET_PAGINATION_POSTS($first: Int, $skip: Int){
+    posts(first: $first, skip: $skip){
       id
       slug
       subtitle
@@ -28,7 +28,10 @@ export const GET_PAGINATION_POSTS = async (
       destaque
     }
   }
-`
-  const variables = { first, page }
+
+  `
+
+  const skip = (page - 1) * pageSize
+  const variables = { first: pageSize, skip }
   return fetchHygraphQuery(query, variables)
 }

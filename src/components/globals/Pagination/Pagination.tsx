@@ -28,7 +28,7 @@ export function Pagination({ page, limit, total }: PaginationProps) {
             <PaginationItem key={page}>
               <PaginationLink
                 className="border rounded-sm hover:bg-slate-800 hover:text-slate-50"
-                href={`?page=${page}`}
+                href={''}
               >
                 {page}
               </PaginationLink>

@@ -49,10 +49,10 @@ export default async function PagePost({ params }: PagePostProps) {
   return (
     <main className="grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12 container mx-auto">
       <section className="flex flex-col items-center justify-start lg:col-span-8 px-2 ">
-        <div className="w-full h-12 rounded-[10px] py-3 px-4 bg-primary text-start">
+        <div className="w-full h-12 rounded-[10px] py-3 px-4 bg-primary flex gap-2 items-center">
           {Links.map((link) => (
             <Link
-              className="text-slate-50 font-light"
+              className="text-slate-50 font-light hover:underline"
               href={link.Url}
               key={link.nome}
             >
