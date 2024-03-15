@@ -2,13 +2,17 @@ import { NavFilter } from './navFilter'
 import { Metadata } from 'next'
 
 import { CardAllPosts } from '@/components/globals/Cards/CardAllPosts'
-import { PaginationPosts } from '@/components/globals/paginationPosts'
+import { Pagination } from '@/components/globals/Pagination/Pagination'
 
-import { GET_ALL_POST } from '../api/queries/GetAllPosts'
+import { GET_PAGINATION_POSTS } from '../api/queries/GetPaginationPosts'
 
 export const metadata: Metadata = {
   title: 'Blog Dev | Todos os posts',
   description: 'Um blog para desenvolvedores',
+}
+
+interface AllPostsPageProps {
+  searchParams?: { page?: number; first?: number }
 }
 
 const backgroundImage = {
@@ -18,8 +22,13 @@ const backgroundImage = {
   backgroundPosition: 'center',
 }
 
-export default async function AllPostsPage() {
-  const { posts } = await GET_ALL_POST()
+export default async function AllPostsPage({
+  searchParams,
+}: AllPostsPageProps) {
+  const page = Number(searchParams?.page) || 1
+  const first = Number(searchParams?.first) || 10
+
+  const { posts } = await GET_PAGINATION_POSTS(page, first)
 
   return (
     <main className="flex flex-col">
@@ -48,7 +57,7 @@ export default async function AllPostsPage() {
               ))}
             </div>
 
-            <PaginationPosts />
+            <Pagination page={page} limit={first} total={10} />
           </div>
         </div>
         <div className=" lg:col-span-4 flex flex-col items-center justify-center gap-5 mt-5 lg:mt-0 "></div>

@@ -3,9 +3,10 @@ import Image from 'next/image'
 import SmallCard from '@/components/globals/Cards/SmallCard'
 import { ToShare } from '@/components/Posts/toShare'
 import Link from 'next/link'
-import { Metadata } from 'next'
+
 import { GET_DETAILS_POST } from '@/app/api/queries/GetDetailsPosts'
 import { Author } from '@/components/globals/author'
+import { Metadata } from 'next'
 
 type PagePostProps = {
   params: {

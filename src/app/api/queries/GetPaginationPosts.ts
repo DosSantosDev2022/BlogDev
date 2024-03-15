@@ -1,10 +1,13 @@
 import { PostsTypes } from '@/types/Iposts'
 import { fetchHygraphQuery } from '../fetchHygraph'
 
-export const GET_ALL_POST = async (): Promise<PostsTypes> => {
+export const GET_PAGINATION_POSTS = async (
+  page: number,
+  first: number,
+): Promise<PostsTypes> => {
   const query = `
-  query GET_ALL_POST{
-    posts{
+  query GET_PAGINATION_POSTS($page: Int!, $first : Int!){
+    posts(page: $page, first: $first){
       id
       slug
       subtitle
@@ -26,6 +29,6 @@ export const GET_ALL_POST = async (): Promise<PostsTypes> => {
     }
   }
 `
-
-  return fetchHygraphQuery(query)
+  const variables = { first, page }
+  return fetchHygraphQuery(query, variables)
 }

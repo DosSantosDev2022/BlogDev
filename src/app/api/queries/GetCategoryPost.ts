@@ -1,10 +1,12 @@
 import { PostsTypes } from '@/types/Iposts'
 import { fetchHygraphQuery } from '../fetchHygraph'
 
-export const GET_POSTS_BY_CATEGORY = async (): Promise<PostsTypes> => {
+export const GET_POSTS_BY_CATEGORY = async (
+  tag: string,
+): Promise<PostsTypes> => {
   const query = `
-  query GET_POSTS_BY_CATEGORY {
-    posts {
+  query GET_POSTS_BY_CATEGORY($tag: String) {
+    posts(where: {tag : {_search: $tag}}) {
       id
       slug
       subtitle
@@ -28,5 +30,7 @@ export const GET_POSTS_BY_CATEGORY = async (): Promise<PostsTypes> => {
     }
   }
   `
-  return fetchHygraphQuery(query)
+  const variables = { tag }
+
+  return fetchHygraphQuery(query, variables)
 }

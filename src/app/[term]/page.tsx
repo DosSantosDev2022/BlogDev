@@ -1,4 +1,4 @@
-import { PaginationPosts } from '@/components/globals/paginationPosts'
+/* import { Pagination } from '@/components/globals/Pagination/Pagination' */
 import { CardAllPosts } from '@/components/globals/Cards/CardAllPosts'
 import { GET_POSTS_BY_SEARCH } from '@/app/api/queries/GetSearchPosts'
 import { CardAllPostSkeleton } from '@/components/Loading/CardAllPostSkeleton'
@@ -53,7 +53,7 @@ export default async function SearchPostsResult({
             </>
           )}
         </div>
-        <PaginationPosts />
+        {/* <Pagination /> */}
       </div>
       <div className=" lg:col-span-4 flex flex-col items-center justify-center gap-5 mt-5 lg:mt-0 "></div>
     </main>

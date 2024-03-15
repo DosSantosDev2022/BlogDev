@@ -6,16 +6,19 @@ import { Input } from '../ui/input'
 export function InputSearch() {
   const searchParams = useSearchParams()
 
-  const { replace } = useRouter()
+  const { push } = useRouter()
 
   function handleSearch(term: string) {
     const params = new URLSearchParams(searchParams)
-
+    console.log(params)
     if (term) {
       params.set('query', term)
+    } else {
+      params.delete('query')
     }
 
-    replace(`SearchPosts/?${params.toString()}`)
+    push(`search/?${params.toString()}`)
+    console.log(term)
   }
 
   return (

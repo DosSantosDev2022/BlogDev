@@ -15,6 +15,7 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   const { posts } = await GET_ALL_POST()
+
   const featuredPosts = posts.filter((post) => post.destaque)
 
   return (

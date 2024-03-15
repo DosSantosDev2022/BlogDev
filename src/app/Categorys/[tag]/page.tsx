@@ -1,7 +1,7 @@
 import { GET_POSTS_BY_CATEGORY } from '@/app/api/queries/GetCategoryPost'
 import { CardPosts } from '@/components/globals/Cards/Card'
 import SmallCard from '@/components/globals/Cards/SmallCard'
-import { PaginationPosts } from '@/components/globals/paginationPosts'
+
 import { Metadata } from 'next'
 
 type CategoryProps = {
@@ -13,20 +13,17 @@ type CategoryProps = {
 export async function generateMetadata({
   params,
 }: CategoryProps): Promise<Metadata> {
-  const { posts } = await GET_POSTS_BY_CATEGORY()
+  const { posts } = await GET_POSTS_BY_CATEGORY(params.tag)
   const post = posts.find((post) => post.tag.tagName === params.tag)
 
   return {
-    title: `Categoria | ${post?.tag.tagName}`,
+    title: `Categoria | ${params.tag}`,
     description: post?.description,
   }
 }
 
 export default async function Category({ params }: CategoryProps) {
-  const { posts } = await GET_POSTS_BY_CATEGORY()
-
-  // Filtrar os posts pela tag fornecida nos parâmetros
-  const filteredPosts = posts.filter((post) => post.tag.tagName === params.tag)
+  const { posts } = await GET_POSTS_BY_CATEGORY(params.tag)
   const selectedCategory = posts.find((post) => post.tag.tagName === params.tag)
 
   const otherPosts = posts.filter((post) => post.tag.tagName === params.tag)
@@ -45,7 +42,7 @@ export default async function Category({ params }: CategoryProps) {
             {`Posts da categoria ${params.tag}`}
           </h3>
         </div>
-        {filteredPosts.length === 0 ? (
+        {posts.length === 0 ? (
           <div className="w-full h-screen flex items-start justify-center mt-10">
             <h1 className="text-lg text-slate-900 font-bold">
               Nenhum post foi encontrado para essa categoria !
@@ -54,7 +51,7 @@ export default async function Category({ params }: CategoryProps) {
         ) : (
           <>
             <div className="flex items-center justify-center flex-wrap gap-4 mt-12 p-2 ">
-              {filteredPosts.map((post) => (
+              {posts.map((post) => (
                 <CardPosts
                   key={post.id}
                   author={post.author}
@@ -66,7 +63,6 @@ export default async function Category({ params }: CategoryProps) {
                 />
               ))}
             </div>
-            <PaginationPosts />
           </>
         )}
       </div>
