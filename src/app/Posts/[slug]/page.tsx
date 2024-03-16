@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { GET_DETAILS_POST } from '@/app/api/queries/GetDetailsPosts'
 import { Author } from '@/components/globals/author'
 import { Metadata } from 'next'
+import { SectionTitle } from '@/components/globals/SectionTitle'
 
 type PagePostProps = {
   params: {
@@ -60,7 +61,7 @@ export default async function PagePost({ params }: PagePostProps) {
             </Link>
           ))}
         </div>
-        <article className="mt-12 flex flex-col items-center justify-start w-full gap-10 p-2">
+        <article className="mt-12 flex flex-col items-center justify-start w-full gap-10 ">
           <div className="flex flex-col items-start justify-center w-full gap-5">
             <h1 className="text-primary md:text-5xl text-3xl font-bold mb-3">
               {post?.title}
@@ -104,9 +105,7 @@ export default async function PagePost({ params }: PagePostProps) {
         </article>
       </section>
       <section className="lg:col-span-4 flex flex-col items-center justify-center px-2 gap-5 mt-5 lg:mt-0 ">
-        <div className="w-[22.5rem] h-12 rounded-[10px] py-3   bg-primary flex items-center justify-center">
-          <h3 className="text-secondary font">Posts Relacionados</h3>
-        </div>
+        <SectionTitle title="Posts relacionados" />
         <div className="flex flex-col items-center justify-center space-y-5">
           {relatedPost.map((post) => (
             <SmallCard

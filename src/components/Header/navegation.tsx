@@ -14,6 +14,7 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
+import { usePathname } from 'next/navigation'
 
 const categorys: { title: string; href: string }[] = [
   {
@@ -47,6 +48,9 @@ const categorys: { title: string; href: string }[] = [
 ]
 
 export function Navigation() {
+  const pathName = usePathname()
+  console.log(pathName)
+
   return (
     <NavigationMenu>
       <NavigationMenuList>
