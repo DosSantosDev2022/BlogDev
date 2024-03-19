@@ -27,7 +27,7 @@ export default function RootLayout({
         className={`bg-secondary scrollbar scrollbar-thumb-slate-900  scrollbar-track-gray-100 ${font.className}`}
       >
         <Header />
-        <div className="">{children}</div>
+        <main className="">{children}</main>
         <Footer />
         <ToastContainer />
       </body>

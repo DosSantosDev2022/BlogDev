@@ -8,6 +8,7 @@ import { GET_DETAILS_POST } from '@/app/api/queries/GetDetailsPosts'
 import { Author } from '@/components/globals/author'
 import { Metadata } from 'next'
 import { SectionTitle } from '@/components/globals/SectionTitle'
+import { GET_ALL_POST } from '@/app/api/queries/GetAllPosts'
 
 type PagePostProps = {
   params: {
@@ -48,8 +49,8 @@ export default async function PagePost({ params }: PagePostProps) {
   ]
 
   return (
-    <main className="grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12 container mx-auto">
-      <section className="flex flex-col items-center justify-start lg:col-span-8 px-2 ">
+    <section className="grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12 container mx-auto">
+      <div className="flex flex-col items-center justify-start lg:col-span-8 px-2 ">
         <div className="w-full h-12 rounded-[10px] py-3 px-4 bg-primary flex gap-2 items-center">
           {Links.map((link) => (
             <Link
@@ -103,7 +104,7 @@ export default async function PagePost({ params }: PagePostProps) {
           </div>
           <ToShare />
         </article>
-      </section>
+      </div>
       <section className="lg:col-span-4 flex flex-col items-center justify-center px-2 gap-5 mt-5 lg:mt-0 ">
         <SectionTitle title="Posts relacionados" />
         <div className="flex flex-col items-center justify-center space-y-5">
@@ -119,6 +120,12 @@ export default async function PagePost({ params }: PagePostProps) {
           ))}
         </div>
       </section>
-    </main>
+    </section>
   )
+}
+
+export async function generateStaticParams() {
+  const { posts } = await GET_ALL_POST()
+
+  return posts
 }

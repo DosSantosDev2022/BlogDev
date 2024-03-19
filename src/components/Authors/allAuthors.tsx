@@ -1,5 +1,6 @@
 import { fetchHygraphQuery } from '@/app/api/fetchHygraph'
-import { AllAuthors } from '@/types/Iauthors'
+import type { AllAuthors } from '@/types/Iauthors'
+
 import { Author } from '../globals/author'
 import { SectionTitle } from '../globals/SectionTitle'
 
