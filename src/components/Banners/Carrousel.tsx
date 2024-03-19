@@ -5,8 +5,6 @@ import {
   Carousel,
   CarouselContent,
   CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
 } from '@/components/ui/carousel'
 import Autoplay from 'embla-carousel-autoplay'
 import Link from 'next/link'
@@ -61,8 +59,6 @@ export function BannerCarrousel({ featuredPosts }: BannerCarrouselProps) {
           </CarouselItem>
         ))}
       </CarouselContent>
-      <CarouselPrevious className="sm: hidden lg:flex" />
-      <CarouselNext className="sm: hidden lg:flex" />
     </Carousel>
   )
 }
