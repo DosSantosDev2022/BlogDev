@@ -3,6 +3,7 @@ import { AuthorBio } from './AuthorBio'
 import { AuthorCreateAd } from './AuthorCreateAd'
 import { AuthorName } from './AuthorName'
 import { AuthorRoot } from './AuthorRoot'
+import {AuthorLinks} from './AuthorLinks'
 
 export const Author = {
   Root: AuthorRoot,
@@ -10,4 +11,5 @@ export const Author = {
   Avatar: AuthorAvatar,
   CreateAd: AuthorCreateAd,
   Bio: AuthorBio,
+  Link: AuthorLinks
 }

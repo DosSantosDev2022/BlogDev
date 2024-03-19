@@ -15,6 +15,11 @@ const GetAuthors = async (): Promise<AllAuthors> => {
       photo {
         url
       }
+      authorlink {
+        id
+        link
+        linkIcon
+      }
     }
   }
   `
@@ -39,7 +44,13 @@ export async function AllAuthors() {
                 className="text-zinc-900 text-lg font-medium"
               />
               <Author.Bio text={author.bio.text} />
+              <div className='flex items-center gap-4'>
+                {author.authorlink.map((link) => (
+                  <Author.Link key={link.id} Url={link.link} icon={link.linkIcon} />
+                ))}
             </div>
+            </div>
+            
           </Author.Root>
         ))}
       </div>
