@@ -1,19 +1,20 @@
 interface AuthorLink {
-  id: string;
-  link: string;
-  linkIcon: string;
+  id: string
+  link: string
+  linkIcon: string
 }
 
 interface author {
   id: string
   name: string
+  career: string
   photo: {
     url: string
   }
   bio: {
     text: string
   }
-  authorlink : AuthorLink[]
+  authorlink: AuthorLink[]
 }
 
 export interface AllAuthors {

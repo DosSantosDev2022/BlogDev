@@ -10,6 +10,7 @@ const GetAuthors = async (): Promise<AllAuthors> => {
     authors(stage: PUBLISHED) {
       id
       name
+      career
       bio {
         text
       }
@@ -36,22 +37,26 @@ export async function AllAuthors() {
         {authors.map((author) => (
           <Author.Root
             key={author.id}
-            className="flex items-start justify-start gap-2 w-[22.5rem] border px-2 py-4 rounded-md"
+            className="flex items-start justify-start gap-2 w-[22.5rem] border px-4 py-2 rounded-md"
           >
             <Author.Avatar ImageProfile={author.photo.url} name={author.name} />
-            <div className="flex flex-col gap-1">
+            <div className="flex flex-col ">
               <Author.Name
                 nome={author.name}
-                className="text-zinc-900 text-lg font-medium"
+                className="text-zinc-900 text-lg font-bold"
               />
-              <Author.Bio text={author.bio.text} />
-              <div className='flex items-center gap-4'>
+              <Author.Carrer className="mb-2" text={author.career} />
+              <div className="flex items-center gap-4">
                 {author.authorlink.map((link) => (
-                  <Author.Link key={link.id} Url={link.link} icon={link.linkIcon} />
+                  <Author.Link
+                    key={link.id}
+                    Url={link.link}
+                    icon={link.linkIcon}
+                    className="hover:scale-105 duration-500 transition-all "
+                  />
                 ))}
+              </div>
             </div>
-            </div>
-            
           </Author.Root>
         ))}
       </div>

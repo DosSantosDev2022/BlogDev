@@ -6,5 +6,9 @@ interface AuthorNameProps {
 }
 
 export function AuthorName({ nome, className }: AuthorNameProps) {
-  return <h3 className={twMerge('text-slate-50 text-sm', className)}>{nome}</h3>
+  return (
+    <h3 className={twMerge('text-slate-50 text-sm font-bold', className)}>
+      {nome}
+    </h3>
+  )
 }

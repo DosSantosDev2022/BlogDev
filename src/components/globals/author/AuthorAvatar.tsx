@@ -19,7 +19,7 @@ export function AuthorAvatar({
       quality={100}
       src={ImageProfile}
       alt={name}
-      className={twMerge('rounded-full w-12 h-12 ', className)}
+      className={twMerge('rounded-full w-20 h-20 ', className)}
     />
   )
 }
