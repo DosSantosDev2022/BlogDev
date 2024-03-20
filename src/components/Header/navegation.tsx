@@ -14,42 +14,38 @@ import {
   NavigationMenuTrigger,
   navigationMenuTriggerStyle,
 } from '@/components/ui/navigation-menu'
-import { usePathname } from 'next/navigation'
-
-const categorys: { title: string; href: string }[] = [
-  {
-    title: 'Carreira',
-    href: '/Categorys/Carreira',
-  },
-  {
-    title: 'JavaScript',
-    href: '/Categorys/JavaScript',
-  },
-  {
-    title: 'Next Js',
-    href: '/Categorys/Next-Js',
-  },
-  {
-    title: 'Front-end',
-    href: '/Categorys/Front-End',
-  },
-  {
-    title: 'Back-end',
-    href: '/Categorys/Back-end',
-  },
-  {
-    title: 'React Js',
-    href: '/Categorys/React-Js',
-  },
-  {
-    title: 'HTML 5',
-    href: '/Categorys/HTML',
-  },
-]
 
 export function Navigation() {
-  const pathName = usePathname()
-  console.log(pathName)
+  const categorys: { title: string; href: string }[] = [
+    {
+      title: 'Carreira',
+      href: `/Categorys?query=Carreira`,
+    },
+    {
+      title: 'JavaScript',
+      href: '/Categorys?query=JavaScript',
+    },
+    {
+      title: 'Next Js',
+      href: '/Categorys?query=Next-Js',
+    },
+    {
+      title: 'Front-end',
+      href: '/Categorys?query=Front-End',
+    },
+    {
+      title: 'Back-end',
+      href: '/Categorys?query=Back-end',
+    },
+    {
+      title: 'React Js',
+      href: '/Categorys?query=React-Js',
+    },
+    {
+      title: 'HTML 5',
+      href: '/Categorys?query=HTML',
+    },
+  ]
 
   return (
     <NavigationMenu>

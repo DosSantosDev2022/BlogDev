@@ -10,11 +10,21 @@ export const GET_POSTS_BY_SEARCH = async (
       id
       slug
       title
+      createdAt
       coverImage {
         url
       }
+      author {
+        name
+        photo {
+          url
+        }
+      }
       tag {
         tagName
+        coverTag {
+          url
+        }
       }
       description
     }

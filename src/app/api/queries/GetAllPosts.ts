@@ -4,7 +4,7 @@ import { fetchHygraphQuery } from '../fetchHygraph'
 export const GET_ALL_POST = async (): Promise<PostsTypes> => {
   const query = `
   query GET_ALL_POST{
-    posts{
+    posts(first : 9999){
       id
       slug
       subtitle

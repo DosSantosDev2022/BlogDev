@@ -54,11 +54,11 @@ export default async function PagePost({ params }: PagePostProps) {
         <div className="w-full h-12 rounded-[10px] py-3 px-4 bg-primary flex gap-2 items-center">
           {Links.map((link) => (
             <Link
-              className="text-slate-50 font-light hover:underline"
+              className="text-slate-50 font-light hover:text-slate-400 duration-500 transition-all "
               href={link.Url}
               key={link.nome}
             >
-              {` ${link.nome}`}
+              {`${link.nome}`}
             </Link>
           ))}
         </div>
@@ -70,6 +70,7 @@ export default async function PagePost({ params }: PagePostProps) {
 
             <Author.Root>
               <Author.Avatar
+                className="w-20 h-20"
                 ImageProfile={post?.author.photo.url || ''}
                 name={post.author.name}
               />
