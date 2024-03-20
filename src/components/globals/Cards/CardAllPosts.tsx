@@ -36,13 +36,13 @@ export function CardAllPosts({
       }}
       className="lg:w-[700px] w-full flex flex-col lg:flex-row gap-8 border p-2 items-center"
     >
-      <div className="w-full h-full ">
+      <div className="w-full h-full relative ">
         <Image
-          className="rounded-md"
+          className="rounded-md "
+          fill
           src={coverImage.url}
+          objectFit='cover'
           alt={title}
-          width={400}
-          height={400}
           quality={100}
         />
       </div>
@@ -62,7 +62,7 @@ export function CardAllPosts({
             <Author.CreateAd CreateAd={createdAd} className="text-slate-400" />
           </div>
         </Author.Root>
-        <p className="text-sm font-light w-full">{description} </p>
+        <p className="text-sm font-light  text-limit" >{description} </p>
       </div>
     </Link>
   )
