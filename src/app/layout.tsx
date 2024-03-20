@@ -1,5 +1,5 @@
 import { Poppins } from 'next/font/google'
-import './globals.css'
+import '@/styles/globals.css'
 import Header from '@/components/Header'
 import { Footer } from '@/components/Footer'
 import { ToastContainer } from 'react-toastify'
@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <body
-        className={`bg-secondary scrollbar scrollbar-thumb-slate-900  scrollbar-track-gray-100 ${font.className}`}
+        className={`bg-secondary  ${font.className} scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar scrollbar-thumb-slate-700 scrollbar-track-slate-300 h-32 `}
       >
         <Header />
         <main className="">{children}</main>

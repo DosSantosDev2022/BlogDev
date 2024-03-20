@@ -28,5 +28,6 @@ export const GET_DETAILS_POST = async (): Promise<PostsTypes> => {
     }
   }
    `
+
   return fetchHygraphQuery(query)
 }
