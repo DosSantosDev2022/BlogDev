@@ -13,13 +13,14 @@ export function AuthorAvatar({
   className,
 }: AuthorAvatarProps) {
   return (
-    <Image
-      width={100}
-      height={100}
-      quality={100}
-      src={ImageProfile}
-      alt={name}
-      className={twMerge('rounded-full w-20 h-20 ', className)}
-    />
+    <div className={twMerge(`relative w-8 h-8`, className)}>
+      <Image
+        fill
+        quality={100}
+        src={ImageProfile}
+        alt={name}
+        className={twMerge('rounded-full object-cover', className)}
+      />
+    </div>
   )
 }

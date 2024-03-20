@@ -39,7 +39,11 @@ export async function AllAuthors() {
             key={author.id}
             className="flex items-start justify-start gap-2 w-[22.5rem] border px-4 py-2 rounded-md"
           >
-            <Author.Avatar ImageProfile={author.photo.url} name={author.name} />
+            <Author.Avatar
+              ImageProfile={author.photo.url}
+              name={author.name}
+              className="w-20 h-20"
+            />
             <div className="flex flex-col ">
               <Author.Name
                 nome={author.name}
