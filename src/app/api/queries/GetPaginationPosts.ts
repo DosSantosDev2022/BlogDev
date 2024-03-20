@@ -11,6 +11,7 @@ export const GET_PAGINATION_POSTS = async (
       id
       slug
       subtitle
+      description
       title
       createdAt
       coverImage {
@@ -27,11 +28,18 @@ export const GET_PAGINATION_POSTS = async (
       }
       destaque
     }
+    postsConnection {
+      aggregate {
+        count
+      }
+    }
   }
 
   `
 
   const skip = (page - 1) * pageSize
   const variables = { first: pageSize, skip }
-  return fetchHygraphQuery(query, variables)
+  const { posts, postsConnection } = await fetchHygraphQuery(query, variables)
+  const totalCount = postsConnection.aggregate.count
+  return { posts, totalCount }
 }

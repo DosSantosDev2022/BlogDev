@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 }
 
 interface AllPostsPageProps {
-  searchParams?: { page?: number; first?: number }
+  searchParams?: { page?: number; first?: number; total: number }
 }
 
 export default async function AllPostsPage({
@@ -21,8 +21,8 @@ export default async function AllPostsPage({
   const page = Number(searchParams?.page) || 1
   const first = Number(searchParams?.first) || 10
 
-  const { posts } = await GET_PAGINATION_POSTS(page, first)
-  console.log(first)
+  const { posts, totalCount } = await GET_PAGINATION_POSTS(page, first)
+
   return (
     <main className="flex flex-col">
       <div className="container mx-auto grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12 ">
@@ -34,7 +34,7 @@ export default async function AllPostsPage({
           </div>
           <NavFilter />
           <div className="border  w-full p-2 ">
-            <div className="flex flex-wrap justify-start gap-6 p-2">
+            <div className="flex flex-col justify-start gap-6 p-2">
               {posts?.map((post) => (
                 <CardAllPosts
                   description={post.description}
@@ -49,7 +49,7 @@ export default async function AllPostsPage({
               ))}
             </div>
 
-            <Pagination page={page} limit={first} total={50} />
+            <Pagination page={page} limit={first} total={totalCount} />
           </div>
         </div>
         <div className=" lg:col-span-4 flex flex-col items-center justify-center gap-5 mt-5 lg:mt-0 "></div>

@@ -1,14 +1,14 @@
 import Image from 'next/image'
 import { TagsPost } from './tags'
+import { Author } from '../author'
 import Link from 'next/link'
-import { Button } from '../../ui/button'
 
 interface CardPostsProps {
   title: string
   tag: string
   slug: string
-  description: string
   createdAd: string
+  description: string
   coverImage: {
     url: string
   }
@@ -26,32 +26,44 @@ export function CardAllPosts({
   tag,
   title,
   description,
+  createdAd,
+  author,
 }: CardPostsProps) {
   return (
-    <div className="w-[372px] h-[450] flex flex-col items-start justify-start border rounded-sm shadow-sm space-y-2 ">
-      <Image
-        src={coverImage.url}
-        alt={title}
-        width={400}
-        height={400}
-        quality={100}
-      />
-      <div className="flex flex-col items-start p-2 w-full">
+    <Link
+      href={{
+        pathname: `/Posts/${slug}`,
+      }}
+      className="lg:w-[700px] w-full flex flex-col lg:flex-row gap-8 border p-2 items-center"
+    >
+      <div className="w-full h-full ">
+        <Image
+          className="rounded-md"
+          src={coverImage.url}
+          alt={title}
+          width={400}
+          height={400}
+          quality={100}
+        />
+      </div>
+      <div className="flex flex-col items-start p-2 w-full space-y-2">
         <TagsPost tagName={tag} />
-        <h4 className="font-semibold h-14 w-full flex items-center mt-2">
+        <h4 className="font-semibold  w-full flex items-center mt-2">
           {title}
         </h4>
+        <Author.Root>
+          <Author.Avatar
+            className="w-8 h-8"
+            ImageProfile={author.photo.url}
+            name={author.name}
+          />
+          <div className="flex- flex-col gap-1">
+            <Author.Name nome={author.name} className="text-slate-900" />
+            <Author.CreateAd CreateAd={createdAd} className="text-slate-400" />
+          </div>
+        </Author.Root>
         <p className="text-sm font-light w-full">{description} </p>
-        <Button variant={'default'} asChild>
-          <Link
-            href={{
-              pathname: `/Posts/${slug}`,
-            }}
-          >
-            Ver Mais
-          </Link>
-        </Button>
       </div>
-    </div>
+    </Link>
   )
 }

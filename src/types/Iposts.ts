@@ -42,6 +42,7 @@ export interface Post {
 
 export interface PostsTypes {
   posts: Post[]
+  totalCount: number
 }
 
 export interface relatedPost {
