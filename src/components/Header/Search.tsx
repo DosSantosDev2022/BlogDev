@@ -17,7 +17,7 @@ export function InputSearch() {
       params.delete('query')
     }
 
-    push(`search/?${params.toString()}`)
+    push(`/search/?${params.toString()}`)
     console.log(term)
   }
 
