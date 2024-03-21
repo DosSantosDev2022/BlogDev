@@ -42,7 +42,7 @@ export default async function SearchPostsResult({
           <></>
         )}
 
-        <div className="flex flex-col items-center justify-center gap-2 py-2 px-3 mt-7 ">
+        <div className="flex flex-col items-start justify-center gap-2 py-2 px-3 mt-7 w-full ">
           <h2 className="text-4xl font-semibold ">
             {`Resultado da busca para  ${searchParams?.query}`}
           </h2>
