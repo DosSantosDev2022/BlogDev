@@ -28,7 +28,7 @@ export default async function SearchPostsResult({
 
   return (
     <main className="grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12 container mx-auto">
-      <div className="flex flex-col items-center justify-center lg:col-span-8 gap-5 ">
+      <div className="flex flex-col items-center justify-center lg:col-span-7 gap-5 ">
         {postCover ? (
           <div className=" relative w-full lg:h-[320px] h-[220px] p-4 gap-3 rounded-md">
             <Image
@@ -42,8 +42,8 @@ export default async function SearchPostsResult({
           <></>
         )}
 
-        <div className="flex flex-col items-start justify-center gap-2 py-2 px-3 mt-7 w-full ">
-          <h2 className="text-4xl font-semibold ">
+        <div className="py-2 border-b border-slate-900 flex items-start justify-start w-full ">
+          <h2 className="text-2xl font-medium">
             {`Resultado da busca para  ${searchParams?.query}`}
           </h2>
         </div>
@@ -74,7 +74,7 @@ export default async function SearchPostsResult({
         </div>
         {/* <Pagination /> */}
       </div>
-      <div className=" lg:col-span-4 flex flex-col items-center justify-center gap-5 mt-5 lg:mt-0 "></div>
+      <div className=" lg:col-span-5 flex flex-col items-center justify-center gap-5 mt-5 lg:mt-0 "></div>
     </main>
   )
 }
