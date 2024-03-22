@@ -3,7 +3,7 @@ import { CardPosts } from '../globals/Cards/Card'
 import Link from 'next/link'
 import { CardSkeleton } from '../Loading/CardSkeleton'
 import { Button } from '../ui/button'
-import { SectionTitle } from '../globals/SectionTitle'
+import { TitleSection } from '../globals/titleSection'
 
 interface MostViewedPostProps {
   posts: PostsTypes['posts']
@@ -12,9 +12,9 @@ interface MostViewedPostProps {
 export function MostViewedPost({ posts }: MostViewedPostProps) {
   return (
     <div className="w-full flex flex-col lg:items-start items-center justify-center">
-      <SectionTitle title="Posts mais vistos" />
+      <TitleSection title="Mais vistos"/>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-2 mt-10 mb-10 items-center justify-center gap-4">
+      <div className="grid md:grid-cols-2 lg:grid-cols-2 mt-3 mb-10 items-center justify-center gap-4">
         {posts ? (
           posts.map((post) => (
             <CardPosts

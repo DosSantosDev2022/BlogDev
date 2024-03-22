@@ -7,8 +7,8 @@ import Link from 'next/link'
 import { GET_DETAILS_POST } from '@/app/api/queries/GetDetailsPosts'
 import { Author } from '@/components/globals/author'
 import { Metadata } from 'next'
-import { SectionTitle } from '@/components/globals/SectionTitle'
 import { GET_ALL_POST } from '@/app/api/queries/GetAllPosts'
+import { TitleSection } from '@/components/globals/titleSection'
 
 type PagePostProps = {
   params: {
@@ -106,8 +106,8 @@ export default async function PagePost({ params }: PagePostProps) {
           <ToShare />
         </article>
       </div>
-      <section className="lg:col-span-4 flex flex-col items-center justify-center px-2 gap-5 mt-5 lg:mt-0 ">
-        <SectionTitle title="Posts relacionados" />
+      <section className="lg:col-span-4 flex flex-col items-start justify-center px-2 gap-5 mt-5 lg:mt-0 ">
+        <TitleSection title='Relacionados'/>
         <div className="flex flex-col items-center justify-center space-y-5">
           {relatedPost.map((post) => (
             <SmallCard
