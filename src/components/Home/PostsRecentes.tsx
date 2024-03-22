@@ -1,6 +1,6 @@
 import { PostsTypes } from "@/types/Iposts"
 import { CardAllPosts } from "../globals/Cards/CardAllPosts"
-import { TitleSection } from "../globals/titleSection"
+import { TitleSection } from "../globals/TitleSection"
 
 interface RecentPostsProps {
   posts: PostsTypes['posts']
@@ -16,7 +16,10 @@ export  function RecentPosts2({posts} : RecentPostsProps) {
     <div className="w-full flex p-10 items-start justify-between gap-2 border ">
         
             <div className="w-full">
-              <TitleSection title="Recentes"/>
+            <TitleSection.Root>
+              <TitleSection.Highlight text='Posts'  />
+              <TitleSection.Span text='recentes'/>
+            </TitleSection.Root>
               <div className="flex flex-wrap gap-2">
               {recentPosts.map((post) => (
                 <CardAllPosts
@@ -35,8 +38,10 @@ export  function RecentPosts2({posts} : RecentPostsProps) {
             </div>
           
             <div className="" >
-            <TitleSection title="Populares"/>
-              
+              <TitleSection.Root>
+                <TitleSection.Highlight text='Posts'  />
+                <TitleSection.Span text='recentes'/>
+              </TitleSection.Root>
             </div>
         
     </div>

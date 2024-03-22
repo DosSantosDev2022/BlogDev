@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { SectionTitle } from '../globals/SectionTitle'
+import { TitleSection } from '../globals//TitleSection'
 
 export function NavCategorys() {
   const categorys = [
@@ -10,12 +10,15 @@ export function NavCategorys() {
     { label: 'Carreira', href: '/Categorys/Carreira' },
   ]
   return (
-    <div className="w-full h-auto flex flex-col items-center justify-center gap-2 p-2">
-      <SectionTitle title="Categorias" />
-      <div className="flex flex-wrap mt-5  gap-2  items-center justify-center lg:w-[22.5rem]">
+    <div className="w-full h-auto flex flex-col items-start justify-center gap-1 p-2 bg-slate-50">
+      <TitleSection.Root>
+        <TitleSection.Highlight text='Posts'  />
+        <TitleSection.Span text='por categorias'/>
+      </TitleSection.Root>
+      <div className="flex flex-wrap mt-5  gap-2  items-center justify-center w-full">
         {categorys.map((category) => (
           <ul key={category.label}>
-            <li className=" cursor-pointer border w-24 rounded-md shadow-sm p-2 text-center hover:bg-slate-100 transition-all">
+            <li className=" cursor-pointer border  rounded-md shadow-sm px-5 py-[10px] text-center hover:bg-slate-100 transition-all">
               <Link className="text-sm" href={category.href}>
                 {category.label}
               </Link>
