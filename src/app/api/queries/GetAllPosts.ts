@@ -8,6 +8,7 @@ export const GET_ALL_POST = async (): Promise<PostsTypes> => {
       id
       slug
       subtitle
+      description
       title
       createdAt
       coverImage {
