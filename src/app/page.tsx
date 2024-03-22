@@ -7,6 +7,7 @@ import { PopularPosts } from '@/components/Home/PopularPosts'
 import { BannerCarrousel } from '@/components/Banners/Carrousel'
 import { GET_ALL_POST } from './api/queries/GetAllPosts'
 import { BannerSkeleton } from '@/components/Loading/BannerSkeleton'
+import { RecentPosts2 } from '@/components/Home/PostsRecentes'
 
 export const metadata: Metadata = {
   title: 'Home | Blog Dev',
@@ -29,12 +30,14 @@ export default async function Home() {
           </>
         )}
       </div>
+      <RecentPosts2 posts={posts} />
       <div className="grid  lg:grid-cols-12 gap-1 items-start justify-center p-6 mt-12 mb-12">
-        <section className="flex flex-col items-center justify-start lg:col-span-8 gap-5 p-4 ">
+        <section className="flex flex-col items-start justify-start lg:col-span-8 gap-5 p-4 ">
+          
           <RecentPosts posts={posts} />
           {/* Componente de posts recentes */}
 
-          <div className="lg:w-[43.75rem] bg-slate-300 h-36">publicidade</div>
+          <div className="lg:w-[41rem] bg-slate-300 h-36">publicidade</div>
           <MostViewedPost posts={posts} />
           {/* Componente de posts mais vistos */}
         </section>
