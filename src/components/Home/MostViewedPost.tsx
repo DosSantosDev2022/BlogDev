@@ -13,8 +13,8 @@ export function MostViewedPost({ posts }: MostViewedPostProps) {
   return (
     <div className="w-full flex flex-col lg:items-start items-center justify-center">
       <TitleSection.Root>
-        <TitleSection.Highlight text='Posts'  />
-        <TitleSection.Span text='mais vistos'/>
+        <TitleSection.Highlight text="Posts" />
+        <TitleSection.Span text="mais vistos" />
       </TitleSection.Root>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-2 mt-3 mb-10 items-center justify-center gap-4">

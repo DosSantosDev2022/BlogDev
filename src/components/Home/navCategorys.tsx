@@ -12,8 +12,8 @@ export function NavCategorys() {
   return (
     <div className="w-full h-auto flex flex-col items-start justify-center gap-1 p-2 bg-slate-50">
       <TitleSection.Root>
-        <TitleSection.Highlight text='Posts'  />
-        <TitleSection.Span text='por categorias'/>
+        <TitleSection.Highlight text="Posts" />
+        <TitleSection.Span text="por categorias" />
       </TitleSection.Root>
       <div className="flex flex-wrap mt-5  gap-2  items-center justify-center w-full">
         {categorys.map((category) => (

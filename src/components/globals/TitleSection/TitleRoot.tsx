@@ -1,9 +1,5 @@
-
-
-export function TitleRoot({children} : { children: React.ReactNode }) {
+export function TitleRoot({ children }: { children: React.ReactNode }) {
   return (
-    <div className="mb-3 p-1 border flex items-center gap-2">
-      {children}
-    </div>
+    <div className="mb-3 p-1 border flex items-center gap-2">{children}</div>
   )
 }
