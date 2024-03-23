@@ -12,7 +12,7 @@ export function RecentPosts2({ posts }: RecentPostsProps) {
   const sortedPosts = posts.sort(
     (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
   )
-  const recentPosts = sortedPosts.slice(0, 4)
+  const recentPosts = sortedPosts.slice(0, 6)
   return (
     <div className="w-full flex p-10 items-start justify-between gap-2 border ">
       <div className="w-full">
@@ -20,9 +20,9 @@ export function RecentPosts2({ posts }: RecentPostsProps) {
           <TitleSection.Highlight text="Posts" />
           <TitleSection.Span text="recentes" />
         </TitleSection.Root>
-        <div className="grid grid-cols-2 gap-2 overflow-y-auto max-h-[250px] scrollbar-thin scrollbar-track-transparent ">
+        <div className="grid grid-cols-2 gap-4 p-2 overflow-y-auto max-h-[250px] scrollbar-thin scrollbar-track-transparent ">
           {recentPosts.map((post) => (
-            <CardMain.Root className="" slug={post.slug} key={post.id}>
+            <CardMain.Root slug={post.slug} key={post.id}>
               <CardMain.Image title={post.title} coverImage={post.coverImage} />
               <CardMain.Content>
                 <TagsPost tagName={post.tag.tagName} />
@@ -44,11 +44,15 @@ export function RecentPosts2({ posts }: RecentPostsProps) {
                     />
                   </div>
                 </Author.Root>
-                <CardMain.Description description={post.description} />
+                <CardMain.Description
+                  className="text-xs"
+                  description={post.description}
+                />
               </CardMain.Content>
             </CardMain.Root>
           ))}
         </div>
+        <div className="w-full border mt-6 h-screen bg-zinc-400">a</div>
       </div>
 
       <div className="">
@@ -57,7 +61,7 @@ export function RecentPosts2({ posts }: RecentPostsProps) {
           <TitleSection.Span text="recentes" />
         </TitleSection.Root>
 
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 bg-slate-50 p-2">
           {recentPosts.map((post) => (
             <CardMain.Root className="" slug={post.slug} key={post.id}>
               <CardMain.Content>

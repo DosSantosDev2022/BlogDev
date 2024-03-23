@@ -4,7 +4,7 @@ import { twMerge } from 'tailwind-merge'
 
 interface CardRootProps {
   children: ReactNode
-  className: string
+  className?: string
   slug: string
 }
 
