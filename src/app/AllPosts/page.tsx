@@ -37,6 +37,7 @@ export default async function AllPostsPage({
             <div className="flex flex-col justify-start gap-6 p-2">
               {posts?.map((post) => (
                 <CardAllPosts
+                  className=""
                   description={post.description}
                   key={post.id}
                   author={post.author}

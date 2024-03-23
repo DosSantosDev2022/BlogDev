@@ -2,9 +2,9 @@ import Image from 'next/image'
 import { TagsPost } from './tags'
 import { Author } from '../author'
 import Link from 'next/link'
-import {twMerge} from 'tailwind-merge'
+import { twMerge } from 'tailwind-merge'
 interface CardPostsProps {
-  className?: string
+  className: string
   title: string
   tag: string
   slug: string
@@ -29,22 +29,24 @@ export function CardAllPosts({
   description,
   createdAd,
   author,
-  className
-  
+  className,
 }: CardPostsProps) {
   return (
     <Link
       href={{
         pathname: `/Posts/${slug}`,
       }}
-      className={twMerge(`lg:w-[700px] w-full flex flex-col lg:flex-row gap-8 border p-2 items-center`, className)}
+      className={twMerge(
+        `lg:w-[700px] w-full flex flex-col lg:flex-row gap-8 border p-2 items-center`,
+        className,
+      )}
     >
       <div className="w-full h-full relative ">
         <Image
           className="rounded-md "
           fill
           src={coverImage.url}
-          objectFit='cover'
+          objectFit="cover"
           alt={title}
           quality={100}
         />
@@ -65,7 +67,7 @@ export function CardAllPosts({
             <Author.CreateAd CreateAd={createdAd} className="text-slate-400" />
           </div>
         </Author.Root>
-        <p className="text-sm font-light  text-limit" >{description} </p>
+        <p className="text-sm font-light  text-limit">{description} </p>
       </div>
     </Link>
   )
