@@ -30,7 +30,7 @@ export default async function Home() {
           </>
         )}
       </div>
-      <RecentPosts2 posts={posts} />
+      <RecentPosts2 posts={posts} /> // add comentário para testar branch
       <div className="grid  lg:grid-cols-12 gap-1 items-start justify-center p-6 mt-12 mb-12">
         <section className="flex flex-col items-start justify-start lg:col-span-8 gap-5 p-4 ">
           <RecentPosts posts={posts} />
