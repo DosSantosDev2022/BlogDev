@@ -1,6 +1,7 @@
 import Link from 'next/link'
 import { TagsPost } from './tags'
 import { Author } from '@/components/globals/author'
+import { twMerge } from 'tailwind-merge'
 
 interface CardPostsProps {
   title: string
@@ -16,6 +17,7 @@ interface CardPostsProps {
       url: string
     }
   }
+  className?: string
 }
 
 export function CardPosts({
@@ -25,6 +27,7 @@ export function CardPosts({
   slug,
   tag,
   title,
+  className,
 }: CardPostsProps) {
   return (
     <Link
@@ -32,7 +35,12 @@ export function CardPosts({
         pathname: `/Posts/${slug}`,
       }}
     >
-      <div className=" w-[20rem] h-[24.75rem]  rounded-md  shadow-md overflow-hidden">
+      <div
+        className={twMerge(
+          `w-[20rem] h-[24.75rem]  rounded-md  shadow-md overflow-hidden`,
+          className,
+        )}
+      >
         <div
           className="flex flex-col justify-end h-full p-4 gap-3 rounded-md bg-center  bg-cover  bg-no-repeat hover:scale-105 transition-all duration-500 "
           style={{

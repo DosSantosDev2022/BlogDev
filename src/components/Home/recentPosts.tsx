@@ -22,7 +22,7 @@ export function RecentPosts({ posts }: RecentPostsProps) {
       </TitleSection.Root>
       <div className="grid md:grid-cols-2 lg:grid-cols-2 mt-3 mb-10 items-center justify-center gap-4">
         {recentPosts ? (
-          recentPosts.map((post) => (
+          recentPosts.map((post, index) => (
             <CardPosts
               key={post.id}
               author={post.author}
@@ -31,6 +31,7 @@ export function RecentPosts({ posts }: RecentPostsProps) {
               tag={post.tag.tagName}
               slug={post.slug}
               createdAd={post.createdAt}
+              className={index === 0 ? 'col-span-2 w-full' : 'col-span-1 '}
             />
           ))
         ) : (
