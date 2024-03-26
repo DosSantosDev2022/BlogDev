@@ -1,7 +1,6 @@
 import { PostsTypes } from '@/types/Iposts'
 import { CardPosts } from '../globals/Cards/Card'
 import Link from 'next/link'
-import { CardSkeleton } from '../Loading/CardSkeleton'
 import { Button } from '../ui/button'
 import { TitleSection } from '../globals/TitleSection'
 
@@ -21,24 +20,18 @@ export function RecentPosts({ posts }: RecentPostsProps) {
         <TitleSection.Span text="recentes" />
       </TitleSection.Root>
       <div className="grid md:grid-cols-2 lg:grid-cols-2 mt-3 mb-10 items-center justify-center gap-4">
-        {recentPosts ? (
-          recentPosts.map((post, index) => (
-            <CardPosts
-              key={post.id}
-              author={post.author}
-              coverImage={post.coverImage}
-              title={post.title}
-              tag={post.tag.tagName}
-              slug={post.slug}
-              createdAd={post.createdAt}
-              className={index === 0 ? 'col-span-2 w-full' : 'col-span-1 '}
-            />
-          ))
-        ) : (
-          <>
-            <CardSkeleton />
-          </>
-        )}
+        {recentPosts.map((post, index) => (
+          <CardPosts
+            key={post.id}
+            author={post.author}
+            coverImage={post.coverImage}
+            title={post.title}
+            tag={post.tag.tagName}
+            slug={post.slug}
+            createdAd={post.createdAt}
+            className={index === 0 ? 'col-span-2 ' : ''}
+          />
+        ))}
       </div>
       <div className="lg:w-[41rem] flex items-center justify-end">
         <Button asChild>

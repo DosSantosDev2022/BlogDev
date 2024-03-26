@@ -4,7 +4,6 @@ import type { AllAuthors } from '@/types/Iauthors'
 import { Author } from '../globals/author'
 import { TitleSection } from '../globals/TitleSection'
 
-
 const GetAuthors = async (): Promise<AllAuthors> => {
   const query = `
   query GetAllAuthors {
@@ -34,8 +33,8 @@ export async function AllAuthors() {
   return (
     <div className="w-full h-auto flex flex-col items-start justify-center gap-1 p-2 bg-slate-50">
       <TitleSection.Root>
-        <TitleSection.Highlight text='Nossos'  />
-        <TitleSection.Span text='Autores'/>
+        <TitleSection.Highlight text="Nossos" />
+        <TitleSection.Span text="Autores" />
       </TitleSection.Root>
       <div className="flex flex-col items-start justify-center space-y-5 p-2 w-full">
         {authors.map((author) => (
