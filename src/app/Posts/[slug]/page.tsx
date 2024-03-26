@@ -100,7 +100,25 @@ export default async function PagePost({ params }: PagePostProps) {
             )}
           </div>
           <div className="w-full p-2 text-slate-600 space-y-5">
-            <RichText content={post?.content.raw} />
+            <RichText
+              content={post?.content.raw}
+              renderers={{
+                bold: ({ children }) => (
+                  <b className="text-primary font-bold text-2xl">{children} </b>
+                ),
+                p: ({ children }) => (
+                  <p className="font-light mt-4 text-slate-700">{children}</p>
+                ),
+                code_block: ({ children }) => (
+                  <pre className="bg-gray-100 p-4 rounded-md overflow-x-auto w-full">
+                    <code className="text-primary">{children}</code>
+                  </pre>
+                ),
+                ul: ({ children }) => (
+                  <ul className="list-disc list-inside">{children}</ul>
+                ),
+              }}
+            />
           </div>
           <ToShare />
         </article>
