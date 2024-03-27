@@ -6,7 +6,6 @@ import { MostViewedPost } from '@/components/Home/MostViewedPost'
 import { PopularPosts } from '@/components/Home/PopularPosts'
 import { BannerCarrousel } from '@/components/Banners/Carrousel'
 import { GET_ALL_POST } from './api/queries/GetAllPosts'
-import { BannerSkeleton } from '@/components/Loading/BannerSkeleton'
 import { RecentPosts2 } from '@/components/Home/PostsRecentes'
 
 export const metadata: Metadata = {
@@ -22,13 +21,7 @@ export default async function Home() {
   return (
     <main>
       <div className="w-full flex items-center justify-center">
-        {featuredPosts.length > 0 ? (
-          <BannerCarrousel featuredPosts={featuredPosts} />
-        ) : (
-          <>
-            <BannerSkeleton />
-          </>
-        )}
+        <BannerCarrousel featuredPosts={featuredPosts} />
       </div>
       <RecentPosts2 posts={posts} />
       <div className="grid  lg:grid-cols-12 gap-1 items-start justify-center p-6 mt-12 mb-12">

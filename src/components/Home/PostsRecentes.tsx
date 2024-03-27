@@ -23,7 +23,10 @@ export function RecentPosts2({ posts }: RecentPostsProps) {
         <div className="grid grid-cols-2 gap-4 p-2 overflow-y-auto max-h-[250px] scrollbar-thin scrollbar-track-transparent ">
           {recentPosts.map((post) => (
             <CardMain.Root slug={post.slug} key={post.id}>
-              <CardMain.Image title={post.title} coverImage={post.coverImage} />
+              <CardMain.Image
+                title={post.title}
+                coverImage={post.coverImage.url}
+              />
               <CardMain.Content>
                 <TagsPost tagName={post.tag.tagName} />
                 <CardMain.Title className="text-xs" title={post.title} />
