@@ -107,20 +107,23 @@ export default async function PagePost({ params }: PagePostProps) {
                   <b className="text-primary font-bold text-2xl">{children} </b>
                 ),
                 p: ({ children }) => (
-                  <p className="font-light mt-4 text-slate-700">{children}</p>
+                  <p className="font-light mt-4 text-primary">{children}</p>
                 ),
                 code_block: ({ children }) => (
-                  <pre className="bg-gray-100 p-4 rounded-md overflow-x-auto w-full">
-                    <code className="text-primary">{children}</code>
+                  <pre className="bg-gray-900 p-4 rounded-md overflow-x-auto w-full">
+                    <code className="text-primary-foreground ">{children}</code>
                   </pre>
                 ),
                 ul: ({ children }) => (
-                  <ul className="list-disc list-inside">{children}</ul>
+                  <ul className="list-disc p-2 ">{children}</ul>
+                ),
+                li: ({ children }) => (
+                  <li className="mb-2 text-start">{children}</li>
                 ),
               }}
             />
           </div>
-          <ToShare />
+          <ToShare slug={params.slug} title={post.title} />
         </article>
       </div>
       <section className="lg:col-span-4 flex flex-col items-start justify-center px-2 gap-5 mt-5 lg:mt-0 ">
