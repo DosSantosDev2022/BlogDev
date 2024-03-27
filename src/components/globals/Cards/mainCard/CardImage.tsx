@@ -7,14 +7,13 @@ interface CardImageProps {
 
 export function CardImage({ coverImage, title }: CardImageProps) {
   return (
-    <div className="w-full h-full relative ">
+    <div className="w-full h-[250px]  relative ">
       <Image
-        className="rounded-md  "
+        className="rounded-md object-cover "
         fill
         src={coverImage}
         alt={title}
         quality={100}
-        style={{ objectFit: 'cover', position: 'absolute' }}
       />
     </div>
   )

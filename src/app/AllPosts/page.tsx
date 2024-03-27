@@ -1,4 +1,3 @@
-import { NavFilter } from './navFilter'
 import { Metadata } from 'next'
 
 import { Pagination } from '@/components/globals/Pagination/Pagination'
@@ -34,7 +33,7 @@ export default async function AllPostsPage({
               Aprenda o melhor do mundo da programação aqui no BlogDev.
             </h2>
           </div>
-          <NavFilter />
+
           <div className="  w-full p-2 ">
             <div className="flex flex-col justify-start gap-6  ">
               {posts.map((post) => (
