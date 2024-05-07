@@ -103,15 +103,31 @@ export default async function PagePost({ params }: PagePostProps) {
             <RichText
               content={post?.content.raw}
               renderers={{
+                h1: ({ children }) => (
+                  <h1 className="text-primary font-bold text-4xl">
+                    {children}
+                  </h1>
+                ),
+                h2: ({ children }) => (
+                  <h2 className="text-primary font-bold text-2xl">
+                    {children}
+                  </h2>
+                ),
+                h3: ({ children }) => (
+                  <h3 className="text-primary font-bold text-xl">{children}</h3>
+                ),
+                h4: ({ children }) => (
+                  <h4 className="text-primary font-bold text-lg">{children}</h4>
+                ),
                 bold: ({ children }) => (
-                  <b className="text-primary font-bold text-2xl">{children} </b>
+                  <b className="text-primary font-bold">{children} </b>
                 ),
                 p: ({ children }) => (
                   <p className="font-light mt-4 text-primary">{children}</p>
                 ),
                 code_block: ({ children }) => (
-                  <pre className="bg-gray-900 p-4 rounded-md overflow-x-auto w-full">
-                    <code className="text-primary-foreground ">{children}</code>
+                  <pre className="bg-primary  p-4 rounded-md overflow-x-auto w-full">
+                    <code className="text-secondary">{children}</code>
                   </pre>
                 ),
                 ul: ({ children }) => (
