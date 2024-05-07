@@ -5,7 +5,7 @@ import { Pagination } from '@/components/globals/Pagination/Pagination'
 import { GET_PAGINATION_POSTS } from '../api/queries/GetPaginationPosts'
 import { CardMain } from '@/components/globals/Cards/mainCard'
 import { TagsPost } from '@/components/globals/Cards/tags'
-import { Author } from '@/components/globals/author'
+import { Author } from '@/components/Authors/author'
 
 export const metadata: Metadata = {
   title: 'Blog Dev | Todos os posts',

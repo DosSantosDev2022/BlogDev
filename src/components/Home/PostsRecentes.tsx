@@ -2,25 +2,25 @@ import { PostsTypes } from '@/types/Iposts'
 import { TitleSection } from '../globals/TitleSection'
 import { CardMain } from '../globals/Cards/mainCard'
 import { TagsPost } from '../globals/Cards/tags'
-import { Author } from '../globals/author'
+import { Author } from '@/components/Authors/author'
 
 interface RecentPostsProps {
   posts: PostsTypes['posts']
 }
 
-export function RecentPosts2({ posts }: RecentPostsProps) {
+export function PostsRecentes({ posts }: RecentPostsProps) {
   const sortedPosts = posts.sort(
     (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
   )
   const recentPosts = sortedPosts.slice(0, 6)
   return (
-    <div className="w-full flex p-10 items-start justify-between gap-2 border ">
+    <div className="w-full flex lg:flex-row flex-col lg:p-10 p-5 items-start justify-between gap-2 bg-slate-50  ">
       <div className="w-full">
         <TitleSection.Root>
           <TitleSection.Highlight text="Posts" />
           <TitleSection.Span text="recentes" />
         </TitleSection.Root>
-        <div className="grid grid-cols-2 gap-4 p-2 overflow-y-auto max-h-[250px] scrollbar-thin scrollbar-track-transparent ">
+        <div className="grid lg:grid-cols-2 grid-cols-1 gap-4 p-2 overflow-y-auto max-h-[380px] scrollbar-thin scrollbar-track-transparent ">
           {recentPosts.map((post) => (
             <CardMain.Root slug={post.slug} key={post.id}>
               <CardMain.Image
@@ -55,16 +55,15 @@ export function RecentPosts2({ posts }: RecentPostsProps) {
             </CardMain.Root>
           ))}
         </div>
-        <div className="w-full border mt-6 h-screen bg-zinc-400">a</div>
       </div>
 
-      <div className="">
+      <div className="lg:w-[400px] w-full ">
         <TitleSection.Root>
           <TitleSection.Highlight text="Posts" />
-          <TitleSection.Span text="recentes" />
+          <TitleSection.Span text="mais curtidos" />
         </TitleSection.Root>
 
-        <div className="flex flex-col gap-2 bg-slate-50 p-2">
+        <div className="flex flex-col gap-2 overflow-y-auto bg-slate-50 p-2 max-h-[380px] scrollbar-thin scrollbar-track-transparent ">
           {recentPosts.map((post) => (
             <CardMain.Root className="" slug={post.slug} key={post.id}>
               <CardMain.Content>

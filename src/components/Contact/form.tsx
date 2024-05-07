@@ -10,7 +10,7 @@ const regexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/
 const zodSchemaForm = z.object({
   name: z
     .string()
-    .nonempty('O nome é obrigatório')
+    .min(3, 'O nome é obrigatório')
     .min(10, 'Digite o nome completo'),
   email: z
     .string()

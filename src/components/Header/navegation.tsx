@@ -19,7 +19,7 @@ export function Navigation() {
   const categorys: { title: string; href: string }[] = [
     {
       title: 'Carreira',
-      href: `/Categorys?query=Carreira`,
+      href: `/Categorys/?query=Carreira`,
     },
     {
       title: 'JavaScript',

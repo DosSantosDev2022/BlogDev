@@ -8,8 +8,8 @@ import {
 } from '@/components/ui/carousel'
 import Autoplay from 'embla-carousel-autoplay'
 import Link from 'next/link'
-import { TagsPost } from '../globals/Cards/tags'
-import { Author } from '../globals/author'
+import { TagsPost } from '@/components/globals/Cards/tags'
+import { Author } from '@/components/Authors/author'
 import { Post } from '@/types/Iposts'
 
 interface BannerCarrouselProps {
@@ -27,7 +27,7 @@ export function BannerCarrousel({ featuredPosts }: BannerCarrouselProps) {
           <CarouselItem key={index}>
             <Link
               href={{
-                pathname: `/Posts/${post.slug}`,
+                pathname: `/Post/${post.slug}`,
               }}
             >
               <div className="w-full  lg:h-[550px] h-[250px]  rounded-md  shadow-md ">

@@ -12,7 +12,7 @@ export function CardRoot({ children, className, slug }: CardRootProps) {
   return (
     <Link
       href={{
-        pathname: `/Posts/${slug}`,
+        pathname: `/Post/${slug}`,
       }}
       className={twMerge(
         ` w-full flex flex-col lg:flex-row gap-8 border p-2 items-center`,

@@ -3,7 +3,7 @@ import { CardAllPostSkeleton } from '@/components/Loading/CardAllPostSkeleton'
 import Image from 'next/image'
 import { CardMain } from '@/components/globals/Cards/mainCard'
 import { TagsPost } from '@/components/globals/Cards/tags'
-import { Author } from '@/components/globals/author'
+import { Author } from '@/components/Authors/author'
 
 export default async function SearchPostsResult({
   searchParams,

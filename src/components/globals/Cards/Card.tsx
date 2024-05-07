@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { TagsPost } from './tags'
-import { Author } from '@/components/globals/author'
+import { Author } from '@/components/Authors/author'
 import { twMerge } from 'tailwind-merge'
 
 interface CardPostsProps {

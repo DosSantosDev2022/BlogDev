@@ -8,12 +8,14 @@ interface PopularPosts {
 
 export function PopularPosts({ posts }: PopularPosts) {
   return (
-    <div className="w-full h-auto flex flex-col lg:items-start items-center justify-center gap-2">
-      <TitleSection.Root>
-        <TitleSection.Highlight text="Posts" />
-        <TitleSection.Span text="recentes" />
-      </TitleSection.Root>
-      <div className="flex flex-col justify-center space-y-5 mt-3">
+    <div className="w-full h-auto flex flex-col lg:items-start pb-4 pt-4 items-center justify-center gap-2 bg-slate-50 rounded-md">
+      <div className="w-full flex items-start pl-5">
+        <TitleSection.Root>
+          <TitleSection.Highlight text="Posts" />
+          <TitleSection.Span text="populares" />
+        </TitleSection.Root>
+      </div>
+      <div className="flex flex-col justify-center items-center w-full space-y-5 mt-3">
         {posts.map((post) => (
           <SmallCard
             slug={post.slug}
