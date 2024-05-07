@@ -20,7 +20,7 @@ export default async function AllPostsPage({
   searchParams,
 }: AllPostsPageProps) {
   const page = Number(searchParams?.page) || 1
-  const first = Number(searchParams?.first) || 10
+  const first = Number(searchParams?.first) || 4
 
   const { posts, totalCount } = await GET_PAGINATION_POSTS(page, first)
 

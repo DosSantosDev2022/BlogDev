@@ -16,9 +16,9 @@ export async function NavCategorys() {
         <TitleSection.Highlight text="Posts" />
         <TitleSection.Span text="por categorias" />
       </TitleSection.Root>
-      <div className="flex flex-col mt-5  gap-2  items-center justify-center w-full">
+      <div className="flex flex-col mt-5 max-h-[400px] overflow-y-auto scrollbar scrollbar-thumb-slate-900  gap-2  items-center justify-center w-full">
         {tags.map((tag) => (
-          <ul key={tag.tagName} className="w-full ">
+          <ul key={tag.tagName} className="w-full  ">
             <li className=" cursor-pointer flex items-center justify-between   rounded-md shadow-sm px-5 py-[10px] text-start">
               <Link
                 className="text-sm"
