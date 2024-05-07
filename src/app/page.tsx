@@ -1,13 +1,12 @@
 import { Metadata } from 'next'
-import { AllAuthors } from '@/components/Authors/allAuthors'
+import { OurAuthors } from '@/components/Authors/OurAuthors'
 import { NavCategorys } from '@/components/Home/navCategorys'
-import { RecentPosts } from '@/components/Home/recentPosts'
+import { HighlightPosts } from '@/components/Home/HighlightPosts'
 import { MostViewedPost } from '@/components/Home/MostViewedPost'
 import { PopularPosts } from '@/components/Home/PopularPosts'
 import { BannerCarrousel } from '@/components/Banners/Carrousel'
 import { GET_ALL_POST } from './api/queries/GetAllPosts'
-import { BannerSkeleton } from '@/components/Loading/BannerSkeleton'
-import { RecentPosts2 } from '@/components/Home/PostsRecentes'
+import { PostsRecentes } from '@/components/Home/PostsRecentes'
 
 export const metadata: Metadata = {
   title: 'Home | Blog Dev',
@@ -22,19 +21,13 @@ export default async function Home() {
   return (
     <main>
       <div className="w-full flex items-center justify-center">
-        {featuredPosts.length > 0 ? (
-          <BannerCarrousel featuredPosts={featuredPosts} />
-        ) : (
-          <>
-            <BannerSkeleton />
-          </>
-        )}
+        <BannerCarrousel featuredPosts={featuredPosts} />
       </div>
-      <RecentPosts2 posts={posts} />
+      <PostsRecentes posts={posts} />
       <div className="grid  lg:grid-cols-12 gap-1 items-start justify-center p-6 mt-12 mb-12">
         <section className="flex flex-col items-start justify-start lg:col-span-8 gap-5 p-4 ">
-          <RecentPosts posts={posts} />
-          {/* Componente de posts recentes */}
+          <HighlightPosts posts={posts} />
+          {/* Componente de posts em destaque */}
 
           <div className="lg:w-[41rem] bg-slate-300 h-36">publicidade</div>
           <MostViewedPost posts={posts} />
@@ -44,7 +37,7 @@ export default async function Home() {
           <PopularPosts posts={posts} /> {/* Componente de posts populares */}
           <NavCategorys />
           {/* Componente de navegação de categoria */}
-          <AllAuthors />
+          <OurAuthors />
           {/* Componente renderiza lista de todos autores do blog */}
           <div className="lg:w-[22.5rem] h-screen  rounded-[10px] bg-slate-200 ">
             publicidade

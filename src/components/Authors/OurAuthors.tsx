@@ -1,9 +1,8 @@
 import { fetchHygraphQuery } from '@/app/api/fetchHygraph'
 import type { AllAuthors } from '@/types/Iauthors'
 
-import { Author } from '../globals/author'
+import { Author } from '@/components/Authors/author'
 import { TitleSection } from '../globals/TitleSection'
-
 
 const GetAuthors = async (): Promise<AllAuthors> => {
   const query = `
@@ -29,19 +28,19 @@ const GetAuthors = async (): Promise<AllAuthors> => {
   return fetchHygraphQuery(query)
 }
 
-export async function AllAuthors() {
+export async function OurAuthors() {
   const { authors } = await GetAuthors()
   return (
-    <div className="w-full h-auto flex flex-col items-start justify-center gap-1 p-2 bg-slate-50">
+    <div className="w-full h-auto flex flex-col items-start justify-center gap-1 p-2 rounded-md bg-slate-50">
       <TitleSection.Root>
-        <TitleSection.Highlight text='Nossos'  />
-        <TitleSection.Span text='Autores'/>
+        <TitleSection.Highlight text="Nossos" />
+        <TitleSection.Span text="Autores" />
       </TitleSection.Root>
       <div className="flex flex-col items-start justify-center space-y-5 p-2 w-full">
         {authors.map((author) => (
           <Author.Root
             key={author.id}
-            className="flex items-start justify-start gap-2 w-full border px-4 py-2 rounded-md"
+            className="flex items-start justify-start gap-2 w-full  px-4 py-2 rounded-md"
           >
             <Author.Avatar
               ImageProfile={author.photo.url}
@@ -53,7 +52,7 @@ export async function AllAuthors() {
                 nome={author.name}
                 className="text-zinc-900 text-lg font-bold"
               />
-              <Author.Carrer className="mb-2" text={author.career} />
+              <Author.Carrer className="mb-2 font-light" text={author.career} />
               <div className="flex items-center gap-4">
                 {author.authorlink.map((link) => (
                   <Author.Link

@@ -8,8 +8,8 @@ import {
 } from '@/components/ui/carousel'
 import Autoplay from 'embla-carousel-autoplay'
 import Link from 'next/link'
-import { TagsPost } from '../globals/Cards/tags'
-import { Author } from '../globals/author'
+import { TagsPost } from '@/components/globals/Cards/tags'
+import { Author } from '@/components/Authors/author'
 import { Post } from '@/types/Iposts'
 
 interface BannerCarrouselProps {
@@ -27,7 +27,7 @@ export function BannerCarrousel({ featuredPosts }: BannerCarrouselProps) {
           <CarouselItem key={index}>
             <Link
               href={{
-                pathname: `/Posts/${post.slug}`,
+                pathname: `/Post/${post.slug}`,
               }}
             >
               <div className="w-full  lg:h-[550px] h-[250px]  rounded-md  shadow-md ">
@@ -39,17 +39,24 @@ export function BannerCarrousel({ featuredPosts }: BannerCarrouselProps) {
                 >
                   <div className="flex flex-col items-start gap-3 lg:w-9/12">
                     <TagsPost tagName={post.tag.tagName} />
-                    <h2 className="lg:text-5xl font-bold text-slate-50 ">
+                    <h2 className="lg:text-6xl font-bold text-slate-50 ">
                       {post.title}
                     </h2>
                     <Author.Root>
                       <Author.Avatar
+                        className="w-14 h-14"
                         ImageProfile={post.author.photo.url}
                         name={post.author.name}
                       />
                       <div className="flex flex-col gap-1">
-                        <Author.Name nome={post.author.name} />
-                        <Author.CreateAd CreateAd={post.createdAt} />
+                        <Author.Name
+                          nome={post.author.name}
+                          className="text-lg"
+                        />
+                        <Author.CreateAd
+                          CreateAd={post.createdAt}
+                          className="text-md"
+                        />
                       </div>
                     </Author.Root>
                   </div>

@@ -1,5 +1,3 @@
-'use client'
-
 import * as React from 'react'
 import Link from 'next/link'
 
@@ -19,7 +17,7 @@ export function Navigation() {
   const categorys: { title: string; href: string }[] = [
     {
       title: 'Carreira',
-      href: `/Categorys?query=Carreira`,
+      href: `/Categorys/?query=Carreira`,
     },
     {
       title: 'JavaScript',

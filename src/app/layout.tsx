@@ -22,10 +22,11 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="pt-br">
-      <body
-        className={`bg-secondary  ${font.className} scrollbar-thumb-rounded-full scrollbar-track-rounded-full scrollbar scrollbar-thumb-slate-700 scrollbar-track-slate-300 h-32 `}
-      >
+    <html
+      lang="pt-br"
+      className="scrollbar scrollbar-track-slate-50 scrollbar-thumb-slate-900 overflow-y-scroll scrollbar-thumb-rounded-full"
+    >
+      <body className={`bg-secondary  ${font.className}  `}>
         <Header />
         <main className="">{children}</main>
         <Footer />

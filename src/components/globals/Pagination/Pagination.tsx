@@ -1,11 +1,9 @@
 'use client'
-import {
-  Pagination as PaginationRoot,
-  PaginationContent,
-  PaginationItem,
-  PaginationLink,
-} from '@/components/ui/pagination'
+
 import { usePagination } from './usePagination'
+import { Button } from '@/components/ui/button'
+import Link from 'next/link'
+import { ChevronsLeft, ChevronsRight } from 'lucide-react'
 
 interface PaginationProps {
   page: number
@@ -19,26 +17,54 @@ export function Pagination({ page, limit, total }: PaginationProps) {
     limit,
     total,
   })
-  const lastPostIndex = Math.min(page * limit, total)
+
+  const isFarstPage = page === 1
+  const isLastPage = page === Math.ceil(total / limit)
+
   return (
     <div className="mt-8 w-full flex items-center justify-between p-2 ">
-      <div className="w-full">
-        {`Mostrando ${lastPostIndex > 0 ? (page - 1) * limit + 1 : 0} - ${lastPostIndex} de ${total}`}
+      <span className="font-light text-light flex w-full">
+        Mostrando {Math.min(limit, total - (page - 1) * limit)} de {total}
+      </span>
+
+      <div className="flex gap-2 items-center">
+        <Button asChild>
+          {!isFarstPage ? (
+            <Link href={`/AllPosts?page=1`}>
+              <ChevronsLeft />
+            </Link>
+          ) : (
+            <Button disabled>
+              <ChevronsLeft />
+            </Button>
+          )}
+        </Button>
+        {pages.map((pageNumber) => (
+          <Button
+            asChild
+            key={pageNumber}
+            className={
+              page === pageNumber
+                ? 'bg-slate-100 text-slate-900 border hover:bg-slate-100 '
+                : ''
+            }
+          >
+            <Link href={`/AllPosts?page=${pageNumber}`}>{pageNumber}</Link>
+          </Button>
+        ))}
+
+        <Button asChild>
+          {!isLastPage ? (
+            <Link href={`/AllPosts?page=${Math.ceil(total / limit)}`}>
+              <ChevronsRight />
+            </Link>
+          ) : (
+            <Button disabled>
+              <ChevronsRight />
+            </Button>
+          )}
+        </Button>
       </div>
-      <PaginationRoot>
-        <PaginationContent>
-          {pages.map((pageNumber) => (
-            <PaginationItem key={page}>
-              <PaginationLink
-                className={`border rounded-sm hover:bg-slate-800 hover:text-slate-50 ${pageNumber === page ? 'bg-slate-800 text-slate-50' : ''} `}
-                href={`/AllPosts?page=${pageNumber}&limit=${limit}`}
-              >
-                {pageNumber}
-              </PaginationLink>
-            </PaginationItem>
-          ))}
-        </PaginationContent>
-      </PaginationRoot>
     </div>
   )
 }

@@ -4,7 +4,7 @@ import SmallCard from '@/components/globals/Cards/SmallCard'
 import { ToShare } from '@/components/Posts/toShare'
 import Link from 'next/link'
 import { GET_DETAILS_POST } from '@/app/api/queries/GetDetailsPosts'
-import { Author } from '@/components/globals/author'
+import { Author } from '@/components/Authors/author'
 import { Metadata } from 'next'
 import { GET_ALL_POST } from '@/app/api/queries/GetAllPosts'
 import { TitleSection } from '@/components/globals/TitleSection'
@@ -100,9 +100,46 @@ export default async function PagePost({ params }: PagePostProps) {
             )}
           </div>
           <div className="w-full p-2 text-slate-600 space-y-5">
-            <RichText content={post?.content.raw} />
+            <RichText
+              content={post?.content.raw}
+              renderers={{
+                h1: ({ children }) => (
+                  <h1 className="text-primary font-bold text-4xl">
+                    {children}
+                  </h1>
+                ),
+                h2: ({ children }) => (
+                  <h2 className="text-primary font-bold text-2xl">
+                    {children}
+                  </h2>
+                ),
+                h3: ({ children }) => (
+                  <h3 className="text-primary font-bold text-xl">{children}</h3>
+                ),
+                h4: ({ children }) => (
+                  <h4 className="text-primary font-bold text-lg">{children}</h4>
+                ),
+                bold: ({ children }) => (
+                  <b className="text-primary font-bold">{children} </b>
+                ),
+                p: ({ children }) => (
+                  <p className="font-light mt-4 text-primary">{children}</p>
+                ),
+                code_block: ({ children }) => (
+                  <pre className="bg-primary  p-4 rounded-md overflow-x-auto w-full">
+                    <code className="text-secondary">{children}</code>
+                  </pre>
+                ),
+                ul: ({ children }) => (
+                  <ul className="list-disc p-2 ">{children}</ul>
+                ),
+                li: ({ children }) => (
+                  <li className="mb-2 text-start">{children}</li>
+                ),
+              }}
+            />
           </div>
-          <ToShare />
+          <ToShare slug={params.slug} title={post.title} />
         </article>
       </div>
       <section className="lg:col-span-4 flex flex-col items-start justify-center px-2 gap-5 mt-5 lg:mt-0 ">

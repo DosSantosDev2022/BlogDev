@@ -11,9 +11,9 @@ import {
 export function NavBarFooter() {
   const Links = [
     { id: 1, text: 'Home', url: '/' },
-    { id: 2, text: 'About', url: '/' },
-    { id: 3, text: 'Posts', url: '/' },
-    { id: 4, text: 'Contact', url: '/' },
+    { id: 2, text: 'About', url: '/About' },
+    { id: 3, text: 'Posts', url: '/AllPosts' },
+    { id: 4, text: 'Contact', url: '/Contact' },
   ]
 
   const Links2 = [

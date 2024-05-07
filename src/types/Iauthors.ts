@@ -1,10 +1,10 @@
-interface AuthorLink {
+export interface AuthorLink {
   id: string
   link: string
   linkIcon: string
 }
 
-interface author {
+export interface author {
   id: string
   name: string
   career: string

@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { Author } from '../author'
+import { Author } from '@/components/Authors/author'
 
 interface SmallCardProps {
   title: string
@@ -30,7 +30,7 @@ export default function SmallCard({
         pathname: `/Posts/${slug}`,
       }}
     >
-      <div className=" w-[360px] h-[96px] flex items-center justify-start gap-3 rounded-lg overflow-hidden shadow-md bg-white p-2 ">
+      <div className=" w-[360px] h-[96px] flex items-center justify-start gap-3 rounded-lg overflow-hidden shadow-md bg-white p-2 hover:scale-105 duration-300 transition-all ">
         <Image
           src={coverImage.url}
           width={132}

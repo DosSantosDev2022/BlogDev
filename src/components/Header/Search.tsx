@@ -10,14 +10,14 @@ export function InputSearch() {
 
   function handleSearch(term: string) {
     const params = new URLSearchParams(searchParams)
-    console.log(params)
+
     if (term) {
       params.set('query', term)
     } else {
       params.delete('query')
     }
-
-    push(`/search/?${params.toString()}`)
+    console.log(term)
+    push(`/search?${params.toString()}`)
     console.log(term)
   }
 

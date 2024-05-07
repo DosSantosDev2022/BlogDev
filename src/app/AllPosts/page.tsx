@@ -1,10 +1,11 @@
-import { NavFilter } from './navFilter'
 import { Metadata } from 'next'
 
-import { CardAllPosts } from '@/components/globals/Cards/CardAllPosts'
 import { Pagination } from '@/components/globals/Pagination/Pagination'
 
 import { GET_PAGINATION_POSTS } from '../api/queries/GetPaginationPosts'
+import { CardMain } from '@/components/globals/Cards/mainCard'
+import { TagsPost } from '@/components/globals/Cards/tags'
+import { Author } from '@/components/Authors/author'
 
 export const metadata: Metadata = {
   title: 'Blog Dev | Todos os posts',
@@ -19,7 +20,7 @@ export default async function AllPostsPage({
   searchParams,
 }: AllPostsPageProps) {
   const page = Number(searchParams?.page) || 1
-  const first = Number(searchParams?.first) || 10
+  const first = Number(searchParams?.first) || 4
 
   const { posts, totalCount } = await GET_PAGINATION_POSTS(page, first)
 
@@ -32,20 +33,41 @@ export default async function AllPostsPage({
               Aprenda o melhor do mundo da programação aqui no BlogDev.
             </h2>
           </div>
-          <NavFilter />
-          <div className="border  w-full p-2 ">
-            <div className="flex flex-col justify-start gap-6 p-2">
-              {posts?.map((post) => (
-                <CardAllPosts
-                  description={post.description}
-                  key={post.id}
-                  author={post.author}
-                  coverImage={post.coverImage}
-                  title={post.title}
-                  tag={post.tag.tagName}
-                  slug={post.slug}
-                  createdAd={post.createdAt}
-                />
+
+          <div className="  w-full p-2 ">
+            <div className="flex flex-col justify-start gap-6  ">
+              {posts.map((post) => (
+                <CardMain.Root slug={post.slug} key={post.id}>
+                  <CardMain.Image
+                    title={post.title}
+                    coverImage={post.coverImage.url}
+                  />
+                  <CardMain.Content>
+                    <TagsPost tagName={post.tag.tagName} />
+                    <CardMain.Title className="text-md" title={post.title} />
+                    <Author.Root>
+                      <Author.Avatar
+                        className="w-8 h-8"
+                        ImageProfile={post.author.photo.url}
+                        name={post.author.name}
+                      />
+                      <div className="flex- flex-col gap-1">
+                        <Author.Name
+                          nome={post.author.name}
+                          className="text-slate-900 text-xs"
+                        />
+                        <Author.CreateAd
+                          CreateAd={post.createdAt}
+                          className="text-slate-400 text-xs"
+                        />
+                      </div>
+                    </Author.Root>
+                    <CardMain.Description
+                      className="text-md"
+                      description={post.description}
+                    />
+                  </CardMain.Content>
+                </CardMain.Root>
               ))}
             </div>
 

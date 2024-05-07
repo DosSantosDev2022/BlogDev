@@ -36,9 +36,9 @@ export function MostViewedPost({ posts }: MostViewedPostProps) {
           </>
         )}
       </div>
-      <div className="lg:w-[43.75rem] flex items-center justify-end">
+      <div className="lg:w-[41rem] flex items-center justify-end">
         <Button asChild>
-          <Link href={'/AllPosts'}>Ver todos...</Link>
+          <Link href={'AllPosts?page=1&limit=10'}>Ver todos...</Link>
         </Button>
       </div>
     </div>
