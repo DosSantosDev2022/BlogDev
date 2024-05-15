@@ -6,10 +6,11 @@ import Link from 'next/link'
 import { GET_DETAILS_POST } from '@/app/api/queries/GetDetailsPosts'
 import { Author } from '@/components/Authors/author'
 import { Metadata } from 'next'
-import { GET_ALL_POST } from '@/app/api/queries/GetAllPosts'
 import { TitleSection } from '@/components/globals/TitleSection'
+import { fetchHygraphQuery } from '@/app/api/fetchHygraph'
+import { StaticPostsPageData } from '@/types/StaticData'
 
-type PagePostProps = {
+interface PagePostProps {
   params: {
     slug: string
   }
@@ -165,7 +166,13 @@ export default async function PagePost({ params }: PagePostProps) {
 }
 
 export async function generateStaticParams() {
-  const { posts } = await GET_ALL_POST()
-
+  const query = `
+    query PostsStaticParams() {
+      posts(first: 50) {
+        slug
+      }
+    }
+  `
+  const { posts } = await fetchHygraphQuery<StaticPostsPageData>(query)
   return posts
 }

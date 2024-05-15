@@ -1,7 +1,7 @@
-export const fetchHygraphQuery = async (
+export const fetchHygraphQuery = async <T>(
   query: string,
   variables?: Record<string, any>,
-) => {
+): Promise<T> => {
   const response = await fetch(process.env.HYGRAPH_API_KEY || '', {
     method: 'POST',
     headers: {

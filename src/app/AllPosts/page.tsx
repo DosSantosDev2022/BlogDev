@@ -22,8 +22,8 @@ export default async function AllPostsPage({
   const page = Number(searchParams?.page) || 1
   const first = Number(searchParams?.first) || 4
 
-  const { posts, totalCount } = await GET_PAGINATION_POSTS(page, first)
-
+  const { posts, postsConnection } = await GET_PAGINATION_POSTS(page, first)
+  const totalCount = postsConnection.aggregate.count
   return (
     <main className="flex flex-col">
       <div className="container mx-auto grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12 ">
