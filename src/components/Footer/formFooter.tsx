@@ -63,7 +63,10 @@ export function FormFooter() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubimit)} className="flex gap-2 w-full">
+    <form
+      onSubmit={handleSubmit(onSubimit)}
+      className="flex flex-col lg:flex-row gap-2 w-full"
+    >
       <div className="flex flex-col gap-1 w-full">
         <Input.Root>
           <Input.Icon>
@@ -82,7 +85,9 @@ export function FormFooter() {
         )}
       </div>
 
-      <Button variant={'outline'}>Inscrever</Button>
+      <Button className="w-full  h-10 " variant={'outline'}>
+        Inscrever
+      </Button>
     </form>
   )
 }
