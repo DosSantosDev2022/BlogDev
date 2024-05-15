@@ -26,6 +26,12 @@ interface FeaturedPost {
   destaque: boolean
 }
 
+export interface postsConnection {
+  aggregate: {
+    count: number
+  }
+}
+
 export interface Post {
   id: string
   slug: string
@@ -42,7 +48,8 @@ export interface Post {
 
 export interface PostsTypes {
   posts: Post[]
-  totalCount: number
+
+  postsConnection: postsConnection
 }
 
 export interface relatedPost {
