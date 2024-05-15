@@ -1,58 +1,42 @@
-import * as React from 'react'
 import { Slot } from '@radix-ui/react-slot'
-import { cva, type VariantProps } from 'class-variance-authority'
-
-import { cn } from '@/lib/utils'
-
-const buttonVariants = cva(
-  'inline-flex items-center duration-500 justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
-
-  {
-    variants: {
-      variant: {
-        default: 'bg-primary text-primary-foreground hover:bg-primary/90',
-        destructive:
-          'bg-destructive text-destructive-foreground hover:bg-destructive/90',
-        outline:
-          'border border-input bg-background hover:bg-accent hover:text-accent-foreground',
-        secondary:
-          'bg-secondary text-secondary-foreground hover:bg-secondary/80',
-        ghost: 'hover:bg-accent hover:text-accent-foreground',
-        link: 'text-primary underline-offset-4 hover:underline',
-        disabled: 'bg-transparent border border-zinc-700 text-zinc-50 ',
-      },
-      size: {
-        default: 'h-10 px-4 py-2',
-        sm: 'h-9 rounded-md px-3',
-        lg: 'h-11 rounded-md px-8',
-        icon: 'h-10 w-10',
-      },
-    },
-    defaultVariants: {
-      variant: 'default',
-      size: 'default',
-    },
-  },
-)
+import { twMerge } from 'tailwind-merge'
 
 export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   asChild?: boolean
+  variant?:
+    | 'primary'
+    | 'secundary'
+    | 'outline'
+    | 'highlight'
+    | 'disabled'
+    | 'link'
 }
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, ...props }, ref) => {
-    const Comp = asChild ? Slot : 'button'
-    return (
-      <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
-        ref={ref}
-        {...props}
-      />
-    )
-  },
-)
-Button.displayName = 'Button'
+export function Button({
+  className,
+  variant = 'primary',
+  asChild = false,
+  ...props
+}: ButtonProps) {
+  const variantClasses = {
+    primary: `bg-primary text-light hover:primary_hover  `,
+    secundary: 'bg-slate-50 text-slate-900 hover:bg-slate-200',
+    outline: `bg-transparent border border-secunday text-light hover:bg-secundary_hover`,
+    highlight: `text-zinc-50 hover:bg-violet-800 duration-300 bg-violet-900 `,
+    disabled: 'bg-black border border-zinc-800 text-light ',
+    link: `bg-transparent border-none underline`,
+  }
 
-export { Button, buttonVariants }
+  const _className = twMerge(
+    variantClasses[variant],
+    `appearance-none rounded-md p-1 text-sm font-bold shadow transition-all duration-500 `,
+    className,
+  )
+  const Comp = asChild ? Slot : 'button'
+  return (
+    <Comp className={_className} {...props}>
+      {props.children}
+    </Comp>
+  )
+}

@@ -7,7 +7,7 @@ export function Footer() {
     <footer className="grid lg:grid-cols-6 grid-cols-1 gap-20 items-center bg-primary lg:px-16 lg:py-20 px-5 py-10">
       <div className=" lg:col-span-3 flex flex-col items-start justify-center gap-5">
         <Logo />
-        <p className="text-secondary">
+        <p className="text-light">
           Cadastre-se em nosso newsletter para se manter atualizado sobre nossos
           lançamentos.
         </p>

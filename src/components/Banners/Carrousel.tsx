@@ -39,7 +39,7 @@ export function BannerCarrousel({ featuredPosts }: BannerCarrouselProps) {
                 >
                   <div className="flex flex-col items-start gap-3 lg:w-9/12">
                     <TagsPost tagName={post.tag.tagName} />
-                    <h2 className="lg:text-6xl font-bold text-slate-50 ">
+                    <h2 className="lg:text-6xl font-bold text-light ">
                       {post.title}
                     </h2>
                     <Author.Root>

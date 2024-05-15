@@ -48,8 +48,8 @@ export default async function PagePost({ params }: PagePostProps) {
   ]
 
   return (
-    <section className="grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12 container mx-auto">
-      <div className="flex flex-col items-center justify-start lg:col-span-8 px-2 ">
+    <div className="grid grid-cols-1 lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12  lg:px-4 px-2">
+      <section className="flex flex-col items-center justify-start lg:col-span-8 px-2 ">
         <div className="w-full h-12 rounded-[10px] py-3 px-4 bg-primary flex gap-2 items-center">
           {Links.map((link) => (
             <Link
@@ -85,15 +85,15 @@ export default async function PagePost({ params }: PagePostProps) {
               </div>
             </Author.Root>
           </div>
-          <div className="w-full border">
+          <div className="w-full">
             {post?.coverImage.url ? (
               <Image
-                width={2000}
-                height={2000}
+                width={1000}
+                height={1000}
                 alt={post.title}
                 src={post?.coverImage.url}
                 quality={100}
-                className="bg-contain w-full rounded-md"
+                className="bg-cover w-full rounded-md"
               />
             ) : (
               <p>Imagem não disponível</p>
@@ -141,7 +141,7 @@ export default async function PagePost({ params }: PagePostProps) {
           </div>
           <ToShare slug={params.slug} title={post.title} />
         </article>
-      </div>
+      </section>
       <section className="lg:col-span-4 flex flex-col items-start justify-center px-2 gap-5 mt-5 lg:mt-0 ">
         <TitleSection.Root>
           <TitleSection.Highlight text="Posts" />
@@ -160,7 +160,7 @@ export default async function PagePost({ params }: PagePostProps) {
           ))}
         </div>
       </section>
-    </section>
+    </div>
   )
 }
 

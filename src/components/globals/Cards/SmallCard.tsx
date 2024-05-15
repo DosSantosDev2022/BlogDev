@@ -30,7 +30,7 @@ export default function SmallCard({
         pathname: `/Posts/${slug}`,
       }}
     >
-      <div className=" w-[360px] h-[96px] flex items-center justify-start gap-3 rounded-lg overflow-hidden shadow-md bg-white p-2 hover:scale-105 duration-300 transition-all ">
+      <div className=" w-[360px] h-[96px] flex items-center justify-start gap-3 rounded-lg overflow-hidden shadow-md bg-light p-2 hover:scale-105 duration-300 transition-all ">
         <Image
           src={coverImage.url}
           width={132}
@@ -40,7 +40,7 @@ export default function SmallCard({
           className="rounded-md"
         />
         <div className="flex flex-col items-start gap-1 ">
-          <h2 className="text-xs text-slate-950 font-semibold">{title}</h2>
+          <h2 className="text-xs text-primary font-semibold">{title}</h2>
           <Author.Root>
             <Author.Avatar
               className="w-8 h-8"
@@ -48,7 +48,7 @@ export default function SmallCard({
               name={author.name}
             />
 
-            <Author.Name nome={author.name} className="text-slate-900" />
+            <Author.Name nome={author.name} className="text-primary" />
           </Author.Root>
         </div>
       </div>

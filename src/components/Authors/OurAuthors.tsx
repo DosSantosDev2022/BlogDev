@@ -50,9 +50,12 @@ export async function OurAuthors() {
             <div className="flex flex-col ">
               <Author.Name
                 nome={author.name}
-                className="text-zinc-900 text-lg font-bold"
+                className="text-primary text-lg font-bold"
               />
-              <Author.Carrer className="mb-2 font-light" text={author.career} />
+              <Author.Carrer
+                className="mb-2 font-light text-secundary"
+                text={author.career}
+              />
               <div className="flex items-center gap-4">
                 {author.authorlink.map((link) => (
                   <Author.Link
