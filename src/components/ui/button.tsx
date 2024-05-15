@@ -1,4 +1,5 @@
 import { Slot } from '@radix-ui/react-slot'
+import { ForwardedRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 
 export interface ButtonProps
@@ -11,12 +12,14 @@ export interface ButtonProps
     | 'highlight'
     | 'disabled'
     | 'link'
+  ref?: ForwardedRef<HTMLButtonElement>
 }
 
 export function Button({
   className,
   variant = 'primary',
   asChild = false,
+  ref,
   ...props
 }: ButtonProps) {
   const variantClasses = {
@@ -35,7 +38,7 @@ export function Button({
   )
   const Comp = asChild ? Slot : 'button'
   return (
-    <Comp className={_className} {...props}>
+    <Comp ref={ref} className={_className} {...props}>
       {props.children}
     </Comp>
   )
