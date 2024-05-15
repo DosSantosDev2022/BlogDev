@@ -49,7 +49,7 @@ export function CardPosts({
         >
           <div className="flex flex-col items-start gap-1">
             <TagsPost tagName={tag} />
-            <h2 className="text-base font-bold text-slate-50">{title}</h2>
+            <h2 className="text-base font-bold text-light">{title}</h2>
           </div>
           <Author.Root>
             <Author.Avatar ImageProfile={author.photo.url} name={author.name} />

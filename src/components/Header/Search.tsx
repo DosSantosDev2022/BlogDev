@@ -1,5 +1,6 @@
 'use client'
 import { useSearchParams, useRouter } from 'next/navigation'
+import { CiSearch } from 'react-icons/ci'
 
 import { Input } from '../ui/input'
 
@@ -16,9 +17,8 @@ export function InputSearch() {
     } else {
       params.delete('query')
     }
-    console.log(term)
+
     push(`/search?${params.toString()}`)
-    console.log(term)
   }
 
   return (
@@ -33,7 +33,17 @@ export function InputSearch() {
       }}
       className="flex gap-2 w-full"
     >
-      <Input type="search" id="search" placeholder="Buscar..." required />
+      <Input.Root>
+        <Input.Icon>
+          <CiSearch size={18} className="text-slate-50" />
+        </Input.Icon>
+        <Input.Input
+          type="search"
+          id="search"
+          required
+          placeholder="Buscar..."
+        />
+      </Input.Root>
     </form>
   )
 }

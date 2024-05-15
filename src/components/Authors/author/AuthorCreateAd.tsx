@@ -9,9 +9,7 @@ interface AuthorCreateAdProps {
 
 export function AuthorCreateAd({ CreateAd, className }: AuthorCreateAdProps) {
   return (
-    <p
-      className={twMerge('text-[0.75rem] text-slate-50 font-light', className)}
-    >
+    <p className={twMerge('text-[0.75rem] text-light font-light', className)}>
       {format(new Date(CreateAd), "dd 'de' MMM 'de' yyyy", {
         locale: ptBR,
       })}

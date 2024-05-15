@@ -1,16 +1,41 @@
-import * as React from 'react'
+import React, { ReactNode } from 'react'
+import { twMerge } from 'tailwind-merge'
 
-import { cn } from '@/lib/utils'
+export interface InputRootProps {
+  children: ReactNode
+  className?: string
+}
+
+export interface InputIconProps {
+  children: ReactNode
+}
 
 export type InputProps = React.InputHTMLAttributes<HTMLInputElement>
 
-const Input = React.forwardRef<HTMLInputElement, InputProps>(
+function InputRoot({ children, className }: InputRootProps) {
+  return (
+    <div
+      className={twMerge(
+        `flex h-10 w-full items-center gap-3 rounded  bg-secundary px-3 py-4 focus-within:ring-2 focus-within:ring-slate-950`,
+        className,
+      )}
+    >
+      {children}
+    </div>
+  )
+}
+
+function InputIcon({ children }: InputIconProps) {
+  return <i>{children}</i>
+}
+
+const ComponentInput = React.forwardRef<HTMLInputElement, InputProps>(
   ({ className, type, ...props }, ref) => {
     return (
       <input
         type={type}
-        className={cn(
-          'flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50',
+        className={twMerge(
+          'text-light text-md flex-1 bg-transparent font-light outline-none placeholder:text-slate-400',
           className,
         )}
         ref={ref}
@@ -19,6 +44,11 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
     )
   },
 )
-Input.displayName = 'Input'
 
-export { Input }
+ComponentInput.displayName = 'Input'
+
+export const Input = {
+  Root: InputRoot,
+  Icon: InputIcon,
+  Input: ComponentInput,
+}

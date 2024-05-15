@@ -5,6 +5,10 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import { toast } from 'react-toastify'
 
 import { z } from 'zod'
+import { Input } from '../ui/input'
+import { MdEmail } from 'react-icons/md'
+
+import { Button } from '../ui/button'
 const regexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/
 
 const zodFormSchema = z.object({
@@ -61,20 +65,24 @@ export function FormFooter() {
   return (
     <form onSubmit={handleSubmit(onSubimit)} className="flex gap-2 w-full">
       <div className="flex flex-col gap-1 w-full">
-        <input
-          className="w-full rounded-md p-2 border-0 bg-secondary"
-          type="email"
-          placeholder="Enter your email"
-          {...register('email')}
-        />
+        <Input.Root>
+          <Input.Icon>
+            <MdEmail size={18} className="text-slate-400" />
+          </Input.Icon>
+          <Input.Input
+            {...register('email')}
+            type="email"
+            id="search"
+            required
+            placeholder="Digite seu melhor e-mail"
+          />
+        </Input.Root>
         {errors && (
           <span className="text-red-500">{errors.email?.message}</span>
         )}
       </div>
 
-      <button className="border-0 bg-secondary text-primary p-2 rounded-md h-10 hover:scale-105 transition-all duration-700">
-        Inscrever
-      </button>
+      <Button variant={'outline'}>Inscrever</Button>
     </form>
   )
 }

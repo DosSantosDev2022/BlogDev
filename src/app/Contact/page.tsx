@@ -43,7 +43,7 @@ export default function ContactPage() {
           <h2 className="text-primary font-semibold text-4xl">
             Entre em contato
           </h2>
-          <p className="text-slate-700 font-medium text-lg">
+          <p className="text-secundary font-medium text-lg">
             Aqui você pode me enviar ideias para criação de posts
           </p>
           <FormContact />

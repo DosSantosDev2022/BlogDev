@@ -28,13 +28,20 @@ export function Pagination({ page, limit, total }: PaginationProps) {
       </span>
 
       <div className="flex gap-2 items-center">
-        <Button asChild>
+        <Button
+          className="w-12 h-12 flex items-center justify-center"
+          variant="primary"
+          asChild
+        >
           {!isFarstPage ? (
             <Link href={`/AllPosts?page=1`}>
               <ChevronsLeft />
             </Link>
           ) : (
-            <Button disabled>
+            <Button
+              variant="disabled"
+              className="w-12 h-12 flex items-center justify-center"
+            >
               <ChevronsLeft />
             </Button>
           )}
@@ -45,21 +52,24 @@ export function Pagination({ page, limit, total }: PaginationProps) {
             key={pageNumber}
             className={
               page === pageNumber
-                ? 'bg-slate-100 text-slate-900 border hover:bg-slate-100 '
-                : ''
+                ? 'bg-light text-primary border hover:bg-slate-100 w-12 h-12 flex items-center justify-center " '
+                : 'w-12 h-12 flex items-center justify-center'
             }
           >
             <Link href={`/AllPosts?page=${pageNumber}`}>{pageNumber}</Link>
           </Button>
         ))}
 
-        <Button asChild>
+        <Button className="w-12 h-12 flex items-center justify-center" asChild>
           {!isLastPage ? (
             <Link href={`/AllPosts?page=${Math.ceil(total / limit)}`}>
               <ChevronsRight />
             </Link>
           ) : (
-            <Button disabled>
+            <Button
+              variant="disabled"
+              className="w-12 h-12 flex items-center justify-center"
+            >
               <ChevronsRight />
             </Button>
           )}

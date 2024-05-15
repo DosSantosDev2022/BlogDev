@@ -4,6 +4,9 @@ import { useForm, SubmitHandler } from 'react-hook-form'
 import { toast } from 'react-toastify'
 
 import { z } from 'zod'
+import { Button } from '../ui/button'
+import { Input } from '../ui/input'
+import TextArea from '../ui/textArea'
 
 const regexEmail = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/
 
@@ -73,30 +76,35 @@ export function FormContact() {
         onSubmit={handleSubmit(onSubmit)}
         className=" lg:w-[550px] w-full flex flex-col gap-5 mt-10"
       >
-        <input
-          className="p-2 border outline-none bg-slate-100 rounded-sm text-slate-500"
-          type="text"
-          placeholder="Digite seu nome"
-          {...register('name')}
-        />
+        <Input.Root className="p-2 border outline-none bg-light rounded-sm text-primary">
+          <Input.Input
+            className="text-primary"
+            type="text"
+            placeholder="Digite seu nome"
+            {...register('name')}
+          />
+        </Input.Root>
+
         {errors && (
           <span className="text-red-500 font-normal text-md">
             {errors.name?.message}
           </span>
         )}
-        <input
-          className="p-2 border outline-none bg-slate-100 rounded-sm text-slate-500"
-          type="email"
-          placeholder="Digite seu e-mail"
-          {...register('email')}
-        />
+        <Input.Root className="p-2 border outline-none bg-light rounded-sm ">
+          <Input.Input
+            className="text-primary"
+            type="email"
+            placeholder="Digite seu e-mail"
+            {...register('email')}
+          />
+        </Input.Root>
         {errors && (
           <span className="text-red-500 font-normal text-md">
             {errors.email?.message}
           </span>
         )}
-        <textarea
-          className="p-2 border outline-none bg-slate-100 rounded-sm text-slate-500"
+        <TextArea
+          className="p-2 border outline-none bg-light rounded-sm text-primary"
           cols={30}
           {...register('coments')}
           placeholder="Deixe sua mensagem!"
@@ -106,9 +114,12 @@ export function FormContact() {
             {errors.coments?.message}
           </span>
         )}
-        <button className=" w-full bg-slate-950 text-slate-50 p-2 rounded-md text-lg font-bold hover:scale-105 transition-all duration-500 hover:bg-slate-900">
+        <Button
+          variant="primary"
+          className=" w-full p-2 rounded-md text-lg font-bold "
+        >
           Enviar
-        </button>
+        </Button>
       </form>
     </>
   )
