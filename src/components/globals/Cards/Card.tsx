@@ -32,7 +32,7 @@ export function CardPosts({
   return (
     <Link
       href={{
-        pathname: `/Posts/${slug}`,
+        pathname: `/Post/${slug}`,
       }}
     >
       <div

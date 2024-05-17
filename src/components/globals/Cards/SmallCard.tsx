@@ -27,7 +27,7 @@ export default function SmallCard({
   return (
     <Link
       href={{
-        pathname: `/Posts/${slug}`,
+        pathname: `/Post/${slug}`,
       }}
     >
       <div className=" w-[360px] h-[96px] flex items-center justify-start gap-3 rounded-lg overflow-hidden shadow-md bg-light p-2 hover:scale-105 duration-300 transition-all ">
