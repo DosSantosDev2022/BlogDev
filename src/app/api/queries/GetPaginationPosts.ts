@@ -27,11 +27,10 @@ export const GET_PAGINATION_POSTS = async (
           tagName
         }
         destaque
-
-        postsConnection {
-          aggregate {
-            count
-          }
+      }
+      postsConnection {
+        aggregate {
+          count
         }
       }
     }
