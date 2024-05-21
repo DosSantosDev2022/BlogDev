@@ -31,7 +31,7 @@ const GetAuthors = async (): Promise<AllAuthors> => {
 export async function OurAuthors() {
   const { authors } = await GetAuthors()
   return (
-    <div className="w-full h-auto flex flex-col items-start justify-center gap-1 p-2 rounded-md bg-slate-50">
+    <div className="w-full h-auto flex flex-col items-start justify-center gap-1 p-2 rounded-md bg-blumine-50/15">
       <TitleSection.Root>
         <TitleSection.Highlight text="Nossos" />
         <TitleSection.Span text="Autores" />
@@ -50,10 +50,10 @@ export async function OurAuthors() {
             <div className="flex flex-col ">
               <Author.Name
                 nome={author.name}
-                className="text-primary text-lg font-bold"
+                className="text-blumine-900 text-lg font-bold"
               />
               <Author.Carrer
-                className="mb-2 font-light text-secundary"
+                className="mb-2 font-light text-blumine-800"
                 text={author.career}
               />
               <div className="flex items-center gap-4">

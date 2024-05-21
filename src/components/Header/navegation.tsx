@@ -58,7 +58,7 @@ export function Navigation() {
         <NavigationMenuItem>
           <NavigationMenuTrigger>Categorias</NavigationMenuTrigger>
           <NavigationMenuContent>
-            <ul className="grid  gap-3 p-4 w-[310px] md:w-[400px] md:grid-cols-1 lg:w-[220px] ">
+            <ul className="grid bg-white gap-3 p-4 w-[310px] md:w-[400px] md:grid-cols-1 lg:w-[220px] ">
               {categorys.map((category) => (
                 <ListItem
                   key={category.title}
@@ -91,13 +91,13 @@ const ListItem = React.forwardRef<
         href={''}
         ref={ref}
         className={cn(
-          'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-highlight  focus:bg-highlight focus:text-accent-foreground',
+          'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-blumine-200  focus:bg-blumine-200 focus:text-blumine-800',
           className,
         )}
         {...props}
       >
         <div className="text-sm font-medium leading-none">{title}</div>
-        <p className="line-clamp-2 text-sm leading-snug text-muted-foreground">
+        <p className="line-clamp-2 text-sm leading-snug text-blumine-50">
           {children}
         </p>
       </Link>

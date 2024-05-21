@@ -16,7 +16,7 @@ function InputRoot({ children, className }: InputRootProps) {
   return (
     <div
       className={twMerge(
-        `flex h-10 w-full items-center gap-3 rounded  bg-secundary px-3 py-4 focus-within:ring-2 focus-within:ring-slate-950`,
+        `flex h-10 text-blumine-50 w-full items-center gap-3 rounded  bg-blumine-600 px-3 py-4 focus-within:ring-2 focus-within:ring-blumine-800`,
         className,
       )}
     >
@@ -35,7 +35,7 @@ const ComponentInput = React.forwardRef<HTMLInputElement, InputProps>(
       <input
         type={type}
         className={twMerge(
-          'text-light text-md flex-1 bg-transparent font-light outline-none placeholder:text-slate-400',
+          'text-blumine-50 text-md flex-1 bg-transparent font-light outline-none placeholder:text-blumine-300',
           className,
         )}
         ref={ref}

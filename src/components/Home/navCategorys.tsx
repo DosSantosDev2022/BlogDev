@@ -10,15 +10,15 @@ export async function NavCategorys() {
   })
 
   return (
-    <div className="w-full h-auto flex flex-col items-start justify-center gap-1 p-2 rounded-md bg-light">
+    <div className="w-full h-auto flex flex-col items-start justify-center gap-1 p-2 rounded-md bg-blumine-50/15">
       <TitleSection.Root>
         <TitleSection.Highlight text="Posts" />
         <TitleSection.Span text="por categorias" />
       </TitleSection.Root>
-      <div className="flex flex-col mt-5 max-h-[400px] overflow-y-auto scrollbar-thin scrollbar-thumb-slate-900  gap-2  items-center justify-center w-full">
+      <div className="flex flex-col mt-5 max-h-[400px] overflow-y-auto scrollbar-thin scrollbar-thumb-blumine-600  gap-2  items-center justify-center w-full">
         {tags.map((tag) => (
           <ul key={tag.tagName} className="w-full  ">
-            <li className=" cursor-pointer flex items-center justify-between hover:bg-light_Silver duration-500 transition-all  rounded-md shadow-sm px-5 py-[10px] text-start">
+            <li className=" cursor-pointer flex items-center justify-between hover:bg-blumine-100 duration-300 transition-all  rounded-md shadow-sm px-5 py-[10px] text-start text-blumine-900">
               <Link
                 className="text-sm"
                 href={`/Categorys/?query=${tag.tagName}`}

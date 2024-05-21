@@ -35,7 +35,7 @@ export function InputSearch() {
     >
       <Input.Root>
         <Input.Icon>
-          <CiSearch size={18} className="text-slate-50" />
+          <CiSearch size={18} className="text-blumine-50" />
         </Input.Icon>
         <Input.Input
           type="search"

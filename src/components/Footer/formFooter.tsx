@@ -70,7 +70,7 @@ export function FormFooter() {
       <div className="flex flex-col gap-1 w-full">
         <Input.Root>
           <Input.Icon>
-            <MdEmail size={18} className="text-slate-400" />
+            <MdEmail size={18} className="text-bg-blumine-700" />
           </Input.Icon>
           <Input.Input
             {...register('email')}
@@ -85,7 +85,7 @@ export function FormFooter() {
         )}
       </div>
 
-      <Button className="w-full  h-10 " variant={'outline'}>
+      <Button className="w-full  h-10 " variant={'secundary'}>
         Inscrever
       </Button>
     </form>

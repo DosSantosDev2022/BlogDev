@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html
       lang="pt-br"
-      className="scrollbar scrollbar-track-slate-50 scrollbar-thumb-slate-900 overflow-y-scroll scrollbar-thumb-rounded-full"
+      className="scrollbar scrollbar-track-blumine-50 scrollbar-thumb-blumine-600 overflow-y-scroll scrollbar-thumb-rounded-full"
     >
       <body className={`bg-secondary  ${font.className}  `}>
         <Header />

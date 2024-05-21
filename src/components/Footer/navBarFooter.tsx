@@ -1,12 +1,8 @@
 'use client'
 import Link from 'next/link'
 import * as NavigationMenu from '@radix-ui/react-navigation-menu'
-import {
-  FaSquareInstagram,
-  FaSquareTwitter,
-  FaFacebook,
-  FaLinkedin,
-} from 'react-icons/fa6'
+import { FaSquareInstagram, FaSquareTwitter, FaLinkedin } from 'react-icons/fa6'
+import { FaGithub } from 'react-icons/fa'
 
 export function NavBarFooter() {
   const Links = [
@@ -24,19 +20,34 @@ export function NavBarFooter() {
   ]
 
   const social = [
-    { id: 9, text: 'Facebook', url: '/', icon: <FaFacebook /> },
-    { id: 10, text: 'Instagram', url: '/', icon: <FaSquareInstagram /> },
+    {
+      id: 9,
+      text: 'Github',
+      url: 'https://github.com/DosSantosDev2022',
+      icon: <FaGithub />,
+    },
+    {
+      id: 10,
+      text: 'Instagram',
+      url: 'instagram/julianosantosdev',
+      icon: <FaSquareInstagram />,
+    },
     { id: 11, text: 'Twitter', url: '/', icon: <FaSquareTwitter /> },
-    { id: 12, text: 'LinkedIn', url: '/', icon: <FaLinkedin /> },
+    {
+      id: 12,
+      text: 'LinkedIn',
+      url: 'https://www.linkedin.com/in/dossantosdev/',
+      icon: <FaLinkedin />,
+    },
   ]
   return (
     <NavigationMenu.Root className="lg:col-span-3  w-full flex md:flex-row flex-col justify-around gap-10">
       <NavigationMenu.List className="flex flex-col gap-2">
-        <h3 className="text-light text-2xl font-semibold">Navegação</h3>
+        <h3 className="text-blumine-50 text-2xl font-semibold">Navegação</h3>
         {Links.map((link) => (
           <NavigationMenu.Item key={link.id}>
             <Link
-              className="text-light hover:underline font-light"
+              className="text-blumine-50 hover:underline font-light"
               href={link.url}
             >
               {link.text}
@@ -45,11 +56,11 @@ export function NavBarFooter() {
         ))}
       </NavigationMenu.List>
       <NavigationMenu.List className="flex flex-col gap-2">
-        <h3 className="text-light text-2xl font-semibold">Categorias</h3>
+        <h3 className="text-blumine-50 text-2xl font-semibold">Categorias</h3>
         {Links2.map((link2) => (
           <NavigationMenu.Item key={link2.id}>
             <Link
-              className="text-light hover:underline font-light"
+              className="text-blumine-50 hover:underline font-light"
               href={link2.url}
             >
               {link2.text}
@@ -58,11 +69,13 @@ export function NavBarFooter() {
         ))}
       </NavigationMenu.List>
       <NavigationMenu.List className="flex flex-col gap-2">
-        <h3 className="text-light text-2xl font-semibold">Redes Sociais</h3>
+        <h3 className="text-blumine-50 text-2xl font-semibold">
+          Redes Sociais
+        </h3>
         {social.map((link) => (
           <NavigationMenu.Item key={link.id}>
             <Link
-              className="text-light flex items-center gap-3 hover:underline font-light"
+              className="text-blumine-50 flex items-center gap-3 hover:underline font-light"
               href={link.url}
             >
               <i className="text-lg">{link.icon}</i>
