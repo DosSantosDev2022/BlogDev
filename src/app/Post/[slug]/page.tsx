@@ -54,7 +54,7 @@ export default async function PagePost({ params }: PagePostProps) {
         <div className="w-full h-12 rounded-[10px] py-3 px-4 bg-primary flex gap-2 items-center">
           {Links.map((link) => (
             <Link
-              className="text-slate-50 font-light hover:text-slate-400 duration-500 transition-all "
+              className="text-blumine-50 font-light hover:text-blumine-100 duration-500 transition-all "
               href={link.Url}
               key={link.nome}
             >
@@ -64,7 +64,7 @@ export default async function PagePost({ params }: PagePostProps) {
         </div>
         <article className="mt-12 flex flex-col items-center justify-start w-full gap-10 ">
           <div className="flex flex-col items-start justify-center w-full gap-5">
-            <h1 className="text-primary md:text-5xl text-3xl font-bold mb-3">
+            <h1 className="text-blumine-900 md:text-5xl text-3xl font-bold mb-3">
               {post?.title}
             </h1>
 
@@ -77,11 +77,11 @@ export default async function PagePost({ params }: PagePostProps) {
               <div className="flex flex-col gap-1">
                 <Author.Name
                   nome={post.author.name}
-                  className="text-slate-900 text-lg"
+                  className="text-blumine-900 text-lg"
                 />
                 <Author.CreateAd
                   CreateAd={post.createdAt}
-                  className="text-slate-900 text-md"
+                  className="text-blumine-900 text-md"
                 />
               </div>
             </Author.Root>
@@ -100,35 +100,39 @@ export default async function PagePost({ params }: PagePostProps) {
               <p>Imagem não disponível</p>
             )}
           </div>
-          <div className="w-full p-2 text-slate-600 space-y-5">
+          <div className="w-full p-2 text-blumine-600 space-y-5">
             <RichText
               content={post?.content.raw}
               renderers={{
                 h1: ({ children }) => (
-                  <h1 className="text-primary font-bold text-4xl">
+                  <h1 className="text-blumine-950 font-bold text-4xl">
                     {children}
                   </h1>
                 ),
                 h2: ({ children }) => (
-                  <h2 className="text-primary font-bold text-2xl">
+                  <h2 className="text-blumine-950 font-bold text-2xl">
                     {children}
                   </h2>
                 ),
                 h3: ({ children }) => (
-                  <h3 className="text-primary font-bold text-xl">{children}</h3>
+                  <h3 className="text-blumine-900 font-bold text-xl">
+                    {children}
+                  </h3>
                 ),
                 h4: ({ children }) => (
-                  <h4 className="text-primary font-bold text-lg">{children}</h4>
+                  <h4 className="text-blumine-900 font-bold text-lg">
+                    {children}
+                  </h4>
                 ),
                 bold: ({ children }) => (
-                  <b className="text-primary font-bold">{children} </b>
+                  <b className="text-blumine-900 font-bold">{children} </b>
                 ),
                 p: ({ children }) => (
-                  <p className="font-light mt-4 text-primary">{children}</p>
+                  <p className="font-light mt-4 text-blumine-900">{children}</p>
                 ),
                 code_block: ({ children }) => (
-                  <pre className="bg-primary  p-4 rounded-md overflow-x-auto w-full">
-                    <code className="text-secondary">{children}</code>
+                  <pre className="text-blumine-950  p-4 rounded-md overflow-x-auto w-full">
+                    <code className="text-blumine-50">{children}</code>
                   </pre>
                 ),
                 ul: ({ children }) => (

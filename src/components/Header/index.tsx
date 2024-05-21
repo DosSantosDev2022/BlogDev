@@ -15,7 +15,7 @@ export default function Header() {
   }
 
   return (
-    <header className=" lg:h-28  bg-primary py-3 px-8  lg:flex items-center justify-between ">
+    <header className=" lg:h-28  bg-blumine-700 py-3 px-8  lg:flex items-center justify-between ">
       <div className="flex items-center justify-between">
         <Logo />
         <Button onClick={toggleMenu} className="lg:hidden rounded-sm ">

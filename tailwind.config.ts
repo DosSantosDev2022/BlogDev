@@ -19,18 +19,19 @@ const config = {
     },
     extend: {
       colors: {
-        primary: '#020617',
-        primary_hover: '#0f172a',
-        secundary: '#0f172a',
-        secundary_hover: '#1e293b',
-        highlight: '',
-        highlight_hover: '',
-
-        border: '#e2e8f0',
-
-        light: '#fff',
-        light_Silver: '#d4d4d8',
-        heavy: '#000',
+        blumine: {
+          '50': '#f0fafb',
+          '100': '#d8eff5',
+          '200': '#b6dfeb',
+          '300': '#84c8dc',
+          '400': '#4aa6c6',
+          '500': '#2f8aab',
+          '600': '#2a7090',
+          '700': '#295f7a',
+          '800': '#284d62',
+          '900': '#254154',
+          '950': '#142a38',
+        },
       },
 
       keyframes: {
