@@ -12,12 +12,17 @@ interface ContactCardProps {
 export function ContactCard(props: ContactCardProps) {
   return (
     <div className="lg:w-[405px] w-full h-[205px] border rounded-md shadow-sm p-3 flex flex-col items-start justify-center gap-2">
-      <i className="text-4xl text-primary">{props.icon} </i>
-      <h4 className="text-lg font-bold text-primary">{props.name} </h4>
-      <p className="text-sm font-normal text-secundary">{props.paragraph} </p>
+      <i className="text-4xl text-blumine-950">{props.icon} </i>
+      <h4 className="text-lg font-bold text-blumine-600">{props.name} </h4>
+      <p className="text-sm font-light text-blumine-900">{props.paragraph} </p>
       <Button variant="primary" asChild>
-        <Link target="_blank" href={props.link}>
-          {props.name}
+        <Link
+          className="font-light p-2"
+          target="_blank"
+          href={props.link}
+          aria-label="link para acessar as redes sociais do autor do blog dev"
+        >
+          Entre em contato
         </Link>
       </Button>
     </div>
