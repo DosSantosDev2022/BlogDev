@@ -1,8 +1,10 @@
 'use client'
 
 import {
+  FacebookIcon,
+  FacebookShareButton,
+  XIcon,
   TwitterShareButton,
-  TwitterIcon,
   LinkedinShareButton,
   LinkedinIcon,
   WhatsappShareButton,
@@ -27,10 +29,10 @@ export function ToShare({ slug, title }: ToShareProps) {
           <TwitterShareButton
             title={title}
             rel="noopener noreferrer"
-            url={`http://localhost:3000/Post/${slug}`}
+            url={`http://blog-dev-two.vercel.app/Post/${slug}`}
             className="hover:scale-105 duration-300 transition-all"
           >
-            <TwitterIcon size={32} round />
+            <XIcon size={32} round />
           </TwitterShareButton>
 
           <LinkedinShareButton
@@ -47,6 +49,12 @@ export function ToShare({ slug, title }: ToShareProps) {
           >
             <WhatsappIcon size={32} round />
           </WhatsappShareButton>
+          <FacebookShareButton
+            url={`http://blog-dev-two.vercel.app/Post/${slug}`}
+            className="hover:scale-105 duration-300 transition-all"
+          >
+            <FacebookIcon size={32} round />
+          </FacebookShareButton>
 
           <EmailShareButton
             url={`http://blog-dev-two.vercel.app/Post/${slug}`}
