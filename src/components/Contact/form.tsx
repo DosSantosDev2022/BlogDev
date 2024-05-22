@@ -76,9 +76,9 @@ export function FormContact() {
         onSubmit={handleSubmit(onSubmit)}
         className=" lg:w-[550px] w-full flex flex-col gap-5 mt-10"
       >
-        <Input.Root className="p-2 border outline-none bg-light rounded-sm text-primary">
+        <Input.Root className="p-2 border bg-white">
           <Input.Input
-            className="text-primary"
+            className="text-blumine-500"
             type="text"
             placeholder="Digite seu nome"
             {...register('name')}
@@ -90,7 +90,7 @@ export function FormContact() {
             {errors.name?.message}
           </span>
         )}
-        <Input.Root className="p-2 border outline-none bg-light rounded-sm ">
+        <Input.Root className="p-2 border bg-white">
           <Input.Input
             className="text-primary"
             type="email"
@@ -104,7 +104,7 @@ export function FormContact() {
           </span>
         )}
         <TextArea
-          className="p-2 border outline-none bg-light rounded-sm text-primary"
+          className="p-2 border bg-white text-blumine-700"
           cols={30}
           {...register('coments')}
           placeholder="Deixe sua mensagem!"

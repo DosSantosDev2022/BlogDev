@@ -5,6 +5,7 @@ import { FaInstagramSquare, FaLinkedin } from 'react-icons/fa'
 import { ContactCard } from '@/components/Contact/cards'
 import { Metadata } from 'next'
 import { FormContact } from '@/components/Contact/form'
+import { GET_AUTHOR } from '../api/queries/GetAuthor'
 
 export const metadata: Metadata = {
   title: 'Contato | Blog Dev',
@@ -35,27 +36,30 @@ const cardContact = [
   },
 ]
 
-export default function ContactPage() {
+export default async function ContactPage() {
+  const author = await GET_AUTHOR()
+
   return (
     <main>
       <section className="py-16 lg:px-16 px-5 w-full flex flex-col lg:flex-row justify-center items-start gap-10">
         <div className="w-full flex flex-col items-start justify-start">
-          <h2 className="text-primary font-semibold text-4xl">
+          <h2 className="text-blumine-900 font-semibold text-4xl">
             Entre em contato
           </h2>
-          <p className="text-secundary font-medium text-lg">
+          <p className="text-blumine-600 font-light text-lg">
             Aqui você pode me enviar ideias para criação de posts
           </p>
           <FormContact />
         </div>
         <div className="flex items-center justify-center w-full">
-          <Image
-            className="border shadow-md rounded-md"
-            width={350}
-            height={694}
-            alt=""
-            src={'/profile.png'}
-          />
+          {author.photo && (
+            <Image
+              width={694}
+              height={694}
+              alt={author.name}
+              src={author.photo.url}
+            />
+          )}
         </div>
       </section>
       <section className="py-28 lg:px-16 px-5 w-full flex flex-col lg:flex-row justify-center items-start gap-10 mb-20">

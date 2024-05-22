@@ -11,6 +11,28 @@ import { PostsRecentes } from '@/components/Home/PostsRecentes'
 export const metadata: Metadata = {
   title: 'Home | Blog Dev',
   description: 'Um blog para desenvolvedores',
+  openGraph: {
+    title: 'Home | Blog Dev',
+    description: 'Um blog para desenvolvedores',
+    images: [
+      {
+        url: '/blogdev.png',
+        width: 800,
+        height: 600,
+        alt: 'Blog Dev',
+      },
+    ],
+    type: 'website',
+    locale: 'pt_BR',
+    url: 'blog-dev-two.vercel.app',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@BlogDev',
+    title: 'Home | Blog Dev',
+    description: 'Um blog para desenvolvedores',
+    images: '/blogdev.png',
+  },
 }
 
 export default async function Home() {
@@ -33,7 +55,7 @@ export default async function Home() {
           <MostViewedPost posts={posts} />
           {/* Componente de posts mais vistos */}
         </section>
-        <section className="lg:col-span-4 flex flex-col items-center justify-center gap-5 p-4 mt-5 lg:mt-0 ">
+        <aside className="lg:col-span-4 flex flex-col items-center justify-center gap-5 p-4 mt-5 lg:mt-0 ">
           <PopularPosts posts={posts} /> {/* Componente de posts populares */}
           <NavCategorys />
           {/* Componente de navegação de categoria */}
@@ -42,7 +64,7 @@ export default async function Home() {
           <div className="lg:w-[22.5rem] h-screen  rounded-[10px] bg-slate-200 ">
             publicidade
           </div>
-        </section>
+        </aside>
       </div>
     </main>
   )
