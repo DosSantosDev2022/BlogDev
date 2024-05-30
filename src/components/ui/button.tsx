@@ -24,7 +24,8 @@ export function Button({
 }: ButtonProps) {
   const variantClasses = {
     primary: `bg-blumine-700 text-blumine-50 hover:bg-blumine-900  `,
-    secundary: 'bg-blumine-50 text-blumine-900 hover:bg-blumine-100',
+    secundary:
+      'bg-blumine-50 text-blumine-900 hover:bg-blumine-900 hover:text-blumine-50',
     outline: `bg-transparent border border-blumine-100 text-blumine-800 hover:bg-blumine-700 hover:text-blumine-50`,
     highlight: `text-zinc-50 hover:bg-violet-800 duration-300 bg-violet-900 `,
     disabled: 'bg-blumine-900 border border-blumine-900 text-blumine-50 ',
