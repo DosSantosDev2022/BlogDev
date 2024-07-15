@@ -1,9 +1,9 @@
-import { GET_POSTS_BY_SEARCH } from '@/app/api/queries/GetSearchPosts'
-import Image from 'next/image'
 import { CardMain } from '@/components/globals/Cards/mainCard'
 import { TagsPost } from '@/components/globals/Cards/tags'
 import { Author } from '@/components/Authors/author'
 import { Metadata } from 'next'
+import { GET_BY_CATEGORYS_POSTS } from '@/app/api/queries/GetByCategorys'
+import Image from 'next/image'
 
 export async function generateMetadata({
   searchParams,
@@ -40,53 +40,41 @@ export async function generateMetadata({
   }
 }
 
-export default async function SearchPostsResult({
-  searchParams,
+export default async function PostsByCategory({
+  params,
 }: {
-  searchParams?: {
-    query?: string
-    page?: string
+  params?: {
+    tagName: string
+    page?: number
+    first?: number
+    total: number
   }
 }) {
-  const query = searchParams?.query || ''
-
-  const { posts } = await GET_POSTS_BY_SEARCH(query)
-
-  const postCover = posts.find(
-    (post) => post.tag.tagName === searchParams?.query,
+  const category = params?.tagName || ''
+  const page = Number(params?.page) || 1
+  const first = Number(params?.first) || 4
+  const { posts } = await GET_BY_CATEGORYS_POSTS(category, page, first)
+  const categoryCoverImage = posts.find(
+    (post) => post.tag.tagName === params?.tagName,
   )
 
   return (
     <main className="grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12 container mx-auto">
       <div className="flex flex-col items-center justify-center lg:col-span-7 gap-5 ">
-        {postCover ? (
-          <div className=" relative w-full lg:h-[320px] h-[220px] p-4 gap-3 rounded-md">
-            <Image
-              fill
-              className="object-cover"
-              src={`${postCover?.tag.coverTag?.url}`}
-              alt={postCover.title}
-            />
-          </div>
-        ) : (
-          <></>
-        )}
-        {posts.length === 0 ? (
-          <></>
-        ) : (
-          <div className="py-2 border-b border-slate-900 flex items-start justify-start w-full ">
-            <h2 className="text-2xl font-medium">
-              {`Resultado da busca para  ${searchParams?.query}`}
-            </h2>
-          </div>
-        )}
-
+        <div className=" relative w-full lg:h-[320px] h-[220px] p-4 gap-3 rounded-md">
+          <Image
+            fill
+            className="object-cover"
+            src={`${categoryCoverImage?.tag.coverTag?.url}`}
+            alt={categoryCoverImage?.title || ''}
+          />
+        </div>
         <div className="flex flex-wrap justify-start gap-6 p-2">
           {posts.length === 0 ? (
             <>
               <div className="flex items-start justify-center w-full p-2 h-screen">
                 <h1 className="text-4xl font-bold text-blumine-900">
-                  Nenhum post foi encontrado.{' '}
+                  Nenhum categoria foi encontrada.{' '}
                 </h1>
               </div>
             </>

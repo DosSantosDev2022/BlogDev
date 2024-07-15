@@ -17,31 +17,31 @@ export function Navigation() {
   const categorys: { title: string; href: string }[] = [
     {
       title: 'Carreira',
-      href: `/Categorys/?query=Carreira`,
+      href: `/Categorys/Carreira`,
     },
     {
       title: 'JavaScript',
-      href: '/Categorys?query=JavaScript',
+      href: '/Categorys/JavaScript',
     },
     {
       title: 'Next Js',
-      href: '/Categorys?query=Next-Js',
+      href: '/Categorys/Next-Js',
     },
     {
       title: 'Front-end',
-      href: '/Categorys?query=Front-End',
+      href: '/Categorys/Front-End',
     },
     {
       title: 'Back-end',
-      href: '/Categorys?query=Back-end',
+      href: '/Categorys/Back-end',
     },
     {
       title: 'React Js',
-      href: '/Categorys?query=React-Js',
+      href: '/Categorys/React-Js',
     },
     {
       title: 'HTML 5',
-      href: '/Categorys?query=HTML',
+      href: '/Categorys/HTML',
     },
   ]
 

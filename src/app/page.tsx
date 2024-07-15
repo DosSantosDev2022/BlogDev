@@ -39,7 +39,7 @@ export default async function Home() {
   const { posts } = await GET_ALL_POST()
 
   const featuredPosts = posts.filter((post) => post.destaque)
-
+  console.log(posts)
   return (
     <main>
       <div className="w-full flex items-center justify-center">

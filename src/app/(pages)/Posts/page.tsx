@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 
 import { Pagination } from '@/components/globals/Pagination/Pagination'
 
-import { GET_PAGINATION_POSTS } from '../api/queries/GetPaginationPosts'
+import { GET_PAGINATION_POSTS } from '@/app/api/queries/GetPaginationPosts'
 import { CardMain } from '@/components/globals/Cards/mainCard'
 import { TagsPost } from '@/components/globals/Cards/tags'
 import { Author } from '@/components/Authors/author'
