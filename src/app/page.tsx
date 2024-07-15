@@ -38,8 +38,18 @@ export const metadata: Metadata = {
 export default async function Home() {
   const { posts } = await GET_ALL_POST()
 
+<<<<<<< HEAD
   const featuredPosts = posts.filter((post) => post.destaque)
   console.log(posts)
+=======
+  const featuredPosts = posts
+    .sort(
+      (a, b) =>
+        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
+    )
+    .filter((post) => post.destaque)
+
+>>>>>>> 480729947a5f3c27b65267108e967c165c094085
   return (
     <main>
       <div className="w-full flex items-center justify-center">

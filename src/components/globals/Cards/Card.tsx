@@ -37,7 +37,7 @@ export function CardPosts({
     >
       <div
         className={twMerge(
-          `w-[20rem] h-[24.75rem]  rounded-md  shadow-md overflow-hidden`,
+          `w-full h-[24.75rem]  rounded-md  shadow-md overflow-hidden`,
           className,
         )}
       >
