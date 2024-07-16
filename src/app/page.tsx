@@ -5,7 +5,7 @@ import { HighlightPosts } from '@/components/Home/HighlightPosts'
 import { MostViewedPost } from '@/components/Home/MostViewedPost'
 import { PopularPosts } from '@/components/Home/PopularPosts'
 import { BannerCarrousel } from '@/components/Banners/Carrousel'
-import { GET_ALL_POST } from './api/queries/GetAllPosts'
+import { GET_ALL_POST } from './api/queries/Get_All_Posts'
 import { PostsRecentes } from '@/components/Home/PostsRecentes'
 
 export const metadata: Metadata = {
@@ -39,7 +39,7 @@ export default async function Home() {
   const { posts } = await GET_ALL_POST()
 
   const featuredPosts = posts.filter((post) => post.destaque)
-  console.log(posts)
+
   return (
     <main>
       <div className="w-full flex items-center justify-center">

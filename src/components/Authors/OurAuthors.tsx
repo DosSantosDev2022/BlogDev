@@ -1,57 +1,9 @@
-import { fetchHygraphQuery } from '@/app/api/fetchHygraph'
-
+import { GET_AUTHORS } from '@/app/api/queries/Get_Authors'
 import { Author } from '@/components/Authors/author'
 import { TitleSection } from '../globals/TitleSection'
 
-export interface AuthorLink {
-  id: string
-  link: string
-  linkIcon: string
-}
-
-export interface author {
-  id: string
-  name: string
-  career: string
-  photo: {
-    url: string
-  }
-  bio: {
-    text: string
-  }
-  authorlink: AuthorLink[]
-}
-
-export interface AllAuthors {
-  authors: author[]
-}
-
-const GetAuthors = async (): Promise<AllAuthors> => {
-  const query = `
-  query GetAllAuthors {
-    authors(stage: PUBLISHED) {
-      id
-      name
-      career
-      bio {
-        text
-      }
-      photo {
-        url
-      }
-      authorlink {
-        id
-        link
-        linkIcon
-      }
-    }
-  }
-  `
-  return fetchHygraphQuery(query)
-}
-
 export async function OurAuthors() {
-  const { authors } = await GetAuthors()
+  const { authors } = await GET_AUTHORS()
   return (
     <div className="w-full h-auto flex flex-col items-start justify-center gap-1 p-2 rounded-md bg-mycolor-50/15">
       <TitleSection.Root>

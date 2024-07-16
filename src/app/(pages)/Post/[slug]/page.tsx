@@ -3,7 +3,7 @@ import Image from 'next/image'
 import SmallCard from '@/components/globals/Cards/SmallCard'
 import { ToShare } from '@/components/Posts/toShare'
 import Link from 'next/link'
-import { GET_DETAILS_POST } from '@/app/api/queries/GetDetailsPosts'
+import { SEARCH_DETAILS_POST } from '@/app/api/queries/Search_Details_Posts'
 import { Author } from '@/components/Authors/author'
 import { Metadata } from 'next'
 import { TitleSection } from '@/components/globals/TitleSection'
@@ -18,7 +18,7 @@ interface PagePostProps {
 export async function generateMetadata({
   params,
 }: PagePostProps): Promise<Metadata> {
-  const { posts } = await GET_DETAILS_POST()
+  const { posts } = await SEARCH_DETAILS_POST()
   const post = posts.find((post) => post.slug === params.slug)
 
   return {
@@ -43,7 +43,7 @@ export async function generateMetadata({
 }
 
 export default async function PagePost({ params }: PagePostProps) {
-  const { posts } = await GET_DETAILS_POST()
+  const { posts } = await SEARCH_DETAILS_POST()
   const post = posts.find((post) => post.slug === params.slug)
   if (!post) {
     return <p>Post não encontrado !</p>

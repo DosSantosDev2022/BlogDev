@@ -1,13 +1,14 @@
 import { PostsTypes } from '@/types/Iposts'
 import { fetchHygraphQuery } from '../fetchHygraph'
 
-export const GET_PAGINATION_POSTS = async (
+export const GET_BY_CATEGORYS_POSTS = async (
+  category: string,
   page: number,
-  pageSize: number,
+  first: number,
 ): Promise<PostsTypes> => {
   const query = `
-    query GET_PAGINATION_POSTS($first: Int, $skip: Int){
-      posts(first: $first, skip: $skip){
+    query GET_BY_CATEGORYS_POSTS($category: String!, $first: Int, $skip: Int) {
+      posts(where: { tag: { tagName: $category } }, first: $first, skip: $skip) {
         id
         slug
         subtitle
@@ -25,20 +26,24 @@ export const GET_PAGINATION_POSTS = async (
         }
         tag {
           tagName
+          coverTag {
+            url
+          }
+          backgroundTag {
+            url
+          }
         }
-        destaque
       }
-      postsConnection {
+      postsConnection(where: { tag: { tagName: $category } }) {
         aggregate {
           count
         }
       }
     }
-
   `
 
-  const skip = (page - 1) * pageSize
-  const variables = { first: pageSize, skip }
+  const skip = (page - 1) * first
+  const variables = { category, first, skip }
   const { posts, postsConnection } = await fetchHygraphQuery<PostsTypes>(
     query,
     variables,

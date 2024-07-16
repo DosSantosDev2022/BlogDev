@@ -1,4 +1,4 @@
-import { GET_POSTS_BY_SEARCH } from '@/app/api/queries/GetSearchPosts'
+import { GET_POSTS_BY_SEARCH } from '@/app/api/queries/Get_Posts_By_Search'
 import Image from 'next/image'
 import { CardMain } from '@/components/globals/Cards/mainCard'
 import { TagsPost } from '@/components/globals/Cards/tags'
