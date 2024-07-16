@@ -1,5 +1,12 @@
-import { author } from '@/types/Iauthors'
 import { fetchHygraphQuery } from '../fetchHygraph'
+
+interface author {
+  name: string
+  id: string
+  photo: {
+    url: string
+  }
+}
 
 export const GET_AUTHOR = async (): Promise<author> => {
   const query = `
