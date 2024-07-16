@@ -49,13 +49,16 @@ export function CardPosts({
         >
           <div className="flex flex-col items-start gap-1">
             <TagsPost tagName={tag} />
-            <h2 className="text-base font-bold text-blumine-50">{title}</h2>
+            <h2 className="text-base font-bold text-mycolor-50">{title}</h2>
           </div>
           <Author.Root>
             <Author.Avatar ImageProfile={author.photo.url} name={author.name} />
             <div className="flex- flex-col gap-1">
-              <Author.Name nome={author.name} className="text-blue-50" />
-              <Author.CreateAd CreateAd={createdAd} className="text-blue-100" />
+              <Author.Name nome={author.name} className="text-mycolor-50" />
+              <Author.CreateAd
+                CreateAd={createdAd}
+                className="text-mycolor-100"
+              />
             </div>
           </Author.Root>
         </div>

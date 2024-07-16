@@ -40,7 +40,7 @@ export async function generateMetadata({
   }
 }
 
-export default async function SearchPostsResult({
+export default async function PostsBySearch({
   searchParams,
 }: {
   searchParams?: {

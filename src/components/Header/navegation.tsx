@@ -17,31 +17,31 @@ export function Navigation() {
   const categorys: { title: string; href: string }[] = [
     {
       title: 'Carreira',
-      href: `/Categorys/?query=Carreira`,
+      href: `/Categorys/Carreira`,
     },
     {
       title: 'JavaScript',
-      href: '/Categorys?query=JavaScript',
+      href: '/Categorys/JavaScript',
     },
     {
       title: 'Next Js',
-      href: '/Categorys?query=Next-Js',
+      href: '/Categorys/Next-Js',
     },
     {
       title: 'Front-end',
-      href: '/Categorys?query=Front-End',
+      href: '/Categorys/Front-End',
     },
     {
       title: 'Back-end',
-      href: '/Categorys?query=Back-end',
+      href: '/Categorys/Back-end',
     },
     {
       title: 'React Js',
-      href: '/Categorys?query=React-Js',
+      href: '/Categorys/React-Js',
     },
     {
       title: 'HTML 5',
-      href: '/Categorys?query=HTML',
+      href: '/Categorys/HTML',
     },
   ]
 
@@ -91,13 +91,13 @@ const ListItem = React.forwardRef<
         href={''}
         ref={ref}
         className={cn(
-          'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-blumine-200  focus:bg-blumine-200 focus:text-blumine-800',
+          'block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-mycolor-100  focus:bg-mycolor-200 focus:text-mycolor-800',
           className,
         )}
         {...props}
       >
         <div className="text-sm font-medium leading-none">{title}</div>
-        <p className="line-clamp-2 text-sm leading-snug text-blumine-50">
+        <p className="line-clamp-2 text-sm leading-snug text-mycolor-50">
           {children}
         </p>
       </Link>

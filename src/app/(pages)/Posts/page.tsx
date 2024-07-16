@@ -2,7 +2,7 @@ import { Metadata } from 'next'
 
 import { Pagination } from '@/components/globals/Pagination/Pagination'
 
-import { GET_PAGINATION_POSTS } from '../api/queries/GetPaginationPosts'
+import { GET_PAGINATION_POSTS } from '@/app/api/queries/GetPaginationPosts'
 import { CardMain } from '@/components/globals/Cards/mainCard'
 import { TagsPost } from '@/components/globals/Cards/tags'
 import { Author } from '@/components/Authors/author'
@@ -25,10 +25,10 @@ export default async function AllPostsPage({
   const { posts, postsConnection } = await GET_PAGINATION_POSTS(page, first)
   const totalCount = postsConnection.aggregate.count
   return (
-    <main className="flex flex-col">
-      <div className="container mx-auto grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12 ">
+    <main className="flex flex-col ">
+      <div className="container mx-auto grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12  ">
         <div className="flex flex-col items-center justify-center lg:col-span-8 gap-5  ">
-          <div className="flex flex-col items-center justify-center gap-2 py-2 px-3 mt-7 ">
+          <div className="flex flex-col items-center justify-center gap-2 py-2 px-3 mt-7  ">
             <h2 className="text-4xl font-semibold">
               Aprenda o melhor do mundo da programação aqui no BlogDev.
             </h2>

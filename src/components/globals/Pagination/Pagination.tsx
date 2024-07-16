@@ -29,18 +29,18 @@ export function Pagination({ page, limit, total }: PaginationProps) {
 
       <div className="flex gap-2 items-center">
         <Button
-          className="w-12 h-12 flex items-center justify-center"
-          variant="primary"
+          className="w-10 h-10 flex items-center justify-center"
+          variant="mycolor"
           asChild
         >
           {!isFarstPage ? (
-            <Link href={`/AllPosts?page=1`}>
+            <Link href={`/Posts?page=1`}>
               <ChevronsLeft />
             </Link>
           ) : (
             <Button
               variant="disabled"
-              className="w-12 h-12 flex items-center justify-center"
+              className="w-10 h-10 flex items-center justify-center"
             >
               <ChevronsLeft />
             </Button>
@@ -52,23 +52,23 @@ export function Pagination({ page, limit, total }: PaginationProps) {
             key={pageNumber}
             className={
               page === pageNumber
-                ? 'bg-light text-primary border hover:bg-slate-100 w-12 h-12 flex items-center justify-center " '
-                : 'w-12 h-12 flex items-center justify-center'
+                ? 'bg-light text-mycolor-900 border hover:bg-mycolor-100 w-10 h-10 flex items-center justify-center " '
+                : 'w-10 h-10 flex items-center justify-center'
             }
           >
-            <Link href={`/AllPosts?page=${pageNumber}`}>{pageNumber}</Link>
+            <Link href={`/Posts?page=${pageNumber}`}>{pageNumber}</Link>
           </Button>
         ))}
 
-        <Button className="w-12 h-12 flex items-center justify-center" asChild>
+        <Button className="w-10 h-10 flex items-center justify-center" asChild>
           {!isLastPage ? (
-            <Link href={`/AllPosts?page=${Math.ceil(total / limit)}`}>
+            <Link href={`/Posts?page=${Math.ceil(total / limit)}`}>
               <ChevronsRight />
             </Link>
           ) : (
             <Button
               variant="disabled"
-              className="w-12 h-12 flex items-center justify-center"
+              className="w-10 h-10 flex items-center justify-center"
             >
               <ChevronsRight />
             </Button>

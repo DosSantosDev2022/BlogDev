@@ -33,13 +33,13 @@ export function HighlightPosts({ posts }: RecentPostsProps) {
           />
         ))}
       </div>
-      <div className="lg:w-[41rem] flex items-center justify-end">
+      <div className="w-full px-2 py-2.5  flex items-center justify-end">
         <Button
-          variant="primary"
-          className="w-24 h-10 flex items-center justify-center"
+          variant="mycolor"
+          className="w-28 h-10 flex font-normal items-center justify-center"
           asChild
         >
-          <Link href={'AllPosts?page=1&limit=10'}>Ver todos ...</Link>
+          <Link href={'/Posts?page=1&limit=10'}>Ver todos</Link>
         </Button>
       </div>
     </div>

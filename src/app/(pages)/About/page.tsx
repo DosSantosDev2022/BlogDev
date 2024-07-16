@@ -1,10 +1,31 @@
 import Image from 'next/image'
-import { fetchHygraphQuery } from '../api/fetchHygraph'
-
-import { ABOUT_ME } from '@/types/about'
+import { fetchHygraphQuery } from '@/app/api/fetchHygraph'
 import { RichText } from '@/components/Posts/rich-text'
 import Link from 'next/link'
 import { CMSIcon } from '@/components/globals/IconCms'
+import { RichTextContent } from '@graphcms/rich-text-types'
+
+interface AuthorLink {
+  id: string
+  link: string
+  linkIcon: string
+}
+
+export interface ABOUT_ME {
+  about: {
+    id: string
+    slug: string
+    title: string
+    carrer: string
+    biograph: {
+      raw: RichTextContent
+    }
+    authorImage: {
+      url: string
+    }
+    socialLinks: AuthorLink[]
+  }
+}
 
 const GET_ABOUT_DATA = async (): Promise<ABOUT_ME> => {
   const query = `
@@ -50,7 +71,7 @@ export default async function AboutPage() {
           content={about.biograph.raw}
           renderers={{
             bold: ({ children }) => (
-              <b className="text-primary text-base font-bold">{children} </b>
+              <b className="text-mycolor text-base font-bold">{children} </b>
             ),
             p: ({ children }) => (
               <p className="font-light mt-2 text-slate-700">{children}</p>

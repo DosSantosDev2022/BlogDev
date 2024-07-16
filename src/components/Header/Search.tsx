@@ -33,9 +33,9 @@ export function InputSearch() {
       }}
       className="flex gap-2 w-full"
     >
-      <Input.Root>
+      <Input.Root className="bg-mycolor-900">
         <Input.Icon>
-          <CiSearch size={18} className="text-blumine-50" />
+          <CiSearch size={18} className="text-mycolor-50" />
         </Input.Icon>
         <Input.Input
           type="search"

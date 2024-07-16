@@ -22,7 +22,7 @@ export function ToShare({ slug, title }: ToShareProps) {
   return (
     <>
       <div className="w-full p-2 flex flex-col items-start justify-center gap-3">
-        <h4 className="text-blumine-900 font-bold text-lg">
+        <h4 className="text-mycolor-900 font-bold text-lg">
           Compartilhe com seus amigos !!
         </h4>
         <div className="flex items-center justify-start gap-3">

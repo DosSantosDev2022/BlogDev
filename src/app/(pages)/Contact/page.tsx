@@ -5,7 +5,7 @@ import { FaInstagramSquare, FaLinkedin } from 'react-icons/fa'
 import { ContactCard } from '@/components/Contact/cards'
 import { Metadata } from 'next'
 import { FormContact } from '@/components/Contact/form'
-import { GET_AUTHOR } from '../api/queries/GetAuthor'
+import { GET_AUTHOR } from '@/app/api/queries/GetAuthor'
 
 export const metadata: Metadata = {
   title: 'Contato | Blog Dev',

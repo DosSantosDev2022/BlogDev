@@ -20,6 +20,9 @@ interface Tag {
   coverTag?: {
     url: string
   }
+  backgroundTag: {
+    url: string
+  }
 }
 
 interface FeaturedPost {

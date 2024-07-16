@@ -9,7 +9,7 @@ const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         {...props}
         ref={ref}
         className={twMerge(
-          'rounded  bg-zinc-800  px-3   py-4 font-light text-zinc-200 outline-none focus:ring-2 focus:ring-zinc-900',
+          'rounded  bg-mycolor-800  px-3   py-4 font-light text-mycolor-200 outline-none focus:ring-2 focus:ring-mycolor-900',
           props.className,
         )}
       />
