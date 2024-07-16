@@ -8,7 +8,6 @@ import { Author } from '@/components/Authors/author'
 import { Metadata } from 'next'
 import { TitleSection } from '@/components/globals/TitleSection'
 import { fetchHygraphQuery } from '@/app/api/fetchHygraph'
-import { StaticPostsPageData } from '@/types/StaticData'
 
 interface PagePostProps {
   params: {
@@ -63,10 +62,10 @@ export default async function PagePost({ params }: PagePostProps) {
     <>
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12  lg:px-4 px-2">
         <section className="flex flex-col items-center justify-start lg:col-span-8 px-2 ">
-          <div className="w-full h-12 rounded-[10px] py-3 px-4 bg-primary flex gap-2 items-center">
+          <div className="w-full h-12 rounded-[10px] py-3 px-4 bg-mycolor-50 flex gap-2 items-center">
             {Links.map((link) => (
               <Link
-                className="text-blumine-50 font-light hover:text-blumine-100 duration-500 transition-all "
+                className="text-mycolor-950 font-light hover:text-mycolor-700 duration-500 transition-all "
                 href={link.Url}
                 key={link.nome}
                 prefetch
@@ -77,7 +76,7 @@ export default async function PagePost({ params }: PagePostProps) {
           </div>
           <article className="mt-12 flex flex-col items-center justify-start w-full gap-10 ">
             <div className="flex flex-col items-start justify-center w-full gap-5">
-              <h1 className="text-blumine-900 md:text-5xl text-3xl font-bold mb-3">
+              <h1 className="text-mycolor-900 md:text-5xl text-3xl font-bold mb-3">
                 {post?.title}
               </h1>
 
@@ -90,11 +89,11 @@ export default async function PagePost({ params }: PagePostProps) {
                 <div className="flex flex-col gap-1">
                   <Author.Name
                     nome={post.author.name}
-                    className="text-blumine-900 text-lg"
+                    className="text-mycolor-900 text-lg"
                   />
                   <Author.CreateAd
                     CreateAd={post.createdAt}
-                    className="text-blumine-900 text-md"
+                    className="text-mycolor-900 text-md"
                   />
                 </div>
               </Author.Root>
@@ -113,46 +112,46 @@ export default async function PagePost({ params }: PagePostProps) {
                 <p>Imagem não disponível</p>
               )}
             </div>
-            <div className="w-full p-2 text-blumine-600 space-y-5">
+            <div className="w-full p-2 text-mycolor-600 space-y-5">
               <RichText
                 content={post?.content.raw}
                 renderers={{
                   h1: ({ children }) => (
-                    <h1 className="text-blumine-950 font-bold text-4xl">
+                    <h1 className="text-mycolor-950 font-bold text-4xl">
                       {children}
                     </h1>
                   ),
                   h2: ({ children }) => (
-                    <h2 className="text-blumine-950 font-bold text-2xl">
+                    <h2 className="text-mycolor-950 font-bold text-2xl">
                       {children}
                     </h2>
                   ),
                   h3: ({ children }) => (
-                    <h3 className="text-blumine-900 font-bold text-xl">
+                    <h3 className="text-mycolor-900 font-bold text-xl">
                       {children}
                     </h3>
                   ),
                   h4: ({ children }) => (
-                    <h4 className="text-blumine-900 font-bold text-lg">
+                    <h4 className="text-mycolor-900 font-bold text-lg">
                       {children}
                     </h4>
                   ),
                   bold: ({ children }) => (
-                    <b className="text-blumine-900 font-bold">{children} </b>
+                    <b className="text-mycolor-900 font-bold">{children} </b>
                   ),
                   p: ({ children }) => (
-                    <p className="font-light mt-4 text-blumine-900">
+                    <p className="font-light mt-4 text-mycolor-950">
                       {children}
                     </p>
                   ),
                   code_block: ({ children }) => (
-                    <pre className="bg-blumine-950  p-4 rounded-md overflow-x-auto w-full scrollbar-thin scrollbar-track-blumine-900 scrollbar-thumb-blumine-50">
-                      <code className="text-blumine-50">{children}</code>
+                    <pre className="bg-mycolor-950  p-4 rounded-md overflow-x-auto w-full scrollbar-thin scrollbar-track-mycolor-900 scrollbar-thumb-mycolor-50">
+                      <code className="text-mycolor-50">{children}</code>
                     </pre>
                   ),
                   ul: ({ children }) => <ul className=" p-2">{children}</ul>,
                   li: ({ children }) => (
-                    <li className="mb-2 text-start font-light text-blumine-900 ">
+                    <li className="mb-2 text-start font-light text-mycolor-900 ">
                       {children}
                     </li>
                   ),
@@ -183,6 +182,12 @@ export default async function PagePost({ params }: PagePostProps) {
       </div>
     </>
   )
+}
+
+type StaticPostsPageData = {
+  posts: {
+    slug: string
+  }[]
 }
 
 export async function generateStaticParams() {

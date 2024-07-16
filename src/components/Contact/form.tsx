@@ -78,7 +78,7 @@ export function FormContact() {
       >
         <Input.Root className="p-2 border bg-white">
           <Input.Input
-            className="text-blumine-500"
+            className="text-zinc-600 placeholder:text-zinc-400"
             type="text"
             placeholder="Digite seu nome"
             {...register('name')}
@@ -92,7 +92,7 @@ export function FormContact() {
         )}
         <Input.Root className="p-2 border bg-white">
           <Input.Input
-            className="text-primary"
+            className="text-zinc-600 placeholder:text-zinc-400"
             type="email"
             placeholder="Digite seu e-mail"
             {...register('email')}
@@ -104,7 +104,7 @@ export function FormContact() {
           </span>
         )}
         <TextArea
-          className="p-2 border bg-white text-blumine-700"
+          className="p-2 border bg-white text-zinc-600 placeholder:text-zinc-400"
           cols={30}
           {...register('coments')}
           placeholder="Deixe sua mensagem!"
@@ -115,7 +115,7 @@ export function FormContact() {
           </span>
         )}
         <Button
-          variant="primary"
+          variant="mycolor"
           className=" w-full p-2 rounded-md text-lg font-bold "
         >
           Enviar

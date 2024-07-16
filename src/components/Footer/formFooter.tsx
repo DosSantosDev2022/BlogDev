@@ -70,7 +70,7 @@ export function FormFooter() {
       <div className="flex flex-col gap-1 w-full">
         <Input.Root>
           <Input.Icon>
-            <MdEmail size={18} className="text-bg-blumine-700" />
+            <MdEmail size={18} className="text-mycolor-50" />
           </Input.Icon>
           <Input.Input
             {...register('email')}

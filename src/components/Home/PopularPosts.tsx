@@ -8,7 +8,7 @@ interface PopularPosts {
 
 export function PopularPosts({ posts }: PopularPosts) {
   return (
-    <div className="w-full h-auto flex flex-col lg:items-start pb-4 pt-4 items-center justify-center gap-2 bg-slate-50 rounded-md">
+    <div className="w-full h-auto flex flex-col lg:items-start pb-4 pt-4 items-center justify-center gap-2 rounded-md">
       <div className="w-full flex items-start pl-5">
         <TitleSection.Root>
           <TitleSection.Highlight text="Posts" />

@@ -1,5 +1,14 @@
-import { CATEGORYS } from '@/types/Icategorys'
 import { fetchHygraphQuery } from '../fetchHygraph'
+
+interface CATEGORYS {
+  tags: {
+    tagName: string
+    posts: {
+      id: string
+      title: string
+    }[]
+  }[]
+}
 
 export const GET_CATEGORYS = async (): Promise<CATEGORYS> => {
   const query = `

@@ -38,18 +38,8 @@ export const metadata: Metadata = {
 export default async function Home() {
   const { posts } = await GET_ALL_POST()
 
-<<<<<<< HEAD
   const featuredPosts = posts.filter((post) => post.destaque)
   console.log(posts)
-=======
-  const featuredPosts = posts
-    .sort(
-      (a, b) =>
-        new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
-    )
-    .filter((post) => post.destaque)
-
->>>>>>> 480729947a5f3c27b65267108e967c165c094085
   return (
     <main>
       <div className="w-full flex items-center justify-center">
@@ -61,7 +51,6 @@ export default async function Home() {
           <HighlightPosts posts={posts} />
           {/* Componente de posts em destaque */}
 
-          <div className="lg:w-[41rem] bg-slate-300 h-36">publicidade</div>
           <MostViewedPost posts={posts} />
           {/* Componente de posts mais vistos */}
         </section>
@@ -71,9 +60,6 @@ export default async function Home() {
           {/* Componente de navegação de categoria */}
           <OurAuthors />
           {/* Componente renderiza lista de todos autores do blog */}
-          <div className="lg:w-[22.5rem] h-screen  rounded-[10px] bg-slate-200 ">
-            publicidade
-          </div>
         </aside>
       </div>
     </main>

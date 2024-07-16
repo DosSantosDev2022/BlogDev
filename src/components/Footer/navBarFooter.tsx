@@ -8,15 +8,15 @@ export function NavBarFooter() {
   const Links = [
     { id: 1, text: 'Home', url: '/' },
     { id: 2, text: 'Sobre o autor', url: '/About' },
-    { id: 3, text: 'Posts', url: '/AllPosts' },
+    { id: 3, text: 'Posts', url: '/Posts' },
     { id: 4, text: 'Contato', url: '/Contact' },
   ]
 
   const Links2 = [
-    { id: 5, text: 'HTML e Css', url: '/' },
-    { id: 6, text: 'JavaScript', url: '/' },
-    { id: 7, text: 'React Js', url: '/' },
-    { id: 8, text: 'Next Js', url: '/' },
+    { id: 5, text: 'HTML e Css', url: '/Categorys/HTML' },
+    { id: 6, text: 'JavaScript', url: '/Categorys/JavaScript' },
+    { id: 7, text: 'React Js', url: '/Categorys/React-Js' },
+    { id: 8, text: 'Next Js', url: '/Categorys/Next-Js' },
   ]
 
   const social = [
@@ -43,11 +43,11 @@ export function NavBarFooter() {
   return (
     <NavigationMenu.Root className="lg:col-span-3  w-full flex md:flex-row flex-col justify-around gap-10">
       <NavigationMenu.List className="flex flex-col gap-2">
-        <h3 className="text-blumine-50 text-2xl font-semibold">Navegação</h3>
+        <h3 className="text-mycolor-50 text-2xl font-semibold">Navegação</h3>
         {Links.map((link) => (
           <NavigationMenu.Item key={link.id}>
             <Link
-              className="text-blumine-50 hover:underline font-light"
+              className="text-mycolor-50 hover:underline font-light"
               href={link.url}
             >
               {link.text}
@@ -56,11 +56,11 @@ export function NavBarFooter() {
         ))}
       </NavigationMenu.List>
       <NavigationMenu.List className="flex flex-col gap-2">
-        <h3 className="text-blumine-50 text-2xl font-semibold">Categorias</h3>
+        <h3 className="text-mycolor-50 text-2xl font-semibold">Categorias</h3>
         {Links2.map((link2) => (
           <NavigationMenu.Item key={link2.id}>
             <Link
-              className="text-blumine-50 hover:underline font-light"
+              className="text-mycolor-50 hover:underline font-light"
               href={link2.url}
             >
               {link2.text}
@@ -69,13 +69,13 @@ export function NavBarFooter() {
         ))}
       </NavigationMenu.List>
       <NavigationMenu.List className="flex flex-col gap-2">
-        <h3 className="text-blumine-50 text-2xl font-semibold">
+        <h3 className="text-mycolor-50 text-2xl font-semibold">
           Redes Sociais
         </h3>
         {social.map((link) => (
           <NavigationMenu.Item key={link.id}>
             <Link
-              className="text-blumine-50 flex items-center gap-3 hover:underline font-light"
+              className="text-mycolor-50 flex items-center gap-3 hover:underline font-light"
               href={link.url}
             >
               <i className="text-lg">{link.icon}</i>

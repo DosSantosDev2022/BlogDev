@@ -15,11 +15,11 @@ export default function Header() {
   }
 
   return (
-    <header className=" lg:h-28  bg-blumine-700 py-3 px-8  lg:flex items-center justify-between ">
+    <header className=" lg:h-32  bg-mycolor-950 py-3 px-8  lg:flex items-center justify-between ">
       <div className="flex items-center justify-between">
         <Logo />
-        <Button onClick={toggleMenu} className="lg:hidden rounded-sm ">
-          {isMenuOpen ? <X size={30} /> : <FaBars size={30} />}
+        <Button onClick={toggleMenu} className="lg:hidden rounded-lg ">
+          {isMenuOpen ? <X size={28} /> : <FaBars size={28} />}
         </Button>
       </div>
       <div

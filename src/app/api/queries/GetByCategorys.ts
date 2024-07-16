@@ -9,28 +9,31 @@ export const GET_BY_CATEGORYS_POSTS = async (
   const query = `
    query GET_BY_CATEGORYS_POSTS($category:String!){
       posts(where: {tag: {tagName: $category}}) {
-      id
-      slug
-      subtitle
-      description
-      title
-      createdAt
-      coverImage {
-        url
-      }
-      author {
-        name
-        photo {
+          id
+        slug
+        subtitle
+        description
+        title
+        createdAt
+        coverImage {
           url
         }
-      }
-      tag {
-        tagName
-         coverTag {
-          url
+        author {
+          name
+          photo {
+            url
+          }
+        }
+        tag {
+          tagName
+          coverTag {
+            url
+          }
+          backgroundTag {
+            url
+          }
         }
       }
-    }
   }
 `
 

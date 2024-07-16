@@ -6,13 +6,13 @@ import { GET_BY_CATEGORYS_POSTS } from '@/app/api/queries/GetByCategorys'
 import Image from 'next/image'
 
 export async function generateMetadata({
-  searchParams,
+  params,
 }: {
-  searchParams?: { query?: string }
+  params?: { tagName?: string }
 }): Promise<Metadata> {
-  const query = searchParams?.query
-  const title = `Resultado da busca para "${query}" | Blog Dev`
-  const description = `Veja os resultados da busca para "${query}" no Blog Dev. Encontre artigos, tutoriais e mais conteúdo relevante para desenvolvedores.`
+  const category = params?.tagName
+  const title = `Resultado da busca para "${category}" | Blog Dev`
+  const description = `Veja os resultados da busca para "${category}" no Blog Dev. Encontre artigos, tutoriais e mais conteúdo relevante para desenvolvedores.`
   return {
     title,
     description,
@@ -20,7 +20,7 @@ export async function generateMetadata({
       title,
       description,
       type: 'website',
-      url: `https://blog-dev-two.vercel.app/search?query=${query}`,
+      url: `https://blog-dev-two.vercel.app/Categorys/query=${category}`,
       images: [
         {
           url: 'blogdev.png',
@@ -59,65 +59,84 @@ export default async function PostsByCategory({
   )
 
   return (
-    <main className="grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12 container mx-auto">
-      <div className="flex flex-col items-center justify-center lg:col-span-7 gap-5 ">
-        <div className=" relative w-full lg:h-[320px] h-[220px] p-4 gap-3 rounded-md">
-          <Image
-            fill
-            className="object-cover"
-            src={`${categoryCoverImage?.tag.coverTag?.url}`}
-            alt={categoryCoverImage?.title || ''}
-          />
-        </div>
-        <div className="flex flex-wrap justify-start gap-6 p-2">
-          {posts.length === 0 ? (
-            <>
-              <div className="flex items-start justify-center w-full p-2 h-screen">
-                <h1 className="text-4xl font-bold text-blumine-900">
-                  Nenhum categoria foi encontrada.{' '}
-                </h1>
-              </div>
-            </>
-          ) : (
-            <>
-              {posts.map((post) => (
-                <CardMain.Root slug={post.slug} key={post.id}>
-                  <CardMain.Image
-                    title={post.title}
-                    coverImage={post.coverImage.url}
-                  />
-                  <CardMain.Content>
-                    <TagsPost tagName={post.tag.tagName} />
-                    <CardMain.Title className="text-md" title={post.title} />
-                    <Author.Root>
-                      <Author.Avatar
-                        className="w-8 h-8"
-                        ImageProfile={post.author.photo.url}
-                        name={post.author.name}
-                      />
-                      <div className="flex- flex-col gap-1">
-                        <Author.Name
-                          nome={post.author.name}
-                          className="text-slate-900 text-xs"
-                        />
-                        <Author.CreateAd
-                          CreateAd={post.createdAt}
-                          className="text-slate-400 text-xs"
-                        />
-                      </div>
-                    </Author.Root>
-                    <CardMain.Description
-                      className="text-md"
-                      description={post.description}
+    <>
+      <div
+        className="w-full absolute  h-96 opacity-90 -z-30 bg-center  bg-cover  bg-no-repeat"
+        style={{
+          backgroundImage: `linear-gradient(180deg, rgba(24, 59, 86, 0.00) 0%, rgba(22, 49, 70, 0.45) 45.38%, #152532 100%), url(${categoryCoverImage?.tag.backgroundTag.url || ''})`,
+        }}
+      />
+      <main className="grid relative lg:grid-cols-12 gap-4 items-start justify-center   container mx-auto">
+        <div className="flex mt-12  flex-col items-center justify-center lg:col-span-7 gap-5">
+          <div className="flex flex-col items-start  w-full">
+            <span className="text-mycolor-100 font-light uppercase">
+              Categoria
+            </span>
+            <h4 className="text-mycolor-50 font-bold text-5xl">
+              {categoryCoverImage?.tag.tagName}
+            </h4>
+          </div>
+          <div className=" relative w-full lg:h-[380px] h-[220px] top-20  lg:top-0 p-4 gap-3 rounded-md">
+            {categoryCoverImage?.tag.coverTag ? (
+              <Image
+                fill
+                className="object-cover rounded-lg"
+                src={`${categoryCoverImage?.tag.coverTag?.url}`}
+                alt={categoryCoverImage?.title || ''}
+              />
+            ) : (
+              <></>
+            )}
+          </div>
+          <div className="flex flex-wrap justify-start gap-6 top-20 mb-32 lg:mb-10 relative lg:static px-2 py-3">
+            {posts.length === 0 ? (
+              <>
+                <div className="flex items-start justify-center w-full p-2 h-screen">
+                  <h1 className="text-4xl font-bold text-blumine-900">
+                    Nenhum categoria foi encontrada.{' '}
+                  </h1>
+                </div>
+              </>
+            ) : (
+              <>
+                {posts.map((post) => (
+                  <CardMain.Root slug={post.slug} key={post.id}>
+                    <CardMain.Image
+                      title={post.title}
+                      coverImage={post.coverImage.url}
                     />
-                  </CardMain.Content>
-                </CardMain.Root>
-              ))}
-            </>
-          )}
+                    <CardMain.Content>
+                      <TagsPost tagName={post.tag.tagName} />
+                      <CardMain.Title className="text-md" title={post.title} />
+                      <Author.Root>
+                        <Author.Avatar
+                          className="w-8 h-8"
+                          ImageProfile={post.author.photo.url}
+                          name={post.author.name}
+                        />
+                        <div className="flex- flex-col gap-1">
+                          <Author.Name
+                            nome={post.author.name}
+                            className="text-slate-900 text-xs"
+                          />
+                          <Author.CreateAd
+                            CreateAd={post.createdAt}
+                            className="text-slate-400 text-xs"
+                          />
+                        </div>
+                      </Author.Root>
+                      <CardMain.Description
+                        className="text-md"
+                        description={post.description}
+                      />
+                    </CardMain.Content>
+                  </CardMain.Root>
+                ))}
+              </>
+            )}
+          </div>
         </div>
-      </div>
-      <div className=" lg:col-span-5 flex flex-col items-center justify-center gap-5 mt-5 lg:mt-0 "></div>
-    </main>
+      </main>
+    </>
   )
 }
