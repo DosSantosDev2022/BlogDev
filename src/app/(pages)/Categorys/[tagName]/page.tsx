@@ -6,6 +6,17 @@ import { GET_BY_CATEGORYS_POSTS } from '@/app/api/queries/Get_By_Categorys_Posts
 import Image from 'next/image'
 import { Pagination } from '@/components/globals/Pagination/Pagination'
 
+interface PostsByCategoryProps {
+  params: {
+    tagName: string
+  }
+  searchParams: {
+    page?: number
+    first?: number
+    total?: number
+  }
+}
+
 export async function generateMetadata({
   params,
 }: {
@@ -43,26 +54,19 @@ export async function generateMetadata({
 
 export default async function PostsByCategory({
   params,
-}: {
-  params?: {
-    tagName: string
-    page?: number
-    first?: number
-    total?: number
-  }
-}) {
-  const category = params?.tagName || ''
-  const page = Number(params?.page)
-  const pageSize = Number(params?.first) || 1
+  searchParams,
+}: PostsByCategoryProps) {
+  const tagName = params?.tagName || ''
+  const page = Number(searchParams?.page) || 1
+  const first = Number(searchParams?.first) || 1
   const { posts, postsConnection } = await GET_BY_CATEGORYS_POSTS(
-    category,
+    tagName,
     page,
-    pageSize,
+    first,
   )
-  const categoryCoverImage = posts.find((post) => post.tag.tagName === category)
+  const categoryCoverImage = posts.find((post) => post.tag.tagName === tagName)
   const totalCount = postsConnection.aggregate.count
-  const totalPages = Math.ceil(totalCount / pageSize)
-  console.log(posts)
+
   return (
     <>
       <div
@@ -136,10 +140,10 @@ export default async function PostsByCategory({
           </div>
           <div className=" w-full flex justify-between px-2 py-3">
             <Pagination
-              path={`/Categorys/${category}?page=`}
+              path={`/Categorys/${tagName}?page=`}
               page={page}
-              limit={pageSize}
-              total={totalPages}
+              limit={first}
+              total={totalCount}
             />
           </div>
         </div>

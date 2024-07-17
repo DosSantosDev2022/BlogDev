@@ -3,10 +3,12 @@ import { fetchHygraphQuery } from '../fetchHygraph'
 
 export const GET_POSTS_BY_SEARCH = async (
   term: string,
+  page: number,
+  pageSize: number,
 ): Promise<PostsTypes> => {
   const query = `
-  query SearchPosts($term: String!) {
-    posts(where:{_search: $term}) {
+    query SearchPosts($term: String!, $first: Int, $skip: Int) {
+    posts(where: {_search: $term}, first: $first, skip: $skip) {
       id
       slug
       title
@@ -28,8 +30,19 @@ export const GET_POSTS_BY_SEARCH = async (
       }
       description
     }
+    postsConnection(where: {_search: $term}) {
+      aggregate {
+        count
+      }
+    }
   }
 `
-  const variables = { term }
-  return fetchHygraphQuery(query, variables)
+  const skip = (page - 1) * pageSize
+  const variables = { term, first: pageSize, skip }
+  const { posts, postsConnection } = await fetchHygraphQuery<PostsTypes>(
+    query,
+    variables,
+  )
+
+  return { posts, postsConnection }
 }

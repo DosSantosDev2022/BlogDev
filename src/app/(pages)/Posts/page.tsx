@@ -25,16 +25,23 @@ export default async function AllPostsPage({
   const { posts, postsConnection } = await GET_PAGINATED_POSTS(page, first)
   const totalCount = postsConnection.aggregate.count
   return (
-    <main className="flex flex-col ">
-      <div className="container mx-auto grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12  ">
-        <div className="flex flex-col items-center justify-center lg:col-span-8 gap-5  ">
-          <div className="flex flex-col items-center justify-center gap-2 py-2 px-3 mt-7  ">
-            <h2 className="text-4xl font-semibold">
-              Aprenda o melhor do mundo da programação aqui no BlogDev.
-            </h2>
-          </div>
+    <main className="flex flex-col">
+      <div
+        className=" w-full flex items-center justify-center lg:h-[412px] h-80  opacity-90 bg-cover bg-no-repeat"
+        style={{
+          backgroundImage: `linear-gradient(180deg, rgba(24, 59, 86, 0.00) 0%, rgba(22, 49, 70, 0.45) 45.38%, #152532 100%), url(${'https://media.graphassets.com/SBtjEU9QD6ytECylLRnU'})`,
+        }}
+      >
+        <div className="flex items-center justify-center py-2 px-3 lg:w-2/3 w-full  ">
+          <h2 className="lg:text-6xl text-4xl md:text-5xl font-semibold text-mycolor-50">
+            Aprenda o melhor do mundo da programação aqui no BlogDev.
+          </h2>
+        </div>
+      </div>
 
-          <div className="  w-full p-2 ">
+      <div className="container  mx-auto grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12  ">
+        <div className="flex flex-col items-center justify-center lg:col-span-8 gap-5  ">
+          <div className=" w-full p-2 ">
             <div className="flex flex-col justify-start gap-6  ">
               {posts.map((post) => (
                 <CardMain.Root slug={post.slug} key={post.id}>

@@ -1,24 +1,26 @@
-'use client'
-import { useSearchParams, useRouter } from 'next/navigation'
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { CiSearch } from 'react-icons/ci'
-
 import { Input } from '../ui/input'
 
 export function InputSearch() {
-  const searchParams = useSearchParams()
-
-  const { push } = useRouter()
+  const router = useRouter()
+  const query = router.push
+  const searchParams = new URLSearchParams(query as unknown as string)
+  const [searchTerm, setSearchTerm] = useState('')
 
   function handleSearch(term: string) {
-    const params = new URLSearchParams(searchParams)
-
     if (term) {
-      params.set('query', term)
+      searchParams.set('query', term)
     } else {
-      params.delete('query')
+      searchParams.delete('query')
     }
+    searchParams.delete('page')
 
-    push(`/search?${params.toString()}`)
+    router.push(`/search?${searchParams.toString()}&page=1`)
+
+    // Limpar o valor do campo de busca após submeter a busca
+    setSearchTerm('')
   }
 
   return (
@@ -38,8 +40,10 @@ export function InputSearch() {
           <CiSearch size={18} className="text-mycolor-50" />
         </Input.Icon>
         <Input.Input
-          type="search"
+          type="text"
           id="search"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
           required
           placeholder="Buscar..."
         />
