@@ -1,9 +1,10 @@
-import { GET_POSTS_BY_SEARCH } from '@/app/api/queries/GetSearchPosts'
+import { GET_POSTS_BY_SEARCH } from '@/app/api/queries/Get_Posts_By_Search'
 import Image from 'next/image'
 import { CardMain } from '@/components/globals/Cards/mainCard'
 import { TagsPost } from '@/components/globals/Cards/tags'
 import { Author } from '@/components/Authors/author'
 import { Metadata } from 'next'
+import { Pagination } from '@/components/globals/Pagination/Pagination'
 
 export async function generateMetadata({
   searchParams,
@@ -45,13 +46,21 @@ export default async function PostsBySearch({
 }: {
   searchParams?: {
     query?: string
-    page?: string
+    page?: number
+    first?: number
+    total?: number
   }
 }) {
   const query = searchParams?.query || ''
+  const page = Number(searchParams?.page) || 1
+  const first = Number(searchParams?.first) || 2
 
-  const { posts } = await GET_POSTS_BY_SEARCH(query)
-
+  const { posts, postsConnection } = await GET_POSTS_BY_SEARCH(
+    query,
+    page,
+    first,
+  )
+  const totalCount = postsConnection.aggregate.count
   const postCover = posts.find(
     (post) => post.tag.tagName === searchParams?.query,
   )
@@ -127,6 +136,14 @@ export default async function PostsBySearch({
               ))}
             </>
           )}
+        </div>
+        <div className=" w-full flex justify-between px-2 py-3">
+          <Pagination
+            path={`/search?query=${query}&page=`}
+            page={page}
+            limit={first}
+            total={totalCount}
+          />
         </div>
       </div>
       <div className=" lg:col-span-5 flex flex-col items-center justify-center gap-5 mt-5 lg:mt-0 "></div>

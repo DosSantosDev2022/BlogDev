@@ -39,7 +39,7 @@ export function HighlightPosts({ posts }: RecentPostsProps) {
           className="w-28 h-10 flex font-normal items-center justify-center"
           asChild
         >
-          <Link href={'/Posts?page=1&limit=10'}>Ver todos</Link>
+          <Link href={'/Posts?page=1'}>Ver todos</Link>
         </Button>
       </div>
     </div>
