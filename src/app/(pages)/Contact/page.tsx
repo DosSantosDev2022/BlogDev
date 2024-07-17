@@ -5,7 +5,7 @@ import { FaInstagramSquare, FaLinkedin } from 'react-icons/fa'
 import { ContactCard } from '@/components/Contact/cards'
 import { Metadata } from 'next'
 import { FormContact } from '@/components/Contact/form'
-import { GET_AUTHOR } from '@/app/api/queries/GetAuthor'
+import { GET_AUTHORS } from '@/app/api/queries/Get_Authors'
 
 export const metadata: Metadata = {
   title: 'Contato | Blog Dev',
@@ -37,7 +37,7 @@ const cardContact = [
 ]
 
 export default async function ContactPage() {
-  const author = await GET_AUTHOR()
+  const author = await GET_AUTHORS()
 
   return (
     <main>
@@ -52,14 +52,15 @@ export default async function ContactPage() {
           <FormContact />
         </div>
         <div className="flex items-center justify-center w-full">
-          {author.photo && (
+          {author.authors.map((author) => (
             <Image
+              key={author.id}
               width={694}
               height={694}
               alt={author.name}
               src={author.photo.url}
             />
-          )}
+          ))}
         </div>
       </section>
       <section className="py-28 lg:px-16 px-5 w-full flex flex-col lg:flex-row justify-center items-start gap-10 mb-20">
