@@ -8,6 +8,8 @@ import { Author } from '@/components/Authors/author'
 import { Metadata } from 'next'
 import { TitleSection } from '@/components/globals/TitleSection'
 import { fetchHygraphQuery } from '@/app/api/fetchHygraph'
+import { notFound } from 'next/navigation'
+import { SEARCH_RELATED_POSTS } from '@/app/api/queries/Get_Relatead_Post'
 
 interface PagePostProps {
   params: {
@@ -18,61 +20,53 @@ interface PagePostProps {
 export async function generateMetadata({
   params,
 }: PagePostProps): Promise<Metadata> {
-  const { posts } = await SEARCH_DETAILS_POST()
-  const post = posts.find((post) => post.slug === params.slug)
+  const { post } = await SEARCH_DETAILS_POST(params.slug)
 
   return {
     title: post?.title,
-    description: post?.description,
-    category: post?.tag.tagName,
+    description: post?.subtitle,
+    category: post?.tag?.tagName,
     authors: post?.author,
 
     openGraph: {
       title: post?.title,
-      description: post?.description,
-      images: [{ url: post?.coverImage.url || '' }],
+      description: post?.subtitle,
+      images: [{ url: post?.coverImage?.url || '' }],
       type: 'article',
     },
     twitter: {
       card: 'summary_large_image',
       title: post?.title,
-      description: post?.description,
-      images: post?.coverImage.url,
+      description: post?.subtitle,
+      images: post?.coverImage?.url,
     },
   }
 }
 
 export default async function PagePost({ params }: PagePostProps) {
-  const { posts } = await SEARCH_DETAILS_POST()
-  const post = posts.find((post) => post.slug === params.slug)
+  const { post } = await SEARCH_DETAILS_POST(params.slug)
+
   if (!post) {
-    return <p>Post não encontrado !</p>
+    notFound()
   }
 
-  const relatedPost = posts.filter(
-    (p) => p.tag.tagName === post?.tag.tagName && p.slug !== post.slug,
-  )
-
-  const Links = [
-    { nome: 'Home', Url: '/' },
-    { nome: `${post.tag.tagName}`, Url: `/Categorys/${post.tag.tagName}` },
-  ]
+  const { posts } = await SEARCH_RELATED_POSTS(post.tag.tagName, params.slug)
 
   return (
     <>
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12  lg:px-4 px-2">
         <section className="flex flex-col items-center justify-start lg:col-span-8 px-2 ">
           <div className="w-full h-12 rounded-[10px] py-3 px-4 bg-mycolor-50 flex gap-2 items-center">
-            {Links.map((link) => (
-              <Link
-                className="text-mycolor-950 font-light hover:text-mycolor-700 duration-500 transition-all "
-                href={link.Url}
-                key={link.nome}
-                prefetch
-              >
-                {`${link.nome}`}
-              </Link>
-            ))}
+            <ol className="flex items-center gap-2">
+              <li>
+                <Link className="hover:underline" href={'/Posts'}>
+                  Posts:
+                </Link>
+              </li>
+              <li className="text-mycolor-400 font-light text-sm">
+                {post.title}
+              </li>
+            </ol>
           </div>
           <article className="mt-12 flex flex-col items-center justify-start w-full gap-10 ">
             <div className="flex flex-col items-start justify-center w-full gap-5">
@@ -99,7 +93,7 @@ export default async function PagePost({ params }: PagePostProps) {
               </Author.Root>
             </div>
             <div className="w-full">
-              {post?.coverImage.url ? (
+              {post?.coverImage?.url ? (
                 <Image
                   width={1000}
                   height={1000}
@@ -167,7 +161,7 @@ export default async function PagePost({ params }: PagePostProps) {
             <TitleSection.Span text="relacionados" />
           </TitleSection.Root>
           <div className="flex flex-col items-center justify-center space-y-5">
-            {relatedPost.map((post) => (
+            {posts?.map((post) => (
               <SmallCard
                 slug={post.slug}
                 key={post.id}
