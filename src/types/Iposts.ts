@@ -29,13 +29,13 @@ interface FeaturedPost {
   destaque: boolean
 }
 
-export interface postsConnection {
+interface postsConnection {
   aggregate: {
     count: number
   }
 }
 
-export interface Post {
+interface Post {
   id: string
   slug: string
   subtitle: string
@@ -49,13 +49,7 @@ export interface Post {
   destaque: FeaturedPost[]
 }
 
-export interface PostsTypes {
-  posts: Post[]
-
-  postsConnection: postsConnection
-}
-
-export interface relatedPost {
+interface relatedPost {
   id: string
   title: string
   author: Author
@@ -67,6 +61,12 @@ export interface relatedPost {
   slug: string
 }
 
-export interface RelatedPostTypes {
-  relatedPost: relatedPost[]
+export interface DetailsPostsType {
+  post: Post
+  posts: relatedPost[]
+}
+
+export interface PostsGlobalTypes {
+  posts: Post[]
+  postsConnection: postsConnection
 }

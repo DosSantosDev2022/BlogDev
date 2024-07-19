@@ -1,10 +1,10 @@
-import { PostsTypes } from '@/types/Iposts'
+import { PostsGlobalTypes } from '@/types/Iposts'
 import { fetchHygraphQuery } from '../fetchHygraph'
 
 export const GET_PAGINATED_POSTS = async (
   page: number,
   pageSize: number,
-): Promise<PostsTypes> => {
+): Promise<PostsGlobalTypes> => {
   const query = `
     query GET_PAGINATED_POSTS($first: Int, $skip: Int){
       posts(first: $first, skip: $skip){
@@ -39,7 +39,7 @@ export const GET_PAGINATED_POSTS = async (
 
   const skip = (page - 1) * pageSize
   const variables = { first: pageSize, skip }
-  const { posts, postsConnection } = await fetchHygraphQuery<PostsTypes>(
+  const { posts, postsConnection } = await fetchHygraphQuery<PostsGlobalTypes>(
     query,
     variables,
   )
