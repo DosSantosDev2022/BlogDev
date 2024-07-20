@@ -1,7 +1,7 @@
 import { RichText } from '@/components/Posts/rich-text'
 import Image from 'next/image'
 import SmallCard from '@/components/globals/Cards/SmallCard'
-import { ToShare } from '@/components/Posts/toShare'
+import { LikeandShare } from '@/components/Posts/LikeandShare'
 import Link from 'next/link'
 import { SEARCH_DETAILS_POST } from '@/app/api/queries/Search_Details_Posts'
 import { Author } from '@/components/Authors/author'
@@ -152,7 +152,14 @@ export default async function PagePost({ params }: PagePostProps) {
                 }}
               />
             </div>
-            <ToShare slug={params.slug} title={post.title} />
+            <div className="flex w-full justify-between items-start px-4 py-6 ">
+              <LikeandShare
+                postId={post.id}
+                slug={params.slug}
+                title={post.title}
+                initialLikes={post.likes}
+              />
+            </div>
           </article>
         </section>
         <section className="lg:col-span-4 flex flex-col items-start justify-center px-2 gap-5 mt-5 lg:mt-0 ">

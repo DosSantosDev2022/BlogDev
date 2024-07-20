@@ -43,6 +43,7 @@ interface BasePost {
   author: Author
   coverImage: CoverImage
   tag: Tag
+  likes: number
 }
 
 interface Post extends BasePost {

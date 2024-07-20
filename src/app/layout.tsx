@@ -6,6 +6,7 @@ import { ToastContainer } from 'react-toastify'
 import 'react-toastify/ReactToastify.css'
 import { Metadata } from 'next'
 import Script from 'next/script'
+import { LikesProvider } from '@/context/LikesContext'
 
 export const metadata: Metadata = {
   title: 'Blog Dev',
@@ -33,10 +34,12 @@ export default function RootLayout({
           src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.PUBLIC_GOOGLE_ADSENSE_CLIENT}`}
           crossOrigin="anonymous"
         ></Script>
-        <Header />
-        <main className="">{children}</main>
-        <Footer />
-        <ToastContainer />
+        <LikesProvider>
+          <Header />
+          <main className="">{children}</main>
+          <Footer />
+          <ToastContainer />
+        </LikesProvider>
       </body>
     </html>
   )

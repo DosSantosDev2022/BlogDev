@@ -28,7 +28,7 @@ export function FormFooter() {
   } = useForm<FormInput>({ resolver: zodResolver(zodFormSchema) })
 
   const onSubimit: SubmitHandler<FormInput> = async (data) => {
-    const response = await fetch('api/send', {
+    const response = await fetch('/api/send', {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',

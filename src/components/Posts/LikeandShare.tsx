@@ -12,18 +12,26 @@ import {
   EmailShareButton,
   EmailIcon,
 } from 'react-share'
+import { LikeButton } from './LikeButton'
 
 interface ToShareProps {
   slug: string
   title?: string
+  postId: string
+  initialLikes: number
 }
 
-export function ToShare({ slug, title }: ToShareProps) {
+export function LikeandShare({
+  slug,
+  title,
+  postId,
+  initialLikes,
+}: ToShareProps) {
   return (
     <>
       <div className="w-full p-2 flex flex-col items-start justify-center gap-3">
         <h4 className="text-mycolor-900 font-bold text-lg">
-          Compartilhe com seus amigos !!
+          Curta e Compartilhe com seus amigos !!
         </h4>
         <div className="flex items-center justify-start gap-3">
           <TwitterShareButton
@@ -62,6 +70,8 @@ export function ToShare({ slug, title }: ToShareProps) {
           >
             <EmailIcon size={32} round />
           </EmailShareButton>
+
+          <LikeButton initialLikes={initialLikes} postId={postId} />
         </div>
       </div>
     </>

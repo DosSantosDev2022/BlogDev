@@ -27,6 +27,7 @@ export const SEARCH_DETAILS_POST = async (
         tag {
           tagName
         }
+        likes
       }
     }
    `
