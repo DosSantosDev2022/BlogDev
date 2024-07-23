@@ -33,7 +33,7 @@ export function LikeandShare({
         <h4 className="text-mycolor-900 font-bold text-lg">
           Curta e Compartilhe com seus amigos !!
         </h4>
-        <div className="flex items-center justify-start gap-3">
+        <div className="flex items-center justify-start gap-3 w-full">
           <TwitterShareButton
             title={title}
             rel="noopener noreferrer"
