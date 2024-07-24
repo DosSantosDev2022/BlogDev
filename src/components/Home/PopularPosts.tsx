@@ -1,9 +1,9 @@
-import { PostsTypes } from '@/types/Iposts'
+import { PostsGlobalTypes } from '@/types/Iposts'
 import SmallCard from '../globals/Cards/SmallCard'
 import { TitleSection } from '../globals/TitleSection'
 
 interface PopularPosts {
-  posts: PostsTypes['posts']
+  posts: PostsGlobalTypes['posts']
 }
 
 export function PopularPosts({ posts }: PopularPosts) {

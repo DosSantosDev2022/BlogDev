@@ -1,11 +1,11 @@
-import { PostsTypes } from '@/types/Iposts'
+import { PostsGlobalTypes } from '@/types/Iposts'
 import { TitleSection } from '../globals/TitleSection'
 import { CardMain } from '../globals/Cards/mainCard'
 import { TagsPost } from '../globals/Cards/tags'
 import { Author } from '@/components/Authors/author'
 
 interface RecentPostsProps {
-  posts: PostsTypes['posts']
+  posts: PostsGlobalTypes['posts']
 }
 
 export function PostsRecentes({ posts }: RecentPostsProps) {

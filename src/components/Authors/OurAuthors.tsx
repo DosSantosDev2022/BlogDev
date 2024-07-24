@@ -5,7 +5,7 @@ import { TitleSection } from '../globals/TitleSection'
 export async function OurAuthors() {
   const { authors } = await GET_AUTHORS()
   return (
-    <div className="w-full h-auto flex flex-col items-start justify-center gap-1 p-2 rounded-md bg-mycolor-50/15">
+    <div className="w-full h-auto flex flex-col items-start justify-center gap-1 p-2 rounded-md bg-mycolor-50">
       <TitleSection.Root>
         <TitleSection.Highlight text="Nossos" />
         <TitleSection.Span text="Autores" />
@@ -14,7 +14,7 @@ export async function OurAuthors() {
         {authors.map((author) => (
           <Author.Root
             key={author.id}
-            className="flex items-start justify-start gap-2 w-full  px-4 py-2 rounded-md"
+            className="flex items-start justify-start gap-2 w-full border shadow-sm px-4 py-2 rounded-md"
           >
             <Author.Avatar
               ImageProfile={author.photo.url}
@@ -36,7 +36,7 @@ export async function OurAuthors() {
                     key={link.id}
                     Url={link.link}
                     icon={link.linkIcon}
-                    className="hover:scale-105 duration-500 transition-all "
+                    className="hover:scale-105 duration-500 transition-all text-mycolor-900 "
                   />
                 ))}
               </div>

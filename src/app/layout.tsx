@@ -5,8 +5,8 @@ import { Footer } from '@/components/Footer'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/ReactToastify.css'
 import { Metadata } from 'next'
-import Script from 'next/script'
 import { LikesProvider } from '@/context/LikesContext'
+import { AdSenses } from '@/components/globals/Google/Adsenses'
 
 export const metadata: Metadata = {
   title: 'Blog Dev',
@@ -28,12 +28,10 @@ export default function RootLayout({
       lang="pt-br"
       className="scrollbar scrollbar-track-mycolor-50 scrollbar-thumb-mycolor-800 overflow-x-hidden scrollbar-thumb-rounded-full"
     >
+      <head>
+        <AdSenses pId="pub-2827166560948178" />
+      </head>
       <body className={`bg-secondary  ${font.className}  `}>
-        <Script
-          async
-          src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${process.env.PUBLIC_GOOGLE_ADSENSE_CLIENT}`}
-          crossOrigin="anonymous"
-        ></Script>
         <LikesProvider>
           <Header />
           <main className="">{children}</main>

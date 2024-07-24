@@ -10,6 +10,7 @@ import { TitleSection } from '@/components/globals/TitleSection'
 import { fetchHygraphQuery } from '@/app/api/fetchHygraph'
 import { notFound } from 'next/navigation'
 import { SEARCH_RELATED_POSTS } from '@/app/api/queries/Get_Relatead_Post'
+import { AdBanner } from '@/components/globals/Google/AdBanner'
 
 interface PagePostProps {
   params: {
@@ -161,6 +162,7 @@ export default async function PagePost({ params }: PagePostProps) {
               />
             </div>
           </article>
+          <AdBanner dataAdFormat="auto" dataAdSlot="2166293754" />
         </section>
         <section className="lg:col-span-4 flex flex-col items-start justify-center px-2 gap-5 mt-5 lg:mt-0 ">
           <TitleSection.Root>
@@ -178,6 +180,8 @@ export default async function PagePost({ params }: PagePostProps) {
                 createdAd={post.createdAt}
               />
             ))}
+
+            <AdBanner dataAdFormat="autorelaxed" dataAdSlot="8436188632" />
           </div>
         </section>
       </div>

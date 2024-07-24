@@ -1,11 +1,11 @@
-import { PostsTypes } from '@/types/Iposts'
+import { PostsGlobalTypes } from '@/types/Iposts'
 import { CardPosts } from '../globals/Cards/Card'
 import Link from 'next/link'
 import { Button } from '../ui/button'
 import { TitleSection } from '../globals/TitleSection'
 
 interface RecentPostsProps {
-  posts: PostsTypes['posts']
+  posts: PostsGlobalTypes['posts']
 }
 
 export function HighlightPosts({ posts }: RecentPostsProps) {
