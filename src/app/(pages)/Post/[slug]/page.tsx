@@ -41,6 +41,7 @@ export async function generateMetadata({
       description: post?.subtitle,
       images: post?.coverImage?.url,
     },
+    metadataBase: new URL('https://blog-dev-two.vercel.app'), // Definindo a base
   }
 }
 
