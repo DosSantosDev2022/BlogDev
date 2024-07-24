@@ -15,7 +15,6 @@ export function InputSearch() {
     } else {
       searchParams.delete('query')
     }
-    searchParams.delete('page')
 
     router.push(`/search?${searchParams.toString()}&page=1`)
 

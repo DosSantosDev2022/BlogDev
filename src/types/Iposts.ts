@@ -29,44 +29,41 @@ interface FeaturedPost {
   destaque: boolean
 }
 
-export interface postsConnection {
+interface PostsConnection {
   aggregate: {
     count: number
   }
 }
 
-export interface Post {
+interface BasePost {
   id: string
   slug: string
-  subtitle: string
   title: string
-  description: string
   createdAt: string
-  coverImage: CoverImage
   author: Author
-  content: Content
+  coverImage: CoverImage
   tag: Tag
+  likes: number
+}
+
+interface Post extends BasePost {
+  subtitle: string
+  description: string
+  content: Content
   destaque: FeaturedPost[]
 }
 
-export interface PostsTypes {
+interface RelatedPost extends BasePost {}
+
+export interface DetailsPostsType {
+  post: Post
+}
+
+export interface RelatedPostsType {
+  posts: RelatedPost[]
+}
+
+export interface PostsGlobalTypes {
   posts: Post[]
-
-  postsConnection: postsConnection
-}
-
-export interface relatedPost {
-  id: string
-  title: string
-  author: Author
-  coverImage: {
-    url: string
-  }
-  tag: Tag
-  createdAt: string
-  slug: string
-}
-
-export interface RelatedPostTypes {
-  relatedPost: relatedPost[]
+  postsConnection: PostsConnection
 }

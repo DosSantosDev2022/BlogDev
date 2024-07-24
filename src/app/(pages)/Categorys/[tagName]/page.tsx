@@ -5,6 +5,7 @@ import { Metadata } from 'next'
 import { GET_BY_CATEGORYS_POSTS } from '@/app/api/queries/Get_By_Categorys_Posts'
 import Image from 'next/image'
 import { Pagination } from '@/components/globals/Pagination/Pagination'
+import { AdBanner } from '@/components/globals/Google/AdBanner'
 
 interface PostsByCategoryProps {
   params: {
@@ -75,7 +76,7 @@ export default async function PostsByCategory({
           backgroundImage: `linear-gradient(180deg, rgba(24, 59, 86, 0.00) 0%, rgba(22, 49, 70, 0.45) 45.38%, #152532 100%), url(${categoryCoverImage?.tag.backgroundTag.url || ''})`,
         }}
       />
-      <main className="grid relative lg:grid-cols-12 gap-4 items-start justify-center container mx-auto">
+      <main className="grid relative lg:grid-cols-12 gap-4 items-start justify-center px-2 py-3 lg:px-16 md:px-10">
         <div className="flex mt-12 flex-col items-center justify-center lg:col-span-7 gap-5">
           <div className="flex flex-col items-start w-full">
             <span className="text-mycolor-100 font-light uppercase">
@@ -85,7 +86,7 @@ export default async function PostsByCategory({
               {categoryCoverImage?.tag.tagName}
             </h4>
           </div>
-          <div className="relative w-full lg:h-[380px] h-[220px] top-20 lg:top-0 p-4 gap-3 rounded-md">
+          <div className="relative w-full lg:h-[380px] h-[220px] top-20 lg:top-0 p-2  gap-3 rounded-md">
             {categoryCoverImage?.tag.coverTag ? (
               <Image
                 fill
@@ -96,6 +97,7 @@ export default async function PostsByCategory({
             ) : null}
           </div>
           <div className="flex flex-wrap justify-start gap-6 top-20 mb-32 lg:mb-10 relative lg:static px-2 py-3">
+            <AdBanner dataAdFormat="auto" dataAdSlot="2166293754" />
             {posts.length === 0 ? (
               <div className="flex items-start justify-center w-full p-2 h-screen">
                 <h1 className="text-4xl font-bold text-blumine-900">

@@ -1,12 +1,11 @@
-import { PostsTypes } from '@/types/Iposts'
+import { PostsGlobalTypes } from '@/types/Iposts'
 import { CardPosts } from '../globals/Cards/Card'
 import Link from 'next/link'
-import { CardSkeleton } from '../Loading/CardSkeleton'
 import { Button } from '../ui/button'
 import { TitleSection } from '../globals/TitleSection'
 
 interface MostViewedPostProps {
-  posts: PostsTypes['posts']
+  posts: PostsGlobalTypes['posts']
 }
 
 export function MostViewedPost({ posts }: MostViewedPostProps) {
@@ -31,9 +30,7 @@ export function MostViewedPost({ posts }: MostViewedPostProps) {
             />
           ))
         ) : (
-          <>
-            <CardSkeleton />
-          </>
+          <></>
         )}
       </div>
       <div className="w-full flex items-center justify-end">

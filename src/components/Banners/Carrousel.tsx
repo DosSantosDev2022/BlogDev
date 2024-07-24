@@ -10,10 +10,10 @@ import Autoplay from 'embla-carousel-autoplay'
 import Link from 'next/link'
 import { TagsPost } from '@/components/globals/Cards/tags'
 import { Author } from '@/components/Authors/author'
-import { Post } from '@/types/Iposts'
+import { PostsGlobalTypes } from '@/types/Iposts'
 
 interface BannerCarrouselProps {
-  featuredPosts: Post[]
+  featuredPosts: PostsGlobalTypes['posts']
 }
 
 export function BannerCarrousel({ featuredPosts }: BannerCarrouselProps) {

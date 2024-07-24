@@ -1,11 +1,11 @@
-import { PostsTypes } from '@/types/Iposts'
+import { PostsGlobalTypes } from '@/types/Iposts'
 import { fetchHygraphQuery } from '../fetchHygraph'
 
 export const GET_POSTS_BY_SEARCH = async (
   term: string,
   page: number,
   pageSize: number,
-): Promise<PostsTypes> => {
+): Promise<PostsGlobalTypes> => {
   const query = `
     query SearchPosts($term: String!, $first: Int, $skip: Int) {
     posts(where: {_search: $term}, first: $first, skip: $skip) {
@@ -39,7 +39,7 @@ export const GET_POSTS_BY_SEARCH = async (
 `
   const skip = (page - 1) * pageSize
   const variables = { term, first: pageSize, skip }
-  const { posts, postsConnection } = await fetchHygraphQuery<PostsTypes>(
+  const { posts, postsConnection } = await fetchHygraphQuery<PostsGlobalTypes>(
     query,
     variables,
   )

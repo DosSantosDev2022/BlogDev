@@ -1,10 +1,12 @@
-import { PostsTypes } from '@/types/Iposts'
 import { fetchHygraphQuery } from '../fetchHygraph'
+import { DetailsPostsType } from '@/types/Iposts'
 
-export const SEARCH_DETAILS_POST = async (): Promise<PostsTypes> => {
+export const SEARCH_DETAILS_POST = async (
+  slug: string,
+): Promise<DetailsPostsType> => {
   const query = `
-    query SearchAllPosts {
-      posts(stage: PUBLISHED) {
+    query SEARCH_DETAILS_POST($slug: String!) {
+      post(where: {slug: $slug}) {
         id
         slug
         subtitle
@@ -25,9 +27,10 @@ export const SEARCH_DETAILS_POST = async (): Promise<PostsTypes> => {
         tag {
           tagName
         }
+        likes
       }
     }
    `
-
-  return fetchHygraphQuery(query)
+  const variables = { slug }
+  return fetchHygraphQuery(query, variables)
 }

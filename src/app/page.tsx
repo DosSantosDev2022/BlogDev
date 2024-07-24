@@ -7,6 +7,7 @@ import { PopularPosts } from '@/components/Home/PopularPosts'
 import { BannerCarrousel } from '@/components/Banners/Carrousel'
 import { GET_ALL_POST } from './api/queries/Get_All_Posts'
 import { PostsRecentes } from '@/components/Home/PostsRecentes'
+import { AdBanner } from '@/components/globals/Google/AdBanner'
 
 export const metadata: Metadata = {
   title: 'Home | Blog Dev',
@@ -48,9 +49,10 @@ export default async function Home() {
       <PostsRecentes posts={posts} />
       <div className="grid  lg:grid-cols-12 gap-1 items-start justify-center p-6 mt-12 mb-12">
         <section className="flex flex-col items-start justify-start lg:col-span-8 gap-5 p-4 ">
+          <AdBanner dataAdFormat="auto" dataAdSlot="2166293754" />
           <HighlightPosts posts={posts} />
           {/* Componente de posts em destaque */}
-
+          <AdBanner dataAdFormat="auto" dataAdSlot="2166293754" />
           <MostViewedPost posts={posts} />
           {/* Componente de posts mais vistos */}
         </section>
@@ -59,8 +61,12 @@ export default async function Home() {
           <NavCategorys />
           {/* Componente de navegação de categoria */}
           <OurAuthors />
-          {/* Componente renderiza lista de todos autores do blog */}
+          {/* Componente renderiza anuncios do google ads */}
+          <AdBanner dataAdFormat="autorelaxed" dataAdSlot="8436188632" />
         </aside>
+      </div>
+      <div className="p-4">
+        <AdBanner dataAdFormat="auto" dataAdSlot="2166293754" />
       </div>
     </main>
   )
