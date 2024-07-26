@@ -46,7 +46,7 @@ export default async function Home() {
       <div className="w-full flex items-center justify-center">
         <BannerCarrousel featuredPosts={featuredPosts} />
       </div>
-      <div className="px-4">
+      <div className="lg:px-16 px-5">
         <PostsRecentes posts={posts} />
         <div className="grid  lg:grid-cols-12 gap-1 items-start justify-center  mt-12 mb-12">
           <section className="flex flex-col items-start justify-start lg:col-span-8 gap-5">
@@ -57,7 +57,7 @@ export default async function Home() {
             <MostViewedPost posts={posts} />
             {/* Componente de posts mais vistos */}
           </section>
-          <aside className="lg:col-span-4 flex flex-col items-center justify-center gap-5 p-2 mt-5 lg:mt-0 ">
+          <aside className="lg:col-span-4 flex flex-col items-center justify-center gap-5 mt-5 lg:mt-0 ">
             <PopularPosts posts={posts} /> {/* Componente de posts populares */}
             <NavCategorys />
             {/* Componente de navegação de categoria */}
