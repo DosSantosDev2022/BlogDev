@@ -10,7 +10,7 @@ interface MostViewedPostProps {
 
 export function MostViewedPost({ posts }: MostViewedPostProps) {
   return (
-    <div className="w-full flex flex-col lg:items-start items-center justify-center">
+    <div className="w-full flex flex-col lg:items-start items-center justify-center px-4">
       <TitleSection.Root>
         <TitleSection.Highlight text="Posts" />
         <TitleSection.Span text="mais vistos" />

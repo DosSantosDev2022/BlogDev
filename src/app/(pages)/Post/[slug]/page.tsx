@@ -61,11 +61,14 @@ export default async function PagePost({ params }: PagePostProps) {
           <div className="w-full h-12 rounded-[10px] py-3 px-4 bg-mycolor-50 flex gap-2 items-center">
             <ol className="flex items-center gap-2">
               <li>
-                <Link className="hover:underline" href={'/Posts'}>
+                <Link
+                  className="hover:underline text-sm lg:text-lg"
+                  href={'/Posts'}
+                >
                   Posts:
                 </Link>
               </li>
-              <li className="text-mycolor-400 font-light text-sm">
+              <li className="text-mycolor-400 font-light text-[10px] lg:text-sm">
                 {post.title}
               </li>
             </ol>
@@ -78,7 +81,7 @@ export default async function PagePost({ params }: PagePostProps) {
 
               <Author.Root>
                 <Author.Avatar
-                  className="w-20 h-20"
+                  className="lg:w-20 lg:h-20 w-16 h-16"
                   ImageProfile={post?.author.photo.url || ''}
                   name={post.author.name}
                 />
@@ -154,7 +157,7 @@ export default async function PagePost({ params }: PagePostProps) {
                 }}
               />
             </div>
-            <div className="flex w-full justify-between items-start px-4 py-6 ">
+            <div className="flex w-full justify-between items-start px-2 py-3 mb-10 ">
               <LikeandShare
                 postId={post.id}
                 slug={params.slug}
@@ -170,7 +173,7 @@ export default async function PagePost({ params }: PagePostProps) {
             <TitleSection.Highlight text="Posts" />
             <TitleSection.Span text="relacionados" />
           </TitleSection.Root>
-          <div className="flex flex-col items-center justify-center space-y-5">
+          <div className="flex flex-col items-center justify-center space-y-5 w-full">
             {posts?.map((post) => (
               <SmallCard
                 slug={post.slug}
@@ -182,7 +185,7 @@ export default async function PagePost({ params }: PagePostProps) {
               />
             ))}
 
-            <AdBanner dataAdFormat="autorelaxed" dataAdSlot="8436188632" />
+            <AdBanner dataAdFormat="auto" dataAdSlot="2166293754" />
           </div>
         </section>
       </div>

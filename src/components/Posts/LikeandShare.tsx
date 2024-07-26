@@ -29,11 +29,11 @@ export function LikeandShare({
 }: ToShareProps) {
   return (
     <>
-      <div className="w-full p-2 flex flex-col items-start justify-center gap-3">
-        <h4 className="text-mycolor-900 font-bold text-lg">
-          Curta e Compartilhe com seus amigos !!
+      <div className="w-full flex flex-col items-start justify-center gap-3">
+        <h4 className="text-mycolor-900 font-bold text-sm lg:text-lg">
+          Curta e Compartilhe!
         </h4>
-        <div className="flex items-center justify-start gap-3 w-full">
+        <div className="flex  items-center justify-start gap-3 w-full">
           <TwitterShareButton
             title={title}
             rel="noopener noreferrer"

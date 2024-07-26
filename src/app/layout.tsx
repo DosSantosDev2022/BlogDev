@@ -31,7 +31,7 @@ export default function RootLayout({
       <head>
         <AdSenses pId="pub-2827166560948178" />
       </head>
-      <body className={`bg-secondary  ${font.className}  `}>
+      <body className={`bg-secondary overflow-x-hidden ${font.className}  `}>
         <LikesProvider>
           <Header />
           <main className="">{children}</main>

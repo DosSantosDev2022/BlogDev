@@ -14,7 +14,7 @@ export function HighlightPosts({ posts }: RecentPostsProps) {
   )
   const recentPosts = sortedPosts.slice(0, 4)
   return (
-    <div className="w-full flex flex-col lg:items-start items-center justify-center">
+    <div className="w-full flex flex-col lg:items-start items-center justify-center px-4">
       <TitleSection.Root>
         <TitleSection.Highlight text="Posts" />
         <TitleSection.Span text="em destaque" />

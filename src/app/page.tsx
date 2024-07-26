@@ -42,32 +42,34 @@ export default async function Home() {
   const featuredPosts = posts.filter((post) => post.destaque)
 
   return (
-    <main>
+    <div>
       <div className="w-full flex items-center justify-center">
         <BannerCarrousel featuredPosts={featuredPosts} />
       </div>
-      <PostsRecentes posts={posts} />
-      <div className="grid  lg:grid-cols-12 gap-1 items-start justify-center p-6 mt-12 mb-12">
-        <section className="flex flex-col items-start justify-start lg:col-span-8 gap-5 p-4 ">
+      <div className="px-2 lg:px-4">
+        <PostsRecentes posts={posts} />
+        <div className="grid  lg:grid-cols-12 gap-1 items-start justify-center  mt-12 mb-12">
+          <section className="flex flex-col items-start justify-start lg:col-span-8 gap-5">
+            <AdBanner dataAdFormat="auto" dataAdSlot="2166293754" />
+            <HighlightPosts posts={posts} />
+            {/* Componente de posts em destaque */}
+            <AdBanner dataAdFormat="auto" dataAdSlot="2166293754" />
+            <MostViewedPost posts={posts} />
+            {/* Componente de posts mais vistos */}
+          </section>
+          <aside className="lg:col-span-4 flex flex-col items-center justify-center gap-5 p-2 mt-5 lg:mt-0 ">
+            <PopularPosts posts={posts} /> {/* Componente de posts populares */}
+            <NavCategorys />
+            {/* Componente de navegação de categoria */}
+            <OurAuthors />
+            {/* Componente renderiza anuncios do google ads */}
+            <AdBanner dataAdFormat="auto" dataAdSlot="8436188632" />
+          </aside>
+        </div>
+        <div className="p-4">
           <AdBanner dataAdFormat="auto" dataAdSlot="2166293754" />
-          <HighlightPosts posts={posts} />
-          {/* Componente de posts em destaque */}
-          <AdBanner dataAdFormat="auto" dataAdSlot="2166293754" />
-          <MostViewedPost posts={posts} />
-          {/* Componente de posts mais vistos */}
-        </section>
-        <aside className="lg:col-span-4 flex flex-col items-center justify-center gap-5 p-4 mt-5 lg:mt-0 ">
-          <PopularPosts posts={posts} /> {/* Componente de posts populares */}
-          <NavCategorys />
-          {/* Componente de navegação de categoria */}
-          <OurAuthors />
-          {/* Componente renderiza anuncios do google ads */}
-          <AdBanner dataAdFormat="autorelaxed" dataAdSlot="8436188632" />
-        </aside>
+        </div>
       </div>
-      <div className="p-4">
-        <AdBanner dataAdFormat="auto" dataAdSlot="2166293754" />
-      </div>
-    </main>
+    </div>
   )
 }

@@ -14,7 +14,7 @@ export function PostsRecentes({ posts }: RecentPostsProps) {
   )
   const recentPosts = sortedPosts.slice(0, 6)
   return (
-    <div className="w-full flex lg:flex-row flex-col lg:p-10 p-5 items-start justify-between gap-2 bg-mycolor-50/40  ">
+    <div className="w-full flex lg:flex-row flex-col lg:p-10 p-2 items-start justify-between gap-2 bg-mycolor-50/40  ">
       <div className="w-full">
         <TitleSection.Root>
           <TitleSection.Highlight text="Posts" />
