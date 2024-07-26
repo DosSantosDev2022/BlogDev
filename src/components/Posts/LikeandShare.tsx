@@ -38,9 +38,9 @@ export function LikeandShare({
             title={title}
             rel="noopener noreferrer"
             url={`http://blog-dev-two.vercel.app/Post/${slug}`}
-            className="hover:scale-105 duration-300 transition-all"
+            className="hover:scale-105 duration-300 transition-all w-10"
           >
-            <XIcon size={32} round />
+            <XIcon size={38} round />
           </TwitterShareButton>
 
           <LinkedinShareButton
@@ -48,27 +48,27 @@ export function LikeandShare({
             url={`http://blog-dev-two.vercel.app/Post/${slug}`}
             className="hover:scale-105 duration-300 transition-all"
           >
-            <LinkedinIcon size={32} round />
+            <LinkedinIcon size={38} round />
           </LinkedinShareButton>
 
           <WhatsappShareButton
             url={`http://blog-dev-two.vercel.app/Post/${slug}`}
             className="hover:scale-105 duration-300 transition-all"
           >
-            <WhatsappIcon size={32} round />
+            <WhatsappIcon size={38} round />
           </WhatsappShareButton>
           <FacebookShareButton
             url={`http://blog-dev-two.vercel.app/Post/${slug}`}
             className="hover:scale-105 duration-300 transition-all"
           >
-            <FacebookIcon size={32} round />
+            <FacebookIcon size={38} round />
           </FacebookShareButton>
 
           <EmailShareButton
             url={`http://blog-dev-two.vercel.app/Post/${slug}`}
             className="hover:scale-105 duration-300 transition-all"
           >
-            <EmailIcon size={32} round />
+            <EmailIcon size={38} round />
           </EmailShareButton>
 
           <LikeButton initialLikes={initialLikes} postId={postId} />

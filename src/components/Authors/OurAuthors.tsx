@@ -19,24 +19,24 @@ export async function OurAuthors() {
             <Author.Avatar
               ImageProfile={author.photo.url}
               name={author.name}
-              className="w-20 h-20"
+              className="w-16 h-16"
             />
             <div className="flex flex-col ">
               <Author.Name
                 nome={author.name}
-                className="text-mycolor-900 text-lg font-bold"
+                className="text-mycolor-900 text-base font-bold"
               />
               <Author.Carrer
-                className="mb-2 font-light text-mycolor-800"
+                className="mb-2 font-light text-xs text-mycolor-800"
                 text={author.career}
               />
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-2">
                 {author.authorlink.map((link) => (
                   <Author.Link
                     key={link.id}
                     Url={link.link}
                     icon={link.linkIcon}
-                    className="hover:scale-105 duration-500 transition-all text-mycolor-900 "
+                    className="hover:scale-105 text-lg duration-500 transition-all text-mycolor-900 "
                   />
                 ))}
               </div>

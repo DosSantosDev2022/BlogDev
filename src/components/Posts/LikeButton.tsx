@@ -20,7 +20,7 @@ export function LikeButton({ postId, initialLikes }: LikeButtonProps) {
 
   return (
     <div className="relative flex flex-col items-center">
-      <span className="absolute top-[-10px] right-[-10px]  border-mycolor-700 border-[2px] bg-mycolor-950 text-white text-xs rounded-full px-2 py-1">
+      <span className="absolute top-[-10px] right-[-10px]  border-mycolor-700 border-[2px] bg-mycolor-950 text-white text-xs rounded-full px-2.5 py-1">
         {currentLikes}
       </span>
       <Button

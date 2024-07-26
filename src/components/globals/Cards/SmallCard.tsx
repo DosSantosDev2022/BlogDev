@@ -29,33 +29,30 @@ export default function SmallCard({
       href={{
         pathname: `/Post/${slug}`,
       }}
+      className="w-full lg:w-[360px] h-[96px] flex items-center justify-center gap-3 rounded-lg overflow-hidden shadow-md bg-mycolor-50/15 px-2 py-3 hover:scale-105 duration-300 transition-all "
     >
-      <div className="w-full lg:w-[360px] h-[96px] flex items-center justify-start gap-3 rounded-lg overflow-hidden shadow-md bg-mycolor-50/15 px-2 py-3 hover:scale-105 duration-300 transition-all ">
-        <Image
-          src={coverImage.url}
-          width={132}
-          height={70}
-          quality={100}
-          alt={title}
-          className="rounded-md "
-        />
-        <div className="flex flex-col items-start gap-1 w-full ">
-          <h2 className="text-[10px] text-mycolor-900 font-semibold lg:text-sm">
-            {title}
-          </h2>
-          <Author.Root>
-            <Author.Avatar
-              className="lg:w-8 lg:h-8 w-6 h-6"
-              ImageProfile={author.photo.url}
-              name={author.name}
-            />
+      <Image
+        src={coverImage.url}
+        width={132}
+        height={70}
+        quality={100}
+        alt={title}
+        className="rounded-md "
+      />
+      <div className="flex flex-col items-start gap-1 w-full ">
+        <h2 className="text-xs text-mycolor-900 font-medium">{title}</h2>
+        <Author.Root>
+          <Author.Avatar
+            className="w-7 h-7"
+            ImageProfile={author.photo.url}
+            name={author.name}
+          />
 
-            <Author.Name
-              nome={author.name}
-              className="text-mycolor-900 text-xs"
-            />
-          </Author.Root>
-        </div>
+          <Author.Name
+            nome={author.name}
+            className="text-mycolor-900 text-xs"
+          />
+        </Author.Root>
       </div>
     </Link>
   )

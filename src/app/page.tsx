@@ -46,14 +46,14 @@ export default async function Home() {
       <div className="w-full flex items-center justify-center">
         <BannerCarrousel featuredPosts={featuredPosts} />
       </div>
-      <div className="px-2 lg:px-4">
+      <div className="px-4">
         <PostsRecentes posts={posts} />
         <div className="grid  lg:grid-cols-12 gap-1 items-start justify-center  mt-12 mb-12">
           <section className="flex flex-col items-start justify-start lg:col-span-8 gap-5">
             <AdBanner dataAdFormat="auto" dataAdSlot="2166293754" />
             <HighlightPosts posts={posts} />
             {/* Componente de posts em destaque */}
-            <AdBanner dataAdFormat="auto" dataAdSlot="2166293754" />
+            {/*  <AdBanner dataAdFormat="auto" dataAdSlot="2166293754" /> */}
             <MostViewedPost posts={posts} />
             {/* Componente de posts mais vistos */}
           </section>
