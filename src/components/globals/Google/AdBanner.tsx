@@ -9,25 +9,28 @@ interface AdBannerTypes {
 
 export function AdBanner({ dataAdFormat, dataAdSlot }: AdBannerTypes) {
   useEffect(() => {
-    try {
-      ;((window as any).adsbygoogle = (window as any).adsbygoogle || []).push(
-        {},
-      )
-    } catch (error) {
-      console.error(error)
-    }
+    const timeoutId = setTimeout(() => {
+      try {
+        ;((window as any).adsbygoogle = (window as any).adsbygoogle || []).push(
+          {},
+        )
+      } catch (error) {
+        console.error(error)
+      }
+    }, 500)
+
+    return () => clearTimeout(timeoutId)
   }, [dataAdSlot, dataAdFormat])
 
   return (
-    <div key={dataAdSlot} className="bg-zinc-100 w-full border">
-      <ins
-        className="adsbygoogle"
-        style={{ display: 'block' }}
-        data-ad-client="ca-pub-2827166560948178"
-        data-ad-slot={dataAdSlot}
-        data-ad-format={dataAdFormat}
-        data-full-width-responsive="true"
-      ></ins>
-    </div>
+    <ins
+      key={dataAdSlot}
+      className="adsbygoogle bg-transparent w-full border min-h-[100px] flex justify-center items-center"
+      style={{ display: 'block', width: '100%', minHeight: '100px' }}
+      data-ad-client="ca-pub-2827166560948178"
+      data-ad-slot={dataAdSlot}
+      data-ad-format={dataAdFormat}
+      data-full-width-responsive="true"
+    ></ins>
   )
 }
