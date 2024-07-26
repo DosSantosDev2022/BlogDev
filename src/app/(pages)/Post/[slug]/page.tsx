@@ -173,7 +173,7 @@ export default async function PagePost({ params }: PagePostProps) {
             <TitleSection.Highlight text="Posts" />
             <TitleSection.Span text="relacionados" />
           </TitleSection.Root>
-          <div className="flex flex-col items-center justify-center space-y-5 w-full">
+          <div className="flex flex-wrap justify-start  gap-4 items-center w-full">
             {posts?.map((post) => (
               <SmallCard
                 slug={post.slug}
