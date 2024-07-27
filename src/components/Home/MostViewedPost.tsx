@@ -10,28 +10,24 @@ interface MostViewedPostProps {
 
 export function MostViewedPost({ posts }: MostViewedPostProps) {
   return (
-    <div className="w-full flex flex-col lg:items-start items-center justify-center px-4">
+    <div className="w-full flex flex-col lg:items-start items-center justify-center  p-2">
       <TitleSection.Root>
         <TitleSection.Highlight text="Posts" />
         <TitleSection.Span text="mais vistos" />
       </TitleSection.Root>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-2 mt-3 mb-10 items-center justify-center gap-4">
-        {posts ? (
-          posts.map((post) => (
-            <CardPosts
-              key={post.id}
-              author={post.author}
-              coverImage={post.coverImage}
-              title={post.title}
-              tag={post.tag.tagName}
-              slug={post.slug}
-              createdAd={post.createdAt}
-            />
-          ))
-        ) : (
-          <></>
-        )}
+      <div className="grid md:grid-cols-2 lg:grid-cols-2 mt-3 mb-10 items-center   justify-center gap-4">
+        {posts.map((post) => (
+          <CardPosts
+            key={post.id}
+            author={post.author}
+            coverImage={post.coverImage}
+            title={post.title}
+            tag={post.tag.tagName}
+            slug={post.slug}
+            createdAd={post.createdAt}
+          />
+        ))}
       </div>
       <div className="w-full flex items-center justify-end">
         <Button
