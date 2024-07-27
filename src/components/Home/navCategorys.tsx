@@ -10,7 +10,7 @@ export async function NavCategorys() {
   })
 
   return (
-    <div className="w-full h-auto flex flex-col items-start justify-center gap-1 p-2 rounded-md bg-mycolor-50/15">
+    <div className="w-full h-auto flex flex-col items-start justify-center gap-1  rounded-md bg-mycolor-50/15">
       <TitleSection.Root>
         <TitleSection.Highlight text="Posts" />
         <TitleSection.Span text="por categorias" />

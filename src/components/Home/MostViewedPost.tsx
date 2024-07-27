@@ -16,7 +16,7 @@ export function MostViewedPost({ posts }: MostViewedPostProps) {
         <TitleSection.Span text="mais vistos" />
       </TitleSection.Root>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-2 mt-3 mb-10 items-center   justify-center gap-4">
+      <div className="grid md:grid-cols-2 lg:grid-cols-2 mt-3 mb-10 items-center   justify-center gap-2">
         {posts.map((post) => (
           <CardPosts
             key={post.id}
