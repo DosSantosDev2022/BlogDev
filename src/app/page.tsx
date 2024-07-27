@@ -7,7 +7,6 @@ import { PopularPosts } from '@/components/Home/PopularPosts'
 import { BannerCarrousel } from '@/components/Banners/Carrousel'
 import { GET_ALL_POST } from './api/queries/Get_All_Posts'
 import { MostRecentandMostLiked } from '@/components/Home/MostRecentandMostLiked'
-import { AdBanner } from '@/components/globals/Google/AdBanner'
 
 export const metadata: Metadata = {
   title: 'Home | Blog Dev',
