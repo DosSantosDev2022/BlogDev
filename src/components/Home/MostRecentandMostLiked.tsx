@@ -8,21 +8,27 @@ interface RecentPostsProps {
   posts: PostsGlobalTypes['posts']
 }
 
-export function PostsRecentes({ posts }: RecentPostsProps) {
+export function MostRecentandMostLiked({ posts }: RecentPostsProps) {
   const sortedPosts = posts.sort(
     (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
   )
   const recentPosts = sortedPosts.slice(0, 6)
+  const likedPosts = posts.sort((a, b) => b.likes - a.likes).slice(0, 6)
+
   return (
-    <div className="w-full flex lg:flex-row flex-col lg:p-10 p-2 items-start justify-between gap-2 bg-mycolor-50/40  ">
+    <div className="w-full flex lg:flex-row flex-col lg:p-10 p-2 items-start justify-between gap-2 bg-mycolor-50/40">
       <div className="w-full">
         <TitleSection.Root>
           <TitleSection.Highlight text="Posts" />
           <TitleSection.Span text="recentes" />
         </TitleSection.Root>
-        <div className="grid lg:grid-cols-2 grid-cols-1 gap-4 p-2 overflow-y-auto max-h-[380px] scrollbar-thin scrollbar-track-transparent ">
+        <div className="lg:grid lg:grid-cols-2 flex  gap-4 p-2 overflow-x-auto lg:overflow-x-hidden lg:overflow-y-auto lg:max-h-[380px] scrollbar-thin scrollbar-track-transparent">
           {recentPosts.map((post) => (
-            <CardMain.Root slug={post.slug} key={post.id}>
+            <CardMain.Root
+              slug={post.slug}
+              key={post.id}
+              className="min-w-[310px] lg:w-full "
+            >
               <CardMain.Image
                 title={post.title}
                 coverImage={post.coverImage.url}
@@ -36,7 +42,7 @@ export function PostsRecentes({ posts }: RecentPostsProps) {
                     ImageProfile={post.author.photo.url}
                     name={post.author.name}
                   />
-                  <div className="flex- flex-col gap-1">
+                  <div className="flex flex-col gap-1">
                     <Author.Name
                       nome={post.author.name}
                       className="text-mycolor-900 text-xs"
@@ -57,25 +63,25 @@ export function PostsRecentes({ posts }: RecentPostsProps) {
         </div>
       </div>
 
-      <div className="lg:w-[400px] w-full ">
+      <div className="lg:w-[400px] w-full">
         <TitleSection.Root>
           <TitleSection.Highlight text="Posts" />
           <TitleSection.Span text="mais curtidos" />
         </TitleSection.Root>
 
-        <div className="flex flex-col gap-2 overflow-y-auto bg-slate-50 p-2 max-h-[380px] scrollbar-thin scrollbar-track-transparent ">
-          {recentPosts.map((post) => (
+        <div className="flex flex-col gap-2 overflow-y-auto bg-slate-50 p-2 max-h-[380px] scrollbar-thin scrollbar-track-transparent">
+          {likedPosts.map((post) => (
             <CardMain.Root className="" slug={post.slug} key={post.id}>
               <CardMain.Content>
                 <TagsPost tagName={post.tag.tagName} />
-                <CardMain.Title className="text-[12px] " title={post.title} />
+                <CardMain.Title className="text-[12px]" title={post.title} />
                 <Author.Root>
                   <Author.Avatar
                     className="w-5 h-5"
                     ImageProfile={post.author.photo.url}
                     name={post.author.name}
                   />
-                  <div className="flex- flex-col gap-1">
+                  <div className="flex flex-col gap-1">
                     <Author.Name
                       nome={post.author.name}
                       className="text-slate-900 text-xs"

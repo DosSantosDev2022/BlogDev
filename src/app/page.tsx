@@ -6,7 +6,7 @@ import { MostViewedPost } from '@/components/Home/MostViewedPost'
 import { PopularPosts } from '@/components/Home/PopularPosts'
 import { BannerCarrousel } from '@/components/Banners/Carrousel'
 import { GET_ALL_POST } from './api/queries/Get_All_Posts'
-import { PostsRecentes } from '@/components/Home/PostsRecentes'
+import { MostRecentandMostLiked } from '@/components/Home/MostRecentandMostLiked'
 import { AdBanner } from '@/components/globals/Google/AdBanner'
 
 export const metadata: Metadata = {
@@ -47,8 +47,8 @@ export default async function Home() {
         <BannerCarrousel featuredPosts={featuredPosts} />
       </div>
       <div className="lg:px-16 px-5">
-        <PostsRecentes posts={posts} />
-        <div className="grid  lg:grid-cols-12 gap-1 items-start justify-center  mt-12 mb-12">
+        <MostRecentandMostLiked posts={posts} />
+        <div className="grid  lg:grid-cols-12 lg:gap-16 items-start justify-center  mt-12 mb-12">
           <section className="flex flex-col items-start justify-start lg:col-span-8 gap-5">
             <AdBanner dataAdFormat="auto" dataAdSlot="2166293754" />
             <HighlightPosts posts={posts} />
