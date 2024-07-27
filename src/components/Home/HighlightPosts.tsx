@@ -19,7 +19,7 @@ export function HighlightPosts({ posts }: RecentPostsProps) {
         <TitleSection.Highlight text="Posts" />
         <TitleSection.Span text="em destaque" />
       </TitleSection.Root>
-      <div className="grid md:grid-cols-2 lg:grid-cols-2 mt-3 mb-10 items-center justify-center gap-4">
+      <div className="grid md:grid-cols-2 lg:grid-cols-2 mt-3 mb-10 items-center w-full  justify-center gap-2">
         {recentPosts.map((post, index) => (
           <CardPosts
             key={post.id}

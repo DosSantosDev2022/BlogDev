@@ -49,25 +49,25 @@ export default async function Home() {
       <div className="lg:px-16 px-5">
         <MostRecentandMostLiked posts={posts} />
         <div className="grid  lg:grid-cols-12 lg:gap-16 items-start justify-center  mt-12 mb-12">
-          <section className="flex flex-col items-start justify-start lg:col-span-8 gap-5">
-            <AdBanner dataAdFormat="auto" dataAdSlot="2166293754" />
+          <section className="flex flex-col items-start justify-start lg:col-span-8 gap-2 px-4">
+            {/* <AdBanner dataAdFormat="auto" dataAdSlot="2166293754" /> */}
             <HighlightPosts posts={posts} />
             {/* Componente de posts em destaque */}
             {/*  <AdBanner dataAdFormat="auto" dataAdSlot="2166293754" /> */}
             <MostViewedPost posts={posts} />
             {/* Componente de posts mais vistos */}
           </section>
-          <aside className="lg:col-span-4 flex flex-col items-center justify-center gap-5 mt-5 lg:mt-0 ">
+          <aside className="lg:col-span-4 px-4 flex flex-col items-center justify-center gap-5 mt-5 lg:mt-0 ">
             <PopularPosts posts={posts} /> {/* Componente de posts populares */}
             <NavCategorys />
             {/* Componente de navegação de categoria */}
             <OurAuthors />
             {/* Componente renderiza anuncios do google ads */}
-            <AdBanner dataAdFormat="auto" dataAdSlot="8436188632" />
+            {/* <AdBanner dataAdFormat="auto" dataAdSlot="8436188632" /> */}
           </aside>
         </div>
         <div className="p-4">
-          <AdBanner dataAdFormat="auto" dataAdSlot="2166293754" />
+          {/* <AdBanner dataAdFormat="auto" dataAdSlot="2166293754" /> */}
         </div>
       </div>
     </div>

@@ -29,7 +29,7 @@ export default function SmallCard({
       href={{
         pathname: `/Post/${slug}`,
       }}
-      className="md:w-[340px] lg:w-full w-full h-[96px] flex items-center justify-center gap-3 rounded-lg overflow-hidden shadow-md bg-mycolor-50/15 px-2 py-3 hover:scale-105 duration-300 transition-all "
+      className="max-w-[340px] min-w-[340px] w-full h-[96px] flex items-center justify-center gap-3 rounded-lg overflow-hidden shadow-md bg-mycolor-50/15 px-2 py-3 hover:scale-105 duration-300 transition-all "
     >
       <Image
         src={coverImage.url}
