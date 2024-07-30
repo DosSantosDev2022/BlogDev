@@ -1,10 +1,7 @@
 import { GET_POSTS_BY_SEARCH } from '@/app/api/queries/Get_Posts_By_Search'
 import Image from 'next/image'
-import { CardMain } from '@/components/globals/Cards/mainCard'
-import { TagsPost } from '@/components/globals/Cards/tags'
-import { Author } from '@/components/Authors/author'
+import { Author, CardMain, Pagination, TagsPost } from '@/components/index'
 import { Metadata } from 'next'
-import { Pagination } from '@/components/globals/Pagination/Pagination'
 
 export async function generateMetadata({
   searchParams,

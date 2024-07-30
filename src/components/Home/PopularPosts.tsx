@@ -1,6 +1,5 @@
 import { PostsGlobalTypes } from '@/types/Iposts'
-import SmallCard from '../globals/Cards/SmallCard'
-import { TitleSection } from '../globals/TitleSection'
+import { SmallCard, TitleSection } from '@/components/index'
 
 interface PopularPosts {
   posts: PostsGlobalTypes['posts']

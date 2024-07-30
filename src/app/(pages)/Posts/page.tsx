@@ -1,11 +1,7 @@
 import { Metadata } from 'next'
-
-import { Pagination } from '@/components/globals/Pagination/Pagination'
-
 import { GET_PAGINATED_POSTS } from '@/app/api/queries/Get_Paginated_Posts'
-import { CardMain } from '@/components/globals/Cards/mainCard'
-import { TagsPost } from '@/components/globals/Cards/tags'
-import { Author } from '@/components/Authors/author'
+
+import { Author, CardMain, Pagination, TagsPost } from '@/components/index'
 
 export const metadata: Metadata = {
   title: 'Blog Dev | Todos os posts',

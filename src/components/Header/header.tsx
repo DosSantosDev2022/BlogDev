@@ -7,7 +7,7 @@ import { Navigation } from './navegation'
 import { X } from 'lucide-react'
 import { Button } from '../ui/button'
 
-export default function Header() {
+export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const toggleMenu = () => {

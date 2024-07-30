@@ -18,12 +18,7 @@ interface SmallCardProps {
   }
 }
 
-export default function SmallCard({
-  author,
-  coverImage,
-  slug,
-  title,
-}: SmallCardProps) {
+export function SmallCard({ author, coverImage, slug, title }: SmallCardProps) {
   return (
     <Link
       href={{

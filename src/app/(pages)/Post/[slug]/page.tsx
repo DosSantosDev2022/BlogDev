@@ -1,16 +1,18 @@
-import { RichText } from '@/components/Posts/rich-text'
 import Image from 'next/image'
-import SmallCard from '@/components/globals/Cards/SmallCard'
-import { LikeandShare } from '@/components/Posts/LikeandShare'
 import Link from 'next/link'
 import { SEARCH_DETAILS_POST } from '@/app/api/queries/Search_Details_Posts'
-import { Author } from '@/components/Authors/author'
 import { Metadata } from 'next'
-import { TitleSection } from '@/components/globals/TitleSection'
 import { fetchHygraphQuery } from '@/app/api/fetchHygraph'
 import { notFound } from 'next/navigation'
+import {
+  AdBanner,
+  Author,
+  LikeandShare,
+  RichText,
+  SmallCard,
+  TitleSection,
+} from '@/components/index'
 import { SEARCH_RELATED_POSTS } from '@/app/api/queries/Get_Relatead_Post'
-import { AdBanner } from '@/components/globals/Google/AdBanner'
 
 interface PagePostProps {
   params: {

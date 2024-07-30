@@ -1,8 +1,5 @@
+import { Author, CardMain, TagsPost, TitleSection } from '@/components/index'
 import { PostsGlobalTypes } from '@/types/Iposts'
-import { TitleSection } from '../globals/TitleSection'
-import { CardMain } from '../globals/Cards/mainCard'
-import { TagsPost } from '../globals/Cards/tags'
-import { Author } from '@/components/Authors/author'
 
 interface RecentPostsProps {
   posts: PostsGlobalTypes['posts']

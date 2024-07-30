@@ -1,12 +1,14 @@
 import { Metadata } from 'next'
-import { OurAuthors } from '@/components/Authors/OurAuthors'
-import { NavCategorys } from '@/components/Home/navCategorys'
-import { HighlightPosts } from '@/components/Home/HighlightPosts'
-import { MostViewedPost } from '@/components/Home/MostViewedPost'
-import { PopularPosts } from '@/components/Home/PopularPosts'
-import { BannerCarrousel } from '@/components/Banners/Carrousel'
+import {
+  OurAuthors,
+  NavCategorys,
+  BannerCarrousel,
+  HighlightPosts,
+  MostViewedPost,
+  PopularPosts,
+  MostRecentandMostLiked,
+} from '@/components/index'
 import { GET_ALL_POST } from './api/queries/Get_All_Posts'
-import { MostRecentandMostLiked } from '@/components/Home/MostRecentandMostLiked'
 
 export const metadata: Metadata = {
   title: 'Home | Blog Dev',

@@ -1,8 +1,6 @@
 import { PostsGlobalTypes } from '@/types/Iposts'
-import { CardPosts } from '../globals/Cards/Card'
 import Link from 'next/link'
-import { Button } from '../ui/button'
-import { TitleSection } from '../globals/TitleSection'
+import { Button, CardPosts, TitleSection } from '@/components/index'
 
 interface MostViewedPostProps {
   posts: PostsGlobalTypes['posts']
