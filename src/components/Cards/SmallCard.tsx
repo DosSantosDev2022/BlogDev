@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { Author } from '@/components/Authors/author'
+import { Author } from '@/components/index'
 
 interface SmallCardProps {
   title: string
