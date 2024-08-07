@@ -24,7 +24,7 @@ export function MostRecentandMostLiked({ posts }: RecentPostsProps) {
             <CardMain.Root
               slug={post.slug}
               key={post.id}
-              className="min-w-[310px] lg:w-full "
+              className="min-w-[310px] lg:w-full"
             >
               <CardMain.Image
                 title={post.title}
