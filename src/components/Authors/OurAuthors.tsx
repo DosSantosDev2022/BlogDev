@@ -1,6 +1,5 @@
 import { GET_AUTHORS } from '@/app/api/queries/Get_Authors'
-import { Author } from '@/components/Authors/author'
-import { TitleSection } from '../globals/TitleSection'
+import { Author, TitleSection } from '@/components/index'
 
 export async function OurAuthors() {
   const { authors } = await GET_AUTHORS()

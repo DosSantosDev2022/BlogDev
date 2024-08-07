@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { CMSIcon } from '@/components/globals/IconCms'
+import { CMSIcon } from '@/components/Cms/IconCms'
 import { twMerge } from 'tailwind-merge'
 
 interface AuthorLinksProps {

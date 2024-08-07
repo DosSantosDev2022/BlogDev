@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { TitleSection } from '../globals//TitleSection'
+import { TitleSection } from '@/components/index'
 import { GET_CATEGORYS } from '@/app/api/queries/Get_Categorys'
 
 export async function NavCategorys() {

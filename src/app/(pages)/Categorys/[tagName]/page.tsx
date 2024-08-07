@@ -1,11 +1,13 @@
-import { CardMain } from '@/components/globals/Cards/mainCard'
-import { TagsPost } from '@/components/globals/Cards/tags'
-import { Author } from '@/components/Authors/author'
 import { Metadata } from 'next'
 import { GET_BY_CATEGORYS_POSTS } from '@/app/api/queries/Get_By_Categorys_Posts'
 import Image from 'next/image'
-import { Pagination } from '@/components/globals/Pagination/Pagination'
-import { AdBanner } from '@/components/globals/Google/AdBanner'
+import {
+  AdBanner,
+  Author,
+  CardMain,
+  Pagination,
+  TagsPost,
+} from '@/components/index'
 
 interface PostsByCategoryProps {
   params: {

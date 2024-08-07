@@ -1,12 +1,10 @@
 import { Poppins } from 'next/font/google'
 import '@/styles/globals.css'
-import Header from '@/components/Header'
-import { Footer } from '@/components/Footer'
+import { Footer, Header, AdSenses } from '@/components/index'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/ReactToastify.css'
 import { Metadata } from 'next'
 import { LikesProvider } from '@/context/LikesContext'
-import { AdSenses } from '@/components/globals/Google/Adsenses'
 
 export const metadata: Metadata = {
   title: 'Blog Dev',

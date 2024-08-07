@@ -1,10 +1,8 @@
 import Image from 'next/image'
-
 import { IoLogoWhatsapp } from 'react-icons/io'
 import { FaInstagramSquare, FaLinkedin } from 'react-icons/fa'
-import { ContactCard } from '@/components/Contact/cards'
 import { Metadata } from 'next'
-import { FormContact } from '@/components/Contact/form'
+import { ContactCard, FormContact } from '@/components/index'
 import { GET_AUTHORS } from '@/app/api/queries/Get_Authors'
 
 export const metadata: Metadata = {

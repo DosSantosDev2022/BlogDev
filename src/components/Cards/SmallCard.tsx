@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { Author } from '@/components/Authors/author'
+import { Author } from '@/components/index'
 
 interface SmallCardProps {
   title: string
@@ -18,12 +18,7 @@ interface SmallCardProps {
   }
 }
 
-export default function SmallCard({
-  author,
-  coverImage,
-  slug,
-  title,
-}: SmallCardProps) {
+export function SmallCard({ author, coverImage, slug, title }: SmallCardProps) {
   return (
     <Link
       href={{

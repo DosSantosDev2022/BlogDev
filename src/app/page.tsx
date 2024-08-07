@@ -1,12 +1,15 @@
 import { Metadata } from 'next'
-import { OurAuthors } from '@/components/Authors/OurAuthors'
-import { NavCategorys } from '@/components/Home/navCategorys'
-import { HighlightPosts } from '@/components/Home/HighlightPosts'
-import { MostViewedPost } from '@/components/Home/MostViewedPost'
-import { PopularPosts } from '@/components/Home/PopularPosts'
-import { BannerCarrousel } from '@/components/Banners/Carrousel'
+import {
+  OurAuthors,
+  NavCategorys,
+  BannerCarrousel,
+  HighlightPosts,
+  MostViewedPost,
+  PopularPosts,
+  MostRecentandMostLiked,
+  AdBanner,
+} from '@/components/index'
 import { GET_ALL_POST } from './api/queries/Get_All_Posts'
-import { MostRecentandMostLiked } from '@/components/Home/MostRecentandMostLiked'
 
 export const metadata: Metadata = {
   title: 'Home | Blog Dev',
@@ -45,14 +48,14 @@ export default async function Home() {
       <div className="w-full flex items-center justify-center">
         <BannerCarrousel featuredPosts={featuredPosts} />
       </div>
-      <div className="lg:px-16 px-5">
+      <div className="lg:px-16 px-5 mt-10">
         <MostRecentandMostLiked posts={posts} />
         <div className="grid  lg:grid-cols-12 lg:gap-16 items-start justify-center  mt-12 mb-12">
           <section className="flex flex-col items-start justify-start lg:col-span-8 gap-2 px-4">
-            {/* <AdBanner dataAdFormat="auto" dataAdSlot="2166293754" /> */}
+            <AdBanner dataAdFormat="auto" dataAdSlot="2166293754" />
             <HighlightPosts posts={posts} />
             {/* Componente de posts em destaque */}
-            {/*  <AdBanner dataAdFormat="auto" dataAdSlot="2166293754" /> */}
+            <AdBanner dataAdFormat="auto" dataAdSlot="2166293754" />
             <MostViewedPost posts={posts} />
             {/* Componente de posts mais vistos */}
           </section>
@@ -62,11 +65,11 @@ export default async function Home() {
             {/* Componente de navegação de categoria */}
             <OurAuthors />
             {/* Componente renderiza anuncios do google ads */}
-            {/* <AdBanner dataAdFormat="auto" dataAdSlot="8436188632" /> */}
+            <AdBanner dataAdFormat="auto" dataAdSlot="8436188632" />
           </aside>
         </div>
         <div className="p-4">
-          {/* <AdBanner dataAdFormat="auto" dataAdSlot="2166293754" /> */}
+          <AdBanner dataAdFormat="auto" dataAdSlot="2166293754" />
         </div>
       </div>
     </div>

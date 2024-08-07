@@ -1,9 +1,8 @@
 import Image from 'next/image'
 import { fetchHygraphQuery } from '@/app/api/fetchHygraph'
-import { RichText } from '@/components/Posts/rich-text'
 import Link from 'next/link'
-import { CMSIcon } from '@/components/globals/IconCms'
 import { RichTextContent } from '@graphcms/rich-text-types'
+import { CMSIcon, RichText } from '@/components/index'
 
 interface AuthorLink {
   id: string

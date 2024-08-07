@@ -1,15 +1,14 @@
 'use client'
 import * as React from 'react'
-
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-} from '@/components/ui/carousel'
 import Autoplay from 'embla-carousel-autoplay'
 import Link from 'next/link'
-import { TagsPost } from '@/components/globals/Cards/tags'
-import { Author } from '@/components/Authors/author'
+import {
+  TagsPost,
+  CarouselContent,
+  CarouselItem,
+  Carousel,
+  Author,
+} from '@/components/index'
 import { PostsGlobalTypes } from '@/types/Iposts'
 
 interface BannerCarrouselProps {
