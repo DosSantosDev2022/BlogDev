@@ -1,5 +1,4 @@
 import Image from 'next/image'
-import Link from 'next/link'
 import { SEARCH_DETAILS_POST } from '@/app/api/queries/Search_Details_Posts'
 import { Metadata } from 'next'
 import { fetchHygraphQuery } from '@/app/api/fetchHygraph'
@@ -60,22 +59,7 @@ export default async function PagePost({ params }: PagePostProps) {
     <>
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12  lg:px-4 px-2">
         <section className="flex flex-col items-center justify-start lg:col-span-8 px-2 ">
-          <div className="w-full h-12 rounded-[10px] py-3 px-4 bg-mycolor-50 flex gap-2 items-center">
-            <ol className="flex items-center gap-2">
-              <li>
-                <Link
-                  className="hover:underline text-sm lg:text-lg"
-                  href={'/Posts'}
-                >
-                  Posts:
-                </Link>
-              </li>
-              <li className="text-mycolor-400 font-light text-[10px] lg:text-sm">
-                {post.title}
-              </li>
-            </ol>
-          </div>
-          <article className="mt-12 flex flex-col items-center justify-start w-full gap-10 ">
+          <article className="mt-4 flex flex-col items-center justify-start w-full gap-10 ">
             <div className="flex flex-col items-start justify-center w-full gap-5">
               <h1 className="text-mycolor-900 md:text-5xl text-3xl font-bold mb-3">
                 {post?.title}
@@ -187,7 +171,7 @@ export default async function PagePost({ params }: PagePostProps) {
               />
             ))}
 
-            <AdBanner dataAdFormat="auto" dataAdSlot="2166293754" />
+            <AdBanner dataAdFormat="auto" dataAdSlot="8436188632" />
           </div>
         </section>
       </div>

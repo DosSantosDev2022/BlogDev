@@ -29,19 +29,20 @@ export default async function AllPostsPage({
         }}
       >
         <div className="flex items-center justify-center py-2 px-3 lg:w-2/3 w-full  ">
-          <h2 className="lg:text-6xl text-4xl md:text-5xl font-semibold text-mycolor-50">
+          <h2 className="lg:text-6xl text-3xl md:text-5xl font-semibold text-mycolor-50">
             Aprenda o melhor do mundo da programação aqui no BlogDev.
           </h2>
         </div>
       </div>
 
-      <div className="container  mx-auto grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12  ">
+      <div className="grid lg:px-16 lg:py-20 px-5 lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12  ">
         <div className="flex flex-col items-center justify-center lg:col-span-8 gap-5  ">
-          <div className=" w-full p-2 ">
+          <div className=" w-full">
             <div className="flex flex-col justify-start gap-6  ">
               {posts.map((post) => (
                 <CardMain.Root slug={post.slug} key={post.id}>
                   <CardMain.Image
+                    className="h-[190px]"
                     title={post.title}
                     coverImage={post.coverImage.url}
                   />

@@ -14,7 +14,7 @@ export function PopularPosts({ posts }: PopularPosts) {
           <TitleSection.Span text="populares" />
         </TitleSection.Root>
       </div>
-      <div className="grid lg:grid-cols-2 justify-center px-4 gap-4 items-center  mt-3">
+      <div className="grid lg:grid-cols-1 justify-center gap-4 items-center  mt-3">
         {posts.map((post) => (
           <SmallCard
             slug={post.slug}

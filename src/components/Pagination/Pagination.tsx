@@ -24,12 +24,12 @@ export function Pagination({ page, limit, total, path }: PaginationProps) {
   const getHrefFarstPage = () => `${path}${1}`
   const getHrefLastPage = () => `${path}${Math.ceil(total / limit)}`
   return (
-    <div className="mt-8 w-full flex items-center justify-between p-2 ">
+    <div className="mt-8 w-full flex flex-col gap-6 items-center justify-center p-2 ">
       <span className="font-light text-light flex w-full">
         Mostrando {Math.min(limit, total - (page - 1) * limit)} de {total}
       </span>
 
-      <div className="flex gap-2 items-center">
+      <div className="flex gap-2 items-center w-full">
         <Button className="w-8 h-8 flex items-center justify-center" asChild>
           {isFarstPage ? (
             <Button

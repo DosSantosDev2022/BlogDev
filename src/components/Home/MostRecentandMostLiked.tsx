@@ -13,13 +13,13 @@ export function MostRecentandMostLiked({ posts }: RecentPostsProps) {
   const likedPosts = posts.sort((a, b) => b.likes - a.likes).slice(0, 6)
 
   return (
-    <div className="w-full flex lg:flex-row flex-col lg:p-10 p-2 items-start justify-between gap-2 bg-mycolor-50/40">
+    <div className="w-full flex lg:flex-row flex-col lg:p-10 pt-3 lg:pt-0 items-start justify-between gap-2 bg-mycolor-50/40">
       <div className="w-full">
         <TitleSection.Root>
           <TitleSection.Highlight text="Posts" />
           <TitleSection.Span text="recentes" />
         </TitleSection.Root>
-        <div className="lg:grid lg:grid-cols-2 flex  gap-4 p-2 overflow-x-auto lg:overflow-x-hidden lg:overflow-y-auto lg:max-h-[380px] scrollbar-thin scrollbar-track-transparent">
+        <div className="lg:grid lg:grid-cols-2 flex  gap-4  overflow-x-auto lg:overflow-x-hidden lg:overflow-y-auto lg:max-h-[380px] scrollbar-thin scrollbar-track-transparent">
           {recentPosts.map((post) => (
             <CardMain.Root
               slug={post.slug}

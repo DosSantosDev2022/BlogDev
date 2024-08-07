@@ -1,6 +1,6 @@
 import { PostsGlobalTypes } from '@/types/Iposts'
 import Link from 'next/link'
-import { Button, CardPosts, TitleSection } from '@/components/index'
+import { Button, HighlightCard, TitleSection } from '@/components/index'
 
 interface MostViewedPostProps {
   posts: PostsGlobalTypes['posts']
@@ -16,7 +16,7 @@ export function MostViewedPost({ posts }: MostViewedPostProps) {
 
       <div className="grid md:grid-cols-2 lg:grid-cols-2 mt-3 mb-10 items-center   justify-center gap-2">
         {posts.map((post) => (
-          <CardPosts
+          <HighlightCard
             key={post.id}
             author={post.author}
             coverImage={post.coverImage}

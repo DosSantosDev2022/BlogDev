@@ -20,7 +20,7 @@ interface CardPostsProps {
   className?: string
 }
 
-export function CardPosts({
+export function HighlightCard({
   author,
   coverImage,
   createdAd,
