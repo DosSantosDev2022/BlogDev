@@ -65,7 +65,10 @@ export default async function Home() {
             {/* Componente de navegação de categoria */}
             <OurAuthors />
             {/* Componente renderiza anuncios do google ads */}
-            <AdBanner dataAdFormat="auto" dataAdSlot="8436188632" />
+            <AdBanner dataAdFormat="auto" dataAdSlot="2166293754" />
+            <AdBanner dataAdFormat="auto" dataAdSlot="2166293754" />
+            <AdBanner dataAdFormat="auto" dataAdSlot="2166293754" />
+            <AdBanner dataAdFormat="auto" dataAdSlot="2166293754" />
           </aside>
         </div>
         <div className="p-4">

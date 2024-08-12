@@ -171,7 +171,7 @@ export default async function PagePost({ params }: PagePostProps) {
               />
             ))}
 
-            <AdBanner dataAdFormat="auto" dataAdSlot="8436188632" />
+            <AdBanner dataAdFormat="auto" dataAdSlot="2166293754" />
           </div>
         </section>
       </div>
