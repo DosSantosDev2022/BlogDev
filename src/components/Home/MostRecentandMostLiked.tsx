@@ -10,10 +10,11 @@ export function MostRecentandMostLiked({ posts }: RecentPostsProps) {
     (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
   )
   const recentPosts = sortedPosts.slice(0, 6)
+  console.log(recentPosts)
   const likedPosts = posts.sort((a, b) => b.likes - a.likes).slice(0, 6)
 
   return (
-    <div className="w-full flex lg:flex-row flex-col lg:p-10 pt-3 lg:pt-0 items-start justify-between gap-2 bg-mycolor-50/40">
+    <div className="w-full flex lg:flex-row flex-col lg:p-10 pt-2 lg:pt-0 items-start justify-between gap-10 lg:gap-2 bg-mycolor-50/40">
       <div className="w-full">
         <TitleSection.Root>
           <TitleSection.Highlight text="Posts" />

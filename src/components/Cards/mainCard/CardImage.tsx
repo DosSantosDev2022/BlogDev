@@ -9,7 +9,12 @@ interface CardImageProps {
 
 export function CardImage({ coverImage, title, className }: CardImageProps) {
   return (
-    <div className={twMerge('w-full lg:h-[250px]  relative ', className)}>
+    <div
+      className={twMerge(
+        'w-full min-h-[150px] max-h-[150px]  relative ',
+        className,
+      )}
+    >
       <Image
         className="rounded-md object-cover "
         fill
