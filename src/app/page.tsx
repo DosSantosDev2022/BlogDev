@@ -39,7 +39,13 @@ export const metadata: Metadata = {
 }
 
 export default async function Home() {
-  const { posts } = await GET_ALL_POST()
+  const response = await GET_ALL_POST()
+
+  if (!response || !response.posts) {
+    return <div>Error:Could not load posts.</div>
+  }
+
+  const { posts } = response
 
   const featuredPosts = posts.filter((post) => post.destaque)
 
