@@ -3,7 +3,7 @@ import { IoLogoWhatsapp } from 'react-icons/io'
 import { FaInstagramSquare, FaLinkedin } from 'react-icons/fa'
 import { Metadata } from 'next'
 import { ContactCard, FormContact } from '@/components/index'
-import { GET_AUTHORS } from '@/app/api/queries/Get_Authors'
+import { GET_AUTHORS } from '@/utils/queries/Get_Authors'
 
 export const metadata: Metadata = {
   title: 'Contato | Blog Dev',

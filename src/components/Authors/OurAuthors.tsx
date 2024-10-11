@@ -1,4 +1,4 @@
-import { GET_AUTHORS } from '@/app/api/queries/Get_Authors'
+import { GET_AUTHORS } from '@/utils/queries/Get_Authors'
 import { Author, TitleSection } from '@/components/index'
 
 export async function OurAuthors() {

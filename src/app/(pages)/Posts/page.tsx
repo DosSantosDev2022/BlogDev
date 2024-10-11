@@ -1,7 +1,6 @@
 import { Metadata } from 'next'
-import { GET_PAGINATED_POSTS } from '@/app/api/queries/Get_Paginated_Posts'
-
 import { Author, CardMain, Pagination, TagsPost } from '@/components/index'
+import { GET_POSTS } from '@/utils/queries/GetPosts'
 
 export const metadata: Metadata = {
   title: 'Blog Dev | Todos os posts',
@@ -16,9 +15,9 @@ export default async function AllPostsPage({
   searchParams,
 }: AllPostsPageProps) {
   const page = Number(searchParams?.page) || 1
-  const first = Number(searchParams?.first) || 4
+  const pageSize = Number(searchParams?.first) || 4
 
-  const { posts, postsConnection } = await GET_PAGINATED_POSTS(page, first)
+  const { posts, postsConnection } = await GET_POSTS({ page, pageSize })
   const totalCount = postsConnection.aggregate.count
   return (
     <main className="flex flex-col">
@@ -78,7 +77,7 @@ export default async function AllPostsPage({
             <Pagination
               path="/Posts?page="
               page={page}
-              limit={first}
+              limit={pageSize}
               total={totalCount}
             />
           </div>

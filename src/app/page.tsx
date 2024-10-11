@@ -9,7 +9,8 @@ import {
   MostRecentandMostLiked,
   AdBanner,
 } from '@/components/index'
-import { GET_ALL_POST } from './api/queries/Get_All_Posts'
+
+import { GET_POSTS } from '@/utils/queries/GetPosts'
 
 export const metadata: Metadata = {
   title: 'Home | Blog Dev',
@@ -39,13 +40,12 @@ export const metadata: Metadata = {
 }
 
 export default async function Home() {
-  const response = await GET_ALL_POST()
+  /* const response = await GET_ALL_POST() */
+  const { posts } = await GET_POSTS({})
 
-  if (!response || !response.posts) {
+  if (!posts) {
     return <div>Error:Could not load posts.</div>
   }
-
-  const { posts } = response
 
   const featuredPosts = posts.filter((post) => post.destaque)
 

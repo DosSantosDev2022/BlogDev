@@ -12,9 +12,9 @@ export function InputSearch() {
 
   function handleSearch(term: string) {
     if (term) {
-      searchParams.set('query', term)
+      searchParams.set('search', term)
     } else {
-      searchParams.delete('query')
+      searchParams.delete('search')
     }
 
     router.push(`/search?${searchParams.toString()}&page=1`)

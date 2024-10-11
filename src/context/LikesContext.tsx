@@ -7,7 +7,7 @@ import {
   useState,
 } from 'react'
 import { GetOrSetUserId } from '@/utils/cookies'
-import { GET_POSTS_LIKED } from '@/app/api/queries/Get_Posts_Liked'
+import { GET_POSTS_LIKED } from '@/utils/queries/Get_Posts_Liked'
 import { toast, ToastContainer } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 

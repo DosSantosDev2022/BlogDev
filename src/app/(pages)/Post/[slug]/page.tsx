@@ -1,7 +1,5 @@
 import Image from 'next/image'
-import { SEARCH_DETAILS_POST } from '@/app/api/queries/Search_Details_Posts'
 import { Metadata } from 'next'
-import { fetchHygraphQuery } from '@/app/api/fetchHygraph'
 import { notFound } from 'next/navigation'
 import {
   AdBanner,
@@ -11,7 +9,8 @@ import {
   SmallCard,
   TitleSection,
 } from '@/components/index'
-import { SEARCH_RELATED_POSTS } from '@/app/api/queries/Get_Relatead_Post'
+
+import { GET_POSTS } from '@/utils/queries/GetPosts'
 
 interface PagePostProps {
   params: {
@@ -22,7 +21,8 @@ interface PagePostProps {
 export async function generateMetadata({
   params,
 }: PagePostProps): Promise<Metadata> {
-  const { post } = await SEARCH_DETAILS_POST(params.slug)
+  const { posts } = await GET_POSTS({ slug: params.slug })
+  const post = posts[0]
 
   return {
     title: post?.title,
@@ -47,13 +47,18 @@ export async function generateMetadata({
 }
 
 export default async function PagePost({ params }: PagePostProps) {
-  const { post } = await SEARCH_DETAILS_POST(params.slug)
-
-  if (!post) {
+  // Buscar post pelo slug
+  const { posts } = await GET_POSTS({ slug: params.slug })
+  const postAccessed = posts[0]
+  if (!postAccessed) {
     notFound()
   }
 
-  const { posts } = await SEARCH_RELATED_POSTS(post.tag.tagName, params.slug)
+  // Buscar posts relacionados pela mesma tag
+  const { posts: relatedPosts } = await GET_POSTS({
+    tagName: postAccessed.tag.tagName, // Usar tagName para buscar posts relacionados
+    pageSize: 10, // Limitar a quantidade de posts relacionados
+  })
 
   return (
     <>
@@ -62,34 +67,34 @@ export default async function PagePost({ params }: PagePostProps) {
           <article className="mt-4 flex flex-col items-center justify-start w-full gap-10 ">
             <div className="flex flex-col items-start justify-center w-full gap-5">
               <h1 className="text-mycolor-900 md:text-5xl text-3xl font-bold mb-3">
-                {post?.title}
+                {postAccessed.title}
               </h1>
 
               <Author.Root>
                 <Author.Avatar
                   className="lg:w-20 lg:h-20 w-16 h-16"
-                  ImageProfile={post?.author.photo.url || ''}
-                  name={post.author.name}
+                  ImageProfile={postAccessed.author.photo.url || ''}
+                  name={postAccessed.author.name}
                 />
                 <div className="flex flex-col gap-1">
                   <Author.Name
-                    nome={post.author.name}
+                    nome={postAccessed.author.name}
                     className="text-mycolor-900 text-lg"
                   />
                   <Author.CreateAd
-                    CreateAd={post.createdAt}
+                    CreateAd={postAccessed.createdAt}
                     className="text-mycolor-900 text-md"
                   />
                 </div>
               </Author.Root>
             </div>
             <div className="w-full">
-              {post?.coverImage?.url ? (
+              {postAccessed?.coverImage?.url ? (
                 <Image
                   width={1000}
                   height={1000}
-                  alt={post.title}
-                  src={post?.coverImage.url}
+                  alt={postAccessed.title}
+                  src={postAccessed.coverImage.url}
                   quality={100}
                   className="bg-cover w-full rounded-md"
                 />
@@ -97,9 +102,9 @@ export default async function PagePost({ params }: PagePostProps) {
                 <p>Imagem não disponível</p>
               )}
             </div>
-            <div className="w-full p-2 text-mycolor-600 space-y-5">
+            <div className="w-full p-2 space-y-5">
               <RichText
-                content={post?.content.raw}
+                content={postAccessed.content.raw}
                 renderers={{
                   h1: ({ children }) => (
                     <h1 className="text-mycolor-950 font-bold text-4xl">
@@ -130,8 +135,8 @@ export default async function PagePost({ params }: PagePostProps) {
                     </p>
                   ),
                   code_block: ({ children }) => (
-                    <pre className="bg-mycolor-950  p-4 rounded-md overflow-x-auto w-full scrollbar-thin scrollbar-track-mycolor-900 scrollbar-thumb-mycolor-50">
-                      <code className="text-mycolor-50">{children}</code>
+                    <pre className="bg-mycolor-950 text-mycolor-50 p-4 rounded-md overflow-x-auto w-full scrollbar-thin scrollbar-track-mycolor-900 scrollbar-thumb-mycolor-50">
+                      <code>{children}</code>
                     </pre>
                   ),
                   ul: ({ children }) => <ul className=" p-2">{children}</ul>,
@@ -145,10 +150,10 @@ export default async function PagePost({ params }: PagePostProps) {
             </div>
             <div className="flex w-full justify-between items-start px-2 py-3 mb-10 ">
               <LikeandShare
-                postId={post.id}
+                postId={postAccessed.id}
                 slug={params.slug}
-                title={post.title}
-                initialLikes={post.likes}
+                title={postAccessed.title}
+                initialLikes={postAccessed.likes}
               />
             </div>
           </article>
@@ -160,7 +165,7 @@ export default async function PagePost({ params }: PagePostProps) {
             <TitleSection.Span text="relacionados" />
           </TitleSection.Root>
           <div className="flex flex-wrap justify-start  gap-4 items-center w-full">
-            {posts?.map((post) => (
+            {relatedPosts.map((post) => (
               <SmallCard
                 slug={post.slug}
                 key={post.id}
@@ -177,22 +182,4 @@ export default async function PagePost({ params }: PagePostProps) {
       </div>
     </>
   )
-}
-
-type StaticPostsPageData = {
-  posts: {
-    slug: string
-  }[]
-}
-
-export async function generateStaticParams() {
-  const query = `
-    query PostsStaticParams() {
-      posts(first: 50) {
-        slug
-      }
-    }
-  `
-  const { posts } = await fetchHygraphQuery<StaticPostsPageData>(query)
-  return posts
 }

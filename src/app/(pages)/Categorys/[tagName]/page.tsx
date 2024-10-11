@@ -1,5 +1,4 @@
 import { Metadata } from 'next'
-import { GET_BY_CATEGORYS_POSTS } from '@/app/api/queries/Get_By_Categorys_Posts'
 import Image from 'next/image'
 import {
   AdBanner,
@@ -8,6 +7,7 @@ import {
   Pagination,
   TagsPost,
 } from '@/components/index'
+import { GET_POSTS } from '@/utils/queries/GetPosts'
 
 interface PostsByCategoryProps {
   params: {
@@ -15,7 +15,7 @@ interface PostsByCategoryProps {
   }
   searchParams: {
     page?: number
-    first?: number
+    pageSize?: number
     total?: number
   }
 }
@@ -59,36 +59,44 @@ export default async function PostsByCategory({
   params,
   searchParams,
 }: PostsByCategoryProps) {
-  const tagName = params?.tagName || ''
+  const tagName = params.tagName || ''
   const page = Number(searchParams?.page) || 1
-  const first = Number(searchParams?.first) || 1
-  const { posts, postsConnection } = await GET_BY_CATEGORYS_POSTS(
+  const pageSize = Number(searchParams?.pageSize) || 10
+  const { posts, postsConnection } = await GET_POSTS({
     tagName,
     page,
-    first,
-  )
+    pageSize,
+  })
+  console.log(tagName)
+  if (!posts) {
+    return <p>Post não encontrado</p>
+  }
+
   const categoryCoverImage = posts.find((post) => post.tag.tagName === tagName)
   const totalCount = postsConnection.aggregate.count
 
   return (
     <>
+      {/* Ajuste de altura para diferentes tamanhos de tela */}
       <div
-        className="w-full absolute h-96 opacity-90 -z-30 bg-center bg-cover bg-no-repeat"
+        className="w-full absolute h-64 md:h-80 lg:h-96 opacity-90 -z-30 bg-center bg-cover bg-no-repeat"
         style={{
           backgroundImage: `linear-gradient(180deg, rgba(24, 59, 86, 0.00) 0%, rgba(22, 49, 70, 0.45) 45.38%, #152532 100%), url(${categoryCoverImage?.tag.backgroundTag.url || ''})`,
         }}
       />
-      <main className="grid relative lg:grid-cols-12 gap-4 items-start justify-center px-2 py-3 lg:px-16 md:px-10">
-        <div className="flex mt-12 flex-col items-center justify-center lg:col-span-7 gap-5">
+      <main className="grid relative grid-cols-1 lg:grid-cols-12 gap-4 items-start justify-center px-4 md:px-8 lg:px-16 py-5">
+        <div className="flex flex-col mt-12 items-center justify-center lg:col-span-7 gap-5">
           <div className="flex flex-col items-start w-full">
-            <span className="text-mycolor-100 font-light uppercase">
+            {/* Ajuste de fontes */}
+            <span className="text-mycolor-100 font-light uppercase text-sm md:text-base">
               Categoria
             </span>
-            <h4 className="text-mycolor-50 font-bold text-5xl">
+            <h4 className="text-mycolor-50 font-bold text-3xl md:text-4xl lg:text-5xl">
               {categoryCoverImage?.tag.tagName}
             </h4>
           </div>
-          <div className="relative w-full lg:h-[380px] h-[220px] top-20 lg:top-0 p-2  gap-3 rounded-md">
+          {/* Ajuste de altura e largura da imagem */}
+          <div className="relative w-full h-48 md:h-64 lg:h-[380px] top-10 lg:top-0 p-2 gap-3 rounded-md">
             {categoryCoverImage?.tag.coverTag ? (
               <Image
                 fill
@@ -98,11 +106,11 @@ export default async function PostsByCategory({
               />
             ) : null}
           </div>
-          <div className="flex flex-wrap justify-start gap-6 top-20 mb-32 lg:mb-10 relative lg:static px-2 py-3">
+          <div className="flex flex-wrap justify-start gap-4 top-10 lg:top-0 mb-32 lg:mb-10 relative px-2 py-3">
             <AdBanner dataAdFormat="auto" dataAdSlot="2166293754" />
             {posts.length === 0 ? (
-              <div className="flex items-start justify-center w-full p-2 h-screen">
-                <h1 className="text-4xl font-bold text-blumine-900">
+              <div className="flex items-center justify-center w-full p-2 h-screen">
+                <h1 className="text-2xl md:text-3xl lg:text-4xl font-bold text-blumine-900">
                   Nenhuma categoria foi encontrada.
                 </h1>
               </div>
@@ -115,26 +123,29 @@ export default async function PostsByCategory({
                   />
                   <CardMain.Content>
                     <TagsPost tagName={post.tag.tagName} />
-                    <CardMain.Title className="text-md" title={post.title} />
+                    <CardMain.Title
+                      className="text-md md:text-lg"
+                      title={post.title}
+                    />
                     <Author.Root>
                       <Author.Avatar
-                        className="w-8 h-8"
+                        className="w-6 h-6 md:w-8 md:h-8"
                         ImageProfile={post.author.photo.url}
                         name={post.author.name}
                       />
                       <div className="flex flex-col gap-1">
                         <Author.Name
                           nome={post.author.name}
-                          className="text-slate-900 text-xs"
+                          className="text-slate-900 text-xs md:text-sm"
                         />
                         <Author.CreateAd
                           CreateAd={post.createdAt}
-                          className="text-slate-400 text-xs"
+                          className="text-slate-400 text-xs md:text-sm"
                         />
                       </div>
                     </Author.Root>
                     <CardMain.Description
-                      className="text-md"
+                      className="text-sm md:text-md"
                       description={post.description}
                     />
                   </CardMain.Content>
@@ -142,11 +153,11 @@ export default async function PostsByCategory({
               ))
             )}
           </div>
-          <div className=" w-full flex justify-between px-2 py-3">
+          <div className="w-full flex justify-between px-2 py-3">
             <Pagination
               path={`/Categorys/${tagName}?page=`}
               page={page}
-              limit={first}
+              limit={pageSize}
               total={totalCount}
             />
           </div>

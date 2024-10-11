@@ -1,4 +1,4 @@
-import { fetchHygraphQuery } from '../fetchHygraph'
+import { fetchHygraphQuery } from '@/app/api/posts/fetchHygraph'
 
 interface AuthorLink {
   id: string

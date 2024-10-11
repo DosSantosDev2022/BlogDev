@@ -1,7 +1,7 @@
-import { GET_POSTS_BY_SEARCH } from '@/app/api/queries/Get_Posts_By_Search'
 import Image from 'next/image'
 import { Author, CardMain, Pagination, TagsPost } from '@/components/index'
 import { Metadata } from 'next'
+import { GET_POSTS } from '@/utils/queries/GetPosts'
 
 export async function generateMetadata({
   searchParams,
@@ -42,24 +42,24 @@ export default async function PostsBySearch({
   searchParams,
 }: {
   searchParams?: {
-    query?: string
+    search?: string
     page?: number
-    first?: number
+    pageSize?: number
     total?: number
   }
 }) {
-  const query = searchParams?.query || ''
+  const search = searchParams?.search || ''
   const page = Number(searchParams?.page) || 1
-  const first = Number(searchParams?.first) || 2
+  const pageSize = Number(searchParams?.pageSize) || 2
 
-  const { posts, postsConnection } = await GET_POSTS_BY_SEARCH(
-    query,
+  const { posts, postsConnection } = await GET_POSTS({
+    search,
     page,
-    first,
-  )
+    pageSize,
+  })
   const totalCount = postsConnection.aggregate.count
   const postCover = posts.find(
-    (post) => post.tag.tagName === searchParams?.query,
+    (post) => post.tag.tagName === searchParams?.search,
   )
 
   return (
@@ -82,7 +82,7 @@ export default async function PostsBySearch({
         ) : (
           <div className="py-2 border-b border-slate-900 flex items-start justify-start w-full ">
             <h2 className="text-2xl font-medium">
-              {`Resultado da busca para  ${searchParams?.query}`}
+              {`Resultado da busca para  ${searchParams?.search}`}
             </h2>
           </div>
         )}
@@ -136,9 +136,9 @@ export default async function PostsBySearch({
         </div>
         <div className=" w-full flex justify-between px-2 py-3">
           <Pagination
-            path={`/search?query=${query}&page=`}
+            path={`/search?query=${search}&page=`}
             page={page}
-            limit={first}
+            limit={pageSize}
             total={totalCount}
           />
         </div>

@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import { TitleSection } from '@/components/index'
-import { GET_CATEGORYS } from '@/app/api/queries/Get_Categorys'
+import { GET_CATEGORYS } from '@/utils/queries/Get_Categorys'
 
 export async function NavCategorys() {
   const { tags } = await GET_CATEGORYS()
