@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { fetchHygraphQuery } from '@/app/api/fetchHygraph'
+import { fetchHygraphQuery } from '@/app/api/posts/fetchHygraph'
 import Link from 'next/link'
 import { RichTextContent } from '@graphcms/rich-text-types'
 import { CMSIcon, RichText } from '@/components/index'
