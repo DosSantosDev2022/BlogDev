@@ -1,54 +1,44 @@
-import React, { ReactNode } from 'react'
+import { type ReactNode, forwardRef } from 'react'
 import { twMerge } from 'tailwind-merge'
 
-export interface InputRootProps {
-  children: ReactNode
-  className?: string
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+	icon?: ReactNode
+	variants?: 'success' | 'error' | 'default'
 }
 
-export interface InputIconProps {
-  children: ReactNode
-}
-
-export type InputProps = React.InputHTMLAttributes<HTMLInputElement>
-
-function InputRoot({ children, className }: InputRootProps) {
-  return (
-    <div
-      className={twMerge(
-        `flex h-10 text-mycolor-50 w-full items-center gap-3 rounded  bg-mycolor-800 px-3 py-4 focus-within:ring-2 focus-within:ring-mycolor-800`,
-        className,
-      )}
-    >
-      {children}
-    </div>
-  )
-}
-
-function InputIcon({ children }: InputIconProps) {
-  return <i>{children}</i>
-}
-
-const ComponentInput = React.forwardRef<HTMLInputElement, InputProps>(
-  ({ className, type, ...props }, ref) => {
-    return (
-      <input
-        type={type}
-        className={twMerge(
-          'text-mycolor-50 text-md flex-1 bg-transparent font-light outline-none placeholder:text-mycolor-300',
-          className,
-        )}
-        ref={ref}
-        {...props}
-      />
-    )
-  },
+const Input = forwardRef<HTMLInputElement, InputProps>(
+	({ className, type, icon, variants = 'default', ...props }, ref) => {
+		const variantClasses = {
+			default: 'focus-within:ring-2 focus-within:ring-ring',
+			success: 'focus-within:ring-2 focus-within:ring-success',
+			error: 'focus-within:ring-2 focus-within:ring-danger',
+		}
+		return (
+			<div
+				className={twMerge(
+					'flex h-12 w-full items-center gap-1 rounded bg-input p-3',
+					'transition-all duration-300',
+					'border dark:border-none',
+					variantClasses[variants],
+					className,
+				)}
+			>
+				{icon && <i className='text-muted-foreground'>{icon}</i>}
+				<input
+					type={type}
+					ref={ref}
+					{...props}
+					className={twMerge(
+						'text-md flex-1 font-light outline-none',
+						'bg-transparent text-muted-foreground placeholder:text-muted-foreground',
+						'file:border-0 file:bg-transparent file:text-sm file:font-medium file:text-foreground',
+					)}
+				/>
+			</div>
+		)
+	},
 )
 
-ComponentInput.displayName = 'Input'
+Input.displayName = 'Input'
 
-export const Input = {
-  Root: InputRoot,
-  Icon: InputIcon,
-  Input: ComponentInput,
-}
+export { Input }
