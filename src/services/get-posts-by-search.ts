@@ -40,7 +40,9 @@ export const GET_POSTS_BY_SEARCH = async (
 	const skip = (page - 1) * pageSize
 	const variables = { term, first: pageSize, skip }
 	const { posts, postsConnection } =
-		await fetchHygraphQuery<PostsGlobalTypes>(query, variables, {cache:'no-cache'})
+		await fetchHygraphQuery<PostsGlobalTypes>(query, variables, {
+			cache: 'no-cache',
+		})
 
 	return { posts, postsConnection }
 }

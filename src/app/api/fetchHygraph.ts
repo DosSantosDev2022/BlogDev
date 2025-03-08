@@ -1,10 +1,9 @@
 export const fetchHygraphQuery = async <T>(
 	query: string,
 	variables?: Record<string, unknown>,
-	options?: {cache?: RequestCache, revalidate?: number}
+	options?: { cache?: RequestCache; revalidate?: number },
 ): Promise<T> => {
-
- const {cache = 'force-cache', revalidate} = options || {}
+	const { cache = 'force-cache', revalidate } = options || {}
 
 	const response = await fetch(process.env.HYGRAPH_API_KEY || '', {
 		method: 'POST',
@@ -14,7 +13,7 @@ export const fetchHygraphQuery = async <T>(
 			Authorization: `Bearer ${process.env.HYGRAPH_TOKEN}`,
 		},
 		cache,
-		next: revalidate ? {revalidate} : undefined,
+		next: revalidate ? { revalidate } : undefined,
 		body: JSON.stringify({ query, variables }),
 	})
 
