@@ -190,28 +190,3 @@ export default async function PagePost({ params }: PagePostProps) {
 		</>
 	)
 }
-
-type StaticPostsPageData = {
-	posts: {
-		slug: string
-	}[]
-}
-
-export async function generateStaticParams() {
-	const query = `
-    query PostsStaticParams() {
-      posts (first: 100 ) {
-        slug
-      }
-    }
-  `
-	const response = await fetchHygraphQuery<StaticPostsPageData>(query)
-
-	if (!response?.posts) {
-		return []
-	}
-
-	return response.posts.map((post) => ({
-		slug: post.slug,
-	}))
-}
