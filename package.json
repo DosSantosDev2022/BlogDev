@@ -9,13 +9,10 @@
 		"format": "npx @biomejs/biome format --write src/ ",
 		"lint": "npx @biomejs/biome lint src/",
 		"lint-fix": "npx @biomejs/biome lint --fix src/",
-		"check": "npx @biomejs/biome check --fix src/",
-		"prepare": "husky"
+		"check": "npx @biomejs/biome check --fix src/"
 	},
 	"commitlint": {
-		"extends": [
-			"@commitlint/config-conventional"
-		]
+		"extends": ["@commitlint/config-conventional"]
 	},
 	"lint-staged": {
 		"**.{js|ts|cjs|mjs|d.cts|d.mts|jsx|tsx|json|jsonc}": [
