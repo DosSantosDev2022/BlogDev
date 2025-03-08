@@ -28,8 +28,8 @@ const MostRecentandMostLiked = ({ posts }: RecentPostsProps) => {
 	const likedPosts = posts.sort((a, b) => b.likes - a.likes).slice(0, 6)
 
 	return (
-		<div className='w-full flex lg:flex-row flex-col lg:p-10 pt-2 lg:pt-0 items-start justify-between gap-10 lg:gap-2 bg-mycolor-50/40'>
-			<div className='w-full'>
+		<div className='w-full flex lg:flex-row flex-col items-start justify-between gap-10 lg:gap-2 bg-muted'>
+			<div className='w-full p-2'>
 				<TitleSections section='Recentes' />
 				<div className='lg:grid lg:grid-cols-2 flex  gap-4  overflow-x-auto lg:overflow-x-hidden lg:overflow-y-auto lg:max-h-[380px] scrollbar-thin scrollbar-track-transparent'>
 					{recentPosts.map((post) => (
@@ -75,7 +75,7 @@ const MostRecentandMostLiked = ({ posts }: RecentPostsProps) => {
 			<div className='lg:w-[400px] w-full'>
 				<TitleSections section='Mais curtidos' />
 
-				<div className='flex flex-col gap-2 overflow-y-auto bg-slate-50 p-2 max-h-[380px] scrollbar-thin scrollbar-track-transparent'>
+				<div className='flex flex-col gap-2 overflow-y-auto p-2 max-h-[380px] scrollbar-thin scrollbar-track-transparent'>
 					{likedPosts.map((post) => (
 						<CardRoot className='' slug={post.slug} key={post.id}>
 							<CardContent>

@@ -1,4 +1,19 @@
-import { Author, CardMain, Pagination, TagsPost } from '@/components/index'
+import {
+	CardContent,
+	CardDescription,
+	CardImage,
+	CardRoot,
+	CardTitle,
+} from '@/components/globals/cards/main-card'
+import {
+	AdBanner,
+	AuthorAvatar,
+	AuthorCreateAd,
+	AuthorName,
+	AuthorRoot,
+	Pagination,
+	TagsPost,
+} from '@/components/index'
 import { GET_POSTS_BY_SEARCH } from '@/services/get-posts-by-search'
 import type { Metadata } from 'next'
 import Image from 'next/image'
@@ -63,10 +78,10 @@ export default async function PostsBySearch({
 	)
 
 	return (
-		<main className='grid  lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12 container mx-auto'>
-			<div className='flex flex-col items-center justify-center lg:col-span-7 gap-5 '>
+		<div className='main-container'>
+			<section className='section-posts'>
 				{postCover ? (
-					<div className=' relative w-full lg:h-[320px] h-[220px] p-4 gap-3 rounded-md'>
+					<div className='relative w-full lg:h-[320px] h-[220px] p-4 gap-3 rounded-md'>
 						<Image
 							fill
 							className='object-cover'
@@ -80,7 +95,7 @@ export default async function PostsBySearch({
 				{posts.length === 0 ? (
 					<></>
 				) : (
-					<div className='py-2 border-b border-slate-900 flex items-start justify-start w-full '>
+					<div className='py-2 border-b border-border flex items-start justify-start w-full '>
 						<h2 className='text-2xl font-medium'>
 							{`Resultado da busca para  ${searchParams?.query}`}
 						</h2>
@@ -91,7 +106,7 @@ export default async function PostsBySearch({
 					{posts.length === 0 ? (
 						<>
 							<div className='flex items-start justify-center w-full p-2 h-screen'>
-								<h1 className='text-4xl font-bold text-blumine-900'>
+								<h1 className='text-4xl font-bold text-accent'>
 									Nenhum post foi encontrado.{' '}
 								</h1>
 							</div>
@@ -99,40 +114,37 @@ export default async function PostsBySearch({
 					) : (
 						<>
 							{posts.map((post) => (
-								<CardMain.Root slug={post.slug} key={post.id}>
-									<CardMain.Image
+								<CardRoot slug={post.slug} key={post.id}>
+									<CardImage
 										title={post.title}
 										coverImage={post.coverImage.url}
 									/>
-									<CardMain.Content>
+									<CardContent>
 										<TagsPost tagName={post.tag.tagName} />
-										<CardMain.Title
-											className='text-md'
-											title={post.title}
-										/>
-										<Author.Root>
-											<Author.Avatar
+										<CardTitle className='text-md' title={post.title} />
+										<AuthorRoot>
+											<AuthorAvatar
 												className='w-8 h-8'
 												ImageProfile={post.author.photo.url}
 												name={post.author.name}
 											/>
 											<div className='flex- flex-col gap-1'>
-												<Author.Name
+												<AuthorName
 													nome={post.author.name}
-													className='text-slate-900 text-xs'
+													className='text-primary text-xs'
 												/>
-												<Author.CreateAd
+												<AuthorCreateAd
 													CreateAd={post.createdAt}
-													className='text-slate-400 text-xs'
+													className='text-muted-foreground text-xs'
 												/>
 											</div>
-										</Author.Root>
-										<CardMain.Description
+										</AuthorRoot>
+										<CardDescription
 											className='text-md'
 											description={post.description}
 										/>
-									</CardMain.Content>
-								</CardMain.Root>
+									</CardContent>
+								</CardRoot>
 							))}
 						</>
 					)}
@@ -145,10 +157,15 @@ export default async function PostsBySearch({
 						total={totalCount}
 					/>
 				</div>
-			</div>
-			<div className='lg:col-span-5 flex flex-col items-center justify-center gap-5 mt-5 lg:mt-0'>
-				conteudo
-			</div>
-		</main>
+			</section>
+			<section className='section-secondary'>
+				<div className='top-24 lg:mt-8 mt-4 mb-32 lg:mb-10 px-2 py-3 space-y-3'>
+					<AdBanner dataAdFormat='auto' dataAdSlot='2166293754' />
+					<AdBanner dataAdFormat='auto' dataAdSlot='2166293754' />
+					<AdBanner dataAdFormat='auto' dataAdSlot='2166293754' />
+					<AdBanner dataAdFormat='auto' dataAdSlot='2166293754' />
+				</div>
+			</section>
+		</div>
 	)
 }

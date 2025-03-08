@@ -11,7 +11,7 @@ import { GET_AUTHORS } from '@/services/get-authors'
 const OurAuthors = async () => {
 	const { authors } = await GET_AUTHORS()
 	return (
-		<div className='w-full h-auto flex flex-col items-start justify-center gap-1 p-2 rounded-md bg-mycolor-50'>
+		<div className='w-full h-auto flex flex-col items-start justify-center gap-1 p-2 rounded-md bg-secondary'>
 			<TitleSections type='Nossos' section='Autores' />
 			<div className='flex flex-col items-start justify-center space-y-5 p-2 w-full'>
 				{authors.map((author) => (
@@ -27,10 +27,10 @@ const OurAuthors = async () => {
 						<div className='flex flex-col '>
 							<AuthorName
 								nome={author.name}
-								className='text-mycolor-900 text-base font-bold'
+								className='text-base font-bold'
 							/>
 							<AuthorCarrer
-								className='mb-2 font-light text-xs text-mycolor-800'
+								className='mb-2 font-light text-xs'
 								text={author.career}
 							/>
 							<div className='flex items-center gap-2'>
@@ -39,7 +39,7 @@ const OurAuthors = async () => {
 										key={link.id}
 										Url={link.link}
 										icon={link.linkIcon}
-										className='hover:scale-105 text-lg duration-500 transition-all text-mycolor-900 '
+										className='hover:scale-105 text-lg duration-500 transition-all'
 									/>
 								))}
 							</div>

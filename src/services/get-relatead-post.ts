@@ -25,5 +25,5 @@ export const SEARCH_RELATED_POSTS = async (
     }
   `
 	const variables = { tagName, slug }
-	return fetchHygraphQuery(query, variables)
+	return fetchHygraphQuery(query, variables, {cache: 'force-cache', revalidate: 60 * 60 * 24})
 }

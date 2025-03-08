@@ -41,7 +41,7 @@ export function BannerCarrousel({ featuredPosts }: BannerCarrouselProps) {
 								>
 									<div className='flex flex-col items-start gap-3 lg:w-9/12'>
 										<TagsPost tagName={post.tag.tagName} />
-										<h2 className='lg:text-6xl font-bold text-mycolor-50 '>
+										<h2 className='lg:text-6xl font-bold text-primary-foreground'>
 											{post.title}
 										</h2>
 										<AuthorRoot>
@@ -53,11 +53,11 @@ export function BannerCarrousel({ featuredPosts }: BannerCarrouselProps) {
 											<div className='flex flex-col gap-1'>
 												<AuthorName
 													nome={post.author.name}
-													className='text-lg '
+													className='text-lg text-muted'
 												/>
 												<AuthorCreateAd
 													CreateAd={post.createdAt}
-													className='text-md text-mycolor-50'
+													className='text-md text-muted'
 												/>
 											</div>
 										</AuthorRoot>

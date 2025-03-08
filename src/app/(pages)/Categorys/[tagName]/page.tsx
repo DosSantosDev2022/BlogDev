@@ -1,7 +1,16 @@
 import {
+	CardContent,
+	CardDescription,
+	CardImage,
+	CardRoot,
+	CardTitle,
+} from '@/components/globals/cards/main-card'
+import {
 	AdBanner,
-	Author,
-	CardMain,
+	AuthorAvatar,
+	AuthorCreateAd,
+	AuthorName,
+	AuthorRoot,
 	Pagination,
 	TagsPost,
 } from '@/components/index'
@@ -61,47 +70,50 @@ export default async function PostsByCategory({
 }: PostsByCategoryProps) {
 	const tagName = params?.tagName || ''
 	const page = Number(searchParams?.page) || 1
-	const first = Number(searchParams?.first) || 1
+	const first = Number(searchParams?.first) || 10
 	const { posts, postsConnection } = await GET_BY_CATEGORYS_POSTS(
 		tagName,
 		page,
 		first,
 	)
-	const categoryCoverImage = posts.find(
-		(post) => post.tag.tagName === tagName,
-	)
+	const category = posts.find((post) => post.tag.tagName === tagName)
 	const totalCount = postsConnection.aggregate.count
-
 	return (
 		<>
-			<div
-				className='w-full absolute h-96 opacity-90 -z-30 bg-center bg-cover bg-no-repeat'
-				style={{
-					backgroundImage: `linear-gradient(180deg, rgba(24, 59, 86, 0.00) 0%, rgba(22, 49, 70, 0.45) 45.38%, #152532 100%), url(${categoryCoverImage?.tag.backgroundTag.url || ''})`,
-				}}
-			/>
-			<main className='grid relative lg:grid-cols-12 gap-4 items-start justify-center px-2 py-3 lg:px-16 md:px-10'>
-				<div className='flex mt-12 flex-col items-center justify-center lg:col-span-7 gap-5'>
-					<div className='flex flex-col items-start w-full'>
-						<span className='text-mycolor-100 font-light uppercase'>
-							Categoria
-						</span>
-						<h4 className='text-mycolor-50 font-bold text-5xl'>
-							{categoryCoverImage?.tag.tagName}
-						</h4>
+			<div className='relative w-full lg:h-[500px] h-48 flex flex-col items-center justify-center'>
+				{/* Fundo com imagem de background */}
+				<div
+					className='absolute inset-0 h-full w-full bg-center bg-cover bg-no-repeat opacity-70'
+					style={{
+						backgroundImage: `url(${category?.tag.backgroundTag.url || ''})`,
+					}}
+				/>
+
+				{/* Imagem relativa sobreposta */}
+				<div className='relative top-24 lg:right-72 z-10 lg:w-[768px] w-80 h-52 lg:h-[380px] p-2 gap-3 rounded-md overflow-hidden'>
+					{category?.tag.coverTag ? (
+						<Image
+							fill
+							className='object-cover rounded-lg'
+							src={`${category?.tag.coverTag?.url}`}
+							alt={category?.title || ''}
+						/>
+					) : null}
+				</div>
+			</div>
+
+			<div className='main-container'>
+				{/* Seção de posts */}
+				<section className='section-posts lg:mt-12 mt-20'>
+					<div className='w-full space-y-3 px-2 py-3'>
+						<h3 className='font-bold text-3xl lg:text-6xl'>
+							{category?.tag.tagName}
+						</h3>
+						<p className='text-muted-foreground text-sm lg:text-base'>
+							{category?.description}
+						</p>
 					</div>
-					<div className='relative w-full lg:h-[380px] h-[220px] top-20 lg:top-0 p-2  gap-3 rounded-md'>
-						{categoryCoverImage?.tag.coverTag ? (
-							<Image
-								fill
-								className='object-cover rounded-lg'
-								src={`${categoryCoverImage?.tag.coverTag?.url}`}
-								alt={categoryCoverImage?.title || ''}
-							/>
-						) : null}
-					</div>
-					<div className='flex flex-wrap justify-start gap-6 top-20 mb-32 lg:mb-10 relative lg:static px-2 py-3'>
-						<AdBanner dataAdFormat='auto' dataAdSlot='2166293754' />
+					<div className='flex flex-wrap gap-6 mt-4 mb-32 lg:mb-10 px-2 py-3'>
 						{posts.length === 0 ? (
 							<div className='flex items-start justify-center w-full p-2 h-screen'>
 								<h1 className='text-4xl font-bold text-blumine-900'>
@@ -110,44 +122,43 @@ export default async function PostsByCategory({
 							</div>
 						) : (
 							posts.map((post) => (
-								<CardMain.Root slug={post.slug} key={post.id}>
-									<CardMain.Image
+								<CardRoot slug={post.slug} key={post.id}>
+									<CardImage
 										title={post.title}
 										coverImage={post.coverImage.url}
 									/>
-									<CardMain.Content>
+									<CardContent>
 										<TagsPost tagName={post.tag.tagName} />
-										<CardMain.Title
-											className='text-md'
-											title={post.title}
-										/>
-										<Author.Root>
-											<Author.Avatar
+										<CardTitle className='text-md' title={post.title} />
+										<AuthorRoot>
+											<AuthorAvatar
 												className='w-8 h-8'
 												ImageProfile={post.author.photo.url}
 												name={post.author.name}
 											/>
 											<div className='flex flex-col gap-1'>
-												<Author.Name
+												<AuthorName
 													nome={post.author.name}
-													className='text-slate-900 text-xs'
+													className='text-muted-foreground text-xs'
 												/>
-												<Author.CreateAd
+												<AuthorCreateAd
 													CreateAd={post.createdAt}
-													className='text-slate-400 text-xs'
+													className='text-muted text-xs'
 												/>
 											</div>
-										</Author.Root>
-										<CardMain.Description
+										</AuthorRoot>
+										<CardDescription
 											className='text-md'
 											description={post.description}
 										/>
-									</CardMain.Content>
-								</CardMain.Root>
+									</CardContent>
+								</CardRoot>
 							))
 						)}
 					</div>
-					<div className=' w-full flex justify-between px-2 py-3'>
+
+					{/* Paginação */}
+					<div className='w-full flex justify-between px-2 py-3'>
 						<Pagination
 							path={`/Categorys/${tagName}?page=`}
 							page={page}
@@ -155,8 +166,18 @@ export default async function PostsByCategory({
 							total={totalCount}
 						/>
 					</div>
-				</div>
-			</main>
+				</section>
+
+				{/* Seção de anúncios */}
+				<section className='section-secondary'>
+					<div className='top-24 lg:mt-8 mt-4 mb-32 lg:mb-10 px-2 py-3 space-y-3'>
+						<AdBanner dataAdFormat='auto' dataAdSlot='2166293754' />
+						<AdBanner dataAdFormat='auto' dataAdSlot='2166293754' />
+						<AdBanner dataAdFormat='auto' dataAdSlot='2166293754' />
+						<AdBanner dataAdFormat='auto' dataAdSlot='2166293754' />
+					</div>
+				</section>
+			</div>
 		</>
 	)
 }

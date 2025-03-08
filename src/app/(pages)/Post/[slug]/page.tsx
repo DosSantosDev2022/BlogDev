@@ -63,31 +63,36 @@ export default async function PagePost({ params }: PagePostProps) {
 
 	return (
 		<>
-			<div className='grid grid-cols-1 lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12  lg:px-4 px-2'>
-				<section className='flex flex-col items-center justify-start lg:col-span-8 px-2 '>
-					<article className='mt-4 flex flex-col items-center justify-start w-full gap-10 '>
+			<div className='grid grid-cols-1 lg:grid-cols-12 gap-2 items-start justify-center my-12 lg:px-4 px-2'>
+				<section className='flex flex-col items-center justify-start lg:col-span-9 px-6 py-3 lg:px-24 lg:py-4 border rounded-md shadow-sm'>
+					<article className='flex flex-col items-center justify-start w-full gap-10 '>
 						<div className='flex flex-col items-start justify-center w-full gap-5'>
-							<h1 className='text-mycolor-900 md:text-5xl text-3xl font-bold mb-3'>
-								{post?.title}
-							</h1>
+							<div className='p-2 max-w-5xl space-x-2'>
+								<h1 className='text-accent md:text-5xl lg:text-6xl p-2 text-3xl font-bold'>
+									{post?.title}
+								</h1>
+								<p className='font-light'>{post.description}</p>
+							</div>
 
-							<AuthorRoot>
-								<AuthorAvatar
-									className='lg:w-20 lg:h-20 w-16 h-16'
-									ImageProfile={post?.author.photo.url || ''}
-									name={post.author.name}
-								/>
-								<div className='flex flex-col gap-1'>
-									<AuthorName
-										nome={post.author.name}
-										className='text-mycolor-900 text-lg'
+							<div className='w-full p-2'>
+								<AuthorRoot>
+									<AuthorAvatar
+										className='w-12 h-12'
+										ImageProfile={post?.author.photo.url || ''}
+										name={post.author.name}
 									/>
-									<AuthorCreateAd
-										CreateAd={post.createdAt}
-										className='text-mycolor-900 text-md'
-									/>
-								</div>
-							</AuthorRoot>
+									<div className='flex flex-col gap-1'>
+										<AuthorName
+											nome={post.author.name}
+											className='text-base'
+										/>
+										<AuthorCreateAd
+											CreateAd={post.createdAt}
+											className='text-sm'
+										/>
+									</div>
+								</AuthorRoot>
+							</div>
 						</div>
 						<div className='w-full'>
 							{post?.coverImage?.url ? (
@@ -103,50 +108,50 @@ export default async function PagePost({ params }: PagePostProps) {
 								<p>Imagem não disponível</p>
 							)}
 						</div>
-						<div className='w-full p-2 text-mycolor-600 space-y-5'>
+						<div className='w-full p-2 space-y-5'>
 							<RichText
 								content={post?.content.raw}
 								renderers={{
 									h1: ({ children }) => (
-										<h1 className='text-mycolor-950 font-bold text-4xl'>
+										<h1 className='text-accent font-bold text-4xl'>
 											{children}
 										</h1>
 									),
 									h2: ({ children }) => (
-										<h2 className='text-mycolor-950 font-bold text-2xl'>
+										<h2 className='text-accent font-bold text-2xl'>
 											{children}
 										</h2>
 									),
 									h3: ({ children }) => (
-										<h3 className='text-mycolor-900 font-bold text-xl'>
+										<h3 className='text-accent font-bold text-xl'>
 											{children}
 										</h3>
 									),
 									h4: ({ children }) => (
-										<h4 className='text-mycolor-900 font-bold text-lg'>
+										<h4 className='text-accent font-bold text-lg'>
 											{children}
 										</h4>
 									),
 									bold: ({ children }) => (
-										<b className='text-mycolor-900 font-bold'>
-											{children}{' '}
-										</b>
+										<b className='text-accent font-bold'>{children} </b>
 									),
 									p: ({ children }) => (
-										<p className='font-light mt-4 text-mycolor-950'>
+										<p className='font-light mt-4 text-muted-foreground'>
 											{children}
 										</p>
 									),
 									code_block: ({ children }) => (
-										<pre className='bg-mycolor-950  p-4 rounded-md overflow-x-auto w-full scrollbar-thin scrollbar-track-mycolor-900 scrollbar-thumb-mycolor-50'>
-											<code className='text-mycolor-50'>{children}</code>
+										<pre className='bg-primary p-4 rounded-md overflow-x-auto w-full custom-scrollbar'>
+											<code className='text-primary-foreground'>
+												{children}
+											</code>
 										</pre>
 									),
 									ul: ({ children }) => (
 										<ul className=' p-2'>{children}</ul>
 									),
 									li: ({ children }) => (
-										<li className='mb-2 text-start font-light text-mycolor-900 '>
+										<li className='mb-2 text-start font-light text-muted-foreground'>
 											{children}
 										</li>
 									),
@@ -164,9 +169,9 @@ export default async function PagePost({ params }: PagePostProps) {
 					</article>
 					<AdBanner dataAdFormat='auto' dataAdSlot='2166293754' />
 				</section>
-				<section className='lg:col-span-4 flex flex-col items-start justify-center px-2 gap-5 mt-5 lg:mt-0 '>
+				<section className='lg:col-span-3 flex flex-col items-start justify-center px-2 gap-5 mt-5 lg:mt-0'>
 					<TitleSections section='Relacionados' />
-					<div className='flex flex-wrap justify-start  gap-4 items-center w-full'>
+					<div className='flex flex-wrap justify-start p-2 gap-4 items-center w-full'>
 						{posts?.map((post) => (
 							<SmallCard
 								slug={post.slug}

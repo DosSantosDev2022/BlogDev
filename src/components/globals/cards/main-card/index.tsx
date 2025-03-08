@@ -35,12 +35,7 @@ interface CardImageProps {
 
 const CardImage = ({ coverImage, title, className }: CardImageProps) => {
 	return (
-		<div
-			className={twMerge(
-				'w-full min-h-[150px] max-h-[150px]  relative ',
-				className,
-			)}
-		>
+		<div className={twMerge('w-full lg:h-60 h-40 relative ', className)}>
 			<Image
 				className='rounded-md object-cover '
 				fill

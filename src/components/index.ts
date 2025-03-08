@@ -1,7 +1,5 @@
 export * from '@/components/globals/authors'
 export * from '@/components/globals/carousel/Carrousel'
-export * from '@/components/pages/contact/cards'
-export * from '@/components/pages/contact/form'
 export * from '@/components/globals/footer'
 export * from '@/components/globals/header'
 export * from '@/components/pages/Home'

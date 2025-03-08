@@ -24,8 +24,8 @@ const Pagination = ({ page, limit, total, path }: PaginationProps) => {
 	const getHrefFarstPage = () => `${path}${1}`
 	const getHrefLastPage = () => `${path}${Math.ceil(total / limit)}`
 	return (
-		<div className='mt-8 w-full flex flex-col gap-6 items-center justify-center p-2 '>
-			<span className='font-light text-light flex w-full'>
+		<div className='mt-8 w-full flex flex-wrap gap-6 items-center justify-center p-2'>
+			<span className='font-light text-muted-foreground flex w-full'>
 				Mostrando {Math.min(limit, total - (page - 1) * limit)} de {total}
 			</span>
 
@@ -36,7 +36,7 @@ const Pagination = ({ page, limit, total, path }: PaginationProps) => {
 				>
 					{isFarstPage ? (
 						<Button
-							variant='disabled'
+							variants='disabled'
 							className='w-8 h-8 flex items-center justify-center'
 						>
 							<ChevronsLeft />
@@ -67,7 +67,7 @@ const Pagination = ({ page, limit, total, path }: PaginationProps) => {
 				>
 					{isLastPage ? (
 						<Button
-							variant='disabled'
+							variants='disabled'
 							className='w-8 h-8 flex items-center justify-center'
 						>
 							<ChevronsRight />

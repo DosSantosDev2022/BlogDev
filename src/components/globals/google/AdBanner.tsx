@@ -24,14 +24,16 @@ export function AdBanner({ dataAdFormat, dataAdSlot }: AdBannerTypes) {
 	}, [])
 
 	return (
-		<ins
-			key={dataAdSlot}
-			className='adsbygoogle bg-transparent w-full  flex justify-center items-center'
-			style={{ display: 'block' }}
-			data-ad-client='ca-pub-2827166560948178'
-			data-ad-slot={dataAdSlot}
-			data-ad-format={dataAdFormat}
-			data-full-width-responsive='true'
-		/>
+		<div className='border p-2'>
+			<ins
+				key={dataAdSlot}
+				className='adsbygoogle bg-transparent w-full  flex justify-center items-center'
+				style={{ display: 'block' }}
+				data-ad-client='ca-pub-2827166560948178'
+				data-ad-slot={dataAdSlot}
+				data-ad-format={dataAdFormat}
+				data-full-width-responsive='true'
+			/>
+		</div>
 	)
 }

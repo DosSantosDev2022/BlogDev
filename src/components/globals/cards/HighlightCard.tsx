@@ -36,41 +36,53 @@ const HighlightCard = ({
 }: CardPostsProps) => {
 	return (
 		<Link
+			className='group relative'
 			href={{
 				pathname: `/Post/${slug}`,
 			}}
 		>
 			<div
 				className={twMerge(
-					'max-w-full min-w-full lg:h-[18rem] h-[14rem] rounded-md  shadow-md overflow-hidden',
+					'rounded-md p-0 shadow-md overflow-hidden',
+					'max-w-full min-w-full lg:h-[18rem] h-[14rem]',
 					className,
 				)}
 			>
 				<div
-					className='flex flex-col justify-end h-full p-4 gap-3 rounded-md bg-center  bg-cover  bg-no-repeat hover:scale-105 transition-all duration-500 '
+					className={twMerge(
+						'flex flex-col justify-end h-full p-4 gap-3 rounded-md',
+						'bg-cover  bg-center bg-no-repeat ease-in group-hover:scale-105',
+						' duration-300 transform transition-transform',
+					)}
 					style={{
-						backgroundImage: `linear-gradient(180deg, rgba(24, 59, 86, 0.00) 0%, rgba(22, 49, 70, 0.45) 45.38%, #152532 100%), url(${coverImage.url})`,
+						backgroundImage: `url(${coverImage.url})`,
 					}}
-				>
-					<div className='flex flex-col items-start gap-1'>
-						<TagsPost tagName={tag} />
-						<h2 className='text-base font-bold text-mycolor-50'>
-							{title}
-						</h2>
-					</div>
-					<AuthorRoot>
-						<AuthorAvatar
-							ImageProfile={author.photo.url}
-							name={author.name}
-						/>
-						<div className='flex- flex-col gap-1'>
-							<AuthorName nome={author.name} className='text-mycolor-50' />
-							<AuthorCreateAd
-								CreateAd={createdAd}
-								className='text-mycolor-100'
+				/>
+				{/* Gradiente sobre a imagem */}
+				<div className='absolute inset-0 bg-gradient-to-t from-primary opacity-80' />
+
+				{/* Conteúdo do card */}
+				<div className='absolute inset-0 flex flex-col items-start justify-end gap-1 p-4 border'>
+					<TagsPost tagName={tag} />
+					<h2 className='lg:text-xl sm:text-base md:text-lg font-bold text-primary-foreground'>
+						{title}
+					</h2>
+
+					<div className='w-full mt-1'>
+						<AuthorRoot>
+							<AuthorAvatar
+								ImageProfile={author.photo.url}
+								name={author.name}
 							/>
-						</div>
-					</AuthorRoot>
+							<div className='flex- flex-col gap-1'>
+								<AuthorName nome={author.name} className='text-muted' />
+								<AuthorCreateAd
+									CreateAd={createdAd}
+									className='text-muted'
+								/>
+							</div>
+						</AuthorRoot>
+					</div>
 				</div>
 			</div>
 		</Link>

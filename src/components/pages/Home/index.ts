@@ -1,5 +1,4 @@
-export * from './HighlightPosts'
+export * from './SectionPosts'
 export * from './MostRecentandMostLiked'
-export * from './MostViewedPost'
 export * from './PopularPosts'
 export * from './navCategorys'

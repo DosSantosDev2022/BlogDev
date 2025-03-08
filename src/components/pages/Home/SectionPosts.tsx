@@ -4,18 +4,19 @@ import Link from 'next/link'
 
 interface RecentPostsProps {
 	posts: PostsGlobalTypes['posts']
+	title: string
 }
 
-const HighlightPosts = ({ posts }: RecentPostsProps) => {
+const SectionPosts = ({ posts, title }: RecentPostsProps) => {
 	const sortedPosts = posts.sort(
 		(a, b) =>
 			new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
 	)
-	const recentPosts = sortedPosts.slice(0, 4)
+	const recentPosts = sortedPosts.slice(0, 6)
 	return (
-		<div className='w-full flex flex-col lg:items-start items-center justify-center p-2 '>
-			<TitleSections section='Em destaque' />
-			<div className='grid md:grid-cols-2 lg:grid-cols-2 mt-3 mb-10 items-center w-full  justify-center gap-2'>
+		<div className='w-full flex flex-col lg:items-start items-center justify-center p-2'>
+			<TitleSections section={title} />
+			<div className='grid md:grid-cols-2 lg:grid-cols-2 mt-3 mb-10 items-center w-full  gap-2'>
 				{recentPosts.map((post, index) => (
 					<HighlightCard
 						key={post.id}
@@ -29,10 +30,10 @@ const HighlightPosts = ({ posts }: RecentPostsProps) => {
 					/>
 				))}
 			</div>
-			<div className='w-full px-2 py-2.5  flex items-center justify-end'>
+			<div className='w-full flex items-center justify-end'>
 				<Button
-					variant='mycolor'
-					className='w-28 h-10 flex font-normal items-center justify-center'
+					variants='primary'
+					className='lg:w-28 w-full h-10 flex font-normal items-center justify-center'
 					asChild
 				>
 					<Link href={'/Posts?page=1'}>Ver todos</Link>
@@ -42,4 +43,4 @@ const HighlightPosts = ({ posts }: RecentPostsProps) => {
 	)
 }
 
-export { HighlightPosts }
+export { SectionPosts }

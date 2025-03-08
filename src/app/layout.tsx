@@ -24,7 +24,7 @@ export default function RootLayout({
 	return (
 		<html
 			lang='pt-BR'
-			className='scrollbar scrollbar-track-mycolor-50 scrollbar-thumb-mycolor-800 overflow-x-hidden scrollbar-thumb-rounded-full'
+			className='custom-scrollbar bg-background text-foreground'
 		>
 			<head>
 				<AdSenses pId='pub-2827166560948178' />
@@ -34,7 +34,7 @@ export default function RootLayout({
 			>
 				<LikesProvider>
 					<Header />
-					<main className=''>{children}</main>
+					<main>{children}</main>
 					<Footer />
 					<ToastContainer />
 				</LikesProvider>

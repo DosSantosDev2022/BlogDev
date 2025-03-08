@@ -1,130 +1,233 @@
-import * as NavigationMenuPrimitive from '@radix-ui/react-navigation-menu'
-import { cva } from 'class-variance-authority'
-import { ChevronDown } from 'lucide-react'
-import * as React from 'react'
+'use client'
+import type { ComponentPropsWithRef, ReactNode } from 'react'
+import { LuChevronDown } from 'react-icons/lu'
+import {
+	createContext,
+	useContext,
+	useState,
+	forwardRef,
+	cloneElement,
+	useEffect,
+	useRef,
+} from 'react'
+import { twMerge } from 'tailwind-merge'
+import { v4 as uuidv4 } from 'uuid'
 
-import { cn } from '@/lib/utils'
+interface NavigationContextProps {
+	openDropdown: string | null
+	setOpenDropdown: (id: string | null) => void
+	closeDropDown: () => void
+}
 
-const NavigationMenu = React.forwardRef<
-	React.ElementRef<typeof NavigationMenuPrimitive.Root>,
-	React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Root>
->(({ className, children, ...props }, ref) => (
-	<NavigationMenuPrimitive.Root
-		ref={ref}
-		className={cn(
-			'relative z-10 flex max-w-max flex-1 items-center justify-center',
-			className,
-		)}
-		{...props}
-	>
-		{children}
-		<NavigationMenuViewport />
-	</NavigationMenuPrimitive.Root>
-))
-NavigationMenu.displayName = NavigationMenuPrimitive.Root.displayName
+const NavigationContext = createContext<
+	NavigationContextProps | undefined
+>(undefined)
 
-const NavigationMenuList = React.forwardRef<
-	React.ElementRef<typeof NavigationMenuPrimitive.List>,
-	React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.List>
->(({ className, ...props }, ref) => (
-	<NavigationMenuPrimitive.List
-		ref={ref}
-		className={cn(
-			'group flex flex-1 list-none items-center justify-center space-x-1',
-			className,
-		)}
-		{...props}
-	/>
-))
-NavigationMenuList.displayName = NavigationMenuPrimitive.List.displayName
+const useNavigationContext = () => {
+	const context = useContext(NavigationContext)
+	if (!context) {
+		throw new Error(
+			'Navigation components must be used within a Navigation provider',
+		)
+	}
+	return context
+}
 
-const NavigationMenuItem = NavigationMenuPrimitive.Item
+const NavigationProvider = ({ children }: { children: ReactNode }) => {
+	const [openDropdown, setOpenDropdown] = useState<string | null>(null)
 
-const navigationMenuTriggerStyle = cva(
-	'group inline-flex h-10 w-max items-center justify-center rounded-md  px-4 py-2 text-mycolor-50 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground focus:outline-none disabled:pointer-events-none disabled:opacity-50 data-[active]:bg-accent/50 data-[state=open]:bg-accent/50',
+	const closeDropDown = () => {
+		setOpenDropdown(null)
+	}
+
+	return (
+		<NavigationContext.Provider
+			value={{ openDropdown, setOpenDropdown, closeDropDown }}
+		>
+			{children}
+		</NavigationContext.Provider>
+	)
+}
+
+const Navigation = forwardRef<HTMLElement, ComponentPropsWithRef<'nav'>>(
+	({ className, ...props }, ref) => (
+		<NavigationProvider>
+			<nav
+				aria-label='navigation'
+				className={twMerge(
+					'h-full w-full space-y-1 flex',
+					'sm:space-y-2 lg:space-y-4',
+					className,
+				)}
+				{...props}
+				ref={ref}
+			/>
+		</NavigationProvider>
+	),
 )
 
-const NavigationMenuTrigger = React.forwardRef<
-	React.ElementRef<typeof NavigationMenuPrimitive.Trigger>,
-	React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Trigger>
->(({ className, children, ...props }, ref) => (
-	<NavigationMenuPrimitive.Trigger
-		ref={ref}
-		className={cn(navigationMenuTriggerStyle(), 'group', className)}
-		{...props}
-	>
-		{children}{' '}
-		<ChevronDown
-			className='relative top-[1px] ml-1 h-3 w-3 transition duration-200 group-data-[state=open]:rotate-180'
-			aria-hidden='true'
-		/>
-	</NavigationMenuPrimitive.Trigger>
-))
-NavigationMenuTrigger.displayName =
-	NavigationMenuPrimitive.Trigger.displayName
+Navigation.displayName = 'Navigation'
 
-const NavigationMenuContent = React.forwardRef<
-	React.ElementRef<typeof NavigationMenuPrimitive.Content>,
-	React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Content>
+const NavigationList = forwardRef<
+	HTMLUListElement,
+	ComponentPropsWithRef<'ul'>
 >(({ className, ...props }, ref) => (
-	<NavigationMenuPrimitive.Content
-		ref={ref}
-		className={cn(
-			'left-0 top-0 w-full data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out data-[motion=from-end]:slide-in-from-right-52 data-[motion=from-start]:slide-in-from-left-52 data-[motion=to-end]:slide-out-to-right-52 data-[motion=to-start]:slide-out-to-left-52 md:absolute md:w-auto ',
+	<ul
+		className={twMerge(
+			'flex flex-col p-2 lg:flex-row gap-2 sm:gap-4',
 			className,
 		)}
 		{...props}
+		ref={ref}
 	/>
 ))
-NavigationMenuContent.displayName =
-	NavigationMenuPrimitive.Content.displayName
 
-const NavigationMenuLink = NavigationMenuPrimitive.Link
+NavigationList.displayName = 'NavigationList'
 
-const NavigationMenuViewport = React.forwardRef<
-	React.ElementRef<typeof NavigationMenuPrimitive.Viewport>,
-	React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Viewport>
->(({ className, ...props }, ref) => (
-	<div className={cn('absolute left-0 top-full flex justify-center')}>
-		<NavigationMenuPrimitive.Viewport
-			className={cn(
-				'origin-top-center relative mt-1.5 h-[var(--radix-navigation-menu-viewport-height)] w-full overflow-hidden rounded-md border bg-mycolor-50 text-mycolor shadow-lg data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:zoom-out-95 data-[state=open]:zoom-in-90 md:w-[var(--radix-navigation-menu-viewport-width)]',
-				className,
-			)}
-			ref={ref}
-			{...props}
-		/>
-	</div>
-))
-NavigationMenuViewport.displayName =
-	NavigationMenuPrimitive.Viewport.displayName
+interface NavigationItemProps extends ComponentPropsWithRef<'li'> {
+	isDrop?: boolean
+	dropdownItems?: ReactNode[]
+	id?: string
+	onLinkClick?: () => void
+}
 
-const NavigationMenuIndicator = React.forwardRef<
-	React.ElementRef<typeof NavigationMenuPrimitive.Indicator>,
-	React.ComponentPropsWithoutRef<typeof NavigationMenuPrimitive.Indicator>
->(({ className, ...props }, ref) => (
-	<NavigationMenuPrimitive.Indicator
-		ref={ref}
-		className={cn(
-			'top-full z-[1] flex h-1.5 items-end justify-center overflow-hidden data-[state=visible]:animate-in data-[state=hidden]:animate-out data-[state=hidden]:fade-out data-[state=visible]:fade-in',
+const NavigationItem = forwardRef<HTMLLIElement, NavigationItemProps>(
+	(
+		{
 			className,
-		)}
+			isDrop,
+			dropdownItems,
+			id,
+			children,
+			onLinkClick,
+			...props
+		},
+		ref,
+	) => {
+		const { openDropdown, setOpenDropdown, closeDropDown } =
+			useNavigationContext()
+		const isOpen = openDropdown === id
+		const dropdownRef = useRef<HTMLUListElement>(null)
+
+		const handleToggleDropdown = (event: React.MouseEvent) => {
+			event.stopPropagation()
+			if (isDrop && id) {
+				setOpenDropdown(isOpen ? null : id)
+			}
+		}
+
+		useEffect(() => {
+			const handleClickOutside = (event: MouseEvent) => {
+				if (
+					isOpen &&
+					dropdownRef.current &&
+					!dropdownRef.current.contains(event.target as Node)
+				) {
+					closeDropDown()
+				}
+			}
+
+			document.addEventListener('mousedown', handleClickOutside)
+			return () => {
+				document.removeEventListener('mousedown', handleClickOutside)
+			}
+		}, [isOpen, closeDropDown])
+
+		return (
+			<li
+				className={twMerge(
+					'flex items-center justify-start lg:justify-center rounded-md px-2 py-1.5 relative',
+					'sm:min-w-24 cursor-pointer transition-all duration-300 ',
+					' text-primary-foreground hover:bg-primary-hover',
+					className,
+				)}
+				{...props}
+				ref={ref}
+				onClick={handleToggleDropdown}
+			>
+				{children}
+				{isDrop && (
+					<LuChevronDown
+						className={twMerge(
+							'ml-1 duration-300 transition-all',
+							`${isOpen ? 'rotate-180' : ''}`,
+						)}
+					/>
+				)}
+				{isDrop && isOpen && dropdownItems && (
+					<ul
+						ref={dropdownRef}
+						aria-label='dropdown-content'
+						id={id}
+						className={twMerge(
+							'absolute top-full left-0 bg-primary shadow-md',
+							' z-50 w-full mt-1 rounded-md shadow-md p-4',
+							'ease-in transition-all duration-300',
+						)}
+					>
+						{dropdownItems.map((item) => (
+							<li
+								key={uuidv4()}
+								className={twMerge(
+									'flex items-center justify-start lg:justify-center rounded-md px-2 py-1.5 relative',
+									'sm:min-w-24 cursor-pointer transition-all duration-300 ',
+									'text-sm font-light text-primary-foreground hover:bg-primary-hover',
+									className,
+								)}
+							>
+								{cloneElement(item as React.ReactElement)}
+							</li>
+						))}
+					</ul>
+				)}
+			</li>
+		)
+	},
+)
+
+NavigationItem.displayName = 'NavigationItem'
+
+interface NavigationLinkProps
+	extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
+	asChild?: boolean
+}
+
+const NavigationLink = forwardRef<HTMLAnchorElement, NavigationLinkProps>(
+	({ className, asChild, children, ...props }, ref) => {
+		if (asChild) {
+			return cloneElement(children as React.ReactElement, {
+				...props,
+				ref,
+			})
+		}
+
+		return (
+			<a className={twMerge('', className)} {...props} ref={ref}>
+				{children}
+			</a>
+		)
+	},
+)
+
+NavigationLink.displayName = 'NavigationLink'
+
+const NavigationIcon = forwardRef<
+	HTMLSpanElement,
+	ComponentPropsWithRef<'span'>
+>(({ className, ...props }, ref) => (
+	<span
+		className={twMerge('text-muted', className)}
 		{...props}
-	>
-		<div className='relative top-[60%] h-2 w-2 rotate-45 rounded-tl-sm bg-border shadow-md' />
-	</NavigationMenuPrimitive.Indicator>
+		ref={ref}
+	/>
 ))
-NavigationMenuIndicator.displayName =
-	NavigationMenuPrimitive.Indicator.displayName
+
+NavigationIcon.displayName = 'NavigationIcon'
 
 export {
-	navigationMenuTriggerStyle,
-	NavigationMenu,
-	NavigationMenuList,
-	NavigationMenuItem,
-	NavigationMenuContent,
-	NavigationMenuTrigger,
-	NavigationMenuLink,
-	NavigationMenuIndicator,
-	NavigationMenuViewport,
+	Navigation,
+	NavigationIcon,
+	NavigationItem,
+	NavigationLink,
+	NavigationList,
 }

@@ -24,7 +24,7 @@ const AuthorAvatar = ({
 				quality={100}
 				src={ImageProfile}
 				alt={name}
-				className={twMerge('rounded-full object-cover', className)}
+				className={'rounded-full object-cover'}
 			/>
 		</div>
 	)
@@ -58,7 +58,7 @@ const AuthorCreateAd = ({ CreateAd, className }: AuthorCreateAdProps) => {
 	return (
 		<p
 			className={twMerge(
-				'text-[0.75rem] text-mycolor-950 font-light',
+				'text-xs text-muted-foreground font-light',
 				className,
 			)}
 		>
@@ -83,7 +83,7 @@ const AuthorLinks = ({ Url, icon, className }: AuthorLinksProps) => {
 			title='Visite o perfil social do autor do Blog Dev'
 			prefetch
 		>
-			<CMSIcon icon={icon} className={twMerge('text-2x', className)} />
+			<CMSIcon icon={icon} className={twMerge('text-lg', className)} />
 		</Link>
 	)
 }
@@ -95,9 +95,7 @@ interface AuthorNameProps {
 
 const AuthorName = ({ nome, className }: AuthorNameProps) => {
 	return (
-		<h3
-			className={twMerge('text-mycolor-50 text-sm font-bold', className)}
-		>
+		<h3 className={twMerge('text-primary text-sm font-bold', className)}>
 			{nome}
 		</h3>
 	)

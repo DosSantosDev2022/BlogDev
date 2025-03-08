@@ -20,13 +20,13 @@ const LikeButton = ({ postId, initialLikes }: LikeButtonProps) => {
 
 	return (
 		<div className='relative flex flex-col items-center'>
-			<span className='absolute top-[-10px] right-[-10px]  border-mycolor-700 border-[2px] bg-mycolor-950 text-white text-xs rounded-full px-2.5 py-1'>
+			<span className='absolute -top-2 -right-3 bg-accent text-accent-foreground text-xs rounded-full px-2.5 py-1.5'>
 				{currentLikes}
 			</span>
 			<Button
 				className=' justify-center w-10 rounded-full flex items-center gap-2'
 				onClick={handleLikes}
-				variant='mycolor'
+				variants='primary'
 				disabled={liked}
 			>
 				{liked ? (

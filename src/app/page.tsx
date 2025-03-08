@@ -1,9 +1,8 @@
 import {
 	AdBanner,
 	BannerCarrousel,
-	HighlightPosts,
+	SectionPosts,
 	MostRecentandMostLiked,
-	MostViewedPost,
 	NavCategorys,
 	OurAuthors,
 	PopularPosts,
@@ -48,24 +47,28 @@ export default async function Home() {
 	const { posts } = response
 
 	const featuredPosts = posts.filter((post) => post.destaque)
+	const highlightPosts = posts.filter((post) => post.destaque)
 
 	return (
 		<div>
 			<div className='w-full flex items-center justify-center'>
 				<BannerCarrousel featuredPosts={featuredPosts} />
 			</div>
-			<div className='lg:px-16 px-5 mt-10'>
+			<div className='lg:px-16 px-4 mt-10'>
 				<MostRecentandMostLiked posts={posts} />
-				<div className='grid  lg:grid-cols-12 lg:gap-16 items-start justify-center  mt-12 mb-12'>
-					<section className='flex flex-col items-start justify-start lg:col-span-8 gap-2 px-4'>
+				<div className='main-container lg:px-8'>
+					<section className='section-posts'>
 						<AdBanner dataAdFormat='auto' dataAdSlot='2166293754' />
-						<HighlightPosts posts={posts} />
 						{/* Componente de posts em destaque */}
+						<SectionPosts title='Em destaque' posts={highlightPosts} />
+
 						<AdBanner dataAdFormat='auto' dataAdSlot='2166293754' />
-						<MostViewedPost posts={posts} />
 						{/* Componente de posts mais vistos */}
+						<SectionPosts title='Mais vistos' posts={posts} />
+
+						<SectionPosts title='Novidades' posts={posts} />
 					</section>
-					<aside className='lg:col-span-4 px-4 flex flex-col items-center justify-center gap-5 mt-5 lg:mt-0 '>
+					<aside className='section-secondary'>
 						<PopularPosts posts={posts} />{' '}
 						{/* Componente de posts populares */}
 						<NavCategorys />
