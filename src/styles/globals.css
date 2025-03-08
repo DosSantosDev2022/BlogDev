@@ -57,7 +57,7 @@
 }
 
 .main-container {
-	@apply grid lg:px-16 lg:py-20  px-5 lg:grid-cols-12 gap-1 items-start justify-center mt-12 mb-12;
+	@apply grid lg:px-16 lg:py-20  px-5 lg:grid-cols-12 gap-8 items-start justify-center mt-12 mb-12;
 }
 .section-posts {
 	@apply flex flex-col items-center justify-center lg:col-span-8 gap-5;

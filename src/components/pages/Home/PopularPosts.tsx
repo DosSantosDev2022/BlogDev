@@ -8,10 +8,10 @@ interface PopularPosts {
 const PopularPosts = ({ posts }: PopularPosts) => {
 	return (
 		<div className='w-full flex flex-col lg:items-start items-center justify-center gap-2 rounded-md'>
-			<div className='w-full flex items-start lg:pl-5'>
-				<TitleSections section='Populares' />
-			</div>
-			<div className='grid lg:grid-cols-1 justify-center gap-4 items-center  mt-3'>
+			<div className='grid lg:grid-cols-1 justify-center gap-4 items-center  mt-12'>
+				<div className='w-full flex items-start'>
+					<TitleSections section='Populares' />
+				</div>
 				{posts.map((post) => (
 					<SmallCard
 						slug={post.slug}
