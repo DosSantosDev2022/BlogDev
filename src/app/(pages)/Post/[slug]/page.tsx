@@ -1,11 +1,10 @@
-import { fetchHygraphQuery } from '@/app/api/fetchHygraph'
 import {
 	AdBanner,
 	AuthorAvatar,
 	AuthorCreateAd,
 	AuthorName,
 	AuthorRoot,
-	LikeandShare,
+	ToSharePosts,
 	RichText,
 	SmallCard,
 	TitleSections,
@@ -159,12 +158,7 @@ export default async function PagePost({ params }: PagePostProps) {
 							/>
 						</div>
 						<div className='flex w-full justify-between items-start px-2 py-3 mb-10 '>
-							<LikeandShare
-								postId={post.id}
-								slug={params.slug}
-								title={post.title}
-								initialLikes={post.likes}
-							/>
+							<ToSharePosts slug={params.slug} title={post.title} />
 						</div>
 					</article>
 					<AdBanner dataAdFormat='auto' dataAdSlot='2166293754' />

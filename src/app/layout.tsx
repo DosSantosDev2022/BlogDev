@@ -3,7 +3,6 @@ import '@/styles/globals.css'
 import { AdSenses, Footer, Header } from '@/components/index'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/ReactToastify.css'
-import { LikesProvider } from '@/context/LikesContext'
 import type { Metadata } from 'next'
 
 export const metadata: Metadata = {
@@ -32,12 +31,10 @@ export default function RootLayout({
 			<body
 				className={`bg-secondary overflow-x-hidden ${font.className}  `}
 			>
-				<LikesProvider>
-					<Header />
-					<main>{children}</main>
-					<Footer />
-					<ToastContainer />
-				</LikesProvider>
+				<Header />
+				<main>{children}</main>
+				<Footer />
+				<ToastContainer />
 			</body>
 		</html>
 	)
