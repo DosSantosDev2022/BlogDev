@@ -34,7 +34,7 @@ export const SEARCH_DETAILS_POST = async (
    `
 	const variables = { slug }
 	return fetchHygraphQuery(query, variables, {
-		cache: 'force-cache',
-		revalidate: 60 * 60 * 24,
+		cache: 'no-cache',
+		/* revalidate: 60 * 60 * 24, */
 	})
 }

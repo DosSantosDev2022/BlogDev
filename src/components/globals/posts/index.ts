@@ -1,3 +1,2 @@
-export * from './LikeButton'
-export * from './LikeandShare'
+export * from './ToSharePosts'
 export * from './rich-text'
