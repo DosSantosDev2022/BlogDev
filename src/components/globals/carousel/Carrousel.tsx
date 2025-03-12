@@ -34,7 +34,7 @@ export function BannerCarrousel({ featuredPosts }: BannerCarrouselProps) {
 						>
 							<div className='w-full  lg:h-[550px] h-[250px]'>
 								<div
-									className='flex flex-col items-center justify-center h-full p-4 gap-3  bg-center  bg-cover  bg-no-repeat '
+									className='flex flex-col lg:items-center items-start justify-center h-full p-8 gap-3  bg-center  bg-cover  bg-no-repeat '
 									style={{
 										backgroundImage: `linear-gradient(180deg, rgba(24, 59, 86, 0.00) 0%, rgba(22, 49, 70, 0.45) 45.38%, #152532 100%), url(${post.coverImage.url})`,
 									}}
@@ -46,18 +46,18 @@ export function BannerCarrousel({ featuredPosts }: BannerCarrouselProps) {
 										</h2>
 										<AuthorRoot>
 											<AuthorAvatar
-												className='w-14 h-14'
+												className='lg:w-14 lg:h-14 w-10 h-10'
 												ImageProfile={post.author.photo.url}
 												name={post.author.name}
 											/>
-											<div className='flex flex-col gap-1'>
+											<div className='flex flex-col space-x-1'>
 												<AuthorName
 													nome={post.author.name}
-													className='text-lg text-muted'
+													className='lg:text-lg text-sm text-muted'
 												/>
 												<AuthorCreateAd
 													CreateAd={post.createdAt}
-													className='text-md text-muted'
+													className='text-xs lg:text-sm text-muted'
 												/>
 											</div>
 										</AuthorRoot>

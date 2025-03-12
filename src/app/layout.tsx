@@ -1,6 +1,6 @@
 import { Poppins } from 'next/font/google'
 import '@/styles/globals.css'
-import { AdSenses, Footer, Header } from '@/components/index'
+import { Footer, Header } from '@/components/index'
 import { ToastContainer } from 'react-toastify'
 import 'react-toastify/ReactToastify.css'
 import type { Metadata } from 'next'
@@ -26,11 +26,13 @@ export default function RootLayout({
 			className='custom-scrollbar bg-background text-foreground'
 		>
 			<head>
-				<AdSenses pId='pub-2827166560948178' />
+				<script
+					async
+					src='https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2827166560948178'
+					crossOrigin='anonymous'
+				/>
 			</head>
-			<body
-				className={`bg-secondary overflow-x-hidden ${font.className}  `}
-			>
+			<body className={`bg-secondary overflow-x-hidden ${font.className}`}>
 				<Header />
 				<main>{children}</main>
 				<Footer />
