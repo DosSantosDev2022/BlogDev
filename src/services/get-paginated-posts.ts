@@ -40,7 +40,7 @@ export const GET_PAGINATED_POSTS = async (
 	const skip = (page - 1) * pageSize
 	const variables = { first: pageSize, skip }
 	const { posts, postsConnection } =
-		await fetchHygraphQuery<PostsGlobalTypes>(query, variables)
+		await fetchHygraphQuery<PostsGlobalTypes>(query, variables,{cache: 'no-cache'})
 
 	return { posts, postsConnection }
 }
