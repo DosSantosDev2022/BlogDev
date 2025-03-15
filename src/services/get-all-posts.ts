@@ -24,7 +24,6 @@ export const GET_ALL_POST = async (): Promise<PostsGlobalTypes> => {
         tagName
       }
       destaque
-      likes
     }
     
   }
