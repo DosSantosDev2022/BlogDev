@@ -44,5 +44,5 @@ export const GET_AUTHORS = async (): Promise<AllAuthors> => {
     }
   }
   `
-	return fetchHygraphQuery(query)
+	return fetchHygraphQuery(query, {cache: 'force-cache', revalidate: 60 * 60 * 24 * 7 })
 }

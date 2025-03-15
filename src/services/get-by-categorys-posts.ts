@@ -45,7 +45,7 @@ export const GET_BY_CATEGORYS_POSTS = async (
 	const skip = (page - 1) * pageSize
 	const variables = { tagName, first: pageSize, skip }
 	const { posts, postsConnection } =
-		await fetchHygraphQuery<PostsGlobalTypes>(query, variables)
+		await fetchHygraphQuery<PostsGlobalTypes>(query, variables,{cache: 'force-cache', revalidate: 60 * 60 * 24})
 
 	return { posts, postsConnection }
 }

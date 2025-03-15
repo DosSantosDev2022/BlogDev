@@ -28,13 +28,12 @@ export const SEARCH_DETAILS_POST = async (
         tag {
           tagName
         }
-        likes
       }
     }
    `
 	const variables = { slug }
 	return fetchHygraphQuery(query, variables, {
-		cache: 'no-cache',
-		/* revalidate: 60 * 60 * 24, */
+		cache: 'force-cache',
+		revalidate: 60 * 60 * 24,
 	})
 }

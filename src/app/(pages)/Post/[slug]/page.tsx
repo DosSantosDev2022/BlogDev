@@ -9,6 +9,7 @@ import {
 	SmallCard,
 	TitleSections,
 } from '@/components'
+import { defaultRenders } from '@/components/globals/cms/rickTextRenders'
 import { SEARCH_RELATED_POSTS } from '@/services/get-relatead-post'
 import { SEARCH_DETAILS_POST } from '@/services/search-details-posts'
 import type { Metadata } from 'next'
@@ -110,51 +111,7 @@ export default async function PagePost({ params }: PagePostProps) {
 						<div className='w-full p-2 space-y-5'>
 							<RichText
 								content={post?.content.raw}
-								renderers={{
-									h1: ({ children }) => (
-										<h1 className='text-accent font-bold text-4xl'>
-											{children}
-										</h1>
-									),
-									h2: ({ children }) => (
-										<h2 className='text-accent font-bold text-2xl'>
-											{children}
-										</h2>
-									),
-									h3: ({ children }) => (
-										<h3 className='text-accent font-bold text-xl'>
-											{children}
-										</h3>
-									),
-									h4: ({ children }) => (
-										<h4 className='text-accent font-bold text-lg'>
-											{children}
-										</h4>
-									),
-									bold: ({ children }) => (
-										<b className='text-accent font-bold'>{children} </b>
-									),
-									p: ({ children }) => (
-										<p className='font-light mt-4 text-muted-foreground'>
-											{children}
-										</p>
-									),
-									code_block: ({ children }) => (
-										<pre className='bg-primary p-4 rounded-md overflow-x-auto w-full custom-scrollbar'>
-											<code className='text-primary-foreground'>
-												{children}
-											</code>
-										</pre>
-									),
-									ul: ({ children }) => (
-										<ul className=' p-2'>{children}</ul>
-									),
-									li: ({ children }) => (
-										<li className='mb-2 text-start font-light text-muted-foreground'>
-											{children}
-										</li>
-									),
-								}}
+								renderers={defaultRenders}
 							/>
 						</div>
 						<div className='flex w-full justify-between items-start px-2 py-3 mb-10 '>
