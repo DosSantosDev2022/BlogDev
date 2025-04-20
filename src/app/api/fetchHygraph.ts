@@ -3,7 +3,7 @@ export const fetchHygraphQuery = async <T>(
   variables?: Record<string, unknown>,
   options?: { cache?: RequestCache; revalidate?: number }
 ): Promise<T> => {
-  const { cache = 'force-cache', revalidate } = options || {}
+  const { cache = 'no-cache', revalidate } = options || {}
 
   try {
     const response = await fetch(process.env.HYGRAPH_API_KEY || '', {
